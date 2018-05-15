@@ -1,5 +1,7 @@
 # Discord embed
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/widgetbot-io/embed.svg)](https://greenkeeper.io/)
+
 ![Screenshot](https://i.imgur.com/eGKcLlN.png)
 
 ## Introduction
