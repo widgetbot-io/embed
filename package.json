@@ -28,7 +28,7 @@
     "emotion": "^9.1.2",
     "emotion-theming": "^9.1.2",
     "function-pipe": "^1.2.1",
-    "graphql": "^0.13.2",
+    "graphql": "^14.0.0-rc.1",
     "graphql-request": "^1.5.1",
     "graphql-tag": "^2.8.0",
     "highlight.js": "^9.12.0",
