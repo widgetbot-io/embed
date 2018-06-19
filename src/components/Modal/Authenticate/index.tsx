@@ -64,12 +64,12 @@ export default connect()
                   required
                 />
                 <Create variant="large">Create</Create>
-                <SSO>
+                {/*<SSO>
                   Discord account?
                   <Discord onClick={this.singleSignOn.bind(this)}>
                     Log in
                   </Discord>
-                </SSO>
+                </SSO>*/}
               </Group>
             </Root>
           )
