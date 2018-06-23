@@ -299,6 +299,8 @@ function omit(object, excluded) {
 // emoji stuff
 
 const getEmoteURL = emote => `https://cdn.discordapp.com/emojis/${emote.id}.png`
+const getAnimEmoteURL = emote =>
+  `https://cdn.discordapp.com/emojis/${emote.id}.gif`
 
 function getEmojiURL(surrogate) {
   if (['™', '©', '®'].indexOf(surrogate) > -1) {
@@ -461,6 +463,36 @@ const baseRules = {
         // something we can do to begin with
         name: name,
         src: getEmoteURL({
+          id: id
+        })
+      }
+    },
+    react(node) {
+      return createReactElement(Emoji, {
+        draggable: false,
+        enlarged: node.jumboable,
+        alt: `<:${node.name}:${node.emojiId}>`,
+        // 'data-tip': `:${node.name}:`,
+        src: node.src,
+        ...emojiTipOptions
+      })
+    }
+  },
+  animatedEmoji: {
+    order: SimpleMarkdown.defaultRules.text.order,
+    match(source) {
+      return /^<a:(\w+):(\d+)>/.exec(source)
+    },
+    parse(capture) {
+      const name = capture[1]
+      const id = capture[2]
+      return {
+        emojiId: id,
+        // NOTE: we never actually try to fetch the emote
+        // so checking if colons are required (for 'name') is not
+        // something we can do to begin with
+        name: name,
+        src: getAnimEmoteURL({
           id: id
         })
       }
