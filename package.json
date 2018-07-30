@@ -48,7 +48,7 @@
     "react-notification-system": "^0.2.17",
     "react-scripts-ts": "2.16.0",
     "react-transition-group": "^2.3.1",
-    "recompose": "^0.27.1",
+    "recompose": "^0.28.0",
     "scroll-into-view-if-needed": "^2.2.6",
     "simple-markdown": "^0.4.1",
     "socket.io-client": "^2.1.1",
