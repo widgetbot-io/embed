@@ -43,7 +43,7 @@
     "react-dom": "^16.3.2",
     "react-easy-emoji": "^1.2.0",
     "react-emotion": "^9.1.2",
-    "react-icons": "^2.2.7",
+    "react-icons": "^3.0.0",
     "react-intl": "^2.4.0",
     "react-notification-system": "^0.2.17",
     "react-scripts-ts": "2.16.0",
