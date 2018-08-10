@@ -1,0 +1,198 @@
+{
+  "resources": {
+    "body": [
+      {
+        "type": "script",
+        "src": "./src/app.js"
+      }
+    ]
+  },
+  "preview": {
+    "handlers": [
+      {
+        "options": ["_default"],
+        "execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)"
+      }
+    ]
+  },
+  "options": {
+    "properties": {
+      "tier": {
+        "order": 1,
+        "title": "WidgetBot patreon tier",
+        "description":
+          "Becoming a <a href=\"https://www.patreon.com/bePatron?u=5594164\" target=\"_blank\">patreon</a>, enables access to more customization",
+        "type": "string",
+        "enum": ["free", "patreon", "ultimate"],
+        "enumNames": {
+          "free": "Free",
+          "patreon": "Patreon ($1)",
+          "ultimate": "Ultimate patreon ($5)"
+        },
+        "default": "free"
+      },
+      "buttons": {
+        "order": 2,
+        "title": "Crate buttons",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "server": {
+              "order": 1,
+              "title": "Discord server ID",
+              "placeholder": "339515332702240769",
+              "type": "string"
+            },
+            "channel": {
+              "order": 2,
+              "title": "Discord channel ID",
+              "placeholder": "339515332702240769",
+              "type": "string"
+            },
+            "position": {
+              "order": 3,
+              "title": "Position",
+              "type": "string",
+              "enum": ["top-left", "top-right", "bottom-left", "bottom-right"],
+              "enumNames": {
+                "top-left": "Top left",
+                "top-right": "Top right",
+                "bottom-left": "Bottom left",
+                "bottom-right": "Bottom right"
+              },
+              "default": "bottom-right"
+            },
+            "colors": {
+              "order": 4,
+              "type": "object",
+              "title": "Colors",
+              "properties": {
+                "toggle": {
+                  "default": "#7289DA",
+                  "format": "color",
+                  "title": "Toggle button",
+                  "type": "string"
+                },
+                "button": {
+                  "showIf": {
+                    "tier": {
+                      "op": "!=",
+                      "value": "free"
+                    }
+                  },
+                  "default": "#607CDA",
+                  "format": "color",
+                  "title": "Widget button",
+                  "type": "string"
+                },
+                "background": {
+                  "showIf": {
+                    "tier": {
+                      "op": "!=",
+                      "value": "free"
+                    }
+                  },
+                  "default": "#36393E",
+                  "format": "color",
+                  "title": "Widget background",
+                  "type": "string"
+                }
+              }
+            },
+            "showCustomization": {
+              "order": 5,
+              "type": "boolean",
+              "title": "More customization options",
+              "default": false
+            },
+            "customization": {
+              "order": 6,
+              "showIf": {
+                "buttons[].showCustomization": true
+              },
+              "type": "object",
+              "title": "Customization options",
+              "properties": {
+                "image": {
+                  "title": "Custom toggle icon",
+                  "type": "string",
+                  "format": "image"
+                },
+                "imageSize": {
+                  "showIf": {
+                    "buttons[].customization.image": {
+                      "op": "!=",
+                      "value": ""
+                    }
+                  },
+                  "title": "Adjust toggle icon zoom",
+                  "type": "number",
+                  "format": "slider",
+                  "default": 50,
+                  "minimum": 0,
+                  "maximum": 200,
+                  "step": 1
+                },
+                "showToasts": {
+                  "title": "Enable notifications",
+                  "type": "boolean",
+                  "default": true
+                },
+                "indicator": {
+                  "title": "Enable unread indicator",
+                  "type": "boolean",
+                  "default": true
+                },
+                "toasts": {
+                  "showIf": {
+                    "buttons[].customization.showToasts": true
+                  },
+                  "type": "object",
+                  "title": "Notification options",
+                  "properties": {
+                    "visibilityTime": {
+                      "title": "Visibility time (seconds)",
+                      "type": "number",
+                      "default": 10
+                    }
+                  }
+                }
+              }
+            },
+            "showAdvanced": {
+              "order": 7,
+              "type": "boolean",
+              "title": "Show advanced options",
+              "default": false
+            },
+            "advanced": {
+              "order": 8,
+              "showIf": {
+                "buttons[].showAdvanced": true
+              },
+              "type": "object",
+              "title": "Advanced options",
+              "properties": {
+                "delay": {
+                  "default": false,
+                  "type": "boolean",
+                  "title": "Delay until interaction",
+                  "description":
+                    "Only load the WidgetBot embed when the user toggles it open"
+                },
+                "beta": {
+                  "default": false,
+                  "type": "boolean",
+                  "title": "WidgetBot BETA",
+                  "description":
+                    "<a href=\"https://beta.widgetbot.io\" class=\"more\" target=\"_blank\">Learn more</a>"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

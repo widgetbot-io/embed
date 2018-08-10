@@ -1,0 +1,23 @@
+{
+  "name": "@widgetbot/react-embed",
+  "version": "1.2.1",
+  "description": "WidgetBot react-embed",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": "https://github.com/widgetbot-io/react-embed",
+  "author": "samdenty99",
+  "license": "MIT",
+  "scripts": {
+    "start": "tsc -w",
+    "precommit": "pretty-quick --staged",
+    "release": "yarn build && yarn publish",
+    "build": "tsc"
+  },
+  "peerDependencies": {
+    "react": "^15.x || ^16.x"
+  },
+  "private": false,
+  "dependencies": {
+    "@widgetbot/embed-api": "^1.1.2"
+  }
+}

@@ -1,6 +1,0 @@
-fragment Member on Member {
-  name
-  color
-  id
-  avatarURL
-}

@@ -1,15 +1,14 @@
-# See https://help.github.com/ignore-files/ for more about ignoring files.
-
 # dependencies
-/node_modules
+node_modules
 
-# testing
-/coverage
-/docs
-/src/locale/_build
 
-# production
-/build
+# project folders
+coverage
+docs
+build
+.cache
+dist
+umd
 
 # misc
 .DS_Store

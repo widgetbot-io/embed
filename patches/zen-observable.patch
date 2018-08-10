@@ -1,0 +1,11 @@
+--- node_modules/@types/zen-observable/index.d.ts       2018-08-08 00:06:19.141972000 +0100
++++ node_modules/@types/zen-observable/index.d.ts 2018-08-08 00:07:10.867203200 +0100
+@@ -5,7 +5,7 @@
+
+ declare global {
+   interface SymbolConstructor {
+-    observable: symbol
++    readonly observable: symbol
+   }
+
+   namespace ZenObservable {

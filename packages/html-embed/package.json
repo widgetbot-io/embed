@@ -1,0 +1,26 @@
+{
+  "name": "@widgetbot/html-embed",
+  "version": "1.0.5",
+  "description": "html-embed React component",
+  "main": "umd/@widgetbot/html-embed.js",
+  "files": [
+    "css",
+    "es",
+    "lib",
+    "umd"
+  ],
+  "scripts": {
+    "build": "nwb build-react-component --no-demo",
+    "clean": "nwb clean-module && nwb clean-demo",
+    "start": "nwb serve-react-demo --port 3200",
+    "release": "yarn version && yarn build && yarn publish && yarn purge",
+    "purge": "tinyreq -u https://purge.jsdelivr.net/npm/@widgetbot/html-embed"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "license": "MIT",
+  "repository": "",
+  "keywords": [
+    "react-component"
+  ]
+}

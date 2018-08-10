@@ -1,5 +1,0 @@
-query SidebarVisibility {
-  sidebar @client {
-    open
-  }
-}

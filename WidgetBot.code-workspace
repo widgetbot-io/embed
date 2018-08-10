@@ -1,0 +1,48 @@
+{
+  "folders": [
+    {
+      "path": "packages/embed",
+      "name": "🌐	embed"
+    },
+    {
+      "path": "../server",
+      "name": "🖥️	server"
+    },
+    {
+      "path": "packages/crate",
+      "name": "☄️	crate"
+    },
+    {
+      "path": "packages/embed-api",
+      "name": "🔗	embed-api"
+    },
+    {
+      "path": "packages/html-embed",
+      "name": "📦	html-embed"
+    },
+    {
+      "path": "packages/react-embed",
+      "name": "📦	react-embed"
+    },
+    {
+      "path": ".",
+      "name": "root"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/.cache": true,
+      "**/.vs": true,
+      "**/*.map": true
+    },
+    "todo-tree.flat": true,
+    "todo-tree.grouped": false,
+    "todo-tree.expanded": true,
+    "typescript.tsdk": "node_modules\\typescript\\lib"
+  }
+}

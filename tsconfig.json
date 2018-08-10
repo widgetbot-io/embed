@@ -1,48 +1,9 @@
 {
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "build/dist",
-    "module": "esnext",
-    "target": "esnext",
-    "lib": ["es2016", "es6", "dom", "esnext.asynciterable"],
-    "sourceMap": true,
-    "allowJs": true,
-    "jsx": "preserve",
-    "moduleResolution": "node",
-    "rootDir": "src",
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "experimentalDecorators": true,
-    "baseUrl": ".",
+    "baseUrl": "./packages",
     "paths": {
-      "@lib/*": ["src/lib/*"],
-      "@ui/*": ["src/ui/*"],
-      "@views/*": ["src/views/*"],
-      "@queries/*": ["src/queries/*"],
-      "@services/*": ["src/services/*"],
-
-      "@store": ["src/state/index"],
-      "@store/*": ["src/state/*"],
-
-      "notify": ["src/app/notify.tsx"],
-
-      "locales": ["src/app/locales"],
-      "locales/*": ["src/app/locales/*"],
-
-      "embed-api": ["src/lib/embed-api"]
-    },
-    "plugins": [
-      {
-        "name": "ts-graphql-plugin"
-      }
-    ]
-  },
-  "exclude": [
-    "node_modules",
-    "build",
-    "scripts",
-    "acceptance-tests",
-    "webpack",
-    "jest",
-    "src/setupTests.ts"
-  ]
+      "@widgetbot/*": ["./*/src"]
+    }
+  }
 }

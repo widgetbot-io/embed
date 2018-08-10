@@ -7,10 +7,9 @@
       }
     ],
     "react",
-    "stage-0",
-    "@lingui/babel-preset-react"
+    "stage-0"
   ],
-  "plugins": ["syntax-dynamic-import"],
+  "plugins": ["syntax-dynamic-import", "macros", "preval"],
   "env": {
     "development": {
       "plugins": [
@@ -37,12 +36,6 @@
           "emotion",
           {
             "hoist": true
-          }
-        ],
-        [
-          "react-intl",
-          {
-            "messagesDir": "./build/messages/"
           }
         ]
       ]

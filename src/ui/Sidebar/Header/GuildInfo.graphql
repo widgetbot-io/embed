@@ -1,7 +1,0 @@
-query QuildInfo($server: ID!) {
-  server(id: $server) {
-    name
-    icon
-    memberCount
-  }
-}
