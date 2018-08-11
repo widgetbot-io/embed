@@ -1,0 +1,19 @@
+# import "./fragments/Message.graphql"
+# import "./fragments/TextMessage.graphql"
+
+query Messages($server: ID!, $channel: ID!) {
+  server(id: $server) {
+    channel(id: $channel) {
+      id
+      messages {
+        ... on TextMessage {
+          ...Message
+          ...TextMessage
+        }
+        ... on JoinMessage {
+          ...Message
+        }
+      }
+    }
+  }
+}

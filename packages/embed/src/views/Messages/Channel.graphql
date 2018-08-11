@@ -1,0 +1,9 @@
+query Channel($server: ID!, $channel: ID!) {
+  server(id: $server) {
+    channel(id: $channel) {
+      name
+      id
+      topic
+    }
+  }
+}

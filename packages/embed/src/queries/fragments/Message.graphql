@@ -1,0 +1,9 @@
+# import "./Member.graphql"
+
+fragment Message on Message {
+  id
+  timestamp
+  author {
+    ...Member
+  }
+}

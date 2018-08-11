@@ -1,0 +1,3 @@
+mutation OpenModal($type: ID!, $data: String) {
+  openModal(type: $type, data: $data) @client
+}

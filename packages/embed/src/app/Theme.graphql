@@ -1,0 +1,12 @@
+query Theme($server: ID!) {
+  server(id: $server) {
+    theme {
+      css
+      colors {
+        primary
+        accent
+        background
+      }
+    }
+  }
+}

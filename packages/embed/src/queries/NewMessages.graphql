@@ -1,0 +1,16 @@
+# import "./fragments/Message.graphql"
+# import "./fragments/TextMessage.graphql"
+
+subscription NewMessages($server: ID!, $channel: ID!) {
+  message(filter: { server: $server, channel: $channel }) {
+    message {
+      ... on TextMessage {
+        ...Message
+        ...TextMessage
+      }
+      ... on JoinMessage {
+        ...Message
+      }
+    }
+  }
+}

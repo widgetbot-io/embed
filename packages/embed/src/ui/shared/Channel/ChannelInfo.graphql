@@ -1,0 +1,9 @@
+query ChannelInfo($server: ID!, $channel: ID!) {
+  server(id: $server) {
+    channel(id: $channel) {
+      name
+      category
+      id
+    }
+  }
+}

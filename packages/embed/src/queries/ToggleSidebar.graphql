@@ -1,0 +1,3 @@
+mutation ToggleSidebar($open: Boolean) {
+  toggleSidebar(open: $open) @client
+}

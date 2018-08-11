@@ -1,0 +1,7 @@
+query ModalInfo {
+  modal @client {
+    open
+    type
+    data
+  }
+}

@@ -1,0 +1,19 @@
+# import "./Embed"
+
+fragment TextMessage on TextMessage {
+  content
+  editedAt
+  reactions {
+    name
+    count
+    id
+  }
+  attachment {
+    url
+    height
+    width
+  }
+  embeds {
+    ...Embed
+  }
+}

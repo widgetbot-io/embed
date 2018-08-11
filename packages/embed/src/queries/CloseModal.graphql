@@ -1,0 +1,3 @@
+mutation CloseModal {
+  closeModal @client
+}

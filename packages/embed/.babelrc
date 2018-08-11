@@ -1,0 +1,11 @@
+{
+  "extends": "../../.babelrc",
+  "presets": ["@lingui/babel-preset-react"],
+  "plugins": [],
+  "env": {
+    "development": {},
+    "production": {
+      "presets": ["react-optimize"]
+    }
+  }
+}
