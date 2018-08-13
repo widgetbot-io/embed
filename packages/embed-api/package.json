@@ -9,7 +9,7 @@
   "license": "MIT",
   "scripts": {
     "start": "tsc -w",
-    "build": "tsc && cp src/**/*.d.ts dist/"
+    "build": "tsc && cp src/*.d.ts dist/"
   },
   "private": false,
   "dependencies": {

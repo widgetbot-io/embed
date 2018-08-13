@@ -7,35 +7,14 @@
   "scripts": {
     "pull": "git stash && git pull && yarn && yarn build",
     "postinstall": "yarn patch",
-    "patch": "patch -i patches/** -p0 -s -r /dev/null --no-backup-if-mismatch > /dev/null",
-    "precommit": "pretty-quick --staged"
+    "precommit": "pretty-quick --staged",
+    "patch": "patch -i patches/** -p0 -s -r /dev/null --no-backup-if-mismatch > /dev/null"
   },
   "dependencies": {
     "react": "^16.4.2",
     "react-dom": "^16.4.2"
   },
   "devDependencies": {
-    "@types/jest": "^23.1.5",
-    "@types/react": "^16.3.14",
-    "@types/react-dom": "^16.0.5",
-    "@types/webpack-env": "^1.13.6",
-    "babel-core": "^6.26.3",
-    "babel-plugin-emotion": "^9.2.6",
-    "babel-plugin-graphql-tag": "^1.6.0",
-    "babel-plugin-macros": "^2.4.0",
-    "babel-plugin-preval": "^3.0.0",
-    "babel-plugin-ramda": "^1.6.2",
-    "nwb": "0.23.0",
-    "babel-plugin-syntax-dynamic-import": "^6.18.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-react-optimize": "^1.0.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "husky": "^0.14.3",
-    "lerna": "^3.0.1",
-    "prettier": "^1.14.2",
-    "pretty-quick": "^1.6.0",
-    "tinyreq-cli": "^1.1.1",
-    "typescript": "^3.0.1"
+    "lerna": "^3.0.3"
   }
 }

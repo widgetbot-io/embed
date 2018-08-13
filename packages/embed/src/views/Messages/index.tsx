@@ -14,6 +14,7 @@ import { Info, Loading, NoMessages } from '@ui/Overlays'
 import ErrorAhoy from '@ui/Overlays/ErrorAhoy'
 import Wrapper from '@ui/Wrapper'
 import { ApolloError } from 'apollo-client'
+import autobind from 'autobind-decorator'
 import produce from 'immer'
 import Tooltip from 'rc-tooltip'
 import * as React from 'react'
@@ -113,6 +114,7 @@ interface State {
   scrollToIndex: number
 }
 
+@autobind
 class MessagesView extends React.PureComponent<Props, State> {
   private loadingMore = false
   private readyToLoadMore = false
@@ -166,7 +168,10 @@ class MessagesView extends React.PureComponent<Props, State> {
     await this.props.fetchMessages()
 
     this.loadingMore = false
-    this.cache.clearAll()
+
+    // Clear the cache for the message at the top
+    // could be a message added into its group
+    this.cache.clear(2, 0)
 
     this.setState({
       scrollToIndex: this.props.groupedMessages.length - prevMessageCount

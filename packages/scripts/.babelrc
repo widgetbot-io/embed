@@ -9,12 +9,7 @@
     "react",
     "stage-0"
   ],
-  "plugins": [
-    "autobind-class-methods",
-    "syntax-dynamic-import",
-    "macros",
-    "preval"
-  ],
+  "plugins": ["syntax-dynamic-import", "macros", "preval"],
   "env": {
     "development": {
       "plugins": [
@@ -22,14 +17,14 @@
           "emotion",
           {
             "autoLabel": true,
-            "labelFormat": "[filename]--[local]",
+            "labelFormat": "[local]",
             "sourceMap": true
           }
         ]
       ]
     },
     "production": {
-      "presets": ["react-optimize"],
+      "presets": [],
       "plugins": [
         [
           "ramda",
@@ -40,6 +35,8 @@
         [
           "emotion",
           {
+            "autoLabel": true,
+            "labelFormat": "[local]",
             "hoist": true
           }
         ]

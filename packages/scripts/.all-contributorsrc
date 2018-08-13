@@ -1,0 +1,27 @@
+{
+  "projectName": "WidgetBot",
+  "projectOwner": "widgetbot-io",
+  "repoType": "github",
+  "repoHost": "https://github.com/widgetbot-io/widgetbot",
+  "files": ["../../README.md"],
+  "imageSize": 100,
+  "commit": true,
+  "contributors": [
+    {
+      "login": "samdenty99",
+      "name": "Sam Denty",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/13242392?v=4",
+      "profile": "https://samdd.me",
+      "contributions": [
+        "bug",
+        "code",
+        "design",
+        "doc",
+        "example",
+        "infra",
+        "review",
+        "tool"
+      ]
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import autobind from 'autobind-decorator'
 import GET_MODAL from '@queries/ModalInfo.graphql'
 import CLOSE_MODAL from '@queries/CloseModal.graphql'
 
@@ -14,13 +15,14 @@ import { Trans } from '@lingui/react'
 import { ModalInfo } from '@generated/ModalInfo'
 import { CloseModal } from '@generated/CloseModal'
 
+@autobind
 class Modal extends React.PureComponent<DataProps<ModalInfo>> {
   theme = theme => ({
     ...theme,
     modal: this.props.data.modal
   })
 
-  content = ({ complete }) => {
+  content({ complete }) {
     const { modal } = this.props.data
 
     if (modal.type === 'authenticate') {
