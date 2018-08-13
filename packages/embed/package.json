@@ -107,7 +107,7 @@
     "react-router-dom": "^4.3.1",
     "react-transition-group": "^2.4.0",
     "react-virtualized": "^9.20.1",
-    "recompose": "0.27.1",
+    "recompose": "0.28.2",
     "scroll-into-view-if-needed": "^2.2.16",
     "simple-markdown": "^0.4.1",
     "socket.io-client": "^2.1.1",
@@ -117,7 +117,7 @@
   "devDependencies": {
     "@lingui/babel-preset-react": "^2.3.0",
     "@lingui/cli": "^2.3.0",
-    "@types/node": "10.1.2",
+    "@types/node": "10.5.8",
     "babel-plugin-autobind-class-methods": "^5.0.1",
     "raw-loader": "^0.5.1",
     "react-scripts-ts": "2.17.0",
