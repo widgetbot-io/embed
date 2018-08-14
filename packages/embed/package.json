@@ -121,7 +121,7 @@
   "devDependencies": {
     "@lingui/babel-preset-react": "^2.3.0",
     "@lingui/cli": "^2.3.0",
-    "@types/node": "10.1.2",
+    "@types/node": "10.7.0",
     "raw-loader": "^0.5.1",
     "react-scripts-ts": "2.17.0",
     "ts-graphql-plugin": "^1.1.2",
