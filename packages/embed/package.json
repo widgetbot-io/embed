@@ -111,7 +111,7 @@
     "react-spinkit": "^3.0.0",
     "react-transition-group": "^2.4.0",
     "react-virtualized": "^9.20.1",
-    "recompose": "0.29.0",
+    "recompose": "0.30.0",
     "scroll-into-view-if-needed": "^2.2.16",
     "simple-markdown": "^0.4.2",
     "socket.io-client": "^2.1.1",
