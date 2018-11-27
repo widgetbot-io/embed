@@ -85,7 +85,7 @@
     "babel-polyfill": "^6.26.0",
     "color": "^3.0.0",
     "emotion": "^9.2.8",
-    "emotion-theming": "^9.2.6",
+    "emotion-theming": "^10.0.0",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
     "highlight.js": "^9.12.0",
