@@ -59,6 +59,6 @@ module.exports = (overrides = {}) => ({
   },
   resolve: {
     plugins: [new TsConfigPathsPlugin()],
-    extensions: ['.ts', '.js']
+    extensions: ['.mjs','.ts', '.js']
   }
 })
