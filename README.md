@@ -19,6 +19,19 @@
 - Node.js 10+
 - Yarn
 
+**macOS Requirements**
+due to licencing macOS comes with bash 3.2. upgrade to 5.0 before building.
+```
+# install homebrew.
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# install bash ^5.0
+brew install bash
+# add to allowed shells
+sudo echo "/usr/local/bin/bash" >> /etc/shells
+# set as default shell for current user
+chsh -s /usr/local/bin/bash
+```
+
 ### Building sources
 
 ```bash
