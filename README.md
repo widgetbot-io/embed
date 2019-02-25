@@ -1,8 +1,33 @@
-# [WidgetBot](https://widgetbot.io) ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg) [![](https://data.jsdelivr.com/v1/package/npm/@widgetbot/crate/badge?style=rounded)](https://www.jsdelivr.com/package/npm/@widgetbot/crate) [![](https://data.jsdelivr.com/v1/package/npm/@widgetbot/html-embed/badge?style=rounded)](https://www.jsdelivr.com/package/npm/@widgetbot/html-embed)
+![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg) [![](https://data.jsdelivr.com/v1/package/npm/@widgetbot/crate/badge?style=rounded)](https://www.jsdelivr.com/package/npm/@widgetbot/crate) [![](https://data.jsdelivr.com/v1/package/npm/@widgetbot/html-embed/badge?style=rounded)](https://www.jsdelivr.com/package/npm/@widgetbot/html-embed)
 
-> Discord chat widgets for your website
+# WidgetBot
+
+WidgetBot allows to add a Discord Chat to your website.
+
+## Example Setup
+
+Add Discord Chat to your Website, using the Widgetbot `html-embed` package:
+
+```js
+// add this at the position you want the widget to display
+<widgetbot
+  server="299881420891881473"
+  channel="355719584830980096"
+  width="800"
+  height="600"
+  shard="https://cl2.widgetbot.io"
+></widgetbot>
+<script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
+
+```
+
+Full tutorial: https://docs.widgetbot.io/embed/html-embed/tutorial/
+
+## Website
 
 [![Banner](./.github/banner.png)](https://widgetbot.io)
+
+## Packages and Documentation
 
 | @widgetbot/                                                    | Description                         |                                                      |                                                  |
 | -------------------------------------------------------------- | ----------------------------------- | ---------------------------------------------------- | ------------------------------------------------ |
@@ -24,3 +49,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
+
+## License
+
+See [LICENSE](LICENSE)
