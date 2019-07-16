@@ -1,0 +1,58 @@
+{
+  "presets": [
+    "@lingui/babel-preset-react",
+    [
+      "env",
+      {
+        "modules": false
+      }
+    ],
+    "react",
+    "stage-0"
+  ],
+  "plugins": [
+    "preval",
+    "syntax-dynamic-import",
+    "macros",
+    [
+      "babel-plugin-transform-builtin-extend",
+      {
+        "globals": ["Error", "Array"],
+        "approximate": true
+      }
+    ]
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        [
+          "emotion",
+          {
+            "autoLabel": true,
+            "labelFormat": "[local]",
+            "sourceMap": true
+          }
+        ]
+      ]
+    },
+    "production": {
+      "presets": [],
+      "plugins": [
+        [
+          "ramda",
+          {
+            "useES": true
+          }
+        ],
+        [
+          "emotion",
+          {
+            "autoLabel": true,
+            "labelFormat": "[local]",
+            "hoist": true
+          }
+        ]
+      ]
+    }
+  }
+}

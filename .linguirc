@@ -1,0 +1,6 @@
+{
+  "fallbackLocale": "en",
+  "localeDir": "src/locale",
+  "srcPathDirs": ["./src"],
+  "srcPathIgnorePatterns": ["/node_modules/"]
+}

@@ -1,0 +1,11 @@
+query ChannelInfo($channel: String!) {
+  channel(id: $channel) {
+    ... on TextChannel {
+      name
+      id
+      parent {
+        name
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+#import "./Fragments/Message.graphql"
+
+query Messages(
+  $channel: String!
+  $around: String
+  $before: String
+  $after: String
+  $limit: Float
+) {
+  channel(id: $channel) {
+    id
+    ... on TextChannel {
+      messages(limit: $limit, after: $after, before: $before, around: $around) {
+        ...Message
+      }
+    }
+  }
+}

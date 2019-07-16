@@ -1,0 +1,51 @@
+{
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["esnext", "es6", "dom"],
+    "sourceMap": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,
+    "outDir": "build/dist",
+    "module": "esnext",
+    "target": "esnext",
+    "allowSyntheticDefaultImports": true,
+    "jsx": "preserve",
+    "rootDir": "src",
+    "baseUrl": ".",
+    "paths": {
+      "@lib/*": ["src/lib/*"],
+      "@constants/*": ["src/constants/*"],
+      "@constants": ["src/constants/index"],
+      "@ui/*": ["src/ui/*"],
+      "@models": ["src/models/index"],
+      "@hooks": ["src/hooks/index"],
+      "@views/*": ["src/views/*"],
+      "@services/*": ["src/services/*"],
+      "@generated": ["src/__generated__/index"],
+      "@generated/*": ["src/__generated__/*"],
+      "@utils/*": ["src/utils/*"],
+      "notify": ["src/app/notify.tsx"],
+      "locales": ["src/app/locales"],
+      "locales/*": ["src/app/locales/*"],
+      "embed-api": ["src/lib/embed-api"]
+    },
+    "plugins": [
+      {
+        "name": "ts-graphql-plugin"
+      }
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "build",
+    "scripts",
+    "acceptance-tests",
+    "webpack",
+    "jest",
+    "src/setupTests.ts"
+  ]
+}
