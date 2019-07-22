@@ -25,7 +25,7 @@ export interface Message_JoinMessage {
    */
   createdAt: any;
   /**
-   * Message Author.
+   * General discord user who authored the message
    */
   author: Message_JoinMessage_author;
 }
@@ -119,7 +119,7 @@ export interface Message_TextMessage {
    */
   createdAt: any;
   /**
-   * Message Author.
+   * General discord user who authored the message
    */
   author: Message_TextMessage_author;
   /**

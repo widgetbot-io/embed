@@ -30,7 +30,7 @@ export interface Messages_channel_TextChannel_messages_JoinMessage {
    */
   createdAt: any;
   /**
-   * Message Author.
+   * General discord user who authored the message
    */
   author: Messages_channel_TextChannel_messages_JoinMessage_author;
 }
@@ -124,7 +124,7 @@ export interface Messages_channel_TextChannel_messages_TextMessage {
    */
   createdAt: any;
   /**
-   * Message Author.
+   * General discord user who authored the message
    */
   author: Messages_channel_TextChannel_messages_TextMessage_author;
   /**
