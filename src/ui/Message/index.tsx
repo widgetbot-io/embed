@@ -39,12 +39,6 @@ class Message extends React.PureComponent<Props, any> {
     const { messages } = this.props;
     const [firstMessage] = messages;
 
-
-
-    console.log('aaa')
-    console.log(messages);
-    console.log('bbb')
-
     return (
       <Group style={this.props.style} className="group">
         {firstMessage.__typename === 'TextMessage' ? (
@@ -53,7 +47,6 @@ class Message extends React.PureComponent<Props, any> {
             className="avatar"
           />
         ) : null}
-        {console.log('lmao hi')}
 
         <Messages className="messages">
           {firstMessage.__typename === 'TextMessage' ? (
@@ -131,21 +124,24 @@ class Message extends React.PureComponent<Props, any> {
                 )
               }
 
-              /* case 'PinnedMessage': {
+              case 'PinnedMessage': {
+                const member = (
+                  <Member id={message.author.id}>
+                    {message.author.username}
+                  </Member>
+                );
+
                 return (
                   <React.Fragment key={message.id}>
                     <Secondary.Pinned>
                       <Trans id="Message.pinnedMessage">
-                        <Member id={message.author.id}>
-                          {message.author.username}
-                        </Member>
-                        pinned a message to this channel.
+                        {member}pinned a message to this channel.
                       </Trans>
                     </Secondary.Pinned>
                     <Timestamp time={message.createdAt} />
                   </React.Fragment>
                 )
-              } */ // TODO: Re add pinned messages
+              }
 
               default:
                 return null
