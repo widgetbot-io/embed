@@ -7,7 +7,9 @@ export const useSendMessage = () => {
   const { channel } = useRouter()
   const sendMessage = useMutation<any>(SEND_MESSAGE)
 
-  return async (content: string) =>
+  return async (content: string) => {};
+
+  /* return async (content: string) => TODO: Fix message sending
     await sendMessage({
       variables: { channel, content },
       optimisticResponse: {
@@ -43,5 +45,5 @@ export const useSendMessage = () => {
           data
         })
       }
-    })
+    }) */
 }

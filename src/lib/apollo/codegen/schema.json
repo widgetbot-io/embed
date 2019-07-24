@@ -196,7 +196,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "Timestamp",
+              "name": "DateTime",
               "ofType": null
             },
             "isDeprecated": false,
@@ -292,7 +292,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "Timestamp",
+                "name": "DateTime",
                 "ofType": null
               }
             },
@@ -404,7 +404,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "Timestamp",
+                "name": "DateTime",
                 "ofType": null
               }
             },
@@ -530,8 +530,8 @@
       },
       {
         "kind": "SCALAR",
-        "name": "Timestamp",
-        "description": "The javascript `Date` as integer. Type represents date and time as number of milliseconds from start of UNIX epoch.",
+        "name": "DateTime",
+        "description": "The javascript `Date` as string. Type represents date and time as the ISO Date string.",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -903,7 +903,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "Timestamp",
+                "name": "DateTime",
                 "ofType": null
               }
             },
@@ -916,7 +916,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "Timestamp",
+              "name": "DateTime",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1120,7 +1120,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "Timestamp",
+                "name": "DateTime",
                 "ofType": null
               }
             },
@@ -1133,7 +1133,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "Timestamp",
+              "name": "DateTime",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1479,7 +1479,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "Timestamp",
+              "name": "DateTime",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1538,7 +1538,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "Timestamp",
+              "name": "DateTime",
               "ofType": null
             },
             "isDeprecated": false,
@@ -3086,7 +3086,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "Timestamp",
+              "name": "DateTime",
               "ofType": null
             },
             "isDeprecated": false,
@@ -3449,7 +3449,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "Timestamp",
+                "name": "DateTime",
                 "ofType": null
               }
             },
@@ -3462,7 +3462,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "Timestamp",
+              "name": "DateTime",
               "ofType": null
             },
             "isDeprecated": false,
@@ -3590,7 +3590,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "Timestamp",
+                "name": "DateTime",
                 "ofType": null
               }
             },
@@ -3603,7 +3603,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "Timestamp",
+              "name": "DateTime",
               "ofType": null
             },
             "isDeprecated": false,
@@ -3771,7 +3771,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "Timestamp",
+              "name": "DateTime",
               "ofType": null
             },
             "isDeprecated": false,
@@ -4050,7 +4050,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "Timestamp",
+              "name": "DateTime",
               "ofType": null
             },
             "isDeprecated": false,

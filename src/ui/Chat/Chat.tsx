@@ -14,7 +14,7 @@ export const Chat = () => {
   const { channel } = useRouter()
   const { data } = useQuery(GET_CHANNEL_NAME, { variables: { channel } })
 
-  const channelName = data.channel && data.channel.name
+  const channelName = data.channel && data.channel.name;
 
   return (
     <Root className="chat">

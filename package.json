@@ -39,6 +39,7 @@
     "apollo-link-persisted-queries": "^0.2.2",
     "apollo-link-retry": "^2.2.14",
     "apollo-link-ws": "^1.0.18",
+    "autobind-decorator": "^2.4.0",
     "babel-core": "^6.26.3",
     "babel-plugin-emotion": "^9.2.8",
     "babel-plugin-graphql-tag": "^1.6.0",
