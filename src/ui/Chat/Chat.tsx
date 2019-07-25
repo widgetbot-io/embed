@@ -21,7 +21,7 @@ export const Chat = () => {
       <Field rows={rows} className="field">
         <Input
           onChange={(value: string) => {
-            const rows = value.split(/\r\n|\r|\n/).length
+            const rows = value.split(/\r\n|\r|\n/).length;
             setRows(rows)
           }}
           onSubmit={async (content: string) => {
