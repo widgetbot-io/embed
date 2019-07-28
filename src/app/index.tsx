@@ -37,7 +37,7 @@ const App = observer(() => {
             </React.Fragment>
           </Route>
 
-          <Redirect to="/299881420891881473" />
+          <Redirect to="/410198229980938242" />
         </Switch>
       </ThemeProvider>
     </I18nProvider>
