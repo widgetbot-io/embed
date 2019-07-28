@@ -37,12 +37,12 @@ const App = observer(() => {
             </React.Fragment>
           </Route>
 
-          <Redirect to="/558780077672759373" />
+          <Redirect to="/299881420891881473" />
         </Switch>
       </ThemeProvider>
     </I18nProvider>
   )
-})
+});
 // class App extends React.PureComponent<
 //   ChildProps<RouteComponentProps<any>, Locale>
 // > {
