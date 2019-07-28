@@ -1,7 +1,7 @@
 import { WebSocketLink } from 'apollo-link-ws'
 
 const wsLink = new WebSocketLink({
-  uri: `${location.protocol === 'https:' ? 'wss' : 'ws'}://127.0.0.1:8443/api/graphql`,
+  uri: `${location.protocol === 'https:' ? 'wss' : 'ws'}://prep.daave.dev/api/graphql`,
   options: {
     reconnect: true
   }

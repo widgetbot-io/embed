@@ -8,7 +8,7 @@ import httpLink from './http'
 import wsLink from './websocket'
 
 const DEVELOPMENT = process.env.NODE_ENV === 'development';
-console.log(`${location.protocol === 'https:' ? 'wss' : 'ws'}://127.0.0.1:8443/api/graphql`);
+console.log(`${location.protocol === 'https:' ? 'wss' : 'ws'}://prep.daave.dev/api/graphql`);
 
 
 const link = ApolloLink.from(
