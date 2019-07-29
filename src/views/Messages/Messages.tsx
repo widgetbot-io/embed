@@ -1,18 +1,14 @@
-import { useMemo } from 'react'
-import * as React from 'react'
-import { useMessages } from '@hooks'
-import { groupMessages, formatError } from './utils'
-import ErrorAhoy from '@ui/Overlays/ErrorAhoy'
-import { Loading, NoMessages, Info } from '@ui/Overlays'
-import { MessagesWrapper, Scroller, MessageList } from './elements'
-import {
-  InfiniteLoader,
-  CellMeasurerCache,
-  CellMeasurer
-} from 'react-virtualized'
-import { useObservable, observer } from 'mobx-react-lite'
-import Message from '@ui/Message'
-import { useCallbackReference } from 'src/hooks/useCallbackReference'
+import * as React from 'react';
+import { useMemo } from 'react';
+import { useMessages } from '@hooks';
+import { formatError, groupMessages } from './utils';
+import ErrorAhoy from '@ui/Overlays/ErrorAhoy';
+import { Info, Loading, NoMessages } from '@ui/Overlays';
+import { MessageList, MessagesWrapper, Scroller } from './elements';
+import { CellMeasurer, CellMeasurerCache, InfiniteLoader } from 'react-virtualized';
+import { observer, useObservable } from 'mobx-react-lite';
+import Message from '@ui/Message';
+import { useCallbackReference } from 'src/hooks/useCallbackReference';
 
 type MessagesProps = {
   guild: string
