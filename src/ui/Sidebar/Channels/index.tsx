@@ -24,7 +24,6 @@ const ChannelSwitcher = () => (
       >
         {({ loading, error, data }) => {
           const categories = new Array<ICategory>();
-          console.log(data);
           if (!loading && !error) {
             const sorted = categorise(data.guild.channels as any);
             categories.push(...sorted)

@@ -9,7 +9,7 @@ import { Redirect, Route, Switch } from 'react-router-dom'
 
 import { ThemeProvider } from './ThemeProvider'
 import i18n from '@lib/i18n'
-import { observer } from 'mobx-react-lite'
+import { observer } from 'mobx-react'
 import { store } from '@models'
 import { useCacheLoaded } from '@hooks'
 

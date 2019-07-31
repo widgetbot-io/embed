@@ -1,4 +1,4 @@
-import { observer } from 'mobx-react-lite'
+import { observer } from 'mobx-react'
 import * as _ from 'lodash'
 import Spinner from 'react-spinkit'
 import Loadable from 'react-loadable'

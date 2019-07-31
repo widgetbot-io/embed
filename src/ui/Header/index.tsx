@@ -3,7 +3,7 @@ import * as React from 'react'
 import { Root } from './elements'
 import Hamburger from './Hamburger'
 import { store } from '@models'
-import { observer } from 'mobx-react-lite'
+import { observer } from 'mobx-react'
 
 const Header = observer(({ children }) => (
   <Root className="header">

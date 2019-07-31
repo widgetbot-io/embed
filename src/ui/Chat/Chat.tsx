@@ -6,13 +6,19 @@ import Input from './Input'
 import { Field, Root } from './elements'
 import i18n from '@lib/i18n'
 import { useState, useRef } from 'react'
+import ErrorAhoy from "@ui/Overlays/ErrorAhoy";
+import { formatError } from "@views/Messages/utils";
+import { Loading } from "@ui/Overlays";
 
 export const Chat = () => {
-  const inputRef = useRef<HTMLTextAreaElement>(null)
-  const sendMessage = useSendMessage()
-  const [rows, setRows] = useState(1)
-  const { channel } = useRouter()
-  const { data } = useQuery(GET_CHANNEL_NAME, { variables: { channel } })
+  const inputRef = useRef<HTMLTextAreaElement>(null);
+  const sendMessage = useSendMessage();
+  const [rows, setRows] = useState(1);
+  const { channel } = useRouter();
+  const { data, error, errors, networkStatus, loading } = useQuery(GET_CHANNEL_NAME, { variables: { channel } });
+
+  if (error) return <ErrorAhoy message={formatError(error)} />;
+  if (loading) return <Loading />;
 
   const channelName = data.channel && data.channel.name;
 

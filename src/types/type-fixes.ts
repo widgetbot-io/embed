@@ -1,4 +1,4 @@
-import { IObserverOptions } from 'mobx-react-lite'
+import { IObserverOptions } from 'mobx-react'
 
 // TODO remove https://github.com/mobxjs/mobx-react-lite/pull/68
 declare module 'mobx-react-lite' {

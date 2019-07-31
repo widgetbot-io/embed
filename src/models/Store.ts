@@ -13,7 +13,7 @@ export const Store = types
 
 
 export const store = Store.create({
-        // @ts-ignore
+    // @ts-ignore
   sidebar: {},
         // @ts-ignore
   locale: {},

@@ -3,7 +3,7 @@ import Markdown from '@ui/shared/markdown/render'
 
 import { Box, Close } from '@ui/Modal'
 import { Content } from './elements'
-import { observer } from 'mobx-react-lite'
+import { observer } from 'mobx-react'
 import { store } from '@models'
 
 const Topic = observer(() => {

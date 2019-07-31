@@ -8,6 +8,7 @@ class Settings extends React.PureComponent {
       <Box>
         <Close onClick={() => close()} />
         <Content>Settings</Content>
+
       </Box>
     )
   }

@@ -47,7 +47,6 @@ export const useMessages = (channel: string) => {
     useSubscription(NEW_MESSAGES, {
         variables: { channel },
         onSubscriptionData({ subscriptionData }) {
-            console.log(`SUBSCRIPTION`);
             query.updateQuery(prev =>
                 produce(prev, ({ channel }) => {
                     channel.messages = [
@@ -64,11 +63,6 @@ export const useMessages = (channel: string) => {
     onSubscriptionData({ subscriptionData }) {
       query.updateQuery(prev =>
         produce(prev, ({ channel: { messages } }) => {
-          console.log(`START`);
-          console.log(subscriptionData);
-          console.log(prev);
-          console.log(messages);
-          console.log(`END`);
           const message = subscriptionData.data.messageUpdate;
           const index = messages.findIndex(m => m.id === message.id);
 

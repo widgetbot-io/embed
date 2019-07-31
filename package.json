@@ -1,12 +1,12 @@
 {
   "name": "embed",
   "main": "src/index.tsx",
-  "version": "0.1.0",
+  "version": "0.0.1-canary",
   "private": true,
   "homepage": "/channels/",
   "proxy": {
     "/api": {
-      "target": "https://prep.daave.dev/",
+      "target": "http://127.0.0.1:8443/",
       "changeOrigin": true,
       "secure": false,
       "ws": true
@@ -40,6 +40,7 @@
     "apollo-link-retry": "^2.2.14",
     "apollo-link-ws": "^1.0.18",
     "autobind-decorator": "^2.4.0",
+    "axios": "^0.19.0",
     "babel-core": "^6.26.3",
     "babel-plugin-emotion": "^9.2.8",
     "babel-plugin-graphql-tag": "^1.6.0",
@@ -66,6 +67,7 @@
     "match-sorter": "^2.3.0",
     "memoizee": "^0.4.14",
     "mobx": "^5.13.0",
+    "mobx-react": "^6.1.1",
     "mobx-react-lite": "^1.4.1",
     "mobx-state-tree": "^3.14.1",
     "moment": "^2.24.0",
