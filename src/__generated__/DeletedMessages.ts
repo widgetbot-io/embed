@@ -15,7 +15,7 @@ export interface DeletedMessages_messageDelete {
 }
 
 export interface DeletedMessages {
-  messageDelete: DeletedMessages_messageDelete[];
+  messageDelete: DeletedMessages_messageDelete;
 }
 
 export interface DeletedMessagesVariables {

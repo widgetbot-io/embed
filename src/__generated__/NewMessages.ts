@@ -14,6 +14,12 @@ export interface NewMessages_message_JoinMessage_author {
   avatarURL: string | null;
 }
 
+export interface NewMessages_message_JoinMessage_member {
+  __typename: "IMember";
+  displayName: string | null;
+  displayHexColor: string | null;
+}
+
 export interface NewMessages_message_JoinMessage {
   __typename: "JoinMessage" | "PinnedMessage";
   /**
@@ -28,6 +34,10 @@ export interface NewMessages_message_JoinMessage {
    * General discord user who authored the message
    */
   author: NewMessages_message_JoinMessage_author;
+  /**
+   * Author as member of guild.
+   */
+  member: NewMessages_message_JoinMessage_member | null;
 }
 
 export interface NewMessages_message_TextMessage_author {
@@ -36,6 +46,12 @@ export interface NewMessages_message_TextMessage_author {
   username: string;
   discriminator: string;
   avatarURL: string | null;
+}
+
+export interface NewMessages_message_TextMessage_member {
+  __typename: "IMember";
+  displayName: string | null;
+  displayHexColor: string | null;
 }
 
 export interface NewMessages_message_TextMessage_reactions_emoji_CustomEmoji {
@@ -122,6 +138,10 @@ export interface NewMessages_message_TextMessage {
    * General discord user who authored the message
    */
   author: NewMessages_message_TextMessage_author;
+  /**
+   * Author as member of guild.
+   */
+  member: NewMessages_message_TextMessage_member | null;
   /**
    * Message content
    */

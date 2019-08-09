@@ -2,7 +2,6 @@
   "name": "embed",
   "main": "src/index.tsx",
   "version": "0.0.1-canary",
-  "private": true,
   "homepage": "/channels/",
   "proxy": {
     "/api": {

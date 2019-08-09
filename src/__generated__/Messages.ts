@@ -19,6 +19,12 @@ export interface Messages_channel_TextChannel_messages_JoinMessage_author {
   avatarURL: string | null;
 }
 
+export interface Messages_channel_TextChannel_messages_JoinMessage_member {
+  __typename: "IMember";
+  displayName: string | null;
+  displayHexColor: string | null;
+}
+
 export interface Messages_channel_TextChannel_messages_JoinMessage {
   __typename: "JoinMessage" | "PinnedMessage";
   /**
@@ -33,6 +39,10 @@ export interface Messages_channel_TextChannel_messages_JoinMessage {
    * General discord user who authored the message
    */
   author: Messages_channel_TextChannel_messages_JoinMessage_author;
+  /**
+   * Author as member of guild.
+   */
+  member: Messages_channel_TextChannel_messages_JoinMessage_member | null;
 }
 
 export interface Messages_channel_TextChannel_messages_TextMessage_author {
@@ -41,6 +51,12 @@ export interface Messages_channel_TextChannel_messages_TextMessage_author {
   username: string;
   discriminator: string;
   avatarURL: string | null;
+}
+
+export interface Messages_channel_TextChannel_messages_TextMessage_member {
+  __typename: "IMember";
+  displayName: string | null;
+  displayHexColor: string | null;
 }
 
 export interface Messages_channel_TextChannel_messages_TextMessage_reactions_emoji_CustomEmoji {
@@ -127,6 +143,10 @@ export interface Messages_channel_TextChannel_messages_TextMessage {
    * General discord user who authored the message
    */
   author: Messages_channel_TextChannel_messages_TextMessage_author;
+  /**
+   * Author as member of guild.
+   */
+  member: Messages_channel_TextChannel_messages_TextMessage_member | null;
   /**
    * Message content
    */
