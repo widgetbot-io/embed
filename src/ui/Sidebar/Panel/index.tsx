@@ -14,6 +14,19 @@ interface Props {
   AuthStore?: AuthStore
 }
 
+class Button extends React.Component<Props> {
+  onClick = (e: Event) => {
+    this.props.AuthStore.login();
+  }
+  render(): React.ReactNode {
+    return (
+        <React.Fragment>
+          <button onClick={this.onClick} > Login </button>
+        </React.Fragment>
+    )
+  }
+}
+
 @inject('AuthStore')
 @observer
 export default class Panel extends React.Component<Props> {
@@ -47,3 +60,4 @@ export default class Panel extends React.Component<Props> {
     )
   }
 }
+
