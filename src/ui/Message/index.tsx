@@ -33,7 +33,7 @@ class Message extends React.PureComponent<Props, any> {
   theme = message => theme => ({
     ...theme,
     message
-  })
+  });
 
   render() {
     const { messages } = this.props;
@@ -109,7 +109,7 @@ class Message extends React.PureComponent<Props, any> {
               case 'JoinMessage': {
                 const member = (
                   <Member id={message.author.id}>
-                    {message.author.username}
+                    {message.member.displayName || message.author.username}
                   </Member>
                 );
 
@@ -128,7 +128,7 @@ class Message extends React.PureComponent<Props, any> {
               case 'PinnedMessage': {
                 const member = (
                   <Member id={message.author.id}>
-                    {message.author.username}
+                    {message.member.displayName || message.author.username}
                   </Member>
                 );
 

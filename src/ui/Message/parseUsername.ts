@@ -16,7 +16,7 @@ const parseUsername = (userName: string): Username => {
     discriminator = split.slice(-1)[0]
   }
 
-  const result = new String(`${name}#${discriminator}`) as Username
+  const result = new String(`${name}#${discriminator}`) as Username;
   result.name = name
   result.discriminator = discriminator
 

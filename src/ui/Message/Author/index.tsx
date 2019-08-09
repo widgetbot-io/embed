@@ -41,7 +41,7 @@ class Author extends React.PureComponent<Props> {
     return (
       <Root className="author">
         <Name color={hexColor} className="name">
-          {member.displayName}
+          {member.displayName || author.username}
         </Name>
         {this.tags()}
         <Timestamp time={time} />
