@@ -48,6 +48,7 @@ export class AuthStore {
           }
         }
       };
+      window.addEventListener('message', receiveMessage);
 
       const cleanup = () =>  {
         clearInterval(timer);

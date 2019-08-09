@@ -52,6 +52,7 @@ class Message extends React.PureComponent<Props, any> {
           {firstMessage.__typename === 'TextMessage' ? (
             <Author
               author={firstMessage.author}
+              member={firstMessage.member}
               time={firstMessage.createdAt}
             />
           ) : null}

@@ -1,46 +1,47 @@
-import { Author as $Author } from '@generated'
+import { Author as $Author, Member as $Member } from '@generated'
 import Moment from 'moment'
 import * as React from 'react'
 
-import { Verified } from './Badges'
+import { Sysadmin, Tag, Verified } from "./Badges";
 import { Name, Root, Time } from './elements'
 
 interface Props {
-  author: $Author
+  author: $Author,
+  member: $Member,
   time: number
 }
 
 export const Timestamp = ({ time }: { time: number }) => (
   <Time className="time">{Moment(time).calendar()}</Time>
-)
+);
 
 class Author extends React.PureComponent<Props> {
   tags() {
-    const { author } = this.props
+    const { author, member } = this.props;
 
     return (
       <React.Fragment>
-        {/* {author.type === 'bot' && <Tag className="bot">Bot</Tag>}
-              {author.type === 'guest' && <Tag className="guest">Guest</Tag>}
-              {this.verified({ id: author.id }) ||
-                (author.type === 'sysadmin' && (
-                  <Sysadmin className="sysadmin" title="Sysadmin" />
-                ))} */}
+        {author.id === '558793418495623188' && <Tag className="bot">Bot</Tag>}
+              {author.id === 'aaaa' && <Tag className="guest">Guest</Tag>}
+              {Author.verified({ id: author.id }) ||
+                (author.id === '190916650143318016' && (
+                  <Sysadmin className="patreon" title="Patreon" />
+                ))}
       </React.Fragment>
     )
   }
 
   render() {
-    const { author, time } = this.props
+    const { author, time, member } = this.props;
 
     const hexColor =
-      // (author.__typename === 'GuildMember' ? author.displayHexColor : null) ||
+      (member ? member.displayHexColor : null) ||
       '#fff';
 
     return (
       <Root className="author">
         <Name color={hexColor} className="name">
-          {author.username}
+          {member.displayName}
         </Name>
         {this.tags()}
         <Timestamp time={time} />
@@ -48,31 +49,20 @@ class Author extends React.PureComponent<Props> {
     )
   }
 
-  verified({ id }: { id: string }) {
+  static verified({ id }: { id: string }) {
     const modal = (data: string) => e => {
       e.preventDefault()
       // TODO: FIX
       // toggle({ open: true, type: 'developer', data })
-    }
+    };
 
-    if (id === '294916911194570754') {
-      // samdd
+    if (id === '96626362277720064') {
+      // daave
       return (
         <Verified
-          href="https://samdd.me/"
+          href="https://daave.dev/"
           title="Developer"
-          onClick={modal('samdd')}
-        />
-      )
-    }
-
-    if (id === '111783814740594688') {
-      // Voakie
-      return (
-        <Verified
-          href="https://voakie.com/"
-          title="Developer"
-          onClick={modal('voakie')}
+          onClick={modal('daave')}
         />
       )
     }
