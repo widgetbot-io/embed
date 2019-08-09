@@ -2,25 +2,12 @@ import { useMutation } from 'react-apollo-hooks'
 import SEND_MESSAGE from './SendMessage.graphql'
 import { MESSAGES } from '../useMessages'
 import { useRouter } from '@hooks'
-import gql from "graphql-tag";
 
 export const useSendMessage = () => {
-  const { channel } = useRouter();
+  const { channel } = useRouter()
+  const sendMessage = useMutation<any>(SEND_MESSAGE);
 
-  return async (content: string) => {
-    await useMutation(gql`
-        mutation SendMessage($channel: String!, $content: String!) {
-            sendMessage(channel: $channel, content: $content) {
-                id
-                content
-            }
-        }
-    `, {
-      variables: { channel, content: 'aaaa' }
-    });
-  };
-
-  /* return async (content: string) => TODO: Fix message sending
+  return async (content: string) =>
     await sendMessage({
       variables: { channel, content },
       optimisticResponse: {
@@ -56,5 +43,5 @@ export const useSendMessage = () => {
           data
         })
       }
-    }) */
+    })
 }
