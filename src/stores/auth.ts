@@ -19,7 +19,7 @@ export class AuthStore {
       const x: number = screen.width / 2 - 500 / 2;
       const y: number = screen.height / 2 - 720 / 2;
 
-      const newWindow = window.open(`http://127.0.0.1:8443/auth/discord`, 'Login to ASAPGaming with Steam.', `menubar=no,width=500,height=720,location=no,resizable=no,scrollbars=yes,status=no,left=${x},top=${y}`);
+      const newWindow = window.open(`http://127.0.0.1:8443/auth/discord`, 'Login to DisWeb with Discord!', `menubar=no,width=500,height=720,location=no,resizable=no,scrollbars=yes,status=no,left=${x},top=${y}`);
 
       const timer = setInterval(() => {
         if ((newWindow as Window).closed) {
