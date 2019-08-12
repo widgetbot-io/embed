@@ -7,11 +7,31 @@ import { store } from '@models'
 import Button from "@ui/shared/button";
 import { inject, observer } from "mobx-react";
 import { AuthStore } from "../../../stores/auth";
+import {CSSProperties} from "react";
 
 const { version } = require('../../../../package.json')
 
 interface Props {
   AuthStore?: AuthStore
+}
+
+class LoginButton extends React.Component<Props> {
+  private readonly style: CSSProperties = {
+    border: '1px solid white',
+    borderRadius: '5px',
+    padding: '5px',
+    marginLeft: '5px'
+  }
+  onClick: React.MouseEventHandler<HTMLButtonElement> = (e: React.MouseEvent<HTMLButtonElement>) => {
+    this.props.AuthStore.login();
+  }
+  render(): React.ReactNode {
+    return (
+        <React.Fragment>
+          <button onClick={this.onClick} style={this.style} > Login </button>
+        </React.Fragment>
+    )
+  }
 }
 
 @inject('AuthStore')
@@ -43,7 +63,9 @@ export default class Panel extends React.Component<Props> {
                    </Version>
                  </Tooltip>
         }
+        <LoginButton AuthStore={this.props.AuthStore}/>
       </Root>
     )
   }
 }
+
