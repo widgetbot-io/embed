@@ -30,10 +30,10 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-connect()
+connect();
 
 // Hot reloading
-declare const module: any
+declare const module: any;
 if (module.hot) {
   module.hot.accept()
 }

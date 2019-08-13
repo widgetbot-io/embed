@@ -8,7 +8,7 @@ import { Trans } from '@lingui/react'
 import { store } from '@models'
 import { useQuery } from 'react-apollo-hooks'
 
-const defaultInvite = 'https://discord.gg/5efuzAA';
+const defaultInvite = 'https://discord.gg/56VgJZ4';
 
 export interface HeaderProps {
   channel: string
