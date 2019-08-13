@@ -27,6 +27,6 @@ const httpLink = ApolloLink.from([
     batchInterval: 20,
     batchMax: 2
   })
-].filter(Boolean) as any)
+].filter(Boolean) as any);
 
 export default httpLink

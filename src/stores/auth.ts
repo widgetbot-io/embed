@@ -1,15 +1,33 @@
-import { action, observable } from "mobx";
+import { action, computed, observable } from "mobx";
 import axios from 'axios';
+import { APIRequest, Endpoints } from "../api";
+
+interface User {
+  createdAt: string,
+  discriminator: string,
+  email: null,
+  locale: string,
+  mfa_enabled: boolean,
+  slug: string,
+  snowflake: string,
+  updatedAt: string,
+  username: string
+}
 
 export class AuthStore {
   @observable token = window.localStorage.getItem('token');
 
-  @observable inProgress = false;
-  @observable errors = undefined;
+  @observable inProgress: boolean = false;
+  @observable errors: string | undefined = undefined;
+  @observable user: User = undefined;
 
-  @observable user = {
+  @action async fetchUser() {
+    const { data } = await APIRequest(Endpoints.auth.fetchLatestProfile());
 
-  };
+    this.user = data;
+
+    return data;
+  }
 
   @action login() {
     return new Promise((resolve, reject) => {
@@ -19,7 +37,7 @@ export class AuthStore {
       const x: number = screen.width / 2 - 500 / 2;
       const y: number = screen.height / 2 - 720 / 2;
 
-      const newWindow = window.open(`https://prep.daave.dev/auth/discord`, 'Login to DisWeb with Discord!', `menubar=no,width=500,height=720,location=no,resizable=no,scrollbars=yes,status=no,left=${x},top=${y}`);
+      const newWindow = window.open(`http://127.0.0.1:8443/auth/discord`, 'Login to DisWeb with Discord!', `menubar=no,width=500,height=720,location=no,resizable=no,scrollbars=yes,status=no,left=${x},top=${y}`);
 
       const timer = setInterval(() => {
         if ((newWindow as Window).closed) {

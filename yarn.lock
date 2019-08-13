@@ -1003,6 +1003,14 @@ apollo-link-batch@^1.1.13:
     apollo-link "^1.2.12"
     tslib "^1.9.3"
 
+apollo-link-context@^1.0.18:
+  version "1.0.18"
+  resolved "https://registry.yarnpkg.com/apollo-link-context/-/apollo-link-context-1.0.18.tgz#9e700e3314da8ded50057fee0a18af2bfcedbfc3"
+  integrity sha512-aG5cbUp1zqOHHQjAJXG7n/izeMQ6LApd/whEF5z6qZp5ATvcyfSNkCfy3KRJMMZZ3iNfVTs6jF+IUA8Zvf+zeg==
+  dependencies:
+    apollo-link "^1.2.12"
+    tslib "^1.9.3"
+
 apollo-link-error@^1.1.7:
   version "1.1.11"
   resolved "https://registry.yarnpkg.com/apollo-link-error/-/apollo-link-error-1.1.11.tgz#7cd363179616fb90da7866cee85cb00ee45d2f3b"

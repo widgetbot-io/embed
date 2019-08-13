@@ -1,0 +1,13 @@
+{
+  "schemaPath": "graphql.schema.json",
+  "extensions": {
+    "endpoints": {
+      "Default (http://127.0.0.1:8443/api/graphql)": {
+        "url": "http://127.0.0.1:8443/api/graphql",
+        "headers": {
+          "user-agent": "JS GraphQL"
+        }
+      }
+    }
+  }
+}

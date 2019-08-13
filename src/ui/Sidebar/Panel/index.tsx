@@ -21,10 +21,12 @@ class LoginButton extends React.Component<Props> {
     borderRadius: '5px',
     padding: '5px',
     marginLeft: '5px'
-  }
+  };
   onClick: React.MouseEventHandler<HTMLButtonElement> = (e: React.MouseEvent<HTMLButtonElement>) => {
-    this.props.AuthStore.login();
-  }
+    this.props.AuthStore.login().then(async r => {
+      console.log(await this.props.AuthStore.fetchUser());
+    });
+  };
   render(): React.ReactNode {
     return (
         <React.Fragment>
@@ -40,13 +42,13 @@ export default class Panel extends React.Component<Props> {
   render(): React.ReactNode {
     return (
       <Root className="panel">
+        {this.props.AuthStore.user ? `Logged in as ${this.props.AuthStore.user.username}` : <LoginButton AuthStore={this.props.AuthStore}/>}
         {
           /* <Tooltip
              placement="top"
              overlay={<Trans id="Panel.settings">Settings</Trans>}
            >
              <Settings onClick={store.modal.openSettings} />
-           </Tooltip>  */
               <Tooltip
                    placement="top"
                    overlay={<Trans id="Panel.about">About</Trans>}
@@ -61,9 +63,8 @@ export default class Panel extends React.Component<Props> {
                    >
                      {`v${version}`}
                    </Version>
-                 </Tooltip>
+                 </Tooltip> */
         }
-        <LoginButton AuthStore={this.props.AuthStore}/>
       </Root>
     )
   }
