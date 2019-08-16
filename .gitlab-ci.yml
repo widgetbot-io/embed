@@ -2,7 +2,7 @@ stages:
   - build
   - docker
 
-  canary:
+canary:
   stage: build
   image: node:11
   script:
