@@ -1,0 +1,32 @@
+stages:
+  - build
+  - docker
+
+  canary:
+  stage: build
+  image: node:11
+  script:
+    - yarn
+    - yarn run build
+
+    - sed -i s/v0.0.0-canary/$CI_COMMIT_TAG/g package.json
+  artifacts:
+    paths:
+      - .docker
+      - compiled
+      - package.json
+      - yarn.lock
+    expire_in: 1 day
+
+build-master:
+  stage: docker
+  image: docker:18.09.8
+  services:
+    - docker:18.09.8-dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE" .
+    - docker push "$CI_REGISTRY_IMAGE"
+  only:
+    - master
