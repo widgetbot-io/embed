@@ -13,7 +13,7 @@ canary:
   artifacts:
     paths:
       - .docker
-      - compiled
+      - build
       - package.json
       - yarn.lock
     expire_in: 1 day
