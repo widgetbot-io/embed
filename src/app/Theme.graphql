@@ -1,0 +1,12 @@
+query Theme($guild: String!) {
+  guild(id: $guild) {
+    theme {
+      css
+      colors {
+        primary
+        accent
+        background
+      }
+    }
+  }
+}

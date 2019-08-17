@@ -1,0 +1,17 @@
+#import "./TextMessage.graphql"
+#import "./Author.graphql"
+#import "./Member.graphql"
+
+fragment Message on Message {
+  id
+  createdAt
+  author {
+    ...Author
+  }
+  member {
+    ...Member
+  }
+  ... on TextMessage {
+    ...TextMessage
+  }
+}

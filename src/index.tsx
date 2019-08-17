@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './app/';
 import {Provider} from "mobx-react";
 import * as serviceWorker from './serviceWorker';
 import {ApolloProvider} from "react-apollo";

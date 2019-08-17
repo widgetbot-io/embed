@@ -1,0 +1,32 @@
+#import "./Embed.graphql"
+
+fragment TextMessage on TextMessage {
+  content
+  editedAt
+  reactions {
+    count
+    emoji {
+      ...Emoji
+    }
+  }
+  attachments {
+    url
+    height
+    width
+  }
+  embeds {
+    ...Embed
+  }
+}
+
+fragment Emoji on Emoji {
+  name
+  ... on CustomEmoji {
+    id
+    url
+  }
+
+  ... on TextEmoji {
+    utf8
+  }
+}
