@@ -1,6 +1,0 @@
-fragment Author on User {
-  id
-  username
-  discriminator
-  avatarURL
-}

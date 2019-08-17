@@ -1,5 +1,0 @@
-/src/locale/_build
-node_modules
-.vscode
-.idea
-build/

@@ -1,9 +1,0 @@
-query ChannelHeader($channel: String!) {
-  channel(id: $channel) {
-    name
-    id
-    ... on TextChannel {
-      topic
-    }
-  }
-}
