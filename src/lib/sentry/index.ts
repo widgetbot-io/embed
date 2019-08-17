@@ -5,7 +5,7 @@ declare const Raven: RavenStatic
 const { version } = require('../../../package.json')
 const token = 'https://cae24d4800ac4eb6b5dcc8c9fc8c41ec@sentry.io/1205518'
 
-export function R(callback: (RavenStatic) => any) {
+export function R(callback: (arg0: RavenStatic) => any) {
   if (Raven) callback(Raven)
 }
 

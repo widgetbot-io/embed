@@ -3,7 +3,7 @@ import * as fs from 'fs'
 // @ts-ignore
 import fetch from 'node-fetch'
 
-const API_HOST = 'http://127.0.0.1:8443';
+const API_HOST = 'http://prep.daave.dev';
 
 fetch(`${API_HOST}/api/graphql`, {
   method: 'POST',

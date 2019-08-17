@@ -9,8 +9,9 @@ import {ApolloProvider as ApolloHooksProvider} from "react-apollo-hooks";
 import {Router} from "react-router";
 
 import { client, history } from './lib';
+import {AuthStore} from "./stores/auth";
 
-const stores = {};
+const stores = { AuthStore };
 
 ReactDOM.render(
     <Provider {...stores}>
