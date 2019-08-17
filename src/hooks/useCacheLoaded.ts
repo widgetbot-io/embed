@@ -1,4 +1,4 @@
-import { cacheLoaded } from '@lib/apollo/cache'
+import { cacheLoaded } from '../lib/apollo/cache'
 import { useState, useEffect } from 'react'
 
 export const useCacheLoaded = () => {

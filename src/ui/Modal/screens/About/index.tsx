@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { Box, Close } from '@ui/Modal'
+import { Box, Close } from '../../../Modal'
 
 class About extends React.PureComponent {
   render() {

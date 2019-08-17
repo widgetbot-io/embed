@@ -1,17 +1,18 @@
 import * as React from 'react'
 import { I18nProvider } from '@lingui/react'
-import Modal from '@ui/Modal'
-import Sidebar from '@ui/Sidebar'
-import ChooseChannel from '@views/ChooseChannel'
-import { MessagesView } from '@views/Messages'
-import Notifications from 'notify'
+import Modal from '../ui/Modal'
+import Sidebar from '../ui/Sidebar'
+import ChooseChannel from '../views/ChooseChannel'
+import { MessagesView } from '../views/Messages'
+// import Notifications from 'notify' TODO: FIX NOTIFICATIONS
 import { Redirect, Route, Switch } from 'react-router-dom'
 
 import { ThemeProvider } from './ThemeProvider'
-import i18n from '@lib/i18n'
+import i18n from '../lib/i18n'
 import { observer } from 'mobx-react'
-import { store } from '@models'
-import { useCacheLoaded } from '@hooks'
+import { store } from '../models'
+import { useCacheLoaded } from '../hooks'
+import {Notifications} from "./elements";
 
 const App = observer(() => {
   const cacheLoaded = useCacheLoaded()

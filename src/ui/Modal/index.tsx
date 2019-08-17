@@ -1,14 +1,16 @@
+/* eslint-disable */
+
 import { observer } from 'mobx-react'
 import * as _ from 'lodash'
 import Spinner from 'react-spinkit'
 import Loadable from 'react-loadable'
-import { store } from '@models'
+import { store } from '../../models'
 
 import * as React from 'react'
 import Hotkeys from 'react-hot-keys'
 
 import { Root } from './elements'
-import { useCacheLoaded } from '@hooks'
+import { useCacheLoaded } from '../../hooks'
 
 const Modal = observer(() => {
   const Screen = Loadable({

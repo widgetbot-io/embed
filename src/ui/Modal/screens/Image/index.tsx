@@ -2,9 +2,9 @@ import * as React from 'react'
 
 import { Root, OpenImage } from './elements'
 import { Trans } from '@lingui/react'
-import { Box, Close } from '@ui/Modal'
+import { Box, Close } from '../../../Modal'
 import { useObserver } from 'mobx-react-lite'
-import { store } from '@models'
+import { store } from '../../../../models'
 
 const Image = useObserver(() => {
   return (

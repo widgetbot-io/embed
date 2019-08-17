@@ -1,6 +1,6 @@
-import Button from '@ui/shared/button'
+import Button from '../../../shared/button'
 
-import { Content } from '@ui/Modal'
+import { Content } from '../../../Modal'
 import styled, { css } from 'react-emotion'
 
 interface Props {

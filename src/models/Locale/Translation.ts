@@ -1,4 +1,4 @@
-import { loadCatalog } from '@lib/i18n'
+import { loadCatalog } from '../../lib/i18n'
 import { types } from 'mobx-state-tree'
 
 export const Translation = types

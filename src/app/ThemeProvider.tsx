@@ -1,4 +1,4 @@
-import { Theme as ThemeContext } from '@lib/emotion'
+import { Theme as ThemeContext } from '../lib/emotion'
 import Color from 'color'
 import { ThemeProvider as Provider } from 'emotion-theming'
 import * as React from 'react'
@@ -6,10 +6,10 @@ import * as _ from 'lodash'
 import { GlobalStyles } from './elements'
 import GET_THEME from './Theme.graphql'
 
-import { Theme_guild_theme } from '@generated'
-import * as Constants from '@constants'
+import { Theme_guild_theme } from '../__generated__'
+import * as Constants from '../constants'
 import { useQuery } from 'react-apollo-hooks'
-import { useRouter } from '@hooks'
+import { useRouter } from '../hooks'
 
 export const ThemeProvider = ({ children }) => {
   let guild;

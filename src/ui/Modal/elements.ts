@@ -1,4 +1,4 @@
-import focusable from '@ui/shared/focusable'
+import focusable from '../../ui/shared/focusable'
 import styled, { css, keyframes } from 'react-emotion'
 
 const bounceIn = keyframes`

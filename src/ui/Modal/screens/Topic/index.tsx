@@ -1,10 +1,10 @@
 import * as React from 'react'
-import Markdown from '@ui/shared/markdown/render'
+import Markdown from '../../../shared/markdown/render'
 
-import { Box, Close } from '@ui/Modal'
+import { Box, Close } from '../../../Modal'
 import { Content } from './elements'
 import { observer } from 'mobx-react'
-import { store } from '@models'
+import { store } from '../../../../models'
 
 const Topic = observer(() => {
   return (

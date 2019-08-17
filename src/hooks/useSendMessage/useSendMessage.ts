@@ -1,7 +1,7 @@
 import { useMutation } from 'react-apollo-hooks'
 import SEND_MESSAGE from './SendMessage.graphql'
 import { MESSAGES } from '../useMessages'
-import { useRouter } from '@hooks'
+import { useRouter } from '../../hooks'
 
 export const useSendMessage = () => {
   const { channel } = useRouter()

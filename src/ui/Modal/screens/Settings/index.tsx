@@ -1,6 +1,8 @@
+/* eslint-disable */
+
 import * as React from 'react'
 
-import { Box, Content, Close } from '@ui/Modal'
+import { Box, Content, Close } from '../../../Modal'
 
 class Settings extends React.PureComponent {
   render() {

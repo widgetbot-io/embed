@@ -1,4 +1,6 @@
-import { useMatch } from '@hooks'
+/* eslint-disable */
+
+import { useMatch } from '../hooks'
 
 export const useRouter = () => {
   let match: {guild: string, channel?: string};

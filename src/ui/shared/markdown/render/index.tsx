@@ -1,13 +1,15 @@
+/* eslint-disable */
+
 import memoize from 'memoizee'
 import * as R from 'ramda'
 import * as React from 'react'
-import baseRules from '@ui/shared/markdown/render/ast'
-import { Code, Highlighter, Link } from '@ui/shared/markdown/render/elements'
+import baseRules from '../render/ast'
+import { Code, Highlighter, Link } from '../render/elements'
 import {
   astToString,
   flattenAst,
   recurse
-} from '@ui/shared/markdown/render/util'
+} from './util'
 import SimpleMarkdown from 'simple-markdown'
 
 function parserFor(rules, returnAst?) {

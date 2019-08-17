@@ -1,6 +1,8 @@
+/* eslint-disable */
+
 import { types } from 'mobx-state-tree'
 import { Translation } from './Translation'
-import { loadCatalog } from '@lib/i18n'
+import { loadCatalog } from '../../lib/i18n'
 
 export const Locale = types
   .model('Locale', {

@@ -1,8 +1,10 @@
+/* eslint-disable */
+
 import { useContext } from 'react'
 // @ts-ignore
 import { __RouterContext, matchPath, match } from 'react-router-dom'
 import { Location } from 'history'
-import { history } from '@lib/history'
+import { history } from '../lib/history'
 
 export const useLocation = () => {
   let context = useContext<any>(__RouterContext)

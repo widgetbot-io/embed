@@ -1,6 +1,8 @@
+/* eslint-disable */
+
 import * as React from 'react'
 
-import { Box, Close } from '@ui/Modal'
+import { Box, Close } from '../../../Modal'
 import { Create, Greeting, Group, Input, Root, Title } from './elements'
 
 class Authenticate extends React.PureComponent {
