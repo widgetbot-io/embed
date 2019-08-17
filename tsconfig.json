@@ -17,7 +17,13 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "@lib/*": ["src/lib/*"],
+      "@generated": ["src/__generated__/index"],
+      "@generated/*": ["src/__generated__/*"]
+    }
   },
   "include": [
     "src"

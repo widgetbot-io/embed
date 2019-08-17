@@ -105,7 +105,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "schema": "apollo schema:download --endpoint=https://prep.daave.dev/api/graphql src/lib/apollo/codegen/schema.json",
+    "codegen:tasks": "ts-node --skip-project src/lib/apollo/codegen/tasks",
+    "codegen": "apollo codegen:generate --target=typescript --addTypename --outputFlat src/__generated__",
+    "codegen:live": "apollo codegen:generate --target=typescript --addTypename --outputFlat src/__generated__ --schema=\"http://127.0.0.1:8443/api/graphql\""
   },
   "eslintConfig": {
     "extends": "react-app"

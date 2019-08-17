@@ -1,0 +1,13 @@
+{
+  "schemaPath": "graphql.schema.json",
+  "extensions": {
+    "endpoints": {
+      "Default (https://prep.daave.dev/api/graphql)": {
+        "url": "https://prep.daave.dev/api/graphql",
+        "headers": {
+          "user-agent": "JS GraphQL"
+        }
+      }
+    }
+  }
+}
