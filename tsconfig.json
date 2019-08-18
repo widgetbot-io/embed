@@ -19,24 +19,6 @@
     "noEmit": true,
     "jsx": "react",
     "isolatedModules": true,
-    "baseUrl": "src",
-    "paths": {
-      "@lib/*": ["lib/*"],
-      "@constants/*": ["constants/*"],
-      "@constants": ["constants/index"],
-      "@ui/*": ["ui/*"],
-      "@models": ["models/index"],
-      "@hooks": ["hooks/index"],
-      "@views/*": ["views/*"],
-      "@services/*": ["services/*"],
-      "@generated": ["__generated__/index"],
-      "@generated/*": ["__generated__/*"],
-      "@utils/*": ["utils/*"],
-      "notify": ["app/notify.tsx"],
-      "locales": ["app/locales"],
-      "locales/*": ["app/locales/*"],
-      "embed-api": ["lib/embed-api"]
-    }
   },
   "include": [
     "src"
