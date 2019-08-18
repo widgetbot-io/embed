@@ -112,6 +112,14 @@
     "codegen": "apollo codegen:generate --target=typescript --addTypename --outputFlat src/__generated__",
     "codegen:live": "apollo codegen:generate --target=typescript --addTypename --outputFlat src/__generated__ --schema=\"http://127.0.0.1:8443/api/graphql\""
   },
+  "eslintConfig": {
+    "rules": {
+      "no-restricted-globals": "off"
+    },
+    "globals": {
+      "close": true
+    }
+  },
   "browserslist": {
     "production": [
       ">0.2%",

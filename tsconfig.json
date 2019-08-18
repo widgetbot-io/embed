@@ -14,14 +14,13 @@
     "strict": false,
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
-    "target": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "noEmit": true,
     "jsx": "react",
-    "isolatedModules": true
+    "isolatedModules": true,
+    "baseUrl": "src"
   },
-  "baseUrl": "src",
   "paths": {
     "@lib/*": ["lib/*"],
     "@constants/*": ["constants/*"],
@@ -39,7 +38,6 @@
     "locales/*": ["app/locales/*"],
     "embed-api": ["lib/embed-api"]
   },
-
   "include": [
     "src"
   ]

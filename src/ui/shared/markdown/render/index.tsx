@@ -115,12 +115,12 @@ function Markdown({ children }: { children: string }) {
   return children ? parse(children) : null
 }
 
-namespace Markdown {
+/* namespace Markdown {
   export const withComponent = Component => ({ children, ...props }) => (
     <Component {...props}>
       <Markdown>{children}</Markdown>
     </Component>
   )
-}
+} */ // TODO: I beg to know what people were thinking.
 
 export default Markdown
