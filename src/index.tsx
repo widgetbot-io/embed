@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import * as Sentry from '@sentry/browser';
 import './index.css';
 import App from './app/';
 import {Provider} from "mobx-react";
@@ -12,6 +13,8 @@ import { client, history } from './lib';
 import {AuthStore} from "./stores/auth";
 
 const stores = { AuthStore };
+
+Sentry.init({dsn: "https://07f954e10c0040509f9349d5ade54934@sentry.disweb.io/2"});
 
 ReactDOM.render(
     <Provider {...stores}>
