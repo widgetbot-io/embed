@@ -1,6 +1,6 @@
-import { ScrollVisible } from '@ui/shared/scrollable'
-import SmartList from '@ui/shared/SmartList'
-import styled from '@lib/emotion'
+import { ScrollVisible } from '../../ui/shared/scrollable'
+import SmartList from '../../ui/shared/SmartList'
+import styled from '../../lib/emotion'
 import { AutoSizer } from 'react-virtualized'
 
 interface Props {

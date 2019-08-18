@@ -1,9 +1,9 @@
 import * as React from 'react'
 
-import { Chat } from '@ui/Overlays'
-import Header, { Name, Topic } from '@ui/Header'
-import Wrapper from '@ui/Wrapper'
-import { Trans, withI18nProps, withI18n } from '@lingui/react'
+import { Chat } from '../../ui/Overlays'
+import Header, { Name, Topic } from '../../ui/Header'
+import Wrapper from '../../ui/Wrapper'
+import { Trans, withI18nProps, withI18n } from '../../lingui/react'
 
 const ChooseChannel = ({ i18n }: withI18nProps) => (
   <Wrapper>

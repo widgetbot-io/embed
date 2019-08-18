@@ -1,4 +1,4 @@
-import { Messages_channel_TextChannel_messages } from '@generated'
+import { Messages_channel_TextChannel_messages } from '../../../__generated__'
 
 /**
  * Compares whether a message should go in a group
