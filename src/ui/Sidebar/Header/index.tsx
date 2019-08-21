@@ -4,15 +4,15 @@ import { Query } from 'react-apollo'
 import { Route } from 'react-router-dom'
 
 import { GuildInfo, GuildInfoVariables } from '../../../__generated__'
+import { loader } from 'graphql.macro';
 import { Count, Icon, Name, Root } from './elements'
-import GET_INFO from './GuildInfo.graphql'
 import { Plural } from '@lingui/react'
 
 const Header = () => (
   <Route path="/:guild">
     {({ match }) => (
       <Query<GuildInfo, GuildInfoVariables>
-        query={GET_INFO}
+        query={loader('./GuildInfo.graphql')}
         variables={match.params}
         fetchPolicy="cache-first"
       >

@@ -21,7 +21,7 @@ export const ThemeProvider = ({ children }) => {
     guild = use.guild;
   }
 
-  const { data } = useQuery(GET_THEME, { variables: { guild } });
+  // const { data } = useQuery(GET_THEME, { variables: { guild } });
 
   let theme: Theme_guild_theme = {
     __typename: 'Theme',

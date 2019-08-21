@@ -6,7 +6,7 @@ import Emoji from '../../../ui/shared/Emoji'
 
 import { ChannelInfo, ChannelInfoVariables } from '../../../__generated__'
 import ChannelLink from './link'
-import CHANNEL_INFO from './ChannelInfo.graphql'
+import { loader } from 'graphql.macro';
 
 interface Props {
   id: string
@@ -22,7 +22,7 @@ interface Props {
 
 const Channel = ({ id: channel, children, className }: Props) => (
   <Query<ChannelInfo, ChannelInfoVariables>
-    query={CHANNEL_INFO}
+    query={loader('./ChannelInfo.graphql')}
     variables={{ channel }}
   >
     {({ error, loading, data }) => {

@@ -5,7 +5,7 @@ import { Query } from 'react-apollo'
 
 import { MemberInfo } from '../../../__generated__'
 import MemberLink from './link'
-import MEMBER_INFO from './MemberInfo.graphql'
+import { loader } from 'graphql.macro';
 
 // TODO: FIx
 interface Props {
@@ -22,7 +22,7 @@ const Member = ({ id: member, children, className }: Props) => (
       }
     }) => (
       <Query /*<MemberInfo, MemberInfoVariables>*/
-        query={MEMBER_INFO}
+        query={loader('./MemberInfo.graphql')}
         variables={{ server, member }}
       >
         {({ error, loading, data }) => {

@@ -7,7 +7,7 @@ import { Selector } from '../../SelectItem'
 import { Root } from './elements'
 import Category from './Category'
 import categorise, { ICategory } from './categorise'
-import CHANNELS from './Channels.graphql'
+import { loader } from 'graphql.macro';
 
 export const ITEM_ID = 'channel'
 
@@ -19,7 +19,7 @@ const ChannelSwitcher = () => (
       }
     }) => (
       <Query<Channels, ChannelsVariables>
-        query={CHANNELS}
+        query={loader('./Channels.graphql')}
         variables={{ guild }}
       >
         {({ loading, error, data }) => {
