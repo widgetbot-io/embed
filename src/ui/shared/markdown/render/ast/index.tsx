@@ -1,5 +1,5 @@
-import { channel, mention } from '@ui/shared/markdown/render/ast/mention'
-import text from '@ui/shared/markdown/render/ast/text'
+import { channel, mention } from '../../../../../ui/shared/markdown/render/ast/mention'
+import text from '../../../../../ui/shared/markdown/render/ast/text'
 import { defaultRules, inlineRegex } from 'simple-markdown'
 
 import { customEmoji } from './customEmoji'

@@ -1,7 +1,7 @@
-import { Theme } from '@lib/emotion'
+import { Theme } from '../../../lib/emotion'
 import styled, { ThemedReactEmotionInterface } from 'react-emotion'
 
-export * from '@lib/emotion'
+export * from '../../../lib/emotion'
 
 interface Context extends Theme {
   embed: /*Embed*/ any // TODO: FIX

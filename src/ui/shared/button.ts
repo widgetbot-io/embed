@@ -1,5 +1,5 @@
-import focusable from '@ui/shared/focusable'
-import styled, { css } from '@lib/emotion'
+import focusable from '../../ui/shared/focusable'
+import styled, { css } from '../../lib/emotion'
 
 interface Props {
   variant?: 'large' | 'small' | 'mini'

@@ -1,7 +1,7 @@
 import Color from 'color'
-import $Channel from '@ui/shared/Channel'
-import $Member from '@ui/shared/Member'
-import styled, { css } from '@lib/emotion'
+import $Channel from '../../../../../ui/shared/Channel'
+import $Member from '../../../../../ui/shared/Member'
+import styled, { css } from '../../../../../lib/emotion'
 
 interface Props {
   color?: string

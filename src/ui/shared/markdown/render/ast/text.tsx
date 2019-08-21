@@ -1,4 +1,4 @@
-import Emoji from '@ui/shared/Emoji'
+import Emoji from '../../../../../ui/shared/Emoji'
 import * as React from 'react'
 import SimpleMarkdown from 'simple-markdown'
 

@@ -3,8 +3,8 @@ import * as React from 'react'
 
 import { Root, Settings, Version } from './elements'
 import { Trans } from '@lingui/react'
-import { store } from '@models'
-import Button from "@ui/shared/button";
+import { store } from '../../../models'
+import Button from "../../../ui/shared/button";
 import { inject, observer } from "mobx-react";
 import { AuthStore } from "../../../stores/auth";
 import {CSSProperties} from "react";

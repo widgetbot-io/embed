@@ -1,4 +1,4 @@
-import { css } from '@lib/emotion'
+import { css } from '../../../../../../lib/emotion'
 
 export const light = fontFamily => css`
   .hljs-comment,

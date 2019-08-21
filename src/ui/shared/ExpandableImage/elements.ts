@@ -1,7 +1,7 @@
-import { Scale } from '@ui/shared/ScaledImage'
-import styled from '@lib/emotion'
+import { Scale } from '../ScaledImage'
+import styled from '../../../lib/emotion'
 
-import { Loading } from '../../../ui/Overlays'
+import { Loading } from '../../Overlays'
 
 interface Props {
   scale: Scale

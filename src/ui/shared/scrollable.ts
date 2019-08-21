@@ -1,5 +1,5 @@
 import Scrollbars from 'react-custom-scrollbars'
-import styled from '@lib/emotion'
+import styled from '../../lib/emotion'
 
 /**
  * Visible scrollbar

@@ -1,6 +1,6 @@
-import { ChannelLink, Hash } from '@ui/shared/Channel'
-import styled, { css, keyframes } from '@lib/emotion'
-import Item from '@ui/SelectItem'
+import { ChannelLink, Hash } from '../../../../../ui/shared/Channel'
+import styled, { css, keyframes } from '../../../../../lib/emotion'
+import Item from '../../../../../ui/SelectItem'
 
 const fade = i => keyframes`
   from {

@@ -1,7 +1,7 @@
-import Button from '@ui/shared/button'
-import { Hash } from '@ui/shared/Channel'
-import Markdown from '@ui/shared/markdown/render'
-import styled from '@lib/emotion'
+import Button from '../../ui/shared/button'
+import { Hash } from '../shared/Channel'
+import Markdown from '../../ui/shared/markdown/render'
+import styled from '../../lib/emotion'
 
 export const Root = styled('header')`
   overflow: hidden;

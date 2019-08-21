@@ -1,8 +1,8 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import { Query } from 'react-apollo'
-import { Channels, ChannelsVariables } from '@generated'
-import { Selector } from '@ui/SelectItem'
+import { Channels, ChannelsVariables } from '../../../__generated__'
+import { Selector } from '../../SelectItem'
 
 import { Root } from './elements'
 import Category from './Category'

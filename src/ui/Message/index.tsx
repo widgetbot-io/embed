@@ -1,5 +1,5 @@
-import { Messages_channel_TextChannel_messages } from '@generated'
-import Markdown from '@ui/shared/markdown/render'
+import { Messages_channel_TextChannel_messages } from '../../generated'
+import Markdown from '../../ui/shared/markdown/render'
 import { ThemeProvider } from 'emotion-theming'
 import Moment from 'moment'
 import Tooltip from 'rc-tooltip'

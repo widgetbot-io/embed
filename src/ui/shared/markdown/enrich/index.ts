@@ -1,5 +1,5 @@
 import * as R from 'ramda'
-import customEmojis from '@ui/shared/markdown/enrich/customEmojis'
+import customEmojis from '../../../../ui/shared/markdown/enrich/customEmojis'
 
 import mentions from './mentions'
 

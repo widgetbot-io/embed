@@ -1,4 +1,4 @@
-import { css, Interpolation, Theme } from '@lib/emotion'
+import { css, Interpolation, Theme } from '../../lib/emotion'
 
 // TODO: Fix typings
 

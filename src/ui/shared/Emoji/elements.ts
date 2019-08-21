@@ -1,4 +1,4 @@
-import styled, { css } from '@lib/emotion'
+import styled, { css } from '../../../lib/emotion'
 
 export const Base = css`
   object-fit: contain;

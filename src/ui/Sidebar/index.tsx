@@ -6,7 +6,7 @@ import { Root } from './elements'
 import Header from './Header'
 import Panel from './Panel'
 import { observer } from 'mobx-react'
-import { store } from '@models'
+import { store } from '../../models'
 
 const Sidebar = observer(() => {
   return (

@@ -1,4 +1,4 @@
-import styled, { keyframes } from '@lib/emotion'
+import styled, { keyframes } from '../../../lib/emotion'
 
 const cube = keyframes`
   25% {

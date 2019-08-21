@@ -1,4 +1,4 @@
-import ExpandableImage from '@ui/shared/ExpandableImage'
+import ExpandableImage from '../../../../ui/shared/ExpandableImage'
 
 import styled, { css } from '../ThemeContext'
 

@@ -1,5 +1,5 @@
-import { Twemoji } from '@ui/shared/Emoji/emoji'
-import { parseAllowLinks, parseEmbedTitle } from '@ui/shared/markdown/render'
+import { Twemoji } from '../../shared/Emoji/emoji'
+import { parseAllowLinks, parseEmbedTitle } from '../../shared/markdown/render'
 import { ThemeProvider } from 'emotion-theming'
 import * as Moment from 'moment'
 import * as React from 'react'

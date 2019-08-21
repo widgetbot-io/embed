@@ -3,8 +3,8 @@ import { cx } from 'emotion'
 import memoize from 'memoizee'
 import * as React from 'react'
 import emoji from 'react-easy-emoji'
-import { Base, Emote } from '@ui/shared/Emoji/elements'
-import { emojis } from '@services/Emoji'
+import { Base, Emote } from './elements'
+import { emojis } from '../../../services/Emoji'
 import Tooltip from 'rc-tooltip'
 
 interface Props {

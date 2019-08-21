@@ -1,4 +1,4 @@
-import { MemberLink } from '@ui/shared/Member'
+import { MemberLink } from '../../ui/shared/Member'
 
 import styled from './ThemeContext'
 

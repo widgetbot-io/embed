@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ITEM_ID } from '@ui/Sidebar/Channels'
+import { ITEM_ID } from '../../../../../ui/Sidebar/Channels'
 
 import { Hashtag, Name, Pings, Root } from './elements'
 

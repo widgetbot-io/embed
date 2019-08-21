@@ -1,5 +1,5 @@
-import styled from '@lib/emotion'
-import { Twemoji } from '@ui/shared/Emoji/emoji'
+import styled from '../../../../lib/emotion'
+import { Twemoji } from '../../../../ui/shared/Emoji/emoji'
 import { FaAngleDown, FaAngleRight } from 'react-icons/fa'
 
 export const Root = styled('div')`

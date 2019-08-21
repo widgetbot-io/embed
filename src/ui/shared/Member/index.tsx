@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom'
 import * as React from 'react'
 import { Query } from 'react-apollo'
 
-import { MemberInfo } from '@generated'
+import { MemberInfo } from '../../../__generated__'
 import MemberLink from './link'
 import MEMBER_INFO from './MemberInfo.graphql'
 

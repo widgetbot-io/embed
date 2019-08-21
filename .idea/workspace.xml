@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b7e1ccec-6fd6-4ce7-89ba-32c28b4d7ea3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/ui/Chat/Chat.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Chat/Chat.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Chat/Emoji/elements.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Chat/Emoji/elements.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Chat/Input/elements/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Chat/Input/elements/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Chat/Input/elements/suggestion.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Chat/Input/elements/suggestion.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Chat/Input/elements/suggestions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Chat/Input/elements/suggestions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Chat/Input/suggestions/channels.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Chat/Input/suggestions/channels.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Chat/Input/suggestions/commands.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Chat/Input/suggestions/commands.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Chat/Input/suggestions/emojis.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Chat/Input/suggestions/emojis.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Chat/elements.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Chat/elements.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Header/Hamburger/elements.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Header/Hamburger/elements.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Header/elements.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Header/elements.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Header/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Message/Author/Badges/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Message/Author/Badges/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Message/Author/elements.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Message/Author/elements.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Message/Author/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Message/Author/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Message/Embed/ThemeContext.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Message/Embed/ThemeContext.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Message/Embed/elements/media.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Message/Embed/elements/media.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Message/Embed/elements/thumbnail.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Message/Embed/elements/thumbnail.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Message/Embed/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Message/Embed/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Message/Reaction/elements.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Message/Reaction/elements.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Message/Reaction/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Message/Reaction/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Message/ThemeContext.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Message/ThemeContext.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Message/elements.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Message/elements.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Message/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Message/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Modal/Developer/elements.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Modal/Developer/elements.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Overlays/ErrorAhoy/elements.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Overlays/ErrorAhoy/elements.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Overlays/Loading/elements.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Overlays/Loading/elements.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Overlays/elements.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Overlays/elements.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Sidebar/Channels/Category/Channel/elements.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Sidebar/Channels/Category/Channel/elements.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Sidebar/Channels/Category/Channel/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Sidebar/Channels/Category/Channel/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Sidebar/Channels/Category/elements.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Sidebar/Channels/Category/elements.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Sidebar/Channels/categorise.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Sidebar/Channels/categorise.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Sidebar/Channels/elements.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Sidebar/Channels/elements.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Sidebar/Channels/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Sidebar/Channels/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Sidebar/Header/elements.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Sidebar/Header/elements.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Sidebar/Header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Sidebar/Header/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Sidebar/Panel/elements.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Sidebar/Panel/elements.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Sidebar/Panel/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Sidebar/Panel/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Sidebar/elements.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Sidebar/elements.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Sidebar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Sidebar/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Wrapper/elements.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Wrapper/elements.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Wrapper/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Wrapper/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/shared/Channel/elements.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/shared/Channel/elements.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/shared/Channel/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/shared/Channel/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/shared/Emoji/elements.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/shared/Emoji/elements.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/shared/Emoji/emoji.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/shared/Emoji/emoji.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/shared/Emoji/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/shared/Emoji/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/shared/ExpandableImage/elements.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/shared/ExpandableImage/elements.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/shared/ExpandableImage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/shared/ExpandableImage/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/shared/Member/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/shared/Member/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/shared/ScaledImage/elements.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/shared/ScaledImage/elements.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/shared/ScaledImage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/shared/ScaledImage/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/shared/button.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/shared/button.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/shared/focusable.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/shared/focusable.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/shared/markdown/enrich/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/shared/markdown/enrich/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/shared/markdown/render/ast/customEmoji.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/shared/markdown/render/ast/customEmoji.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/shared/markdown/render/ast/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/shared/markdown/render/ast/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/shared/markdown/render/ast/mention.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/shared/markdown/render/ast/mention.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/shared/markdown/render/ast/text.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/shared/markdown/render/ast/text.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/shared/markdown/render/elements/code/hljs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/shared/markdown/render/elements/code/hljs.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/shared/markdown/render/elements/code/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/shared/markdown/render/elements/code/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/shared/markdown/render/elements/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/shared/markdown/render/elements/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/shared/markdown/render/elements/mentions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/shared/markdown/render/elements/mentions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/shared/scrollable.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/shared/scrollable.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/ui/Message/index.tsx" />
+        <option value="$PROJECT_DIR$/src/ui/Message/ThemeContext.ts" />
+        <option value="$PROJECT_DIR$/src/ui/Message/Author/elements.ts" />
+        <option value="$PROJECT_DIR$/src/ui/Message/Author/index.tsx" />
+        <option value="$PROJECT_DIR$/src/ui/Message/Author/Badges/index.tsx" />
+        <option value="$PROJECT_DIR$/src/ui/Message/Embed/index.tsx" />
+        <option value="$PROJECT_DIR$/src/ui/Message/Embed/ThemeContext.ts" />
+        <option value="$PROJECT_DIR$/src/ui/Message/Embed/elements/media.ts" />
+        <option value="$PROJECT_DIR$/src/ui/Message/Embed/elements/thumbnail.ts" />
+        <option value="$PROJECT_DIR$/src/ui/Message/Reaction/elements.ts" />
+        <option value="$PROJECT_DIR$/src/ui/Message/Reaction/index.tsx" />
+        <option value="$PROJECT_DIR$/src/ui/Modal/Developer/elements.ts" />
+        <option value="$PROJECT_DIR$/src/ui/Overlays/elements.tsx" />
+        <option value="$PROJECT_DIR$/src/ui/Overlays/ErrorAhoy/elements.ts" />
+        <option value="$PROJECT_DIR$/src/ui/Overlays/Loading/elements.ts" />
+        <option value="$PROJECT_DIR$/src/ui/shared/button.ts" />
+        <option value="$PROJECT_DIR$/src/ui/shared/focusable.ts" />
+        <option value="$PROJECT_DIR$/src/ui/shared/scrollable.ts" />
+        <option value="$PROJECT_DIR$/src/ui/shared/Channel/elements.ts" />
+        <option value="$PROJECT_DIR$/src/ui/shared/Channel/index.tsx" />
+        <option value="$PROJECT_DIR$/src/ui/shared/Emoji/elements.ts" />
+        <option value="$PROJECT_DIR$/src/ui/shared/Emoji/emoji.ts" />
+        <option value="$PROJECT_DIR$/src/ui/shared/Emoji/index.tsx" />
+        <option value="$PROJECT_DIR$/src/ui/shared/ExpandableImage/elements.ts" />
+        <option value="$PROJECT_DIR$/src/ui/shared/ExpandableImage/index.tsx" />
+        <option value="$PROJECT_DIR$/src/ui/shared/markdown/enrich/index.ts" />
+        <option value="$PROJECT_DIR$/src/ui/shared/markdown/render/elements/mentions.ts" />
+        <option value="$PROJECT_DIR$/src/ui/shared/markdown/render/elements/index.ts" />
+        <option value="$PROJECT_DIR$/src/ui/shared/markdown/render/elements/code/hljs.ts" />
+        <option value="$PROJECT_DIR$/src/ui/shared/markdown/render/elements/code/index.ts" />
+        <option value="$PROJECT_DIR$/src/ui/shared/markdown/render/ast/customEmoji.tsx" />
+        <option value="$PROJECT_DIR$/src/ui/shared/markdown/render/ast/index.tsx" />
+        <option value="$PROJECT_DIR$/src/ui/shared/markdown/render/ast/mention.tsx" />
+        <option value="$PROJECT_DIR$/src/ui/shared/markdown/render/ast/text.tsx" />
+        <option value="$PROJECT_DIR$/src/ui/shared/Member/index.tsx" />
+        <option value="$PROJECT_DIR$/src/ui/shared/ScaledImage/elements.ts" />
+        <option value="$PROJECT_DIR$/src/ui/shared/ScaledImage/index.tsx" />
+        <option value="$PROJECT_DIR$/src/ui/Sidebar/index.tsx" />
+        <option value="$PROJECT_DIR$/src/ui/Sidebar/elements.ts" />
+        <option value="$PROJECT_DIR$/src/ui/Sidebar/Channels/categorise.ts" />
+        <option value="$PROJECT_DIR$/src/ui/Sidebar/Channels/elements.ts" />
+        <option value="$PROJECT_DIR$/src/ui/Sidebar/Channels/index.tsx" />
+        <option value="$PROJECT_DIR$/src/ui/Sidebar/Channels/Category/elements.ts" />
+        <option value="$PROJECT_DIR$/src/ui/Sidebar/Channels/Category/Channel/elements.ts" />
+        <option value="$PROJECT_DIR$/src/ui/Sidebar/Channels/Category/Channel/index.tsx" />
+        <option value="$PROJECT_DIR$/src/ui/Sidebar/Header/elements.ts" />
+        <option value="$PROJECT_DIR$/src/ui/Sidebar/Header/index.tsx" />
+        <option value="$PROJECT_DIR$/src/ui/Sidebar/Panel/elements.ts" />
+        <option value="$PROJECT_DIR$/src/ui/Sidebar/Panel/index.tsx" />
+        <option value="$PROJECT_DIR$/src/ui/Wrapper/elements.ts" />
+        <option value="$PROJECT_DIR$/src/ui/Wrapper/index.tsx" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="974" />
+    <option name="height" value="1041" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="embed" type="b2602c69:ProjectViewProjectNode" />
+              <item name="embed" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="embed" type="b2602c69:ProjectViewProjectNode" />
+              <item name="embed" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="embed" type="b2602c69:ProjectViewProjectNode" />
+              <item name="embed" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="8.11.3" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../kree-a-tron" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\Waqqas\Documents\Coding\disweb\embed\node_modules\prettier" />
+    <property name="ts.external.directory.path" value="C:\Users\Waqqas\Documents\Coding\disweb\embed\node_modules\typescript\lib" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b7e1ccec-6fd6-4ce7-89ba-32c28b4d7ea3" name="Default Changelist" comment="" />
+      <created>1565363540646</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1565363540646</updated>
+      <workItem from="1565363560379" duration="2798000" />
+      <workItem from="1565448244299" duration="2788000" />
+      <workItem from="1566150848499" duration="3545000" />
+      <workItem from="1566316793334" duration="3048000" />
+      <workItem from="1566393178211" duration="5812000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="17991000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1050" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26026666" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32996634" />
+      <window_info anchor="bottom" id="TypeScript" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Key Promoter X" order="3" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/ui/Overlays/Loading/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/SelectItem/Selector.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/SelectItem/Item.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/SelectItem/index.tsx">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/SelectItem/elements.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/focusable.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="49" selection-start-column="49" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/button.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="35" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/scrollable.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="26" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/Channel/elements.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/Channel/link.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/Channel/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/Emoji/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/Emoji/emoji.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="38" selection-start-column="38" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/Emoji/elements.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="38" selection-start-column="38" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/ExpandableImage/elements.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="22" selection-start-column="22" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/ExpandableImage/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="18" column="36" lean-forward="true" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/ExpandableImage/optimize.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/markdown/enrich/customEmojis.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/markdown/enrich/index.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/markdown/enrich/mentions.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/markdown/render/elements/index.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="35" selection-start-column="35" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/markdown/render/elements/mentions.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/markdown/render/elements/code/loader.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/markdown/render/elements/code/index.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="47" selection-start-column="47" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/markdown/render/elements/code/hljs.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="17" lean-forward="true" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/markdown/render/util.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/markdown/render/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#22#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/markdown/render/ast/customEmoji.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="34" selection-start-column="34" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/markdown/render/ast/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-184">
+          <caret line="1" column="33" selection-start-line="1" selection-start-column="33" selection-end-line="1" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/markdown/render/ast/mention.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-186">
+          <caret column="49" selection-start-column="49" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/markdown/render/ast/text.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="34" selection-start-column="34" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/Member/link.tsx">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/Member/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-23">
+          <caret line="5" column="50" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/ScaledImage/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="17" lean-forward="true" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/ScaledImage/elements.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="29" selection-start-column="29" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/shared/SmartList/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/Sidebar/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="16" column="11" lean-forward="true" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/Sidebar/elements.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="35" selection-start-column="35" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/Sidebar/Channels/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="13" column="31" lean-forward="true" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/Sidebar/Channels/elements.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="30" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/Sidebar/Channels/categorise.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="13" column="19" lean-forward="true" selection-start-line="13" selection-start-column="19" selection-end-line="14" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/Sidebar/Channels/Category/elements.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="37" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/Sidebar/Channels/Category/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/Sidebar/Channels/Category/Channel/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/Sidebar/Channels/Category/Channel/elements.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/Sidebar/Header/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#363#1407#0" />
+            <element signature="e#414#1389#0" />
+            <element signature="e#591#1373#0" />
+            <element signature="e#717#1351#0" />
+            <element signature="e#884#1331#0" />
+            <element signature="e#972#1198#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/Sidebar/Header/elements.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="29" selection-start-column="29" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/Sidebar/Panel/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="19" column="30" lean-forward="true" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/Sidebar/Panel/elements.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="29" selection-start-column="29" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/Wrapper/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/Wrapper/elements.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="35" selection-start-column="35" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

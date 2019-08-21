@@ -1,4 +1,4 @@
-import styled from '@lib/emotion'
+import styled from '../../../../lib/emotion'
 
 export const Root = styled('div')`
   width: 100%;

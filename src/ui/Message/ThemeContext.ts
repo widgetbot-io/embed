@@ -1,8 +1,8 @@
-import { Messages_channel_TextChannel_messages } from '@generated'
+import { Messages_channel_TextChannel_messages } from '../../__generated__'
 import styled, { ThemedReactEmotionInterface } from 'react-emotion'
-import { Theme } from '@lib/emotion'
+import { Theme } from '../../lib/emotion'
 
-export * from '@lib/emotion'
+export * from '../../lib/emotion'
 
 interface Context extends Theme {
   message: Messages_channel_TextChannel_messages

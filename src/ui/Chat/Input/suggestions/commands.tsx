@@ -1,6 +1,6 @@
 import matchSorter from 'match-sorter'
 import * as React from 'react'
-import { Hash } from '@ui/shared/Channel'
+import { Hash } from '../../../shared/Channel'
 
 import { Description, Icon, Name } from '../elements'
 import { Suggestion } from '../types'

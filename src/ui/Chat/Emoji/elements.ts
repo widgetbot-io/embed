@@ -1,5 +1,5 @@
-import styled from '@lib/emotion'
-import { Twemoji } from '@ui/shared/Emoji/emoji'
+import styled from '../../../lib/emotion'
+import { Twemoji } from '../../shared/Emoji/emoji'
 
 export const Root = styled('div')`
   margin: 9px 12px;

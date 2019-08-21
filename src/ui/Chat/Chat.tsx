@@ -1,14 +1,14 @@
 import * as React from 'react'
 import GET_CHANNEL_NAME from './ChannelName.graphql'
-import { useRouter, useSendMessage } from '@hooks'
+import { useRouter, useSendMessage } from '../../hooks'
 import { useQuery } from 'react-apollo-hooks'
 import Input from './Input'
 import { Field, Root } from './elements'
-import i18n from '@lib/i18n'
+import i18n from '../../lib/i18n'
 import { useState, useRef } from 'react'
-import ErrorAhoy from "@ui/Overlays/ErrorAhoy";
-import { formatError } from "@views/Messages/utils";
-import { Loading } from "@ui/Overlays";
+import ErrorAhoy from "../../ui/Overlays/ErrorAhoy";
+import { formatError } from "../../views/Messages/utils";
+import { Loading } from "../Overlays";
 
 export const Chat = () => {
   const inputRef = useRef<HTMLTextAreaElement>(null);

@@ -1,4 +1,4 @@
-import styled from '@lib/emotion'
+import styled from '../../../../../lib/emotion'
 
 export const Link = styled('a')`
   & code {

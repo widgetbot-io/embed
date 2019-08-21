@@ -1,4 +1,4 @@
-import { Author as $Author, Member as $Member } from '@generated'
+import { Author as $Author, Member as $Member } from '../../../__generated__'
 import Moment from 'moment'
 import * as React from 'react'
 

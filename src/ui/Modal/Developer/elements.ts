@@ -1,6 +1,6 @@
 import withProps from 'recompose/withProps'
-import Button from '@ui/shared/button'
-import styled from '@lib/emotion'
+import Button from '../../../ui/shared/button'
+import styled from '../../../lib/emotion'
 
 import { Content } from '../elements'
 

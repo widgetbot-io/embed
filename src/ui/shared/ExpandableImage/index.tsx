@@ -1,10 +1,10 @@
-import optimize from '@ui/shared/ExpandableImage/optimize'
-import { Scale } from '@ui/shared/ScaledImage'
+import optimize from '../../../ui/shared/ExpandableImage/optimize'
+import { Scale } from '../ScaledImage'
 import * as React from 'react'
 import { useState, useEffect } from 'react'
 
 import { Image, Loader, Root } from './elements'
-import { store } from '@models'
+import { store } from '../../../models'
 
 interface Props {
   src: string

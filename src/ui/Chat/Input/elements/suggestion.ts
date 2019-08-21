@@ -1,5 +1,5 @@
-import styled, { css } from '@lib/emotion'
-import { Twemoji } from '@ui/shared/Emoji/emoji'
+import styled, { css } from '../../../../lib/emotion'
+import { Twemoji } from '../../../shared/Emoji/emoji'
 
 interface Props {
   selected: boolean

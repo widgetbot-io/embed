@@ -1,6 +1,6 @@
 import withProps from 'recompose/withProps'
-import ExpandableImage from '@ui/shared/ExpandableImage'
-import styled from '@lib/emotion'
+import ExpandableImage from '../../../../ui/shared/ExpandableImage'
+import styled from '../../../../lib/emotion'
 
 interface ImageProps {
   height: number

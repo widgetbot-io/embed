@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { Description, Icon, Info, Name } from '../elements'
 import { Suggestion } from '../types'
-import { Emoji, emojis } from '@services/Emoji'
+import { Emoji, emojis } from '../../../../services/Emoji'
 
 const Emojis: Suggestion<Emoji> = {
   getSuggestions: query => emojis.query(query),

@@ -1,4 +1,4 @@
-import { Channel, Mention } from '@ui/shared/markdown/render/elements'
+import { Channel, Mention } from '../../../../../ui/shared/markdown/render/elements'
 import * as React from 'react'
 import SimpleMarkdown from 'simple-markdown'
 
