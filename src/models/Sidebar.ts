@@ -1,4 +1,4 @@
-import { types } from 'mobx-state-tree'
+import { types } from 'mobx-state-tree';
 
 export const Sidebar = types
   .model('Sidebar', {

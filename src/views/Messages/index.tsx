@@ -1,1 +1,1 @@
-export * from './MessagesView'
+export * from './MessagesView';

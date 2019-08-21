@@ -1,6 +1,6 @@
 class RequireAll<Module = { default: any }> {
   static REGEX = /\.\/([^\/\.])+(\.ts|\/index)$/
-  public entries = []
+  public entries = [];
 
   constructor(private context: __WebpackModuleApi.RequireContext) {
     context.keys().forEach(m => this.entries.push([m, this.context(m)]))

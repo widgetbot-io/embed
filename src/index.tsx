@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as Sentry from '@sentry/browser';
+import * as Sentry from  '@sentry/browser';
 import './index.css';
 import App from './app/';
 import {Provider} from "mobx-react";

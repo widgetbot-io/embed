@@ -17,6 +17,5 @@ const emojisArray = Object.entries(categoryMap).map(([category, emojisObj]) => {
   })
 })
 
-const defaultEmojis = [].concat.apply([], emojisArray)
+export const defaultEmojis = [].concat.apply([], emojisArray)
 
-module.exports = { defaultEmojis }

@@ -1,11 +1,11 @@
 import * as React from 'react'
 import Tooltip from 'rc-tooltip'
 import CHANNEL from './Channel.graphql'
-import { Name, Topic, Join, Stretch } from '@ui/Header'
+import { Name, Topic, Join, Stretch } from '../../../ui/Header'
 
 import { Root } from './elements'
 import { Trans } from '@lingui/react'
-import { store } from '@models'
+import { store } from '../../../models'
 import { useQuery } from 'react-apollo-hooks'
 
 const defaultInvite = 'https://discord.gg/56VgJZ4';

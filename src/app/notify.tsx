@@ -1,5 +1,5 @@
 import autobind from 'autobind-decorator'
-import * as React from 'react'
+import * as React from 'react';
 import N from 'react-notification-system'
 
 import { Notifications } from './elements'

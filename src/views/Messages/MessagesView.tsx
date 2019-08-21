@@ -2,7 +2,7 @@ import * as React from 'react'
 import Wrapper from '../../ui/Wrapper'
 import { Header } from './Header'
 import { RouteComponentProps } from 'react-router-dom'
-import { Chat } from '../../ui/Chat'
+import { Chat } from '../../ui/Chat';
 import { Messages } from './Messages'
 import { Loading } from '../../ui/Overlays'
 
