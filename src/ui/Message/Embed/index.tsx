@@ -1,7 +1,7 @@
 import { Twemoji } from '../../shared/Emoji/emoji'
 import { parseAllowLinks, parseEmbedTitle } from '../../shared/markdown/render'
 import { ThemeProvider } from 'emotion-theming'
-import * as Moment from 'moment'
+import Moment from "moment";
 import * as React from 'react'
 
 import { Content, Root, Title, Wrapper } from './elements'

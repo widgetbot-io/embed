@@ -1,4 +1,4 @@
-import { Messages_channel_TextChannel_messages } from '../../generated'
+import { Messages_channel_TextChannel_messages } from '../../__generated__'
 import Markdown from '../../ui/shared/markdown/render'
 import { ThemeProvider } from 'emotion-theming'
 import Moment from 'moment'

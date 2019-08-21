@@ -1,6 +1,6 @@
 import Button from '../../ui/shared/button'
 import { Hash } from '../shared/Channel'
-import Markdown from '../../ui/shared/markdown/render'
+import Markdown, { MarkdownC } from "../../ui/shared/markdown/render";
 import styled from '../../lib/emotion'
 
 export const Root = styled('header')`
@@ -56,7 +56,7 @@ export const Name = styled(Hash)`
   }
 `
 
-export const Topic = styled(Markdown.withComponent('div'))`
+export const Topic = styled(MarkdownC.withComponent('div'))`
   text-overflow: ellipsis;
   overflow: hidden;
   cursor: pointer;
