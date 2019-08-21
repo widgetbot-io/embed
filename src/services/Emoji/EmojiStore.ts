@@ -1,5 +1,5 @@
 import matchSorter from 'match-sorter'
-import { defaultEmojis } from './defaultEmojis'
+import { defaultEmojis } from './defaultEmojis/index'
 
 export interface Emoji {
   category: string
