@@ -17,8 +17,11 @@ const Header = () => (
         fetchPolicy="cache-first"
       >
         {({ loading, error, data }) => {
-          if (loading || !data || !data.guild) return null
-          if (error) return null
+          if (loading || !data || !data.guild) {
+            console.log('no guild');
+            return null;
+          }
+          if (error) return null;
 
           return (
             <Root className="header">

@@ -20,6 +20,10 @@ export const Chat = () => {
   if (error) return <ErrorAhoy message={formatError(error)} />;
   if (loading) return <Loading />;
 
+  if (!data.channel) {
+    console.log('no channel')
+    return null;
+  }
   const channelName = data.channel && data.channel.name;
 
   return (
