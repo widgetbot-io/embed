@@ -1,7 +1,7 @@
 {
   "name": "embed",
   "version": "0.0.1-canary",
-  "homepage": "/channels/",
+  "homepage": "/",
   "private": true,
   "dependencies": {
     "@lingui/react": "^2.7.3",
