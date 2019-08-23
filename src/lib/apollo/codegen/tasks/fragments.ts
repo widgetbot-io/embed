@@ -1,8 +1,9 @@
 import * as path from 'path'
 import * as fs from 'fs'
 import fetch from 'node-fetch'
+import { url } from "@lib/env";
 
-const API_HOST = 'http://127.0.0.1:8443';
+const API_HOST = url.includes('127.0.0.1') ? `http://${url}` : `https://${url}`;
 
 fetch(`${API_HOST}/api/graphql`, {
   method: 'POST',

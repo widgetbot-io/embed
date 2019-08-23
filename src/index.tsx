@@ -1,7 +1,6 @@
 import 'babel-polyfill'
 
 import client from '@lib/apollo'
-import { connect } from '@lib/sentry'
 import * as React from 'react'
 import { Provider } from 'mobx-react';
 import { ApolloProvider } from 'react-apollo'
@@ -29,8 +28,6 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-
-connect();
 
 // Hot reloading
 declare const module: any;
