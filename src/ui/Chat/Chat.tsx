@@ -9,6 +9,7 @@ import { useState, useRef } from 'react'
 import ErrorAhoy from "@ui/Overlays/ErrorAhoy";
 import { formatError } from "@views/Messages/utils";
 import { Loading } from "@ui/Overlays";
+import { addNotification } from "notify";
 
 export const Chat = () => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -17,6 +18,15 @@ export const Chat = () => {
   const { channel } = useRouter();
   const { data, error, errors, networkStatus, loading } = useQuery(GET_CHANNEL_NAME, { variables: { channel } });
 
+  if (!data || !data.guild) {
+    addNotification({
+      level: 'error',
+      title: 'Channel unavailable',
+      message: 'This channel is not available.',
+      autoDismiss: 0,
+
+    });
+  }
   if (error) return <ErrorAhoy message={formatError(error)} />;
   if (loading) return <Loading />;
 

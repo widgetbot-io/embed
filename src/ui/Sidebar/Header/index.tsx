@@ -7,6 +7,7 @@ import { GuildInfo, GuildInfoVariables } from '@generated'
 import { Count, Icon, Name, Root } from './elements'
 import GET_INFO from './GuildInfo.graphql'
 import { Plural } from '@lingui/react'
+import { addNotification } from "notify";
 
 const Header = () => (
   <Route path="/:guild">
@@ -17,8 +18,18 @@ const Header = () => (
         fetchPolicy="cache-first"
       >
         {({ loading, error, data }) => {
-          if (loading || !data || !data.guild) return null
-          if (error) return null
+          if (!data || !data.guild)  {
+            addNotification({
+              level: 'error',
+              title: 'Guild unavailable',
+              message: 'This guild is not available.',
+              autoDismiss: 0,
+
+            });
+            return null;
+          }
+          if (loading) return null;
+          if (error) return null;
 
           return (
             <Root className="header">
