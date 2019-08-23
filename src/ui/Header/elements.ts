@@ -90,4 +90,4 @@ const JoinLink = Button.withComponent('a')
 export const Join = styled(JoinLink)`
   background: ${({ theme }) => theme.colors._accent.fade(0.6).string()};
   margin-right: 20px;
-`
+`;

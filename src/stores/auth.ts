@@ -3,7 +3,6 @@ import axios from 'axios';
 import { APIRequest, Endpoints } from "../api";
 import { url } from "@lib/env";
 import { ICategory } from "@ui/Sidebar/Channels/categorise";
-import { useQuery } from "react-apollo-hooks";
 import { useRouter } from "@hooks";
 import CHANNELS from "@ui/Sidebar/Channels/Channels.graphql";
 
@@ -31,11 +30,6 @@ export class AuthStore {
   @action refreshChannels() {
     const { guild } = useRouter();
 
-    const { data, error, errors, networkStatus, loading } = useQuery(CHANNELS, { variables: { guild } });
-
-    if (!data || !data.channels) this.channels = data.channels;
-
-    return data.channels;
   }
 
   @action async fetchUser() {
