@@ -3,14 +3,6 @@
   "main": "src/index.tsx",
   "version": "0.0.1-canary",
   "homepage": "/",
-  "proxy": {
-    "/api": {
-      "target": "https://prep.daave.dev/",
-      "changeOrigin": true,
-      "secure": true,
-      "ws": true
-    }
-  },
   "scripts": {
     "start": "react-app-rewired start --scripts-version react-scripts-ts",
     "build": "react-app-rewired build --scripts-version react-scripts-ts",

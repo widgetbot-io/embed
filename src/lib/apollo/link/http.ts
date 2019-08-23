@@ -23,7 +23,7 @@ const httpLink = ApolloLink.from([
   }),
   // CRUNCH && uncruncher,
   new BatchHttpLink({
-    uri: `/api/graphql` /*${CRUNCH ? '?crunch' : ''}`*/,
+    uri: `https://prep.daave.dev/api/graphql` /*${CRUNCH ? '?crunch' : ''}`*/,
     batchInterval: 20,
     batchMax: 2
   })
