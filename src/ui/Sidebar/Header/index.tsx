@@ -18,6 +18,7 @@ const Header = () => (
         fetchPolicy="cache-first"
       >
         {({ loading, error, data }) => {
+          if (loading) return null;
           if (!data || !data.guild)  {
             addNotification({
               level: 'error',
@@ -28,7 +29,7 @@ const Header = () => (
             });
             return null;
           }
-          if (loading) return null;
+
           if (error) return null;
 
           return (

@@ -18,7 +18,8 @@ export const Chat = () => {
   const { channel } = useRouter();
   const { data, error, errors, networkStatus, loading } = useQuery(GET_CHANNEL_NAME, { variables: { channel } });
 
-  if (!data || !data.guild) {
+  if (loading) return <Loading />;
+  if (!data || !data.channel) {
     addNotification({
       level: 'error',
       title: 'Channel unavailable',
@@ -26,9 +27,10 @@ export const Chat = () => {
       autoDismiss: 0,
 
     });
+    return null;
   }
   if (error) return <ErrorAhoy message={formatError(error)} />;
-  if (loading) return <Loading />;
+
 
   const channelName = data.channel && data.channel.name;
 
