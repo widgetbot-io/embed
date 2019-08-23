@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Query } from 'react-apollo'
-
+import { useState } from 'react';
 import Channels from './Channels'
 import { Root } from './elements'
 import Header from './Header'
@@ -16,6 +16,6 @@ const Sidebar = observer(() => {
       <Panel />
     </Root>
   )
-})
+});
 
 export default Sidebar

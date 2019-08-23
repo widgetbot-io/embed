@@ -2,6 +2,10 @@ import { action, computed, observable } from "mobx";
 import axios from 'axios';
 import { APIRequest, Endpoints } from "../api";
 import { url } from "@lib/env";
+import { ICategory } from "@ui/Sidebar/Channels/categorise";
+import { useQuery } from "react-apollo-hooks";
+import { useRouter } from "@hooks";
+import CHANNELS from "@ui/Sidebar/Channels/Channels.graphql";
 
 interface User {
   createdAt: string,
@@ -16,18 +20,38 @@ interface User {
 }
 
 export class AuthStore {
+  @observable appName = 'DisWeb';
+  @observable channels: ICategory[] = [];
   @observable token = window.localStorage.getItem('token');
 
   @observable inProgress: boolean = false;
   @observable errors: string | undefined = undefined;
-  @observable user: User = undefined;
+  @observable user: User = JSON.parse(window.localStorage.getItem('user'));
+
+  @action refreshChannels() {
+    const { guild } = useRouter();
+
+    const { data, error, errors, networkStatus, loading } = useQuery(CHANNELS, { variables: { guild } });
+
+    if (!data || !data.channels) this.channels = data.channels;
+
+    return data.channels;
+  }
 
   @action async fetchUser() {
     const { data } = await APIRequest(Endpoints.auth.fetchLatestProfile());
 
+    window.localStorage.setItem('user', JSON.stringify(data));
     this.user = data;
 
     return data;
+  }
+
+  @action logout() {
+    window.localStorage.removeItem('token');
+
+    this.user = undefined;
+    this.token = undefined;
   }
 
   @action login() {

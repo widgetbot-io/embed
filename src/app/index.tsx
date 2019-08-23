@@ -4,7 +4,7 @@ import Modal from '@ui/Modal'
 import Sidebar from '@ui/Sidebar'
 import ChooseChannel from '@views/ChooseChannel'
 import { MessagesView } from '@views/Messages'
-import Notifications, { addNotification } from "notify";
+import Notifications from 'notify'
 import { Redirect, Route, Switch } from 'react-router-dom'
 
 import { ThemeProvider } from './ThemeProvider'
