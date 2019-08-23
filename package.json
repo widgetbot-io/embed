@@ -2,12 +2,12 @@
   "name": "embed",
   "main": "src/index.tsx",
   "version": "0.0.1-canary",
-  "homepage": "/channels/",
+  "homepage": "/",
   "proxy": {
     "/api": {
-      "target": "http://127.0.0.1:8443/",
+      "target": "https://prep.daave.dev/",
       "changeOrigin": true,
-      "secure": false,
+      "secure": true,
       "ws": true
     }
   },
