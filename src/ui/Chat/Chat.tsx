@@ -52,7 +52,7 @@ export const Chat = () => {
           }}
           innerRef={ref => (inputRef.current = ref)}
           innerProps={{
-            placeholder: channelName ? i18n.t`Message #${channelName}` : null
+            placeholder: channelName ? `Message #${channelName}` : null
           }}
         />
 
