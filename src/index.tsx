@@ -3,6 +3,7 @@ import 'babel-polyfill'
 import client from '@lib/apollo'
 import * as React from 'react'
 import { Provider } from 'mobx-react';
+import * as Sentry from '@sentry/browser';
 import { ApolloProvider } from 'react-apollo'
 import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks'
 
@@ -14,6 +15,8 @@ import { history } from '@lib/history'
 import AuthStore from "./stores/auth";
 
 const stores = { AuthStore };
+
+Sentry.init({dsn: 'https://e83fba164e0c4e4ea0ff29c829a743fd@sentry.forbid.fun/2'});
 
 // Render App
 ReactDOM.render(
