@@ -47,7 +47,7 @@ class ChannelSwitcher extends React.Component<Props> {
                       refetch();
                     } }
                   >
-                    <Trans id="Header.joinDiscord">Refresh Channels</Trans>
+                    Refresh Channels
                   </Refresh>
                   {this.props.AuthStore.channels.map((category, i) => (
                     <Category key={i} category={category} activeChannel={channel} />
