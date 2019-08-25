@@ -29,5 +29,19 @@ build-master:
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE" .
-    - docker push "$CI_REGISTRY_IMAGE"
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_BUILD_REF" .
+    - docker push "$CI_REGISTRY_IMAGE:$CI_BUILD_REF"
+
+staging:
+  stage: deploy
+  image: registry.gitlab.com/gitlab-examples/kubernetes-deploy
+  environment:
+    name: staging
+    url: https://embed.daave.dev
+  before_script:
+    - kubectl config set-cluster default-cluster --server=$KUBE_URL --certificate-authority=$KUBE_CA_PEM_FILE
+    - kubectl config set-credentials default-admin --token=$KUBE_TOKEN
+    - kubectl config set-context default-system --cluster=default-cluster --user=default-admin --namespace=default
+    - kubectl config use-context default-system
+  script:
+    - kubectl --insecure-skip-tls-verify set image deployment/embed test=$CI_REGISTRY_IMAGE:$CI_BUILD_REF
