@@ -4,7 +4,7 @@ variables:
 stages:
   - build
   - docker
-  - docker
+  - deploy
 
 canary:
   stage: build
