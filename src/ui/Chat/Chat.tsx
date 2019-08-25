@@ -5,13 +5,18 @@ import { useQuery } from 'react-apollo-hooks'
 import Input from './Input'
 import { Field, Root } from './elements'
 import i18n from '@lib/i18n'
-import { useState, useRef } from 'react'
+import { useState, useRef, FunctionComponent } from 'react'
 import ErrorAhoy from "@ui/Overlays/ErrorAhoy";
 import { formatError } from "@views/Messages/utils";
 import { Loading } from "@ui/Overlays";
 import { addNotification } from "notify";
 
-export const Chat = () => {
+
+export interface ChatProps {
+}
+
+
+export const Chat: FunctionComponent<ChatProps> = (props) => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const sendMessage = useSendMessage();
   const [rows, setRows] = useState(1);

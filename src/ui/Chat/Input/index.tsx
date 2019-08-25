@@ -8,11 +8,14 @@ import Emojis from './suggestions/emojis'
 import Mentions from './suggestions/mentions'
 import extractQuery from './utils/extractQuery'
 import injectValue from './utils/injectValue'
+import { ChatProps } from '../Chat';
+import { inject, observer } from "mobx-react";
+import { AuthStore } from "../../../stores/auth";
 
-interface Props {
+interface Props extends ChatProps {
   innerRef?: (textarea: HTMLTextAreaElement) => void
   innerProps?: React.InputHTMLAttributes<HTMLTextAreaElement>
-
+  AuthStore?: AuthStore
   onChange?: Function
   onKeyPress?: Function
   onSubmit?: Function
@@ -20,6 +23,8 @@ interface Props {
 
 export const handlers = [Emojis, Mentions, Commands, Channels]
 
+@inject('AuthStore')
+@observer
 class MagicTextarea extends React.Component<Props> {
   initialState = {
     leftIndex: -1,
@@ -45,7 +50,7 @@ class MagicTextarea extends React.Component<Props> {
   }
 
   render() {
-    return (
+    return this.props.AuthStore.user ? (
       <Root>
         <Textarea
           {...this.props.innerProps}
@@ -141,7 +146,7 @@ class MagicTextarea extends React.Component<Props> {
           />
         )}
       </Root>
-    )
+    ) : null;
   }
 }
 
