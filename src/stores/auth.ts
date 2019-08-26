@@ -43,6 +43,7 @@ export class AuthStore {
 
   @action logout() {
     window.localStorage.removeItem('token');
+    window.localStorage.removeItem('user');
 
     this.user = undefined;
     this.token = undefined;
@@ -92,17 +93,6 @@ export class AuthStore {
         window.removeEventListener('message', receiveMessage);
       }
     })
-    /* this.inProgress = true;
-    this.errors = undefined;
-    return agent.Auth.login(this.values.email, this.values.password)
-      .then(({ user }) => commonStore.setToken(user.token))
-      .then(() => userStore.pullUser())
-      .catch(action((err) => {
-        this.errors = err.response && err.response.body && err.response.body.errors;
-        throw err;
-      }))
-      .finally(action(() => { this.inProgress = false; }));
-  } */
   }
 }
 

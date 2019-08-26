@@ -12,9 +12,7 @@ import { Loading } from "@ui/Overlays";
 import { addNotification } from "notify";
 
 
-export interface ChatProps {
-}
-
+export interface ChatProps {}
 
 export const Chat: FunctionComponent<ChatProps> = (props) => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
