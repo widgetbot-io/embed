@@ -50,7 +50,7 @@ class ChannelSwitcher extends React.Component<Props> {
                     Refresh Channels
                   </Refresh>
                   {this.props.AuthStore.channels.map((category, i) => (
-                    <Category key={i} category={category} activeChannel={channel} />
+                    <Category key={i} category={category} activeChannel={channel} index={i} />
                   ))}
 
                 </Root>

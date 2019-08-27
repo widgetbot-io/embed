@@ -8,6 +8,7 @@ import { Collapse, Emoji, Expand, Name, Root, Text } from './elements'
 interface Props {
   category: ICategory
   activeChannel: string
+  index: number
 }
 
 class Category extends React.PureComponent<Props> {
@@ -24,7 +25,7 @@ class Category extends React.PureComponent<Props> {
     const { category, activeChannel } = this.props
 
     return (
-      <Root className="category">
+      <Root className="category" style={this.props.index === 0 ? {paddingTop: 0} : {}}>
         {category.name && (
           <Name onClick={this.toggle}>
             {this.state.open ? <Collapse /> : <Expand />}
