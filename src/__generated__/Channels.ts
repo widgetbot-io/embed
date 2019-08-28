@@ -21,6 +21,7 @@ export interface Channels_guild_channels_TextChannel {
   __typename: "TextChannel";
   name: string;
   id: string;
+  nsfw: boolean | null;
   parent: Channels_guild_channels_TextChannel_parent | null;
 }
 

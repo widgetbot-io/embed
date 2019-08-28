@@ -61,14 +61,14 @@ export interface Messages_channel_TextChannel_messages_TextMessage_member {
 
 export interface Messages_channel_TextChannel_messages_TextMessage_reactions_emoji_CustomEmoji {
   __typename: "CustomEmoji";
-  name: string;
+  name: string | null;
   id: string;
   url: string;
 }
 
 export interface Messages_channel_TextChannel_messages_TextMessage_reactions_emoji_TextEmoji {
   __typename: "TextEmoji";
-  name: string;
+  name: string | null;
   utf8: string;
 }
 
@@ -77,7 +77,7 @@ export type Messages_channel_TextChannel_messages_TextMessage_reactions_emoji = 
 export interface Messages_channel_TextChannel_messages_TextMessage_reactions {
   __typename: "Reaction";
   count: number;
-  emoji: Messages_channel_TextChannel_messages_TextMessage_reactions_emoji;
+  emoji: Messages_channel_TextChannel_messages_TextMessage_reactions_emoji | null;
 }
 
 export interface Messages_channel_TextChannel_messages_TextMessage_attachments {

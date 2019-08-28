@@ -8,14 +8,14 @@
 
 export interface Emoji_CustomEmoji {
   __typename: "CustomEmoji";
-  name: string;
+  name: string | null;
   id: string;
   url: string;
 }
 
 export interface Emoji_TextEmoji {
   __typename: "TextEmoji";
-  name: string;
+  name: string | null;
   utf8: string;
 }
 

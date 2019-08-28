@@ -1,8 +1,12 @@
 import { Channels_guild_channels_TextChannel } from '@generated'
 
+interface Channel extends Channels_guild_channels_TextChannel {
+  pings?: number
+}
+
 export interface ICategory {
   name: string
-  channels: Channels_guild_channels_TextChannel[]
+  channels: Channel[]
 }
 
 const categorise = (

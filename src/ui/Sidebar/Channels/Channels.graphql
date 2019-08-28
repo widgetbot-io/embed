@@ -1,12 +1,18 @@
 query Channels($guild: String!) {
   guild(id: $guild) {
-    channels(type: "TextChannel") {
+    channels {
+      __typename
+
       name
       id
       ... on TextChannel {
+        nsfw
         parent {
           name
         }
+      }
+      ... on NewsChannel {
+        nsfw
       }
     }
   }

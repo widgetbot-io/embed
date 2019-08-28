@@ -35,7 +35,7 @@ class Category extends React.PureComponent<Props> {
           </Name>
         )}
 
-        {category.channels.map(({ name, id /*unread*/ }, order) => {
+        {category.channels.map(({ name, id, nsfw, __typename /*unread*/ }, order) => {
           // TODO: Implement unread
           let unread = false
           const selected = activeChannel === id
@@ -44,11 +44,13 @@ class Category extends React.PureComponent<Props> {
             <Channel
               key={id}
               {...{
+                __typename,
                 id,
                 name,
                 order,
                 unread: unread || undefined,
-                selected
+                selected,
+                nsfw: nsfw || false
               }}
             />
           ) : null

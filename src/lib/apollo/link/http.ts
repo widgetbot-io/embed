@@ -1,6 +1,7 @@
 import { ApolloLink } from 'apollo-link'
 import { BatchHttpLink } from 'apollo-link-batch-http'
 import { onError } from 'apollo-link-error'
+import {url} from "@lib/env";
 
 // const CRUNCH = false
 
@@ -23,7 +24,7 @@ const httpLink = ApolloLink.from([
   }),
   // CRUNCH && uncruncher,
   new BatchHttpLink({
-    uri: `https://prep.daave.dev/api/graphql` /*${CRUNCH ? '?crunch' : ''}`*/,
+    uri: `${url.includes('127.0.0.1') ? `http://${url}` : `https://${url}`}/api/graphql` /*${CRUNCH ? '?crunch' : ''}`*/,
     batchInterval: 20,
     batchMax: 2
   })

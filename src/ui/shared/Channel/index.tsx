@@ -65,5 +65,5 @@ const Channel = ({ id: channel, children, className }: Props) => (
 
 export default Channel
 
-export { Hash } from './elements'
+export * from './elements'
 export { default as ChannelLink } from './link'

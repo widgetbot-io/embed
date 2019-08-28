@@ -56,14 +56,14 @@ export interface Message_TextMessage_member {
 
 export interface Message_TextMessage_reactions_emoji_CustomEmoji {
   __typename: "CustomEmoji";
-  name: string;
+  name: string | null;
   id: string;
   url: string;
 }
 
 export interface Message_TextMessage_reactions_emoji_TextEmoji {
   __typename: "TextEmoji";
-  name: string;
+  name: string | null;
   utf8: string;
 }
 
@@ -72,7 +72,7 @@ export type Message_TextMessage_reactions_emoji = Message_TextMessage_reactions_
 export interface Message_TextMessage_reactions {
   __typename: "Reaction";
   count: number;
-  emoji: Message_TextMessage_reactions_emoji;
+  emoji: Message_TextMessage_reactions_emoji | null;
 }
 
 export interface Message_TextMessage_attachments {
