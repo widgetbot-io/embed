@@ -28,6 +28,8 @@
       "@generated": ["src/__generated__/index"],
       "@generated/*": ["src/__generated__/*"],
       "@utils/*": ["src/utils/*"],
+      "@store": ["src/stores"],
+      "@store/*": ["src/stores/*"],
       "notify": ["src/app/notify.tsx"],
       "locales": ["src/app/locales"],
       "locales/*": ["src/app/locales/*"],

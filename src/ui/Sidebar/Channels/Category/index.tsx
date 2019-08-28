@@ -14,7 +14,7 @@ interface Props {
 class Category extends React.PureComponent<Props> {
   state = {
     open: true
-  }
+  };
 
   @autobind
   toggle() {
@@ -22,7 +22,7 @@ class Category extends React.PureComponent<Props> {
   }
 
   render() {
-    const { category, activeChannel } = this.props
+    const { category, activeChannel } = this.props;
 
     return (
       <Root className="category" style={this.props.index === 0 ? {paddingTop: 0} : {}}>
@@ -35,10 +35,10 @@ class Category extends React.PureComponent<Props> {
           </Name>
         )}
 
-        {category.channels.map(({ name, id, nsfw, __typename /*unread*/ }, order) => {
+        {category.channels.map(({ name, id, nsfw = false, __typename, pings = 0 /*unread*/ }, order) => {
           // TODO: Implement unread
-          let unread = false
-          const selected = activeChannel === id
+          let unread = pings > 0;
+          const selected = activeChannel === id;
 
           return this.state.open || selected || unread ? (
             <Channel
@@ -50,7 +50,8 @@ class Category extends React.PureComponent<Props> {
                 order,
                 unread: unread || undefined,
                 selected,
-                nsfw: nsfw || false
+                nsfw,
+                pings
               }}
             />
           ) : null
