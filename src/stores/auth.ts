@@ -5,6 +5,7 @@ import { url } from "@lib/env";
 import { ICategory } from "@ui/Sidebar/Channels/categorise";
 import { useRouter } from "@hooks";
 import CHANNELS from "@ui/Sidebar/Channels/Channels.graphql";
+import { addNotification } from '../app/notify';
 
 interface User {
   createdAt: string,
@@ -50,6 +51,12 @@ export class AuthStore {
   }
 
   @action login() {
+    const exitWarning = () => addNotification({
+      level: 'warning',
+      title: 'Login Unsuccessful',
+      message: 'You exited the window.',
+      autoDismiss: 0,
+    });
     return new Promise((resolve, reject) => {
       this.inProgress = true;
       this.errors = undefined;
@@ -63,7 +70,7 @@ export class AuthStore {
         if ((newWindow as Window).closed) {
           cleanup();
           this.inProgress = false;
-          reject(new Error('Login Cancelled.'));
+          reject(exitWarning());
         }
       }, 1000);
 
