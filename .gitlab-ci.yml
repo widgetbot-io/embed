@@ -45,4 +45,4 @@ staging:
     - kubectl config set-context default-system --cluster=default-cluster --user=default-admin --namespace=default
     - kubectl config use-context default-system
   script:
-    - kubectl --insecure-skip-tls-verify set image deployment/embed0 embed0=$CI_REGISTRY_IMAGE:$CI_BUILD_REF
+    - kubectl set image deployment/embed0 embed0=$CI_REGISTRY_IMAGE:$CI_BUILD_REF
