@@ -23,39 +23,28 @@ class LoginButton extends React.Component<Props> {
     marginLeft: '5px'
   };
   onClick: React.MouseEventHandler<HTMLButtonElement> = (e: React.MouseEvent<HTMLButtonElement>) => {
+    this.props.AuthStore.user ? this.logout() : this.login();
+  };
+  login() {
     this.props.AuthStore.login().then(async r => {
       await this.props.AuthStore.fetchUser();
       await this.props.AuthStore.refreshChannels();
     });
-  };
+  }
+  logout() {
+    this.props.AuthStore.logout();
+    this.props.AuthStore.refreshChannels();
+  }
   render(): React.ReactNode {
     return (
         <React.Fragment>
-          <button onClick={this.onClick} style={this.style} > Login </button>
+          {this.props.AuthStore.user ? `Logged in as ${this.props.AuthStore.user.username}` : undefined}
+          <button onClick={this.onClick} style={this.style} > {this.props.AuthStore.user ? 'Logout' : 'Login'} </button>
         </React.Fragment>
     )
   }
 }
 
-class LogoutButton extends React.Component<Props> {
-  private readonly style: CSSProperties = {
-    border: '1px solid white',
-    borderRadius: '5px',
-    padding: '5px',
-    marginLeft: '5px'
-  };
-  onClick: React.MouseEventHandler<HTMLButtonElement> = (e: React.MouseEvent<HTMLButtonElement>) => {
-    this.props.AuthStore.logout();
-    this.props.AuthStore.refreshChannels();
-  };
-  render(): React.ReactNode {
-    return (
-      <React.Fragment>
-        <button onClick={this.onClick} style={this.style} > Logout </button>
-      </React.Fragment>
-    )
-  }
-}
 
 @inject('AuthStore')
 @observer
@@ -63,8 +52,7 @@ export default class Panel extends React.Component<Props> {
   render(): React.ReactNode {
     return (
       <Root className="panel">
-        {this.props.AuthStore.user ? `Logged in as ${this.props.AuthStore.user.username}` : <LoginButton AuthStore={this.props.AuthStore}/>}
-        {this.props.AuthStore.user ? <LogoutButton AuthStore={this.props.AuthStore}/> : undefined}
+        <LoginButton AuthStore={this.props.AuthStore}/>
         {
           /* <Tooltip
              placement="top"
