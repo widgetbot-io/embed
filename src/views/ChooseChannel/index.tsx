@@ -9,7 +9,7 @@ const ChooseChannel = ({ i18n }: withI18nProps) => (
   <Wrapper>
     <Header>
       <Name>
-        <Trans id="PickChannelScreen.Title">Select a channel</Trans>
+        Select a channel
       </Name>
       <Topic>
         Pick a channel from the left
