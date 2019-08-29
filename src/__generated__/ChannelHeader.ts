@@ -7,7 +7,7 @@
 // ====================================================
 
 export interface ChannelHeader_channel_CategoryChannel {
-  __typename: "CategoryChannel" | "VoiceChannel";
+  __typename: "CategoryChannel" | "NewsChannel" | "StoreChannel" | "VoiceChannel";
   name: string;
   id: string;
 }

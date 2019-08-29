@@ -7,25 +7,30 @@
 // ====================================================
 
 export interface Channels_guild_channels_CategoryChannel {
-  __typename: "CategoryChannel" | "VoiceChannel";
+  __typename: "CategoryChannel" | "StoreChannel" | "VoiceChannel";
   name: string;
   id: string;
-}
-
-export interface Channels_guild_channels_TextChannel_parent {
-  __typename: "CategoryChannel";
-  name: string;
 }
 
 export interface Channels_guild_channels_TextChannel {
   __typename: "TextChannel";
   name: string;
   id: string;
-  nsfw: boolean | null;
-  parent: Channels_guild_channels_TextChannel_parent | null;
+  canSend: boolean;
+  nsfw: boolean;
+  category: string | null;
 }
 
-export type Channels_guild_channels = Channels_guild_channels_CategoryChannel | Channels_guild_channels_TextChannel;
+export interface Channels_guild_channels_NewsChannel {
+  __typename: "NewsChannel";
+  name: string;
+  id: string;
+  canSend: boolean;
+  nsfw: boolean;
+  category: string | null;
+}
+
+export type Channels_guild_channels = Channels_guild_channels_CategoryChannel | Channels_guild_channels_TextChannel | Channels_guild_channels_NewsChannel;
 
 export interface Channels_guild {
   __typename: "Guild";

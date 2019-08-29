@@ -7,7 +7,7 @@
 // ====================================================
 
 export interface ChannelName_channel {
-  __typename: "CategoryChannel" | "TextChannel" | "VoiceChannel";
+  __typename: "CategoryChannel" | "NewsChannel" | "StoreChannel" | "TextChannel" | "VoiceChannel";
   name: string;
   id: string;
 }

@@ -7,19 +7,14 @@
 // ====================================================
 
 export interface ChannelInfo_channel_CategoryChannel {
-  __typename: "CategoryChannel" | "VoiceChannel";
-}
-
-export interface ChannelInfo_channel_TextChannel_parent {
-  __typename: "CategoryChannel";
-  name: string;
+  __typename: "CategoryChannel" | "NewsChannel" | "StoreChannel" | "VoiceChannel";
 }
 
 export interface ChannelInfo_channel_TextChannel {
   __typename: "TextChannel";
   name: string;
   id: string;
-  parent: ChannelInfo_channel_TextChannel_parent | null;
+  category: string | null;
 }
 
 export type ChannelInfo_channel = ChannelInfo_channel_CategoryChannel | ChannelInfo_channel_TextChannel;

@@ -3,9 +3,7 @@ query ChannelInfo($channel: String!) {
     ... on TextChannel {
       name
       id
-      parent {
-        name
-      }
+      category
     }
   }
 }

@@ -7,7 +7,7 @@
 // ====================================================
 
 export interface Messages_channel_CategoryChannel {
-  __typename: "CategoryChannel" | "VoiceChannel";
+  __typename: "CategoryChannel" | "NewsChannel" | "StoreChannel" | "VoiceChannel";
   id: string;
 }
 
