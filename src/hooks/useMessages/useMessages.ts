@@ -93,7 +93,7 @@ export const useMessages = (channel: string) => {
     messages,
     fetchMore,
     error: query.error,
-    nsfw: [query.data.channel.nsfw, query.data.channel],
+    nsfw: query.data.channel.nsfw,
     // @ts-ignore
     stale: query.stale
   };
