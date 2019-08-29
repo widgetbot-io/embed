@@ -1,6 +1,6 @@
 import React, { CSSProperties } from "react";
 import { Route } from "react-router-dom";
-import { Query } from "react-apollo";
+import {Query, Subscription} from "react-apollo";
 import { Channels, ChannelsVariables } from "@generated";
 import { inject, observer } from "mobx-react";
 
@@ -12,6 +12,8 @@ import categorise from "./categorise";
 import CHANNELS from "./Channels.graphql";
 import { AuthStore } from "../../../stores/auth";
 import { Trans } from "@lingui/react";
+import {NEW_MESSAGES, useRouter} from "@hooks";
+import {useSubscription} from "react-apollo-hooks";
 
 export const ITEM_ID = 'channel';
 
@@ -36,7 +38,6 @@ class ChannelSwitcher extends React.Component<Props> {
           >
             {({ loading, error, data, refetch }) => {
               if (!loading && !error) this.props.AuthStore.channels = categorise(data.guild.channels as any);
-
               return (
                 <Root className="channels">
                   <Selector itemID={ITEM_ID} />
@@ -52,7 +53,6 @@ class ChannelSwitcher extends React.Component<Props> {
                   {this.props.AuthStore.channels.map((category, i) => (
                     <Category key={i} category={category} activeChannel={channel} index={i} />
                   ))}
-
                 </Root>
               )
             }}
@@ -62,5 +62,22 @@ class ChannelSwitcher extends React.Component<Props> {
     )
   }
 }
+
+export const channelPings = (AuthStore: AuthStore) => {
+  const { guild } = useRouter();
+
+  async function get() {
+    console.log('called');
+    useSubscription(NEW_MESSAGES, {
+      // variables: { channel: '614463092901806101' },
+      onSubscriptionData({ subscriptionData }) {
+        console.log('vee')
+        console.log(subscriptionData);
+      }
+    });
+  }
+
+  return { get }
+};
 
 export default ChannelSwitcher

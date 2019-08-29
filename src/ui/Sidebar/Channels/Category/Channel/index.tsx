@@ -4,6 +4,8 @@ import { ITEM_ID } from '@ui/Sidebar/Channels'
 import {Hashtag, Name, Pings, Root, Newstag, Storetag} from './elements'
 import {inject, observer} from "mobx-react";
 import { AuthStore } from '@store/auth';
+import {NEW_MESSAGES, useRouter} from "@hooks";
+import {useSubscription} from "react-apollo-hooks";
 
 interface Props {
     unread: boolean,
