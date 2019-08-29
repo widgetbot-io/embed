@@ -148,12 +148,24 @@ class MagicTextarea extends React.Component<Props> {
       </Root>
     ) : (
       <p
-        style={{
-          opacity: 0.4,
-          marginTop: "10px",
-          marginBottom: 0,
-          marginLeft: "10px"
-        }}
+        // style={{
+        //   opacity: 0.4,
+        //   marginTop: "10px",
+        //   marginBottom: 0,
+        //   marginLeft: "10px"
+        // }}
+        style={`
+          opacity: 0.4;
+          margin-top: 10px;
+          margin-bottom: 0;
+          margin-left: 10px;
+          -webkit-touch-callout: none; 
+          -webkit-user-select: none; 
+          -khtml-user-select: none; 
+          -moz-user-select: none; 
+          -ms-user-select: none; 
+          user-select: none;
+        `}
       >
         You do not have permission to send messages in this channel.
       </p>
