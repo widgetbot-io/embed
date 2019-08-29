@@ -1,4 +1,4 @@
-import {ChannelLink, Hash, News, Store} from '@ui/shared/Channel'
+import {ChannelLink, Hash, News, Store, NSFW} from '@ui/shared/Channel'
 import styled, { css, keyframes } from '@lib/emotion'
 import Item from '@ui/SelectItem'
 
@@ -53,6 +53,14 @@ export const Root = styled(Link)<Props>`
 `
 
 export const Hashtag = styled(Hash)`
+  flex-shrink: 0;
+  opacity: 0.6;
+  height: 100%;
+  width: 16px;
+  margin-right: 7px;
+`;
+
+export const NSFWTag = styled(NSFW)`
   flex-shrink: 0;
   opacity: 0.6;
   height: 100%;

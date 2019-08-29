@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { ITEM_ID } from '@ui/Sidebar/Channels'
 
-import {Hashtag, Name, Pings, Root, Newstag, Storetag} from './elements'
+import {Hashtag, Name, Pings, Root, Newstag, Storetag, NSFWTag} from './elements'
 import {inject, observer} from "mobx-react";
 import { AuthStore } from '@store/auth';
 import {NEW_MESSAGES, useRouter} from "@hooks";
@@ -23,6 +23,7 @@ interface Props {
 @observer
 class Channel extends React.PureComponent<Props> {
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
+        console.log(this.props)
         return (
             <Root {...this.props} itemID={ITEM_ID} className="channel">
                 {(() => {
@@ -34,7 +35,7 @@ class Channel extends React.PureComponent<Props> {
                             return <Storetag className="store" />;
                         }
                         case 'TextChannel': {
-                            return <Hashtag className="hash" />;
+                            return this.props.nsfw ? <NSFWTag className="nsfw" /> : <Hashtag className="hash" />;
                         }
                     }
                 })()}
