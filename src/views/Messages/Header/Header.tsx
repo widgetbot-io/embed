@@ -41,7 +41,7 @@ export const Header = ({ channel }: HeaderProps) => {
           // TODO: Fix join button
           // onClick={this.join}
         >
-          <Trans id="Header.joinDiscord">Join on Discord</Trans>
+          Join on Discord
         </Join>
       </Tooltip>
     </Root>
