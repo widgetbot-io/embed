@@ -1,23 +1,30 @@
-import * as React from 'react';
-import { useMemo } from 'react';
-import { useMessages } from '@hooks';
-import { formatError, groupMessages } from './utils';
-import ErrorAhoy from '@ui/Overlays/ErrorAhoy';
-import { Info, Loading, NoMessages } from '@ui/Overlays';
-import { MessageList, MessagesWrapper, Scroller } from './elements';
-import { CellMeasurer, CellMeasurerCache, InfiniteLoader } from 'react-virtualized';
-import { observer, useObservable } from 'mobx-react-lite';
-import Message from '@ui/Message';
-import { useCallbackReference } from 'src/hooks/useCallbackReference';
+import * as React from "react";
+import { useMemo } from "react";
+import { useMessages } from "@hooks";
+import { formatError, groupMessages } from "./utils";
+import ErrorAhoy from "@ui/Overlays/ErrorAhoy";
+import { Info, Loading, NoMessages } from "@ui/Overlays";
+import { MessageList, MessagesWrapper, Scroller } from "./elements";
+import {
+  CellMeasurer,
+  CellMeasurerCache,
+  InfiniteLoader
+} from "react-virtualized";
+import { observer, useObservable } from "mobx-react-lite";
+import Message from "@ui/Message";
+import { useCallbackReference } from "src/hooks/useCallbackReference";
 
 type MessagesProps = {
-  guild: string
-  channel: string
-}
+  guild: string;
+  channel: string;
+};
 
 export const Messages = observer(({ guild, channel }: MessagesProps) => {
-  const { messages, error, ready, stale, fetchMore } = useMessages(channel);
-
+  const { messages, error, ready, stale, fetchMore, nsfw } = useMessages(
+    channel
+  );
+  console.log(".nsfw " + nsfw[0]);
+  console.log("ful", nsfw[1]);
   const groupedMessages = groupMessages(messages);
   const scroller = useObservable({
     isLoadingMore: false,
@@ -28,12 +35,12 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
 
   const getKey = useCallbackReference((rowIndex: number) => {
     const group = groupedMessages[rowIndex];
-    const ids = group ? group.map(m => m.id).join(':') : 'placeholder';
+    const ids = group ? group.map(m => m.id).join(":") : "placeholder";
 
     // Given the following data points, the group should be identical
     const identifier = [guild, channel, ids, scroller.width];
 
-    return identifier.join('$')
+    return identifier.join("$");
   });
 
   const cache = useMemo(
@@ -73,10 +80,10 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
 
                 if (loadMore) {
                   if (scroller.readyToLoadMore) return false;
-                  scroller.readyToLoadMore = true
+                  scroller.readyToLoadMore = true;
                 }
 
-                return true
+                return true;
               }}
               loadMoreRows={async () => {
                 if (scroller.isLoadingMore) return;
@@ -92,7 +99,7 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
                 cache.clear(2, 0);
 
                 scroller.scrollToIndex =
-                  groupedMessages.length - prevMessageCount
+                  groupedMessages.length - prevMessageCount;
               }}
               rowCount={Infinity}
               threshold={1}
@@ -127,10 +134,10 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
                 />
               )}
             </InfiniteLoader>
-          )
+          );
         }}
       </MessageList>
       {stale && <Loading />}
     </MessagesWrapper>
-  )
+  );
 });
