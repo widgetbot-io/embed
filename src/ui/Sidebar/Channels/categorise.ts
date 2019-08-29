@@ -16,7 +16,7 @@ const categorise = (
   let categorised = new Array<ICategory>()
 
   channels.forEach((channel, i) => {
-    const category = channel.parent ? channel.parent.name : null
+    const category = channel.category ? channel.category : null;
 
     const newCategory = {
       name: category,
