@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Root, Textarea } from "./elements";
+import { Root, Textarea, NoPerms } from "./elements";
 import Suggestions from "./Suggestions";
 import Channels from "./suggestions/channels";
 import Commands from "./suggestions/commands";
@@ -10,7 +10,7 @@ import extractQuery from "./utils/extractQuery";
 import injectValue from "./utils/injectValue";
 import { ChatProps } from "../Chat";
 import { inject, observer } from "mobx-react";
-import { AuthStore } from "../../../stores/auth";
+import { AuthStore } from "@store/auth";
 
 interface Props extends ChatProps {
   innerRef?: (textarea: HTMLTextAreaElement) => void;
@@ -147,28 +147,16 @@ class MagicTextarea extends React.Component<Props> {
         )}
       </Root>
     ) : (
-      <p
+      <NoPerms
         // style={{
         //   opacity: 0.4,
         //   marginTop: "10px",
         //   marginBottom: 0,
         //   marginLeft: "10px"
         // }}
-        style={`
-          opacity: 0.4;
-          margin-top: 10px;
-          margin-bottom: 0;
-          margin-left: 10px;
-          -webkit-touch-callout: none; 
-          -webkit-user-select: none; 
-          -khtml-user-select: none; 
-          -moz-user-select: none; 
-          -ms-user-select: none; 
-          user-select: none;
-        `}
       >
         You do not have permission to send messages in this channel.
-      </p>
+      </NoPerms>
     );
   }
 }

@@ -46,4 +46,6 @@ export const Root = styled('div')<Props>`
   @media (max-width: 170px) {
     width: 150px;
   }
-`
+`;
+
+

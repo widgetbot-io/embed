@@ -37,3 +37,16 @@ export const Suggestions = styled(ScrollOverlay)<Props>`
     padding: 8px 0;
   }
 `
+
+export const NoPerms = styled(`p`)`
+    opacity: 0.4;
+    margin-top: 10px;
+    margin-bottom: 0;
+    margin-left: 10px;
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none;
+`;
