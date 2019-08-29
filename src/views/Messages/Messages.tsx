@@ -23,6 +23,8 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
   const { messages, error, ready, stale, fetchMore } = useMessages(
     channel
   );
+  console.log(".nsfw " + nsfw[0]);
+  console.log("ful", nsfw[1]);
   const groupedMessages = groupMessages(messages);
   const scroller = useObservable({
     isLoadingMore: false,
