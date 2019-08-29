@@ -4,7 +4,6 @@ import { useQuery, useSubscription } from 'react-apollo-hooks'
 
 /**
  * Fetches the messages for a channel
- * The returned messages may not be in the correct order
  */
 export const useMessages = (channel: string) => {
   const query = useQuery(MESSAGES, {
