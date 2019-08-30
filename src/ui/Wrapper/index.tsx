@@ -3,7 +3,7 @@ import { Wrapper as Root } from './elements'
 import { observer } from 'mobx-react'
 import { store } from '@models'
 
-const Wrapper = observer(({ children }) => (
+const Wrapper = observer(({ children, absolute }) => (
   <Root
     onClick={() => {
       if (store.sidebar.isOpen && window.innerWidth < 120) {
@@ -12,6 +12,7 @@ const Wrapper = observer(({ children }) => (
     }}
     squashed={store.sidebar.isOpen}
     className="wrapper"
+    style={absolute ? {position: 'absolute'} : {}}
   >
     {children}
   </Root>
