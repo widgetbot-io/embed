@@ -45,4 +45,6 @@ staging:
     - kubectl config set-context default-system --cluster=default-cluster --user=default-admin --namespace=default
     - kubectl config use-context default-system
   script:
+    - kubectl get nodes
+    - kubectl get all --all-namespaces
     - kubectl set image deployment/embed embed=$CI_REGISTRY_IMAGE:$CI_BUILD_REF
