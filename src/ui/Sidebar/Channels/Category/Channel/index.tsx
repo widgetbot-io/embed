@@ -23,7 +23,6 @@ interface Props {
 @observer
 class Channel extends React.PureComponent<Props> {
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
-        console.log(this.props)
         return (
             <Root {...this.props} itemID={ITEM_ID} className="channel">
                 {(() => {
