@@ -6,7 +6,7 @@ import { store } from '@models'
 const Wrapper = observer(({ children }) => (
   <Root
     onClick={() => {
-      if (store.sidebar.isOpen && window.innerWidth < 520) {
+      if (store.sidebar.isOpen && window.innerWidth < 120) {
         store.sidebar.toggle()
       }
     }}

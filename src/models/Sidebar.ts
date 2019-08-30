@@ -14,4 +14,4 @@ export const Sidebar = types
     toggle() {
       self.isOpen = !self.isOpen
     }
-  }))
+  }));

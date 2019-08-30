@@ -8,6 +8,8 @@ import { Count, Icon, Name, Root } from './elements'
 import GET_INFO from './GuildInfo.graphql'
 import { Plural } from '@lingui/react'
 import { addNotification } from "notify";
+import {store} from "@models";
+import {Close} from "@ui/Sidebar/elements";
 
 const Header = () => (
   <Route path="/:guild">
@@ -32,6 +34,14 @@ const Header = () => (
 
           if (error) return null;
 
+          if (window.innerWidth < 520) return (
+              <Root className="header">
+                <Icon src={data.guild.iconURL} className="icon" />
+                <Name className="name">{data.guild.name}</Name>
+                <Close onClick={store.sidebar.toggle} />
+              </Root>
+          )
+
           return (
             <Root className="header">
               <Icon src={data.guild.iconURL} className="icon" />
@@ -49,6 +59,7 @@ const Header = () => (
               >
                 <Count className="count">{data.guild.memberCount}</Count>
               </Tooltip>
+              <Close onClick={store.sidebar.toggle} />
             </Root>
           )
         }}
