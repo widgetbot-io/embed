@@ -72,7 +72,7 @@ export class AuthStore {
           this.inProgress = false;
           reject(exitWarning());
         }
-      }, 1000);
+      }, 500);
 
       const receiveMessage = ({ data, source }: MessageEvent) => {
         source = source as Window;

@@ -41,6 +41,7 @@ export const Chat: FunctionComponent<ChatProps> = (props) => {
     <Root className="chat">
       <Field rows={rows} className="field">
         <Input
+          channel={data.channel}
           onChange={(value: string) => {
             const rows = value.split(/\r\n|\r|\n/).length;
             setRows(rows)

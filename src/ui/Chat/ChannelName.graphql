@@ -3,5 +3,6 @@ query ChannelName($channel: String!) {
     name
     id
     nsfw
+    canSend
   }
 }

@@ -13,12 +13,13 @@ import { inject, observer } from "mobx-react";
 import { AuthStore } from "@store/auth";
 
 interface Props extends ChatProps {
-  innerRef?: (textarea: HTMLTextAreaElement) => void;
-  innerProps?: React.InputHTMLAttributes<HTMLTextAreaElement>;
-  AuthStore?: AuthStore;
-  onChange?: Function;
-  onKeyPress?: Function;
-  onSubmit?: Function;
+  innerRef?: (textarea: HTMLTextAreaElement) => void,
+  innerProps?: React.InputHTMLAttributes<HTMLTextAreaElement>,
+  AuthStore?: AuthStore,
+  onChange?: Function,
+  onKeyPress?: Function,
+  onSubmit?: Function,
+  channel?: any
 }
 
 export const handlers = [Emojis, Mentions, Commands, Channels];
@@ -50,7 +51,7 @@ class MagicTextarea extends React.Component<Props> {
   }
 
   render() {
-    return this.props.AuthStore.user ? (
+    return (this.props.AuthStore.user && this.props.channel.canSend) ? (
       <Root>
         <Textarea
           {...this.props.innerProps}
