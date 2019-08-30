@@ -2,5 +2,6 @@ query ChannelName($channel: String!) {
   channel(id: $channel) {
     name
     id
+    nsfw
   }
 }
