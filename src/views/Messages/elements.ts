@@ -31,12 +31,3 @@ export const MessagesWrapper = styled('div')<MessagesWrapperProps>`
     opacity: ${({ stale }) => (stale ? 0.4 : 1)};
   }
 `
-
-export const NSFWScreen = styled('div')<{}>`
-position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
-`
