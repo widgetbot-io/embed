@@ -1,17 +1,16 @@
-import React, { CSSProperties } from "react";
-import { Route } from "react-router-dom";
-import {Query, Subscription} from "react-apollo";
-import { Channels, ChannelsVariables } from "@generated";
-import { inject, observer } from "mobx-react";
+import React from "react";
+import {Route} from "react-router-dom";
+import {Query} from "react-apollo";
+import {Channels, ChannelsVariables} from "@generated";
+import {inject, observer} from "mobx-react";
 
-import { Selector } from "@ui/SelectItem";
+import {Selector} from "@ui/SelectItem";
 
-import { Root, Refresh } from "./elements";
+import {Refresh, Root} from "./elements";
 import Category from "./Category";
 import categorise from "./categorise";
 import CHANNELS from "./Channels.graphql";
-import { AuthStore } from "../../../stores/auth";
-import { Trans } from "@lingui/react";
+import {AuthStore} from "@store/auth";
 import {NEW_MESSAGES, useRouter} from "@hooks";
 import {useSubscription} from "react-apollo-hooks";
 

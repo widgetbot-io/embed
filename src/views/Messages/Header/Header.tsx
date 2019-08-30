@@ -28,6 +28,8 @@ export const Header = ({ channel, guild }: HeaderProps) => {
         suspend: true
     });
 
+    const invite = gData.guild.invite ? gData.guild.invite : defaultInvite;
+
   return (
     <Root>
       <Stretch>
@@ -43,7 +45,7 @@ export const Header = ({ channel, guild }: HeaderProps) => {
       <Tooltip placement="bottom" overlay="Open in Discord app">
         <Join
           className="join"
-          href={gData.invite || defaultInvite}
+          href={invite}
           target="_blank"
           // TODO: Fix join button
           // onClick={this.join}
