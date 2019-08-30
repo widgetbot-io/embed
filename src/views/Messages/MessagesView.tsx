@@ -15,7 +15,7 @@ export const MessagesView = ({ match }: MessageProps) => {
   return (
     <Wrapper>
       <React.Suspense fallback={<Header.Fallback />}>
-        <Header channel={match.params.channel} />
+        <Header channel={match.params.channel} guild={match.params.guild}/>
       </React.Suspense>
 
       <React.Suspense fallback={<Loading />}>

@@ -2,6 +2,7 @@ query GuildInfo($guild: String!) {
   guild(id: $guild) {
     name
     iconURL
+    invite
     memberCount
   }
 }
