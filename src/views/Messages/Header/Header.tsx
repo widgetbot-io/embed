@@ -16,7 +16,7 @@ export interface HeaderProps {
   guild: string
 }
 
-export const Header = ({ channel }: HeaderProps) => {
+export const Header = ({ channel, guild }: HeaderProps) => {
     const { data: cData } = useQuery(CHANNEL, {
     variables: { channel },
     fetchPolicy: 'cache-first',
