@@ -2,7 +2,14 @@ query ChannelName($channel: String!) {
   channel(id: $channel) {
     name
     id
-    nsfw
-    canSend
+
+    ... on TextChannel {
+      nsfw
+      canSend
+    }
+    ... on NewsChannel {
+      nsfw
+      canSend
+    }
   }
 }

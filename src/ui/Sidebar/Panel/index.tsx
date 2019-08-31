@@ -6,7 +6,7 @@ import { Trans } from '@lingui/react'
 import { store } from '@models'
 import Button from "@ui/shared/button";
 import { inject, observer } from "mobx-react";
-import { AuthStore } from "../../../stores/auth";
+import { AuthStore } from "@store/auth";
 import {CSSProperties} from "react";
 
 const { version } = require('../../../../package.json');
@@ -15,6 +15,7 @@ interface Props {
   AuthStore?: AuthStore
 }
 
+@observer
 class LoginButton extends React.Component<Props> {
   private readonly style: CSSProperties = {
     border: '1px solid white',
