@@ -9,7 +9,7 @@ import GET_THEME from './Theme.graphql'
 import { Theme_guild_theme } from '@generated'
 import * as Constants from '@constants'
 import { useQuery } from 'react-apollo-hooks'
-import { useRouter } from '@hooks'
+import {useCacheLoaded, useRouter} from '@hooks'
 
 export const ThemeProvider = ({ children }) => {
   let guild;

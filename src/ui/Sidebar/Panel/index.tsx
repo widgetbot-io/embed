@@ -16,7 +16,7 @@ interface Props {
 }
 
 @observer
-class LoginButton extends React.Component<Props> {
+export class LoginButton extends React.Component<Props> {
   private readonly style: CSSProperties = {
     border: '1px solid white',
     borderRadius: '5px',

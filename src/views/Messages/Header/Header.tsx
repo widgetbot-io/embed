@@ -8,15 +8,18 @@ import { Trans } from '@lingui/react'
 import { store } from '@models'
 import { useQuery } from 'react-apollo-hooks'
 import GET_INFO from "@ui/Sidebar/Header/GuildInfo.graphql";
+import {LoginButton} from "@ui/Sidebar/Panel";
+import {AuthStore} from "@store/auth";
 
 const defaultInvite = 'https://discord.gg/56VgJZ4';
 
 export interface HeaderProps {
   channel: string,
-  guild: string
+  guild: string,
+  AuthStore?: AuthStore
 }
 
-export const Header = ({ channel, guild }: HeaderProps) => {
+export const Header = ({ channel, guild, AuthStore }: HeaderProps) => {
     const { data: cData } = useQuery(CHANNEL, {
     variables: { channel },
     fetchPolicy: 'cache-first',
@@ -34,13 +37,18 @@ export const Header = ({ channel, guild }: HeaderProps) => {
     <Root>
       <Stretch>
         <Name>{cData.channel.name}</Name>
-
-        <Topic
-          onClick={() => store.modal.openTopic(cData.channel.topic)}
-          className="topic"
-        >
-          {cData.channel.topic}
-        </Topic>
+          {(() => {
+              return window.innerWidth < 520 ? (
+                 <LoginButton AuthStore={AuthStore} />
+              ) : (
+                  <Topic
+                      onClick={() => store.modal.openTopic(cData.channel.topic)}
+                      className="topic"
+                  >
+                      {cData.channel.topic}
+                  </Topic>
+              )
+          })()}
       </Stretch>
       <Tooltip placement="bottom" overlay="Open in Discord app">
         <Join
