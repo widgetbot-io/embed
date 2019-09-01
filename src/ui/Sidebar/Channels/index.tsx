@@ -37,6 +37,7 @@ class ChannelSwitcher extends React.Component<Props> {
           >
             {({ loading, error, data, refetch }) => {
               if (!loading && !error) this.props.AuthStore.channels = categorise(data.guild.channels as any);
+              console.log(this.props.AuthStore.channels);
               return (
                 <Root className="channels">
                   <Selector itemID={ITEM_ID} />
