@@ -7,6 +7,7 @@ interface Channel extends Channels_guild_channels_TextChannel {
 export interface ICategory {
   name: string
   channels: Channel[]
+  position: number;
 }
 
 const categorise = (
@@ -19,13 +20,14 @@ const categorise = (
     const category: ChannelInfo_channel_TextChannel_category = channel.category ? channel.category : null;
 
     const newCategory = {
-      name: category,
-      channels: [channel]
-    }
+      name: category && category.name,
+      channels: [channel],
+      position: category && category.position
+    };
 
     if (category) {
       // The channel belongs in a named category
-      let index = indexes.get(category)
+      let index = indexes.get(category.name)
 
       // If the category already exists
       if (typeof index === 'number') {
@@ -34,7 +36,7 @@ const categorise = (
       } else {
         // Create a new category
         index = categorised.push(newCategory) - 1
-        indexes.set(category, index)
+        indexes.set(category.name, index)
       }
     } else {
       // The channel doesn't belong in a named category
@@ -50,7 +52,7 @@ const categorise = (
     }
   })
 
-  return categorised
+  return categorised.sort((a, b) => a.position-b.position)
 }
 
 export default categorise
