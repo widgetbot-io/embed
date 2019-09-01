@@ -6,18 +6,24 @@
 // GraphQL query operation: ChannelInfo
 // ====================================================
 
-export interface ChannelInfo_channel_CategoryChannel {
-  __typename: "CategoryChannel" | "NewsChannel" | "StoreChannel" | "VoiceChannel";
+export interface ChannelInfo_channel_NewsChannel {
+  __typename: "NewsChannel" | "StoreChannel" | "VoiceChannel";
+}
+
+export interface ChannelInfo_channel_TextChannel_category {
+  __typename: "Category";
+  name: string;
+  position: number;
 }
 
 export interface ChannelInfo_channel_TextChannel {
   __typename: "TextChannel";
   name: string;
   id: string;
-  category: string | null;
+  category: ChannelInfo_channel_TextChannel_category | null;
 }
 
-export type ChannelInfo_channel = ChannelInfo_channel_CategoryChannel | ChannelInfo_channel_TextChannel;
+export type ChannelInfo_channel = ChannelInfo_channel_NewsChannel | ChannelInfo_channel_TextChannel;
 
 export interface ChannelInfo {
   channel: ChannelInfo_channel | null;

@@ -3,7 +3,10 @@ query ChannelInfo($channel: String!) {
     ... on TextChannel {
       name
       id
-      category
+      category {
+        name
+        position
+      }
     }
   }
 }

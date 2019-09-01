@@ -4,7 +4,7 @@ import * as React from 'react'
 import { Query } from 'react-apollo'
 import Emoji from '@ui/shared/Emoji'
 
-import { ChannelInfo, ChannelInfoVariables } from '@generated'
+import { ChannelInfo, ChannelInfoVariables, ChannelInfo_channel_TextChannel_category } from '@generated'
 import ChannelLink from './link'
 import CHANNEL_INFO from './ChannelInfo.graphql'
 
@@ -26,8 +26,8 @@ const Channel = ({ id: channel, children, className }: Props) => (
     variables={{ channel }}
   >
     {({ error, loading, data }) => {
-      let name = 'deleted-channel'
-      let category: string = null
+      let name = 'deleted-channel';
+      let category: ChannelInfo_channel_TextChannel_category = null;
 
       if (
         !error &&
@@ -44,16 +44,16 @@ const Channel = ({ id: channel, children, className }: Props) => (
       return (
         <Tooltip
           placement="top"
-          overlay={<Emoji>{category || ''}</Emoji>}
+          overlay={<Emoji>{category.name || ''}</Emoji>}
           mouseLeaveDelay={0}
-          trigger={category ? ['hover'] : []}
+          trigger={category.name ? ['hover'] : []}
         >
           <span>
             <ChannelLink id={channel} className={cx('channel-link', className)}>
               {children({
                 name,
                 id: channel,
-                category
+                category: category.name
               })}
             </ChannelLink>
           </span>

@@ -10,6 +10,7 @@ export interface GuildInfo_guild {
   __typename: "Guild";
   name: string;
   iconURL: string;
+  invite: string | null;
   memberCount: number;
 }
 
