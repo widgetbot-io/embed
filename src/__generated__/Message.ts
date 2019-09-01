@@ -11,7 +11,8 @@ export interface Message_JoinMessage_author {
   id: string;
   username: string;
   discriminator: string;
-  avatarURL: string | null;
+  defaultAvatarURL: string;
+  displayAvatarURL: string | null;
 }
 
 export interface Message_JoinMessage_member {
@@ -45,7 +46,8 @@ export interface Message_TextMessage_author {
   id: string;
   username: string;
   discriminator: string;
-  avatarURL: string | null;
+  defaultAvatarURL: string;
+  displayAvatarURL: string | null;
 }
 
 export interface Message_TextMessage_member {

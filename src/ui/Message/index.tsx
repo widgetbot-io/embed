@@ -43,7 +43,7 @@ class Message extends React.PureComponent<Props, any> {
       <Group style={this.props.style} className="group">
         {firstMessage.__typename === 'TextMessage' ? (
           <Avatar
-            url={firstMessage.author.avatarURL || DEFAULT_AVATAR}
+            url={firstMessage.author.displayAvatarURL || firstMessage.author.defaultAvatarURL || DEFAULT_AVATAR}
             className="avatar"
           />
         ) : null}

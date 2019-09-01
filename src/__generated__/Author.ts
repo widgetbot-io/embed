@@ -11,5 +11,6 @@ export interface Author {
   id: string;
   username: string;
   discriminator: string;
-  avatarURL: string | null;
+  defaultAvatarURL: string;
+  displayAvatarURL: string | null;
 }

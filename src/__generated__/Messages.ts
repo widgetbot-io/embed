@@ -16,7 +16,8 @@ export interface Messages_channel_TextChannel_messages_JoinMessage_author {
   id: string;
   username: string;
   discriminator: string;
-  avatarURL: string | null;
+  defaultAvatarURL: string;
+  displayAvatarURL: string | null;
 }
 
 export interface Messages_channel_TextChannel_messages_JoinMessage_member {
@@ -50,7 +51,8 @@ export interface Messages_channel_TextChannel_messages_TextMessage_author {
   id: string;
   username: string;
   discriminator: string;
-  avatarURL: string | null;
+  defaultAvatarURL: string;
+  displayAvatarURL: string | null;
 }
 
 export interface Messages_channel_TextChannel_messages_TextMessage_member {
@@ -182,7 +184,8 @@ export interface Messages_channel_NewsChannel_messages_JoinMessage_author {
   id: string;
   username: string;
   discriminator: string;
-  avatarURL: string | null;
+  defaultAvatarURL: string;
+  displayAvatarURL: string | null;
 }
 
 export interface Messages_channel_NewsChannel_messages_JoinMessage_member {
@@ -216,7 +219,8 @@ export interface Messages_channel_NewsChannel_messages_TextMessage_author {
   id: string;
   username: string;
   discriminator: string;
-  avatarURL: string | null;
+  defaultAvatarURL: string;
+  displayAvatarURL: string | null;
 }
 
 export interface Messages_channel_NewsChannel_messages_TextMessage_member {
