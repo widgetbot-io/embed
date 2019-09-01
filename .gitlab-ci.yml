@@ -36,6 +36,8 @@ build-master:
 staging:
   stage: deploy
   image: registry.gitlab.com/gitlab-examples/kubernetes-deploy
+  variables:
+    - CI_DEBUG_TRACE: "true"
   environment:
     name: production
     url: https://e.widgetbot.io
