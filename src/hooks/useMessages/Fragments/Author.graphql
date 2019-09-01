@@ -1,6 +1,7 @@
 fragment Author on User {
   id
   username
+  bot
   discriminator
   defaultAvatarURL
   displayAvatarURL

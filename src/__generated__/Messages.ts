@@ -15,6 +15,7 @@ export interface Messages_channel_TextChannel_messages_JoinMessage_author {
   __typename: "User";
   id: string;
   username: string;
+  bot: boolean;
   discriminator: string;
   defaultAvatarURL: string;
   displayAvatarURL: string | null;
@@ -50,6 +51,7 @@ export interface Messages_channel_TextChannel_messages_TextMessage_author {
   __typename: "User";
   id: string;
   username: string;
+  bot: boolean;
   discriminator: string;
   defaultAvatarURL: string;
   displayAvatarURL: string | null;
@@ -183,6 +185,7 @@ export interface Messages_channel_NewsChannel_messages_JoinMessage_author {
   __typename: "User";
   id: string;
   username: string;
+  bot: boolean;
   discriminator: string;
   defaultAvatarURL: string;
   displayAvatarURL: string | null;
@@ -218,6 +221,7 @@ export interface Messages_channel_NewsChannel_messages_TextMessage_author {
   __typename: "User";
   id: string;
   username: string;
+  bot: boolean;
   discriminator: string;
   defaultAvatarURL: string;
   displayAvatarURL: string | null;

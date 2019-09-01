@@ -10,6 +10,7 @@ export interface UpdatedMessages_messageUpdate_JoinMessage_author {
   __typename: "User";
   id: string;
   username: string;
+  bot: boolean;
   discriminator: string;
   defaultAvatarURL: string;
   displayAvatarURL: string | null;
@@ -45,6 +46,7 @@ export interface UpdatedMessages_messageUpdate_TextMessage_author {
   __typename: "User";
   id: string;
   username: string;
+  bot: boolean;
   discriminator: string;
   defaultAvatarURL: string;
   displayAvatarURL: string | null;
