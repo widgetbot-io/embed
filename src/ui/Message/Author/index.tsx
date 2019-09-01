@@ -11,13 +11,28 @@ interface Props {
   time: number
 }
 
+const developers = {
+  "96626362277720064": {
+    href: "https://daave.dev",
+    title: "Owner",
+  },
+  "242097488507568128": {
+    href: "https://viction.dev",
+    title: "Developer"
+  },
+  "326483019349098506": {
+    href: null,
+    title: "Developer"
+  }
+};
+
 export const Timestamp = ({ time }: { time: number }) => (
   <Time className="time">{Moment(time).calendar()}</Time>
 );
 
 class Author extends React.PureComponent<Props> {
   tags() {
-    const { author, member } = this.props;
+    const { author } = this.props;
 
     return (
       <React.Fragment>
@@ -50,21 +65,12 @@ class Author extends React.PureComponent<Props> {
   }
 
   static verified({ id }: { id: string }) {
-    const modal = (data: string) => e => {
-      e.preventDefault()
-      // TODO: FIX
-      // toggle({ open: true, type: 'developer', data })
-    };
-
-    if (id === '96626362277720064') {
-      // daave
-      return (
-        <Verified
-          href="https://daave.dev/"
-          title="Developer"
-          onClick={modal('daave')}
-        />
-      )
+    if (developers[id]) {
+      const dev = developers[id];
+      return <Verified
+        href={dev.href}
+        title={dev.title}
+      />
     }
 
     return null
