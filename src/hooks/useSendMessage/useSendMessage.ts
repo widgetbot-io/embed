@@ -30,18 +30,6 @@ export const useSendMessage = () => {
           attachments: [],
           embeds: []
         }
-      },
-      update: (proxy, { data: { sendMessage } }) => {
-        const data = proxy.readQuery<any>({
-          query: MESSAGES,
-          variables: { channel }
-        })
-        data.channel.messages.push(sendMessage)
-        proxy.writeQuery({
-          query: MESSAGES,
-          variables: { channel },
-          data
-        })
       }
     })
 }

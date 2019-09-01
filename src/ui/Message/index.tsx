@@ -23,11 +23,11 @@ import { Trans } from '@lingui/react'
 import Embed from './Embed'
 
 interface Props {
-  messages: Messages_channel_TextChannel_messages[]
+  messages: Messages_channel_TextChannel_messages[],
   style?
 }
 
-const DEFAULT_AVATAR = 'https://cdn.discordapp.com/embed/avatars/0.png'
+const DEFAULT_AVATAR = 'https://cdn.discordapp.com/embed/avatars/0.png';
 
 class Message extends React.PureComponent<Props, any> {
   theme = message => theme => ({
