@@ -36,7 +36,7 @@ class Author extends React.PureComponent<Props> {
 
     return (
       <React.Fragment>
-        {author.id === '558793418495623188' && <Tag className="bot">Bot</Tag>}
+        {author.bot && <Tag className="bot">Bot</Tag>}
               {author.id === 'aaaa' && <Tag className="guest">Guest</Tag>}
               {Author.verified({ id: author.id }) ||
                 (author.id === '190916650143318016' && (
