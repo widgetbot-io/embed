@@ -71,7 +71,7 @@ export class AuthStore {
         if ((newWindow as Window).closed) {
           cleanup();
           this.inProgress = false;
-          reject(loginError("You closed the authentication window"));
+          reject(() => {});
         }
       }, 500);
 
@@ -83,7 +83,7 @@ export class AuthStore {
             source.close();
             if (!data.token) {
               this.inProgress = false;
-              return reject('No token passed in request.');
+              return reject(() => {});
             }
 
             localStorage.setItem('token', data.token);
