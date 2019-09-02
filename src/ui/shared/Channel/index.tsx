@@ -44,16 +44,16 @@ const Channel = ({ id: channel, children, className }: Props) => (
       return (
         <Tooltip
           placement="top"
-          overlay={<Emoji>{category.name || ''}</Emoji>}
+          overlay={<Emoji>{category && category.name || ''}</Emoji>}
           mouseLeaveDelay={0}
-          trigger={category.name ? ['hover'] : []}
+          trigger={category && category.name ? ['hover'] : []}
         >
           <span>
             <ChannelLink id={channel} className={cx('channel-link', className)}>
               {children({
                 name,
                 id: channel,
-                category: category.name
+                category: category && category.name
               })}
             </ChannelLink>
           </span>
