@@ -51,6 +51,7 @@ class MagicTextarea extends React.Component<Props> {
   }
 
   render() {
+    const user = this.props.AuthStore.user;
     return (this.props.AuthStore.user && this.props.channel.canSend) ? (
       <Root>
         <Textarea
@@ -156,6 +157,7 @@ class MagicTextarea extends React.Component<Props> {
         //   marginLeft: "10px"
         // }}
       >
+        { user ? 'Log in to participate in chat' : `You do not have permission to send messages in this channel.` }
         You do not have permission to send messages in this channel.
       </NoPerms>
     );

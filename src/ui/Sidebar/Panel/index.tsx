@@ -39,7 +39,7 @@ export class LoginButton extends React.Component<Props> {
   render(): React.ReactNode {
     return (
         <React.Fragment>
-          {this.props.AuthStore.user ? `Logged in as ${this.props.AuthStore.user.username}` : undefined}
+          {window.innerWidth > 520 ? (this.props.AuthStore.user ? `Logged in as ${this.props.AuthStore.user.username}` : undefined) : undefined}
           <button onClick={this.onClick} style={this.style} > {this.props.AuthStore.user ? 'Logout' : 'Login'} </button>
         </React.Fragment>
     )

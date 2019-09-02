@@ -90,13 +90,14 @@ export class AuthStore {
 
             this.token = data.token;
             this.inProgress = false;
-            resolve();
+            return resolve();
           }
           case 'AUTH_FAIL': {
             source.close();
             cleanup();
             console.log(data.error);
-            return reject(loginError("You pressed cancel on the authentication window"));
+            return reject(() => {})
+            // return reject(loginError("You pressed cancel on the authentication window"));
           }
         }
       };
