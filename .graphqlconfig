@@ -1,5 +1,5 @@
 {
-  "schemaPath": "graphql.schema.json",
+  "schemaPath": "src/lib/apollo/codegen/schema.json",
   "extensions": {
     "endpoints": {
       "Default (http://127.0.0.1:8443/api/graphql)": {
