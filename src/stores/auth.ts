@@ -51,12 +51,13 @@ export class AuthStore {
   }
 
   @action login() {
-    const exitWarning = () => addNotification({
+    /* const exitWarning = () => addNotification({
       level: 'warning',
       title: 'Login Unsuccessful',
       message: 'You exited the window.',
       autoDismiss: 0,
-    });
+    }); */
+    const exitWarning = () => {};
     return new Promise((resolve, reject) => {
       this.inProgress = true;
       this.errors = undefined;
