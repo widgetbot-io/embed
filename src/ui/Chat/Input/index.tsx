@@ -157,8 +157,7 @@ class MagicTextarea extends React.Component<Props> {
         //   marginLeft: "10px"
         // }}
       >
-        { user ? 'Log in to participate in chat' : `You do not have permission to send messages in this channel.` }
-        You do not have permission to send messages in this channel.
+        { !user ? 'Log in to participate in chat' : `You do not have permission to send messages in this channel.` }
       </NoPerms>
     );
   }
