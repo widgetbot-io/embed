@@ -19,6 +19,12 @@ interface User {
   username: string
 }
 
+const loginError = (msg: string) => addNotification({
+  level: 'warning',
+  title: 'Login Unsuccessful',
+  message: msg,
+  autoDismiss: 0,
+});
 export class AuthStore {
   @observable appName = 'DisWeb';
   @observable channels: ICategory[] = [];
@@ -46,17 +52,12 @@ export class AuthStore {
     window.localStorage.removeItem('token');
     window.localStorage.removeItem('user');
 
-    this.user = undefined;
-    this.token = undefined;
+    delete this.user;
+    delete this.token;
   }
 
   @action login() {
-    const exitWarning = () => addNotification({
-      level: 'warning',
-      title: 'Login Unsuccessful',
-      message: 'You exited the window.',
-      autoDismiss: 0,
-    });
+
     return new Promise((resolve, reject) => {
       this.inProgress = true;
       this.errors = undefined;
@@ -70,7 +71,7 @@ export class AuthStore {
         if ((newWindow as Window).closed) {
           cleanup();
           this.inProgress = false;
-          reject(exitWarning());
+          reject(loginError("You closed the authentication window"));
         }
       }, 500);
 
@@ -78,7 +79,7 @@ export class AuthStore {
         source = source as Window;
 
         switch (data.type) {
-          case 'AUTH': {
+          case 'AUTH_SUCCESS': {
             source.close();
             if (!data.token) {
               this.inProgress = false;
@@ -90,6 +91,12 @@ export class AuthStore {
             this.token = data.token;
             this.inProgress = false;
             resolve();
+          }
+          case 'AUTH_FAIL': {
+            source.close();
+            cleanup();
+            console.log(data.error);
+            return reject(loginError("You pressed cancel on the authentication window"));
           }
         }
       };
