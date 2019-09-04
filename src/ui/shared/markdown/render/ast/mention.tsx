@@ -1,4 +1,4 @@
-import { Channel, Mention } from '@ui/shared/markdown/render/elements'
+import { Channel, Mention, Role } from '@ui/shared/markdown/render/elements'
 import * as React from 'react'
 import SimpleMarkdown from 'simple-markdown'
 
@@ -8,7 +8,7 @@ export const mention = {
   parse: ([mention, id]) => ({ mention, id }),
   react: ({ mention, id }, recurseOutput, state) => (
     <Mention key={state.key} id={id}>
-      {({ name }) => name}
+      {({ name }) => `@${name}`}
     </Mention>
   )
 }
@@ -30,8 +30,11 @@ export const role = {
   parse: ([mention, id]) => ({ mention, id }),
   react: ({ mention, id }, recurseOutput, state) =>
     // TODO: Add role
-    null
-  // <Channel key={state.key} id={id}>
+    // null
+  // <Role key={state.key} id={id}>
   //   {({ name }) => `#${name}`}
-  // </Channel>
+  // </Role>
+  <Mention key={state.key} id={id}>
+    {({ name }) => `@${name}`}
+  </Mention>
 }

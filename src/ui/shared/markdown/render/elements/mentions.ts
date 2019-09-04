@@ -1,6 +1,7 @@
 import Color from 'color'
 import $Channel from '@ui/shared/Channel'
 import $Member from '@ui/shared/Member'
+// import $Role from '@ui/shared/Role'
 import styled, { css } from '@lib/emotion'
 
 interface Props {

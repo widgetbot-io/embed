@@ -1,4 +1,4 @@
-import { channel, mention } from '@ui/shared/markdown/render/ast/mention'
+import { channel, mention, role } from '@ui/shared/markdown/render/ast/mention'
 import text from '@ui/shared/markdown/render/ast/text'
 import { defaultRules, inlineRegex } from 'simple-markdown'
 
@@ -38,6 +38,7 @@ const baseRules = {
 
   mention,
   channel,
+  role,
 
   s: {
     order: defaultRules.u.order,
