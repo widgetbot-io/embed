@@ -52,6 +52,7 @@ class MagicTextarea extends React.Component<Props> {
 
   render() {
     const user = this.props.AuthStore.user;
+    console.log(this.props.channel.canSend);
     return (this.props.AuthStore.user && this.props.channel.canSend) ? (
       <Root>
         <Textarea

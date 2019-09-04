@@ -7,8 +7,8 @@ type Props = Partial<NavLinkProps> & {
 }
 
 class ChannelLink extends React.PureComponent<Props> {
-  render() {
-    const { id, $ref, ...props } = this.props
+  render() { // Channel onClick has been located.
+    const { id, $ref, ...props } = this.props;
 
     return (
       <Route path="/:server">

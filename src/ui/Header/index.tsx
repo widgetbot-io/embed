@@ -9,7 +9,7 @@ const Header = observer(({ children }) => (
   <Root className="header">
     <Hamburger onClick={store.sidebar.toggle} open={store.sidebar.isOpen} />
 
-    {children}
+      {children}
   </Root>
 ))
 
