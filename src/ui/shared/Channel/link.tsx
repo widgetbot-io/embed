@@ -1,17 +1,21 @@
-import * as React from 'react'
-import { Route, NavLink, NavLinkProps } from 'react-router-dom'
-import { store } from '@models'
+import * as React from "react";
+import { Route, NavLink, NavLinkProps } from "react-router-dom";
+import { store } from "@models";
+import { StringChain } from "lodash";
 
 type Props = Partial<NavLinkProps> & {
-  id: string
-  $ref?: any
-}
+  id: string;
+  $ref?: any;
+};
 
 class ChannelLink extends React.PureComponent<Props> {
-  render() { // Channel onClick has been located.
-    const { id, $ref, ...props } = this.props;
-    
-    return (
+  render() {
+    // @ts-ignore
+    const { id, $ref, __typename, ...props } = this.props;
+    // @ts-ignore
+    const isStore = __typename === "StoreChannel";
+
+    return isStore ? null : (
       <Route path="/:server">
         {({ match }) => (
           <NavLink
@@ -23,8 +27,8 @@ class ChannelLink extends React.PureComponent<Props> {
           />
         )}
       </Route>
-    )
+    );
   }
 }
 
-export default ChannelLink
+export default ChannelLink;
