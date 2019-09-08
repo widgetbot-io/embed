@@ -109,3 +109,9 @@ export const Pings = styled('div')`
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25), inset 0 1px 0 hsla(0, 0%, 100%, 0.15);
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
 `
+
+export const WIP = styled('span')`
+      color: white;
+      border: 3px solid red;
+      padding: 1px;
+`

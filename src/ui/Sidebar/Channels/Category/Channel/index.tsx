@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { ITEM_ID } from '@ui/Sidebar/Channels'
 
-import {Hashtag, Name, Pings, Root, Newstag, Storetag, NSFWTag} from './elements'
+import {Hashtag, Name, Pings, Root, Newstag, Storetag, NSFWTag, WIP} from './elements'
 import {inject, observer} from "mobx-react";
 import { AuthStore } from '@store/auth';
 import {NEW_MESSAGES, useRouter} from "@hooks";
@@ -38,7 +38,7 @@ class Channel extends React.PureComponent<Props> {
                         }
                     }
                 })()}
-                <Name className="name">{this.props.name}</Name>
+                <Name className="name">{this.props.name} {this.props.__typename === 'StoreChannel' ? <WIP>WIP</WIP> : null}</Name>
                 {(() => {
                     if (this.props.pings > 0) return <Pings className="pings">{this.props.pings}</Pings>;
                 })()}
