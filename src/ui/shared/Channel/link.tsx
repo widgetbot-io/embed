@@ -14,12 +14,11 @@ class ChannelLink extends React.PureComponent<Props> {
     const { id, $ref, __typename, ...props } = this.props;
     // @ts-ignore
     const isStore = __typename === "StoreChannel";
-
-    return isStore ? null : (
+    return (
       <Route path="/:server">
         {({ match }) => (
           <NavLink
-            to={`/${match.params.server}/${id}`}
+            to={`/${match.params.server}/${isStore ? "" : id}`}
             data-channel={id}
             innerRef={$ref}
             onClick={store.sidebar.toggle}
