@@ -37,21 +37,18 @@ class ChannelSwitcher extends React.Component<Props> {
           >
             {({ loading, error, data, refetch }) => {
               if (!loading && !error) this.props.AuthStore.channels = categorise((data.guild.channels as any).sort((a, b) => { return a.position - b.position }));
+              setInterval(() => {
+                refetch();
+              }, 5000);
               return (
                 <Root className="channels">
                   <Selector itemID={ITEM_ID} />
-                  <Refresh
-                    className='Refresh'
-                    variant='large'
-                    onClick={ () => {
-                      refetch();
-                    } }
-                  >
-                    Refresh Channels
-                  </Refresh>
-                  {this.props.AuthStore.channels.map((category, i) => (
-                    <Category key={i} category={category} activeChannel={channel} index={i} />
-                  ))}
+                  {this.props.AuthStore.channels.map((category, i) => {
+                    console.log(category.name);
+                    return (
+                        <Category key={i} category={category} activeChannel={channel} index={i} />
+                    )
+                  })}
                 </Root>
               )
             }}

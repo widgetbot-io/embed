@@ -36,7 +36,9 @@ export class AuthStore {
 
   @action refreshChannels() {
     const { guild } = useRouter();
+    console.log('good night')
 
+    return [];
   }
 
   @action async fetchUser() {
