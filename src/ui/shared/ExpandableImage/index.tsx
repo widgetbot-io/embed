@@ -33,7 +33,7 @@ const ExpandableImage = (props: Props) => {
     <Root
       className={className || null}
       scale={scale}
-      onClick={() => store.modal.openImage(url)}
+      // onClick={() => store.modal.openImage(url)}
     >
       <Image
         src={optimize({
@@ -44,7 +44,7 @@ const ExpandableImage = (props: Props) => {
         onLoad={() => setLoadState('loaded')}
         onError={() => setLoadState('error')}
       />
-      {loadState === 'loading' && <Loader />}
+      {/* loadState === 'loading' && <Loader /> */}
     </Root>
   )
 }
