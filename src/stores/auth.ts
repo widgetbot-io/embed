@@ -54,8 +54,8 @@ export class AuthStore {
     window.localStorage.removeItem('token');
     window.localStorage.removeItem('user');
 
-    delete this.user;
-    delete this.token;
+    this.user = undefined;
+    this.token = undefined;
   }
 
   @action login() {
