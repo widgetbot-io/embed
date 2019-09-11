@@ -31,6 +31,7 @@ export class AuthStore {
   @observable token = window.localStorage.getItem('token');
 
   @observable inProgress: boolean = false;
+  @observable needsUpdate: boolean = false;
   @observable errors: string | undefined = undefined;
   @observable user: User = JSON.parse(window.localStorage.getItem('user'));
 

@@ -29,12 +29,13 @@ export class LoginButton extends React.Component<Props> {
   login() {
     this.props.AuthStore.login().then(async r => {
       await this.props.AuthStore.fetchUser();
-      await this.props.AuthStore.refreshChannels();
+      this.props.AuthStore.needsUpdate = true;
+      // await this.props.AuthStore.refreshChannels();
     });
   }
   logout() {
     this.props.AuthStore.logout();
-    this.props.AuthStore.refreshChannels();
+    this.props.AuthStore.needsUpdate = true;
   }
   render(): React.ReactNode {
     return (
