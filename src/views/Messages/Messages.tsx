@@ -102,35 +102,38 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
               rowCount={Infinity}
               threshold={1}
             >
-              {({ onRowsRendered, registerChild }) => (
-                <Scroller
-                  width={width}
-                  height={height}
-                  onRowsRendered={onRowsRendered}
-                  listRef={registerChild}
-                  deferredMeasurementCache={cache}
-                  rowHeight={cache.rowHeight}
-                  rowRenderer={({ index, key, style, parent }) =>
-                    groupedMessages[index] ? (
-                      <CellMeasurer
-                        key={key}
-                        cache={cache}
-                        parent={parent}
-                        rowIndex={index}
-                      >
-                        <Message
-                          style={style}
-                          messages={groupedMessages[index]}
-                        />
-                      </CellMeasurer>
-                    ) : null
-                  }
-                  rowCount={groupedMessages.length + 2}
-                  scrollToIndex={index}
-                  scrollToAlignment="start"
-                  overscanRowCount={5}
-                />
-              )}
+              {({ onRowsRendered, registerChild }) => {
+                window.scrollTo(0, 0);
+                return (
+                    <Scroller
+                        width={width}
+                        height={height}
+                        onRowsRendered={onRowsRendered}
+                        listRef={registerChild}
+                        deferredMeasurementCache={cache}
+                        rowHeight={cache.rowHeight}
+                        rowRenderer={({ index, key, style, parent }) =>
+                            groupedMessages[index] ? (
+                                <CellMeasurer
+                                    key={key}
+                                    cache={cache}
+                                    parent={parent}
+                                    rowIndex={index}
+                                >
+                                  <Message
+                                      style={style}
+                                      messages={groupedMessages[index]}
+                                  />
+                                </CellMeasurer>
+                            ) : null
+                        }
+                        rowCount={groupedMessages.length + 2}
+                        scrollToIndex={index}
+                        scrollToAlignment="start"
+                        overscanRowCount={5}
+                    />
+                )
+              }}
             </InfiniteLoader>
           );
         }}
