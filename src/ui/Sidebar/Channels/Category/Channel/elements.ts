@@ -111,7 +111,10 @@ export const Pings = styled('div')`
 `
 
 export const WIP = styled('span')`
-      color: white;
-      border: 3px solid red;
+      color: inherit;
+      border: 3px solid rgba(36,38,41, .5);
+      border-color: inherit;
       padding: 1px;
+      font-size: smaller;
+      border-radius: 10px;
 `
