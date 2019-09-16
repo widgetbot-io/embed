@@ -34,7 +34,7 @@ export const ThemeProvider = ({ children }) => {
     css: ``
   };
 
-  // if (data.guild && data.guild.theme) _.merge(theme, data.guild.theme); TODO: Uncomment!
+  if (data.guild && data.guild.theme) _.merge(theme, data.guild.theme);
 
   const themeContext: ThemeContext = {
     ...theme,
