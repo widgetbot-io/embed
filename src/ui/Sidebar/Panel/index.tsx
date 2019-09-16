@@ -47,6 +47,16 @@ export default class Panel extends React.Component<Props> {
             {this.props.AuthStore.user ? 'Logout' : 'Login'}
           </React.Fragment>
         </Auth>
+        <Version
+            href={`https://widgetbot.io`}
+            target="_blank"
+            onClick={e => {
+              e.preventDefault();
+              // openModal({ variables: { type: 'settings', data: null } })
+            }}
+        >
+          {`v${version}`}
+        </Version>
         {
           /* <Tooltip
              placement="top"
@@ -57,16 +67,7 @@ export default class Panel extends React.Component<Props> {
                    placement="top"
                    overlay={<Trans id="Panel.about">About</Trans>}
                  >
-                   <Version
-                     href={`https://disweb.deploys.io`}
-                     target="_blank"
-                     onClick={e => {
-                       e.preventDefault()
-                       // openModal({ variables: { type: 'settings', data: null } })
-                     }}
-                   >
-                     {`v${version}`}
-                   </Version>
+
                  </Tooltip> */
         }
       </Root>
