@@ -8,7 +8,6 @@ import { Trans } from '@lingui/react'
 import { store } from '@models'
 import { useQuery } from 'react-apollo-hooks'
 import GET_INFO from "@ui/Sidebar/Header/GuildInfo.graphql";
-import {LoginButton} from "@ui/Sidebar/Panel";
 import {AuthStore} from "@store/auth";
 
 const defaultInvite = 'https://discord.gg/56VgJZ4';
@@ -38,9 +37,7 @@ export const Header = ({ channel, guild, AuthStore }: HeaderProps) => {
       <Stretch>
         <Name>{cData.channel.name}</Name>
           {(() => {
-              return window.innerWidth < 520 ? (
-                 <LoginButton AuthStore={AuthStore} />
-              ) : (
+              return (
                   <Topic
                       onClick={() => store.modal.openTopic(cData.channel.topic)}
                       className="topic"

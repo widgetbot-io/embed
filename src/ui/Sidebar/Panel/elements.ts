@@ -1,4 +1,5 @@
 import styled from '@lib/emotion'
+import Button from "@ui/shared/button";
 
 export const Root = styled('footer')`
   height: 40px;
@@ -81,3 +82,9 @@ export const Version = styled('a')`
     text-decoration: underline;
   }
 `
+
+const AuthButton = Button.withComponent('a');
+
+export const Auth = styled(AuthButton)`
+    background: ${({ theme }) => theme.colors._accent.fade(0.6).string()};
+`;

@@ -1,7 +1,7 @@
 import Tooltip from 'rc-tooltip'
 import * as React from 'react'
 
-import { Root, Settings, Version } from './elements'
+import { Root, Settings, Version, Auth } from './elements'
 import { Trans } from '@lingui/react'
 import { store } from '@models'
 import Button from "@ui/shared/button";
@@ -15,15 +15,10 @@ interface Props {
   AuthStore?: AuthStore
 }
 
+@inject('AuthStore')
 @observer
-export class LoginButton extends React.Component<Props> {
-  private readonly style: CSSProperties = {
-    border: '1px solid white',
-    borderRadius: '5px',
-    padding: '5px',
-    marginLeft: '5px'
-  };
-  onClick: React.MouseEventHandler<HTMLButtonElement> = (e: React.MouseEvent<HTMLButtonElement>) => {
+export default class Panel extends React.Component<Props> {
+  onClick(e: React.MouseEvent<HTMLAnchorElement>)  {
     this.props.AuthStore.user ? this.logout() : this.login();
   };
   login() {
@@ -37,24 +32,21 @@ export class LoginButton extends React.Component<Props> {
     this.props.AuthStore.logout();
     this.props.AuthStore.needsUpdate = true;
   }
-  render(): React.ReactNode {
-    return (
-        <React.Fragment>
-          {window.innerWidth > 520 ? (this.props.AuthStore.user ? `Logged in as ${this.props.AuthStore.user.username}` : undefined) : undefined}
-          <button onClick={this.onClick} style={this.style} > {this.props.AuthStore.user ? 'Logout' : 'Login'} </button>
-        </React.Fragment>
-    )
-  }
-}
 
-
-@inject('AuthStore')
-@observer
-export default class Panel extends React.Component<Props> {
   render(): React.ReactNode {
+    //  <LoginButton AuthStore={this.props.AuthStore}/>
+    //  {window.innerWidth > 520 ? (this.props.AuthStore.user ? `Logged in as ${this.props.AuthStore.user.username}` : undefined) : undefined}
     return (
       <Root className="panel">
-        <LoginButton AuthStore={this.props.AuthStore}/>
+        <Auth
+          className="auth"
+          target="_blank"
+          onClick={this.onClick.bind(this)}
+        >
+          <React.Fragment>
+            {this.props.AuthStore.user ? 'Logout' : 'Login'}
+          </React.Fragment>
+        </Auth>
         {
           /* <Tooltip
              placement="top"
