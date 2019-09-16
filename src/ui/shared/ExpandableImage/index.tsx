@@ -41,8 +41,8 @@ const ExpandableImage = (props: Props) => {
           height: scale.height,
           url
         })}
-        onLoad={() => setLoadState('loaded')}
-        onError={() => setLoadState('error')}
+        // onLoad={() => setLoadState('loaded')}
+        // onError={() => setLoadState('error')}
       />
       {/* loadState === 'loading' && <Loader /> */}
     </Root>

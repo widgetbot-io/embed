@@ -16,9 +16,11 @@ export const Image = styled(EImage)<ImageProps>`
   display: block;
   margin: 10px 0;
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: 3px;  
+`;
 
-  @media (max-width: 700px) {
+/*
+@media (max-width: 700px) {
     width: 65%;
     height: auto;
   }
@@ -30,4 +32,4 @@ export const Image = styled(EImage)<ImageProps>`
   @media (max-width: 600px) {
     width: 80%;
   }
-`
+*/

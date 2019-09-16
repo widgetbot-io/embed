@@ -48,13 +48,10 @@ export const useMessages = (channel: string) => {
     onSubscriptionData({ subscriptionData }) {
       query.updateQuery(prev =>
         produce(prev, ({ channel }) => {
-          channel.messages = [
-            ...channel.messages,
-            subscriptionData.data.message
-          ];
+          console.log(subscriptionData.data.message);
+          channel.messages.push(subscriptionData.data.message);
         })
-      );
-    }
+      )}
   });
 
   useSubscription(UPDATED_MESSAGES, {
