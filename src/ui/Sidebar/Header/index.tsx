@@ -41,7 +41,6 @@ const Header = () => (
                 <Close onClick={store.sidebar.toggle} />
               </Root>
           )
-
           return (
             <Root className="header">
               <Icon src={data.guild.iconURL} className="icon" />
@@ -49,12 +48,7 @@ const Header = () => (
               <Tooltip
                 placement="bottom"
                 overlay={
-                  <Plural
-                    id="Header.memberCount"
-                    value={data.guild.memberCount}
-                    one="# member in this server"
-                    other="# members in this server"
-                  />
+                  `${data.guild.memberCount === 1 ? `${data.guild.memberCount} member in this server.` : `${data.guild.memberCount} members in this server.`}`
                 }
               >
                 <Count className="count">{data.guild.memberCount}</Count>
