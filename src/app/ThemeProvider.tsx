@@ -27,14 +27,14 @@ export const ThemeProvider = ({ children }) => {
     __typename: 'Theme',
     colors: {
       __typename: 'ThemeColors',
-      primary: Constants.THEME_COLOR_PRIMARY,
-      accent: Constants.THEME_COLOR_ACCENT,
-      background: Constants.THEME_BACKGROUND
+      primary: (data.guild ? data.guild.theme.colors.primary : undefined) || Constants.THEME_COLOR_PRIMARY,
+      accent: (data.guild ? data.guild.theme.colors.accent : undefined) || Constants.THEME_COLOR_ACCENT,
+      background: (data.guild ? data.guild.theme.colors.background : undefined) || Constants.THEME_BACKGROUND
     },
     css: ``
   };
 
-  if (data.guild && data.guild.theme) _.merge(theme, data.guild.theme);
+  // if (data.guild && data.guild.theme) _.merge(theme, data.guild.theme);
 
   const themeContext: ThemeContext = {
     ...theme,
