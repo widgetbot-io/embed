@@ -27,9 +27,9 @@ export const ThemeProvider = ({ children }) => {
     __typename: 'Theme',
     colors: {
       __typename: 'ThemeColors',
-      primary: (data.guild ? data.guild.theme.colors.primary : undefined) || Constants.THEME_COLOR_PRIMARY,
-      accent: (data.guild ? data.guild.theme.colors.accent : undefined) || Constants.THEME_COLOR_ACCENT,
-      background: (data.guild ? data.guild.theme.colors.background : undefined) || Constants.THEME_BACKGROUND
+      primary: data.guild && data.guild.theme.colors && data.guild.theme.colors.primary || Constants.THEME_COLOR_PRIMARY,
+      accent: data.guild && data.guild.theme.colors && data.guild.theme.colors.accent || Constants.THEME_COLOR_ACCENT,
+      background: data.guild && data.guild.theme.colors && data.guild.theme.colors.background || Constants.THEME_BACKGROUND
     },
     css: ``
   };
