@@ -9,6 +9,7 @@ import { store } from '@models'
 import { useQuery } from 'react-apollo-hooks'
 import GET_INFO from "@ui/Sidebar/Header/GuildInfo.graphql";
 import {AuthStore} from "@store/auth";
+import {Auth} from "@ui/Sidebar/Panel/elements";
 
 const defaultInvite = 'https://discord.gg/56VgJZ4';
 
@@ -37,7 +38,17 @@ export const Header = ({ channel, guild, AuthStore }: HeaderProps) => {
       <Stretch>
         <Name>{cData.channel.name}</Name>
           {(() => {
-              return (
+              return window.innerWidth < 520 ? (
+                  <Auth
+                      className="auth"
+                      target="_blank"
+                      onClick={onClick.bind({props: {AuthStore}})}
+                  >
+                      <React.Fragment>
+                          {AuthStore.user ? 'Logout' : 'Login'}
+                      </React.Fragment>
+                  </Auth>
+              ) : (
                   <Topic
                       onClick={() => store.modal.openTopic(cData.channel.topic)}
                       className="topic"
@@ -60,6 +71,21 @@ export const Header = ({ channel, guild, AuthStore }: HeaderProps) => {
       </Tooltip>
     </Root>
   )
+}
+
+function onClick(e: React.MouseEvent<HTMLAnchorElement>)  {
+    this.props.AuthStore.user ? logout.call(this) : login.call(this) ;
+}
+function login() {
+    this.props.AuthStore.login().then(async r => {
+        await this.props.AuthStore.fetchUser();
+        this.props.AuthStore.needsUpdate = true;
+        // await this.props.AuthStore.refreshChannels();
+    });
+}
+function logout() {
+    this.props.AuthStore.logout();
+    this.props.AuthStore.needsUpdate = true;
 }
 
 Header.Fallback = () => (
