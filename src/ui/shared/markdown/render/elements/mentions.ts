@@ -1,7 +1,7 @@
 import Color from 'color'
 import $Channel from '@ui/shared/Channel'
 import $Member from '@ui/shared/Member'
-// import $Role from '@ui/shared/Role'
+import $Role from '@ui/shared/Role'
 import styled, { css } from '@lib/emotion'
 
 interface Props {
@@ -50,6 +50,6 @@ export const Channel = styled($Channel)<Props>`
 interface RoleProps extends Props {
   everyone?: boolean
 }
-export const Role = styled('span')<RoleProps>`
-  ${({ theme, color, inline }) => base(inline, color || theme.colors.accent)};
+export const Role = styled($Role)<RoleProps>`
+  ${({ theme, color, inline }) => { console.log(color); return base(inline, color || theme.colors.accent)}};
 `

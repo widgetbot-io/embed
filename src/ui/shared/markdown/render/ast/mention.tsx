@@ -8,7 +8,7 @@ export const mention = {
   parse: ([mention, id]) => ({ mention, id }),
   react: ({ mention, id }, recurseOutput, state) => (
     <Mention key={state.key} id={id}>
-      {({ name }) => `@${name}`}
+      {({ displayName }) => `${displayName}`}
     </Mention>
   )
 }
@@ -29,12 +29,7 @@ export const role = {
   match: source => /^<@&?([0-9]+?)>/.exec(source),
   parse: ([mention, id]) => ({ mention, id }),
   react: ({ mention, id }, recurseOutput, state) =>
-    // TODO: Add role
-    // null
-  // <Role key={state.key} id={id}>
-  //   {({ name }) => `#${name}`}
-  // </Role>
-  <Mention key={state.key} id={id}>
-    {({ name }) => `@${name}`}
-  </Mention>
+  <Role key={state.key} id={id}>
+    {({ displayName }) => `${displayName}`}
+  </Role>
 }

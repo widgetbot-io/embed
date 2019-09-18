@@ -6,14 +6,23 @@
 // GraphQL query operation: MemberInfo
 // ====================================================
 
-export interface MemberInfo_stats {
-  __typename: "Stats";
-  /**
-   * Total amount of online guests (socket.io count)
-   */
-  onlineGuests: number;
+export interface MemberInfo_guild_member {
+  __typename: "Member";
+  id: string | null;
+  displayName: string | null;
+  displayHexColor: string | null;
+}
+
+export interface MemberInfo_guild {
+  __typename: "Guild";
+  member: MemberInfo_guild_member | null;
 }
 
 export interface MemberInfo {
-  stats: MemberInfo_stats;
+  guild: MemberInfo_guild;
+}
+
+export interface MemberInfoVariables {
+  server: string;
+  member: string;
 }

@@ -11,15 +11,15 @@ export interface Theme_guild_theme_colors {
   /**
    * Primary theme color (font color)
    */
-  primary: string;
+  primary: string | null;
   /**
    * Accent color (buttons)
    */
-  accent: string;
+  accent: string | null;
   /**
    * Background color
    */
-  background: string;
+  background: string | null;
 }
 
 export interface Theme_guild_theme {
@@ -27,11 +27,11 @@ export interface Theme_guild_theme {
   /**
    * Custom CSS for the server
    */
-  css: string;
+  css: string | null;
   /**
    * Custom colors for the server
    */
-  colors: Theme_guild_theme_colors;
+  colors: Theme_guild_theme_colors | null;
 }
 
 export interface Theme_guild {

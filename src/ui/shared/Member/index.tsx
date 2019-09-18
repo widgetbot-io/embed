@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom'
 import * as React from 'react'
 import { Query } from 'react-apollo'
 
-import { MemberInfo } from '@generated'
+import {MemberInfo, MemberInfo_guild_member} from '@generated'
 import MemberLink from './link'
 import MEMBER_INFO from './MemberInfo.graphql'
 
@@ -11,7 +11,7 @@ import MEMBER_INFO from './MemberInfo.graphql'
 interface Props {
   id: string
   className?: string
-  children: (member: any /*MemberInfo_server_member*/) => any
+  children: (member: MemberInfo_guild_member) => any
 }
 
 const Member = ({ id: member, children, className }: Props) => (
@@ -21,19 +21,21 @@ const Member = ({ id: member, children, className }: Props) => (
         params: { server }
       }
     }) => (
-      <Query /*<MemberInfo, MemberInfoVariables>*/
+      <Query <MemberInfo, { server: string, member: string }>
         query={MEMBER_INFO}
         variables={{ server, member }}
       >
         {({ error, loading, data }) => {
-          const success = !error && !loading && data && data.server
-          const name = success ? `@${data.server.member.name}` : `<@${member}>`
+          const success = !error && !loading && data && data.guild;
+          const displayName = success ? `@${data.guild.member.displayName}` : `<@${member}>`;
+          const displayHexColor = success ? `` : ``;
 
           return (
             <MemberLink id={member} className={cx('member-link', className)}>
               {children({
                 __typename: 'Member',
-                name,
+                displayName,
+                displayHexColor,
                 id: member
               })}
             </MemberLink>

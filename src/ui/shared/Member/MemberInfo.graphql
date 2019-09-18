@@ -1,15 +1,9 @@
-# query MemberInfo($server: ID!, $member: ID!) {
-#   server(id: $server) {
-#     member(id: $member) {
-#       name
-#       id
-#     }
-#   }
-# }
-
-# TODO: Fix query
-query MemberInfo {
-  stats {
-    onlineGuests
+query MemberInfo($server: String!, $member: String!) {
+  guild(id: $server) {
+    member(id: $member) {
+      id
+      displayName
+      displayHexColor
+    }
   }
 }
