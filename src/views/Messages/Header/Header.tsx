@@ -32,7 +32,7 @@ export const Header = observer( ({ channel, guild, AuthStore }: HeaderProps) => 
         suspend: true
     });
 
-    const invite = gData.guild.invite ? gData.guild.invite : defaultInvite;
+    const invite = gData.guild ? gData.guild.invite : defaultInvite;
 
     return (
         <Root>
