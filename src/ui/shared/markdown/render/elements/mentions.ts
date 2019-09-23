@@ -51,5 +51,5 @@ interface RoleProps extends Props {
   everyone?: boolean
 }
 export const Role = styled($Role)<RoleProps>`
-  ${({ theme, color, inline }) => { console.log(color); return base(inline, color || theme.colors.accent)}};
-`
+  ${({ theme, color, inline }) => base(inline, color || theme.colors.accent)};
+`;

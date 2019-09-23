@@ -84,6 +84,7 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
                 return true;
               }}
               loadMoreRows={async () => {
+                console.log('loadMoreRows');
                 if (scroller.isLoadingMore) return;
 
                 const prevMessageCount = groupedMessages.length;
