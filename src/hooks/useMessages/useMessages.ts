@@ -8,7 +8,7 @@ import { useQuery, useSubscription } from "react-apollo-hooks";
 export const useMessages = (channel: string) => {
   const query = useQuery(MESSAGES, {
     variables: { channel },
-    fetchPolicy: "cache-first"
+    fetchPolicy: "network-only"
   });
 
   const ready =
@@ -16,6 +16,8 @@ export const useMessages = (channel: string) => {
     false;
 
   const messages = ready ? query.data.channel.messages : [];
+
+  console.log(messages);
 
   async function fetchMore(options?: {
     around?: string;

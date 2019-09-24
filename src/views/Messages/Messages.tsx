@@ -64,6 +64,9 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
     scroller.scrollToIndex < 0
       ? groupedMessages.length + scroller.scrollToIndex
       : scroller.scrollToIndex;
+  console.log(index);
+
+  let lastIndex = -1;
 
   return (
     <MessagesWrapper stale={stale} className="messages">
@@ -74,8 +77,12 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
           return (
             <InfiniteLoader
               isRowLoaded={({ index }) => {
-                const loadMore = index === 0;
+                const loadMore = index === 0 && lastIndex !== index - 1;
+                console.log(`I` + index);
+                console.log(`L` + lastIndex);
+                console.log(loadMore);
 
+                lastIndex = index;
                 if (loadMore) {
                   if (scroller.readyToLoadMore) return false;
                   scroller.readyToLoadMore = true;
@@ -84,7 +91,7 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
                 return true;
               }}
               loadMoreRows={async () => {
-                console.log('loadMoreRows');
+                console.log();
                 if (scroller.isLoadingMore) return;
 
                 const prevMessageCount = groupedMessages.length;
@@ -104,7 +111,6 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
               threshold={1}
             >
               {({ onRowsRendered, registerChild }) => {
-                window.scrollTo(0, 0);
                 return (
                     <Scroller
                         width={width}
@@ -128,10 +134,10 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
                                 </CellMeasurer>
                             ) : null
                         }
-                        rowCount={groupedMessages.length + 2}
+                        rowCount={groupedMessages.length + 1}
                         scrollToIndex={index}
                         scrollToAlignment="start"
-                        overscanRowCount={5}
+                        overscanRowCount={0}
                     />
                 )
               }}
