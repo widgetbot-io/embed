@@ -64,9 +64,6 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
     scroller.scrollToIndex < 0
       ? groupedMessages.length + scroller.scrollToIndex
       : scroller.scrollToIndex;
-  console.log(index);
-
-  let lastIndex = -1;
 
   return (
     <MessagesWrapper stale={stale} className="messages">
@@ -77,12 +74,8 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
           return (
             <InfiniteLoader
               isRowLoaded={({ index }) => {
-                const loadMore = index === 0 && lastIndex !== index - 1;
-                console.log(`I` + index);
-                console.log(`L` + lastIndex);
-                console.log(loadMore);
+                const loadMore = [0].includes(index) ;
 
-                lastIndex = index;
                 if (loadMore) {
                   if (scroller.readyToLoadMore) return false;
                   scroller.readyToLoadMore = true;
