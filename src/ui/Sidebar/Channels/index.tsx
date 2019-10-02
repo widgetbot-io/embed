@@ -43,10 +43,9 @@ class ChannelSwitcher extends React.Component<Props> {
                   this.props.AuthStore.needsUpdate = false;
                 }
               }, 1000);
-              //<Selector itemID={ITEM_ID} />
               return (
                 <Root className="channels">
-                  
+                  <Selector itemID={ITEM_ID} />
                   {this.props.AuthStore.channels.map((category, i) => (
                         <Category key={i} category={category} activeChannel={channel} index={i} />
                     )

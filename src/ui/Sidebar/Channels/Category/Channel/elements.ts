@@ -24,25 +24,7 @@ export const Root = styled(Link)<Props>`
   color: ${({ unread, theme }) =>
     unread && `${theme.colors._primary.fade(0.1).string()} !important`};
   /* animation: ${({ order }) => fade(order)} 0.5s ease; */
-  ${({selected}) => selected ? `
-    user-select: none;
-    cursor: default;
-    display: flex;
-    flex-direction: row;
-    font-size: 16px;
-    font-weight: 500;
-    height: 32px;
-    line-height: 32px;
-    width: calc(100% - 16px);
-    pointer-events: none;
-    top: 0px;
-    z-index: -1;
-    color: rgba(255, 255, 255, 0.9) !important;
-    background-color: rgba(255, 255, 255, 0.098) !important;
-    text-decoration: none;
-    border-radius: 3px;
-    padding: 0px 8px;
-  ` : ``}
+
   &:hover {
     background-color: ${({ selected, theme }) =>
       !selected && theme.colors._primary.fade(0.96).string()};
