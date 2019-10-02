@@ -39,6 +39,8 @@ canary:
       - package.json
       - yarn.lock
     expire_in: 1 day
+  only:
+    - master
 
 build:
   stage: docker
@@ -50,6 +52,8 @@ build:
   script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE" .
     - docker push "$CI_REGISTRY_IMAGE"
+  only:
+    - master
 
 production-build:
   stage: docker
@@ -59,6 +63,8 @@ production-build:
   script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_TAG" .
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_TAG"
+  only:
+    - tags
 
 staging:
   stage: deploy
@@ -73,6 +79,8 @@ staging:
     - kubectl config use-context default-system
   script:
     - kubectl set image deployment/embed embed=$CI_REGISTRY_IMAGE:$CI_BUILD_REF
+  only:
+    - master
 
 production-deploy:
   stage: deploy
