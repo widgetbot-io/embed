@@ -33,7 +33,6 @@ class ChannelSwitcher extends React.Component<Props> {
           }) => (
           <Query<Channels, ChannelsVariables>
             query={CHANNELS}
-            fetchPolicy='network-only'
             variables={{ guild }}
           >
             {({ loading, error, data, refetch }) => {
@@ -43,11 +42,11 @@ class ChannelSwitcher extends React.Component<Props> {
                   await refetch();
                   this.props.AuthStore.needsUpdate = false;
                 }
-              }, 750);
+              }, 1000);
               //<Selector itemID={ITEM_ID} />
               return (
                 <Root className="channels">
-
+                  
                   {this.props.AuthStore.channels.map((category, i) => (
                         <Category key={i} category={category} activeChannel={channel} index={i} />
                     )
