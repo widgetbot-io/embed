@@ -13,13 +13,13 @@ import { inject, observer } from "mobx-react";
 import { AuthStore } from "@store/auth";
 
 interface Props extends ChatProps {
-  innerRef?: (textarea: HTMLTextAreaElement) => void;
-  innerProps?: React.InputHTMLAttributes<HTMLTextAreaElement>;
-  AuthStore?: AuthStore;
-  onChange?: Function;
-  onKeyPress?: Function;
-  onSubmit?: Function;
-  channel?: any;
+  innerRef?: (textarea: HTMLTextAreaElement) => void,
+  innerProps?: React.InputHTMLAttributes<HTMLTextAreaElement>,
+  AuthStore?: AuthStore,
+  onChange?: Function,
+  onKeyPress?: Function,
+  onSubmit?: Function,
+  channel?: any
 }
 
 export const handlers = [Emojis, Mentions, Commands, Channels];
@@ -50,17 +50,9 @@ class MagicTextarea extends React.Component<Props> {
     onChange && onChange(value);
   }
 
-  login() {
-    this.props.AuthStore.login().then(async r => {
-      await this.props.AuthStore.fetchUser();
-      this.props.AuthStore.needsUpdate = true;
-      // await this.props.AuthStore.refreshChannels();
-    });
-  }
-
   render() {
     const user = this.props.AuthStore.user;
-    return this.props.AuthStore.user && this.props.channel.canSend ? (
+    return (this.props.AuthStore.user && this.props.channel.canSend) ? (
       <Root>
         <Textarea
           {...this.props.innerProps}
@@ -157,10 +149,15 @@ class MagicTextarea extends React.Component<Props> {
         )}
       </Root>
     ) : (
-      <NoPerms onClick={this.login.bind(this)}>
-        {!user
-          ? "Log in to participate in chat"
-          : `You do not have permission to send messages in this channel.`}
+      <NoPerms
+        // style={{
+        //   opacity: 0.4,
+        //   marginTop: "10px",
+        //   marginBottom: 0,
+        //   marginLeft: "10px"
+        // }}
+      >
+        { !user ? 'Log in to participate in chat' : `You do not have permission to send messages in this channel.` }
       </NoPerms>
     );
   }
