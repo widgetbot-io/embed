@@ -1,6 +1,6 @@
 import * as React from 'react'
 import Wrapper from '@ui/Wrapper'
-import { Header } from './Header'
+import { Header, Fallback } from './Header'
 import { RouteComponentProps } from 'react-router-dom'
 import { Chat } from '@ui/Chat'
 import { Messages } from './Messages'
@@ -29,7 +29,7 @@ export class MessagesView extends React.PureComponent<Props> {
  render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
      return (
          <Wrapper>
-             <React.Suspense fallback={<Header.Fallback />}>
+             <React.Suspense fallback={<Fallback />}>
                  <Header channel={this.props.match.params.channel} guild={this.props.match.params.guild} AuthStore={this.props.AuthStore}/>
              </React.Suspense>
 
