@@ -8,7 +8,7 @@ import { useQuery, useSubscription } from "react-apollo-hooks";
 export const useMessages = (channel: string) => {
   const query = useQuery(MESSAGES, {
     variables: { channel },
-    fetchPolicy: "network-only"
+    fetchPolicy: 'network-only'
   });
 
   const ready =

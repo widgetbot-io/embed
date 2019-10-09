@@ -14,6 +14,8 @@ import App from './app'
 import { history } from '@lib/history'
 import AuthStore from "./stores/auth";
 
+import register, { unregister } from './registerServiceWorker'
+
 const stores = { AuthStore };
 
 if (!window.location.hostname.includes(`127.0.0.1`) && !window.location.hostname.includes(`localhost`))
@@ -33,8 +35,11 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+register();
+
 // Hot reloading
 declare const module: any;
 if (module.hot) {
+  unregister();
   module.hot.accept()
 }
