@@ -15,6 +15,7 @@ const Header = () => (
   <Route path="/:guild">
     {({ match }) => (
       <Query<GuildInfo, GuildInfoVariables>
+        key="guild_info"
         query={GET_INFO}
         variables={match.params}
         fetchPolicy="cache-first"

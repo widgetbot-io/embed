@@ -19,30 +19,33 @@ export const useMessages = (channel: string) => {
 
   console.log(messages);
 
-  async function fetchMore(options?: {
+  function fetchMore(options?: {
     around?: string;
     after?: string;
     before?: string;
     limit?: number;
   }) {
-    if (!options) {
-      const [firstMessage] = messages;
-      if (!firstMessage) return;
+    return new Promise(((resolve, reject) => {
+      if (!options) {
+        const [firstMessage] = messages;
+        if (!firstMessage) return;
 
-      options = { before: firstMessage.id };
-    }
+        options = { before: firstMessage.id };
+      }
 
-    await query.fetchMore({
-      query: MESSAGES,
-      variables: { channel, ...options },
-      updateQuery: (prev, { fetchMoreResult }) =>
-        produce(prev, draftState => {
-          draftState.channel.messages = [
-            ...fetchMoreResult.channel.messages,
-            ...draftState.channel.messages
-          ];
-        })
-    });
+      query.fetchMore({
+        query: MESSAGES,
+        variables: { channel, ...options },
+        updateQuery: (prev, { fetchMoreResult }) =>
+            produce(prev, draftState => {
+              draftState.channel.messages = [
+                ...fetchMoreResult.channel.messages,
+                ...draftState.channel.messages
+              ];
+            })
+      }).then(resolve)
+        .catch(reject);
+    }))
   }
 
   useSubscription(NEW_MESSAGES, {

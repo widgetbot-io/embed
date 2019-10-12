@@ -92,6 +92,7 @@
     "simple-markdown": "^0.4.2",
     "subscriptions-transport-ws": "^0.9.15",
     "tinyreq-cli": "^1.1.2",
+    "ts-invariant": "^0.4.4",
     "ts-node": "^8.3.0",
     "ts-node-dev": "^1.0.0-pre.40",
     "typedi": "^0.8.0",

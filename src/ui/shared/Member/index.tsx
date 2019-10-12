@@ -22,6 +22,7 @@ const Member = ({ id: member, children, className }: Props) => (
       }
     }) => (
       <Query <MemberInfo, { server: string, member: string }>
+        key="member_role"
         query={MEMBER_INFO}
         variables={{ server, member }}
       >

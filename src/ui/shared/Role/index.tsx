@@ -20,6 +20,7 @@ const Role = ({ id: role, children, className }: Props) => (
       }
     }) => (
       <Query <any, { server: string, role: string }>
+        key="role_info"
         query={ROLE_INFO}
         variables={{ server, role }}
       >

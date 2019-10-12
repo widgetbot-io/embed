@@ -32,6 +32,7 @@ class ChannelSwitcher extends React.Component<Props> {
             }
           }) => (
           <Query<Channels, ChannelsVariables>
+            key="channel_list"
             query={CHANNELS}
             variables={{ guild }}
           >
