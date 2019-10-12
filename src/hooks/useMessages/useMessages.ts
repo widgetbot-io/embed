@@ -17,8 +17,6 @@ export const useMessages = (channel: string) => {
 
   const messages = ready ? query.data.channel.messages : [];
 
-  console.log(messages);
-
   function fetchMore(options?: {
     around?: string;
     after?: string;
@@ -43,8 +41,8 @@ export const useMessages = (channel: string) => {
                 ...draftState.channel.messages
               ];
             })
-      }).then(resolve)
-        .catch(reject);
+      })
+      return resolve();
     }))
   }
 
@@ -53,7 +51,6 @@ export const useMessages = (channel: string) => {
     onSubscriptionData({ subscriptionData }) {
       query.updateQuery(prev =>
         produce(prev, ({ channel }) => {
-          console.log(subscriptionData.data.message);
           channel.messages.push(subscriptionData.data.message);
         })
       )}

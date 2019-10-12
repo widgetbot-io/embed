@@ -89,7 +89,11 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
 
                 const prevMessageCount = groupedMessages.length;
                 scroller.isLoadingMore = true;
-                await fetchMore();
+                try {
+                  await fetchMore();
+                } catch (e) {
+                  console.log('lmfao x2')
+                }
 
                 scroller.isLoadingMore = false;
 

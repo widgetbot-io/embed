@@ -35,11 +35,11 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-register();
-
 // Hot reloading
 declare const module: any;
 if (module.hot) {
-  unregister();
-  module.hot.accept()
+    unregister();
+    module.hot.accept()
+} else {
+    register();
 }
