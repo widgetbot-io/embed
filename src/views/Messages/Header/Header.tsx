@@ -23,13 +23,11 @@ export interface HeaderProps {
 export const Header = observer(({ channel, guild, AuthStore }: HeaderProps) => {
     const { data: cData } = useQuery(CHANNEL, {
         variables: { channel },
-        fetchPolicy: 'cache-first',
-        suspend: true
+        fetchPolicy: 'cache-first'
     });
     const { data: gData } = useQuery(GET_INFO, {
         variables: { guild },
-        fetchPolicy: 'cache-first',
-        suspend: true
+        fetchPolicy: 'cache-first'
     });
 
     const invite = gData.guild ? gData.guild.invite : defaultInvite;
@@ -37,7 +35,7 @@ export const Header = observer(({ channel, guild, AuthStore }: HeaderProps) => {
     return (
         <Root>
             <Stretch>
-                <Name>{cData.channel.name}</Name>
+                <Name>{cData.channel && cData.channel.name}</Name>
                 {(() => {
                     return window.innerWidth < 520 ? (
                         <Auth
@@ -54,7 +52,7 @@ export const Header = observer(({ channel, guild, AuthStore }: HeaderProps) => {
                             onClick={() => store.modal.openTopic(cData.channel.topic)}
                             className="topic"
                         >
-                            {cData.channel.topic}
+                            {cData.channel && cData.channel.topic}
                         </Topic>
                     )
                 })()}

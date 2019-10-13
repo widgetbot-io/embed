@@ -19,8 +19,8 @@ const Role = ({ id: role, children, className }: Props) => (
         params: { server }
       }
     }) => (
-      <Query <any, { server: string, role: string }>
-        key="role_info"
+      <Query<any, { server: string, role: string }>
+        key={`role_info:${role}`}
         query={ROLE_INFO}
         variables={{ server, role }}
       >

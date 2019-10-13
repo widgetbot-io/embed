@@ -28,10 +28,11 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
     isLoadingMore: false,
     readyToLoadMore: false,
     width: null,
+    count: -1,
     scrollToIndex: -1
   });
 
-  const getKey = useCallbackReference((rowIndex: number) => {
+  const getKey = (rowIndex: number) => {
     const group = groupedMessages[rowIndex];
     const ids = group ? group.map(m => m.id).join(":") : "placeholder";
 
@@ -39,16 +40,12 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
     const identifier = [guild, channel, ids, scroller.width];
 
     return identifier.join("$");
-  });
+  };
 
-  const cache = useMemo(
-    () =>
-      new CellMeasurerCache({
-        fixedWidth: true,
-        keyMapper: getKey
-      }),
-    []
-  );
+  const cache = new CellMeasurerCache({
+    fixedWidth: true,
+    keyMapper: getKey
+  });
 
   if (error) return <ErrorAhoy message={formatError(error)} />;
   if (!ready) return <Loading />;
@@ -84,25 +81,15 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
                 return true;
               }}
               loadMoreRows={async () => {
-                console.log();
                 if (scroller.isLoadingMore) return;
 
-                const prevMessageCount = groupedMessages.length;
                 scroller.isLoadingMore = true;
-                try {
-                  await fetchMore();
-                } catch (e) {
-                  console.log('lmfao x2')
-                }
-
+                await fetchMore();
                 scroller.isLoadingMore = false;
 
                 // Clear the cache for the message at the top
                 // could be a message added into its group
                 cache.clear(2, 0);
-
-                scroller.scrollToIndex =
-                  groupedMessages.length - prevMessageCount;
               }}
               rowCount={Infinity}
               threshold={1}
@@ -112,7 +99,16 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
                     <Scroller
                         width={width}
                         height={height}
-                        onRowsRendered={onRowsRendered}
+                        onRowsRendered={(data) => {
+                          if (groupedMessages.length !== scroller.count) {
+                            if (scroller.count !== -1) {
+                              scroller.scrollToIndex = groupedMessages.length - scroller.count + 1
+                            }
+                            scroller.count = groupedMessages.length
+                          }
+
+                          onRowsRendered(data)
+                        }}
                         listRef={registerChild}
                         deferredMeasurementCache={cache}
                         rowHeight={cache.rowHeight}
