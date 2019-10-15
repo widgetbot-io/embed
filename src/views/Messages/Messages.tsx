@@ -12,7 +12,6 @@ import {
 } from "react-virtualized";
 import { observer, useObservable } from "mobx-react-lite";
 import Message from "@ui/Message";
-import { useCallbackReference } from "src/hooks/useCallbackReference";
 
 type MessagesProps = {
   guild: string;
@@ -100,14 +99,24 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
                         width={width}
                         height={height}
                         onRowsRendered={(data) => {
+                          const diff = groupedMessages.length - scroller.count
                           if (groupedMessages.length !== scroller.count) {
                             if (scroller.count !== -1) {
-                              scroller.scrollToIndex = groupedMessages.length - scroller.count + 1
+                              scroller.scrollToIndex = diff === 1
+                                ? groupedMessages.length
+                                : diff
                             }
+
                             scroller.count = groupedMessages.length
                           }
 
                           onRowsRendered(data)
+                        }}
+                        willUnmount={() => {
+                          scroller.count = -1
+                          scroller.scrollToIndex = -1
+                          scroller.readyToLoadMore = false
+                          scroller.isLoadingMore = false
                         }}
                         listRef={registerChild}
                         deferredMeasurementCache={cache}
