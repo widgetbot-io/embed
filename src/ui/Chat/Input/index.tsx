@@ -11,6 +11,7 @@ import injectValue from "./utils/injectValue";
 import { ChatProps } from "../Chat";
 import { inject, observer } from "mobx-react";
 import { AuthStore } from "@store/auth";
+import { onClick } from "@views/Messages/Header";
 
 interface Props extends ChatProps {
   innerRef?: (textarea: HTMLTextAreaElement) => void,
@@ -156,8 +157,9 @@ class MagicTextarea extends React.Component<Props> {
         //   marginBottom: 0,
         //   marginLeft: "10px"
         // }}
+        onClick={onClick.bind({ props: { AuthStore: this.props.AuthStore }})}
       >
-        { !user ? 'Log in to participate in chat' : `You do not have permission to send messages in this channel.` }
+        <b>{ !user ? 'Click here to log in to and participate in chat' : `You do not have permission to send messages in this channel.` }</b>
       </NoPerms>
     );
   }
