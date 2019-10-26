@@ -9,12 +9,6 @@ const compareGroupability = (
 ) => {
   // @ts-ignore TODO: MOre join channel memes
   const nonGroupable = ['JoinMessage', 'PinnedMessage'].includes(a.__typename);
-  // console.log("");
-  // @ts-ignore
-  // console.log(`${a.author.username}#${a.author.discriminator}     ${b.author.username}#${b.author.discriminator}`);
-  // @ts-ignore
-  // console.log(a.content + "   " + b.content);
-  if (a.author.discriminator === '0000' && b.author.discriminator === '0000') return false;
   const differentAuthor = a.author.id !== b.author.id || a.author.username !== b.author.username;
   const staleGroup = b.createdAt - a.createdAt > 5 * 60 * 1000;
 
