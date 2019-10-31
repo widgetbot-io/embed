@@ -105,7 +105,7 @@ export class AuthStore {
     })
   }
 
-  @action guestLogin() {
+  @action guestLogin(username: string) {
     return new Promise((resolve, reject) => {
       this.inProgress = true;
       this.errors = undefined;
@@ -113,7 +113,7 @@ export class AuthStore {
       const x: number = screen.width / 2 - 500 / 2;
       const y: number = screen.height / 2 - 720 / 2;
 
-      const newWindow = window.open(`${url.includes('127.0.0.1') ? `http://${url}` : `https://${url}`}/auth/guest`, 'Login to DisWeb as a Guest!', `menubar=no,width=500,height=720,location=no,resizable=no,scrollbars=yes,status=no,left=${x},top=${y}`);
+      const newWindow = window.open(`${url.includes('127.0.0.1') ? `http://${url}` : `https://${url}`}/auth/guest/${username}`, 'Login to DisWeb as a Guest!', `menubar=no,width=500,height=720,location=no,resizable=no,scrollbars=yes,status=no,left=${x},top=${y}`);
 
       const timer = setInterval(() => {
         if ((newWindow as Window).closed) {
