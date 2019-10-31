@@ -11,14 +11,6 @@ export const useMessages = (channel: string) => {
     fetchPolicy: 'network-only'
   });
 
-  console.log(query.data);
-  // http://localhost:3000/channels/585454996800405509/637310208691011584
-  // The data LITERALLY changes from what the API sends.
-  // If you look at "apollo query Messages" in your console, you will see the messages send have 2 different author objects.
-  // If you look at the logged data from above it changes to the same one like what the FUCK
-  // TODO:
-  // TODO:
-
   const ready =
     (query.data && query.data.channel && query.data.channel.id === channel) ||
     false;
