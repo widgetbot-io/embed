@@ -35,14 +35,7 @@ export class AuthStore {
   @observable errors: string | undefined = undefined;
   @observable user: User = JSON.parse(window.localStorage.getItem('user'));
 
-  @action refreshChannels() {
-    const { guild } = useRouter();
-    console.log('good night')
-
-    return [];
-  }
-
-  @action async fetchUser() {
+  @action async fetchDiscordUser() {
     const { data } = await APIRequest(Endpoints.auth.fetchLatestProfile());
 
     window.localStorage.setItem('user', JSON.stringify(data));

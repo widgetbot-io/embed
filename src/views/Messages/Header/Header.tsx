@@ -67,7 +67,7 @@ export function onClick(e: React.MouseEvent<HTMLAnchorElement>)  {
 }
 export function login() {
     this.props.AuthStore.discordLogin().then(async r => {
-        await this.props.AuthStore.fetchUser();
+        await this.props.AuthStore.fetchDiscordUser();
         this.props.AuthStore.needsUpdate = true;
         // await this.props.AuthStore.refreshChannels();
     });
