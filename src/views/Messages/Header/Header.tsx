@@ -66,7 +66,7 @@ export function onClick(e: React.MouseEvent<HTMLAnchorElement>)  {
     this.props.AuthStore.user ? logout.call(this) : login.call(this) ;
 }
 export function login() {
-    this.props.AuthStore.login().then(async r => {
+    this.props.AuthStore.discordLogin().then(async r => {
         await this.props.AuthStore.fetchUser();
         this.props.AuthStore.needsUpdate = true;
         // await this.props.AuthStore.refreshChannels();

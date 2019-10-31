@@ -22,7 +22,7 @@ export default class Panel extends React.Component<Props> {
     this.props.AuthStore.user ? this.logout() : this.login();
   };
   login() {
-    this.props.AuthStore.login().then(async r => {
+    this.props.AuthStore.discordLogin().then(async r => {
       await this.props.AuthStore.fetchUser();
       this.props.AuthStore.needsUpdate = true;
       // await this.props.AuthStore.refreshChannels();
