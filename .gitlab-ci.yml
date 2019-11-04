@@ -10,10 +10,10 @@ production:
   stage: build
   image: node:11
   script:
+    - sed -i s/0.0.0-canary/$CI_COMMIT_TAG/g package.json
+
     - yarn
     - yarn run build
-
-    - sed -i s/0.0.0-canary/$CI_COMMIT_TAG/g package.json
   artifacts:
     paths:
       - .docker
@@ -28,10 +28,10 @@ canary:
   stage: build
   image: node:11
   script:
+    - sed -i s/0.0.0-canary/$CI_COMMIT_TAG/g package.json
+
     - yarn
     - yarn run build
-
-    - sed -i s/0.0.0-canary/$CI_COMMIT_TAG/g package.json
   artifacts:
     paths:
       - .docker
