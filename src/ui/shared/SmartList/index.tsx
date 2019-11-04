@@ -14,6 +14,7 @@ class SmartList extends Component<
     className?: string
     listRef?: (list: List) => void
     scrollRef?: (scroller: Scrollbars) => void
+    willUnmount?: () => void
   }
 > {
   static defaultProps = {
@@ -34,6 +35,12 @@ class SmartList extends Component<
   toScroller = ({ scrollTop }) => {
     if (this.scroller) {
       this.scroller.scrollTop(scrollTop)
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.props.willUnmount) {
+      this.props.willUnmount()
     }
   }
 

@@ -32,13 +32,13 @@ export const groupMessages = <
   let group = null
   let previous: Messages_channel_TextChannel_messages
 
-  messages.forEach((message, i) => {
+  for (const message of messages) {
     if (group === null || compareGroupability(previous, message)) {
       group = result.push([] as Group) - 1
     }
-    result[group].push(message)
+    result[group].push(message);
     previous = message
-  })
+  }
 
   return result
-}
+};

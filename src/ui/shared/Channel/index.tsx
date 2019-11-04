@@ -22,7 +22,7 @@ interface Props {
 
 const Channel = ({ id: channel, children, className }: Props) => (
   <Query<ChannelInfo, ChannelInfoVariables>
-    key="channel_info"
+    key={`channel_info:${channel}`}
     query={CHANNEL_INFO}
     variables={{ channel }}
   >
