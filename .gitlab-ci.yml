@@ -13,7 +13,7 @@ production:
     - yarn
     - yarn run build
 
-    - sed -i s/v0.0.0-canary/$CI_COMMIT_TAG/g package.json
+    - sed -i s/0.0.0-canary/$CI_COMMIT_TAG/g package.json
   artifacts:
     paths:
       - .docker
@@ -31,7 +31,7 @@ canary:
     - yarn
     - yarn run build
 
-    - sed -i s/v0.0.0-canary/$CI_COMMIT_TAG/g package.json
+    - sed -i s/0.0.0-canary/$CI_COMMIT_TAG/g package.json
   artifacts:
     paths:
       - .docker
