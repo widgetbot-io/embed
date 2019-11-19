@@ -55,7 +55,7 @@ export const Header = observer(({ channel, guild, AuthStore }: HeaderProps) => {
                     // TODO: Fix join button
                     // onClick={this.join}
                 >
-                    Join on Discord
+                    Open Discord App
                 </Join>
             </Tooltip>
         </Root>
