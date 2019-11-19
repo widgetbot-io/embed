@@ -1,1 +1,1 @@
-export const url: string = 'prep.daave.dev';
+export const url: string = 'stonks.widgetbot.io';
