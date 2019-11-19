@@ -55,7 +55,7 @@ export default class Panel extends React.Component<Props> {
               // openModal({ variables: { type: 'settings', data: null } })
             }}
         >
-          {`v${version}`}
+          {`${version}`}
         </Version>
         {
           /* <Tooltip
