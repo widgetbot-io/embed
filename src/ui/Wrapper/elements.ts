@@ -8,7 +8,6 @@ interface Props {
 export const Wrapper = styled('div')<Props>`
   display: flex;
   flex-direction: column;
-  min-height:450px;
   height: 100%;
   width: 100%;
   transition: margin 0.3s ease, width 0.3s ease;
