@@ -3,6 +3,7 @@ import styled, { css } from '@lib/emotion'
 export const Root = styled('form')`
   display: flex;
   flex-direction: column;
+  min-height:450px;
   flex-shrink: 0;
   padding-top: 10px;
   position: relative;
