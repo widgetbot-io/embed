@@ -34,6 +34,7 @@ export default class Panel extends React.Component<Props> {
   }
 
   render(): React.ReactNode {
+      if (localStorage.getItem('token') === undefined) this.props.AuthStore.logout();
     //  <LoginButton AuthStore={this.props.AuthStore}/>
     //  {window.innerWidth > 520 ? (this.props.AuthStore.user ? `Logged in as ${this.props.AuthStore.user.username}` : undefined) : undefined}
     return (
