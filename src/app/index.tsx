@@ -12,6 +12,7 @@ import i18n from '@lib/i18n'
 import { observer } from 'mobx-react'
 import { store } from '@models'
 import { useCacheLoaded } from '@hooks'
+import { AuthMenu } from "@ui/Auth";
 
 const App = observer(() => {
   const cacheLoaded = useCacheLoaded()
@@ -27,6 +28,7 @@ const App = observer(() => {
         <Switch>
           <Route path="/:guild">
             <React.Fragment>
+              <AuthMenu />
               <Modal />
               <Notifications />
               <Sidebar />
