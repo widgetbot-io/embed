@@ -1,42 +1,59 @@
-import * as React from 'react'
+import * as React from "react";
+import { inject, observer } from "mobx-react";
+import { Box, Close } from "@ui/Modal";
+import { AuthStore } from "@store/auth";
+import { Create, Greeting, Group, Input, Root, Title } from "./elements";
 
-import { Box, Close } from '@ui/Modal'
-import { Create, Greeting, Group, Input, Root, Title } from './elements'
+interface AuthStoreState {
+  awaiting: boolean;
+  closed: boolean;
+}
+interface AuthStoreProps {
+  AuthStore?: AuthStore;
+}
 
-class Authenticate extends React.PureComponent {
-  state = {
-    awaiting: false
-  }
-  nameField: HTMLInputElement
+@inject("AuthStore")
+@observer
+class Authenticate extends React.Component<AuthStoreProps, AuthStoreState> {
+  state: AuthStoreState = {
+    awaiting: false,
+    closed: false
+  };
+  nameField: HTMLInputElement;
 
   signUp(event: Event) {
-    event.preventDefault()
+    event.preventDefault();
 
-    const name = this.nameField.value
-
-    // TODO: FIX
-    // const { toggle, signUp } = this.props
-    // toggle({ open: false })
-
-    // signUp({ name })
+    const name = this.nameField.value;
+    if (name.length < 2) return;
+    this.props.AuthStore.guestLogin(name);
   }
 
   singleSignOn(event: Event) {
-    event.preventDefault()
+    event.preventDefault();
     // TODO: FIX
     // const { singleSignOn } = this.props
     // singleSignOn()
 
     this.setState({
       awaiting: true
-    })
+    });
+  }
+
+  discordSignOn(e: Event) {
+    e.preventDefault();
+    this.props.AuthStore.discordLogin().then(async r => {
+      await this.props.AuthStore.fetchDiscordUser();
+      this.props.AuthStore.needsUpdate = true;
+      // await this.props.AuthStore.refreshChannels();
+    });
   }
 
   render() {
-    const { awaiting } = this.state
-    return (
+    const { awaiting } = this.state;
+    return this.state.closed ? null : (
       <Box>
-        <Close onClick={() => close()} />
+        <Close onClick={() => this.setState({ closed: true })} />
         <Root loading={awaiting}>
           <Title>Welcome!</Title>
           <Greeting>Pick a name to start chatting</Greeting>
@@ -50,17 +67,17 @@ class Authenticate extends React.PureComponent {
               required
             />
             <Create variant="large">Create</Create>
-            {/*<SSO>
-                  Discord account?
-                  <Discord onClick={this.singleSignOn.bind(this)}>
-                    Log in
-                  </Discord>
-                </SSO>*/}
+          </Group>
+          <Group label={'discord'} onSubmit={this.discordSignOn.bind(this)}>
+            <Greeting>Have a Discord Account?</Greeting>
+            <Create variant={"large"} >
+              Discord
+            </Create>
           </Group>
         </Root>
       </Box>
-    )
+    );
   }
 }
 
-export default Authenticate
+export default Authenticate;
