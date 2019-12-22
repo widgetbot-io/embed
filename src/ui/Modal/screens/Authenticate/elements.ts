@@ -10,6 +10,13 @@ export const Root = styled(Content)<Props>`
   padding: 18px 40px;
   text-align: center;
   user-select: none;
+  padding: 40px 40px;
+  width: 90%;
+  height: 50%;
+  top: 50%;
+  left: 50%;
+  margin-top: -20%;
+  margin-left: -45%;
   ${({ loading }) =>
     loading
       ? css`
