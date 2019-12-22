@@ -5,9 +5,7 @@ import Authenticate from "@ui/Modal/screens/Authenticate";
 import { store } from "@models";
 
 export const AuthMenu = observer(() => (
-   <Root visible={store.authmenu.isOpen}>
-       <Authenticate>
-
-       </Authenticate>
-   </Root>
+  <Root visible={store.authmenu.isOpen}>
+    <Authenticate />
+  </Root>
 ));
