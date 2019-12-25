@@ -1,3 +1,4 @@
+import webpCheck from '@ui/Message/webpCheck'
 import { MemberLink } from '@ui/shared/Member'
 
 import styled from './ThemeContext'
@@ -31,7 +32,7 @@ interface AvatarProps {
 export const Avatar = styled('div')<AvatarProps>`
   flex-shrink: 0;
   cursor: pointer;
-  background-image: url('${props => props.url}');
+  background-image: url('${props => webpCheck(props.url)}');
   border-radius: 50%;
   background-size: cover;
   height: 40px;
