@@ -3082,7 +3082,7 @@
             "deprecationReason": null
           },
           {
-            "name": "test",
+            "name": "tier",
             "description": null,
             "args": [],
             "type": {
@@ -3090,7 +3090,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "String",
+                "name": "Float",
                 "ofType": null
               }
             },
