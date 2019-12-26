@@ -63,7 +63,9 @@ export const Header = observer(({ channel, guild, AuthStore }: HeaderProps) => {
 });
 
 export function onClick(e: React.MouseEvent<HTMLAnchorElement>)  {
-    this.props.AuthStore.user ? logout.call(this) : login.call(this) ;
+    this.props.AuthStore.toggleMenu(true);
+    return this.props.AuthStore.menuOpen;
+    // this.props.AuthStore.user ? logout.call(this) : login.call(this) ;
 }
 export function login() {
     this.props.AuthStore.discordLogin().then(async r => {

@@ -3,10 +3,10 @@ import { inject, observer } from "mobx-react";
 import { Box, Close } from "@ui/Modal";
 import { AuthStore } from "@store/auth";
 import { Overlay, Create, Greeting, Group, Input, Root, Title, SSO, Discord } from "./elements";
+import {store} from "@models";
 
 interface AuthStoreState {
   awaiting: boolean;
-  closed: boolean;
 }
 interface AuthStoreProps {
   AuthStore?: AuthStore;
@@ -16,8 +16,7 @@ interface AuthStoreProps {
 @observer
 class Authenticate extends React.Component<AuthStoreProps, AuthStoreState> {
   state: AuthStoreState = {
-    awaiting: false,
-    closed: false
+    awaiting: false
   };
   nameField: HTMLInputElement;
 
@@ -51,11 +50,11 @@ class Authenticate extends React.Component<AuthStoreProps, AuthStoreState> {
 
   render() {
     const { awaiting } = this.state;
-    return this.state.closed ? null : (
+    return !this.props.AuthStore.menuOpen ? null : (
       <Overlay>
         <Box>
           <Root loading={awaiting}>
-            <Close onClick={() => this.setState({ closed: true })} />
+            <Close onClick={() => this.props.AuthStore.toggleMenu(false)} />
             <Title>Welcome!</Title>
             <Greeting>Pick a name to start chatting</Greeting>
             <Group label="name" onSubmit={this.signUp.bind(this)}>

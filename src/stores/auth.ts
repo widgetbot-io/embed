@@ -30,10 +30,16 @@ export class AuthStore {
   @observable channels: ICategory[] = [];
   @observable token = window.localStorage.getItem('token');
 
+  @observable menuOpen: boolean = false;
+
   @observable inProgress: boolean = false;
   @observable needsUpdate: boolean = false;
   @observable errors: string | undefined = undefined;
   @observable user: User = JSON.parse(window.localStorage.getItem('user'));
+
+  @action toggleMenu(res: boolean = true) {
+    this.menuOpen = res
+  }
 
   @action async fetchDiscordUser() {
     const { data } = await APIRequest(Endpoints.auth.fetchLatestProfile());
