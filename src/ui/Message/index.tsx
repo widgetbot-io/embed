@@ -139,6 +139,34 @@ class Message extends React.PureComponent<Props, any> {
                 )
               }
 
+              case 'BoostMessage': {
+                const member = (
+                  <Member id={message.author.id} color={message.member.displayHexColor}>
+                    {message.member.displayName || message.author.username}
+                  </Member>
+                );
+
+                if(message.tier) {
+                  return (
+                    <React.Fragment key={message.id}>
+                      <Secondary.Boost>
+                        {member}just boosted the server! guildName has achieved <strong>Level {message.tier}!</strong>
+                      </Secondary.Boost>
+                      <Timestamp time={message.createdAt} />
+                    </React.Fragment>
+                  )
+                } else {
+                  return (
+                    <React.Fragment key={message.id}>
+                      <Secondary.Boost>
+                        {member}just boosted the server! 
+                      </Secondary.Boost>
+                      <Timestamp time={message.createdAt} />
+                    </React.Fragment>
+                  )
+                }
+              }
+
               default:
                 return null
             }
