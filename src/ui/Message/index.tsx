@@ -19,7 +19,6 @@ import {
 } from './elements'
 import { Image } from './Embed/elements/media'
 import Reaction from './Reaction'
-import { Trans } from '@lingui/react'
 import Embed from './Embed'
 
 interface Props {
@@ -72,7 +71,7 @@ class Message extends React.PureComponent<Props, any> {
                             mouseLeaveDelay={0}
                           >
                             <Edited className="edited">
-                              <Trans id="Message.edited">(edited)</Trans>
+                              (edited)
                             </Edited>
                           </Tooltip>
                         )}
@@ -108,7 +107,7 @@ class Message extends React.PureComponent<Props, any> {
 
               case 'JoinMessage': {
                 const member = (
-                  <Member id={message.author.id}>
+                  <Member id={message.author.id} color={message.member.displayHexColor}>
                     {message.member.displayName || message.author.username}
                   </Member>
                 );
@@ -125,7 +124,7 @@ class Message extends React.PureComponent<Props, any> {
 
               case 'PinnedMessage': {
                 const member = (
-                  <Member id={message.author.id}>
+                  <Member id={message.author.id} color={message.member.displayHexColor}>
                     {message.member.displayName || message.author.username}
                   </Member>
                 );
@@ -133,9 +132,7 @@ class Message extends React.PureComponent<Props, any> {
                 return (
                   <React.Fragment key={message.id}>
                     <Secondary.Pinned>
-                      <Trans id="Message.pinnedMessage">
-                        {member}pinned a message to this channel.
-                      </Trans>
+                      {member}pinned a message to this channel.
                     </Secondary.Pinned>
                     <Timestamp time={message.createdAt} />
                   </React.Fragment>
@@ -157,11 +154,17 @@ export default Message
 
 function randomMessage(): string {
   const messages: string[] = [
-      `has joined. Stay a while and listen!`,
+      `just joined. Everyone, look busy!`,
+      `just joined. Can I get a heal?`,
+      `joined your party.`,
       `joined. You must construct additional pylons.`,
-      `tripped on the welcome mat!`,
-      `just joined the server - glhf!`,
-      `just arrived. Seems OP - please nerf.`
+      `just joined... or did they?`,
+      `just arrived. Seems OP - please nerf.`,
+      `hopped into the server. Kangaroo!!`,
+      `has joined the battle bus.`,
+      `has joined the server! It's super effective!`,
+      `is here, as the prophecy foretold.`,
+      `has joined. Stay a while and listen!`
   ];
 
 
