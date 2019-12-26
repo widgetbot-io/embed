@@ -116,9 +116,7 @@ class Message extends React.PureComponent<Props, any> {
                 return (
                   <React.Fragment key={message.id}>
                     <Secondary.Join>
-                      <Trans id="Message.welcomeMessage">
                         {member}{randomMessage()}
-                      </Trans>
                     </Secondary.Join>
                     <Timestamp time={message.createdAt} />
                   </React.Fragment>
