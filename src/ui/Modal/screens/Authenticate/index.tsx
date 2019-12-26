@@ -20,31 +20,39 @@ class Authenticate extends React.Component<AuthStoreProps, AuthStoreState> {
   };
   nameField: HTMLInputElement;
 
-  signUp(event: Event) {
-    event.preventDefault();
+  signUp(e: Event) {
+    e.preventDefault();
 
     const name = this.nameField.value;
     if (name.length < 2) return;
-    this.props.AuthStore.guestLogin(name);
-  }
-
-  singleSignOn(event: Event) {
-    event.preventDefault();
-    // TODO: FIX
-    // const { singleSignOn } = this.props
-    // singleSignOn()
 
     this.setState({
       awaiting: true
+    });
+    this.props.AuthStore.guestLogin(name).then(async () => {
+      await this.props.AuthStore.setGuestUser(name);
+      this.props.AuthStore.needsUpdate = true;
+
+      this.props.AuthStore.toggleMenu(false);
+      // this.setState({
+      //   awaiting: false
+      // });
     });
   }
 
   discordSignOn(e: Event) {
     e.preventDefault();
-    this.props.AuthStore.discordLogin().then(async r => {
+    this.setState({
+      awaiting: true
+    });
+    this.props.AuthStore.discordLogin().then(async () => {
       await this.props.AuthStore.fetchDiscordUser();
       this.props.AuthStore.needsUpdate = true;
-      // await this.props.AuthStore.refreshChannels();
+
+      this.props.AuthStore.toggleMenu(false);
+      this.setState({
+        awaiting: false
+      });
     });
   }
 

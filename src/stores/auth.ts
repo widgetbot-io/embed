@@ -7,7 +7,7 @@ import { useRouter } from "@hooks";
 import CHANNELS from "@ui/Sidebar/Channels/Channels.graphql";
 import { addNotification } from '../app/notify';
 
-interface User {
+interface DiscordUser {
   createdAt: string,
   discriminator: string,
   email: null,
@@ -18,6 +18,12 @@ interface User {
   updatedAt: string,
   username: string
 }
+
+interface GuestUser {
+  username: string
+}
+
+type User = DiscordUser | GuestUser;
 
 const loginError = (msg: string) => addNotification({
   level: 'warning',
@@ -48,6 +54,20 @@ export class AuthStore {
     this.user = data;
 
     return data;
+  }
+
+  @action async setGuestUser(username: string) {
+    window.localStorage.setItem('user', JSON.stringify({
+      username
+    }));
+
+    this.user = {
+      username
+    };
+
+    return {
+      username
+    }
   }
 
   @action logout() {
