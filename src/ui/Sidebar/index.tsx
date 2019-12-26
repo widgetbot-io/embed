@@ -6,15 +6,13 @@ import Panel from './Panel'
 import {observer} from 'mobx-react'
 import {store} from '@models'
 
-const Sidebar = observer(() => {
-    return (
-        <Root visible={store.sidebar.isOpen} className="sidebar">
-            <Header />
-            <Channels />
-            <Panel />
-        </Root>
-    )
-});
+const Sidebar = observer(() => (
+    <Root visible={store.sidebar.isOpen} className="sidebar">
+        <Header />
+        <Channels />
+        <Panel />
+    </Root>
+));
 
 
 export default Sidebar

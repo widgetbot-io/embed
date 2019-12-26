@@ -42,9 +42,8 @@ export const Root = styled('dialog')<IRoot>`
 `
 
 export const Box = styled('div')`
-  position: relative;
-  display: flex;
-  flex-direction: column;
+  z-index: 100;
+  
 
   max-height: calc(100vh - 20px);
   max-width: calc(100vw - 40px);
@@ -59,6 +58,9 @@ export const Box = styled('div')`
 `
 
 export const Content = styled('div')`
+  z-index: 100;
+  width: 90%;
+  position: absolute;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -76,6 +78,7 @@ export const Content = styled('div')`
 export const Close = styled('button')`
   position: absolute;
   right: 0;
+  top: 0;
   height: 30px;
   width: 30px;
   margin: 4px;

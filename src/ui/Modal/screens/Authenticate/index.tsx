@@ -1,66 +1,92 @@
-import * as React from 'react'
+import * as React from "react";
+import { inject, observer } from "mobx-react";
+import { Box, Close } from "@ui/Modal";
+import { AuthStore } from "@store/auth";
+import { Overlay, Create, Greeting, Group, Input, Root, Title, SSO, Discord } from "./elements";
+import {store} from "@models";
 
-import { Box, Close } from '@ui/Modal'
-import { Create, Greeting, Group, Input, Root, Title } from './elements'
+interface AuthStoreState {
+  awaiting: boolean;
+}
+interface AuthStoreProps {
+  AuthStore?: AuthStore;
+}
 
-class Authenticate extends React.PureComponent {
-  state = {
+@inject("AuthStore")
+@observer
+class Authenticate extends React.Component<AuthStoreProps, AuthStoreState> {
+  state: AuthStoreState = {
     awaiting: false
-  }
-  nameField: HTMLInputElement
+  };
+  nameField: HTMLInputElement;
 
-  signUp(event: Event) {
-    event.preventDefault()
+  signUp(e: Event) {
+    e.preventDefault();
 
-    const name = this.nameField.value
-
-    // TODO: FIX
-    // const { toggle, signUp } = this.props
-    // toggle({ open: false })
-
-    // signUp({ name })
-  }
-
-  singleSignOn(event: Event) {
-    event.preventDefault()
-    // TODO: FIX
-    // const { singleSignOn } = this.props
-    // singleSignOn()
+    const name = this.nameField.value;
+    if (name.length < 2) return;
 
     this.setState({
       awaiting: true
-    })
+    });
+    this.props.AuthStore.guestLogin(name).then(async () => {
+      await this.props.AuthStore.setGuestUser(name);
+      this.props.AuthStore.needsUpdate = true;
+
+      this.props.AuthStore.toggleMenu(false);
+      // this.setState({
+      //   awaiting: false
+      // });
+    });
+  }
+
+  discordSignOn(e: Event) {
+    e.preventDefault();
+    this.setState({
+      awaiting: true
+    });
+    this.props.AuthStore.discordLogin().then(async () => {
+      await this.props.AuthStore.fetchDiscordUser();
+      this.props.AuthStore.needsUpdate = true;
+
+      this.props.AuthStore.toggleMenu(false);
+      this.setState({
+        awaiting: false
+      });
+    });
   }
 
   render() {
-    const { awaiting } = this.state
-    return (
-      <Box>
-        <Close onClick={() => close()} />
-        <Root loading={awaiting}>
-          <Title>Welcome!</Title>
-          <Greeting>Pick a name to start chatting</Greeting>
-          <Group label="name" onSubmit={this.signUp.bind(this)}>
-            <Input
-              innerRef={ref => (this.nameField = ref)}
-              autoFocus={true}
-              spellCheck={false}
-              minLength={2}
-              maxLength={32}
-              required
-            />
-            <Create variant="large">Create</Create>
-            {/*<SSO>
-                  Discord account?
-                  <Discord onClick={this.singleSignOn.bind(this)}>
+    const { awaiting } = this.state;
+    return !this.props.AuthStore.menuOpen ? null : (
+      <Overlay>
+        <Box>
+          <Root loading={awaiting}>
+            <Close onClick={() => this.props.AuthStore.toggleMenu(false)} />
+            <Title>Welcome!</Title>
+            <Greeting>Pick a name to start chatting</Greeting>
+            <Group label="name" onSubmit={this.signUp.bind(this)}>
+              <Input
+                innerRef={ref => (this.nameField = ref)}
+                autoFocus={true}
+                spellCheck={false}
+                minLength={2}
+                maxLength={32}
+                required
+              />
+              <Create variant="large">Create</Create>
+              <SSO>
+                Discord account?
+                <Discord onClick={this.discordSignOn.bind(this)}>
                     Log in
-                  </Discord>
-                </SSO>*/}
-          </Group>
-        </Root>
-      </Box>
-    )
+                </Discord>
+              </SSO>
+            </Group>
+          </Root>
+        </Box>
+      </Overlay>
+    );
   }
 }
 
-export default Authenticate
+export default Authenticate;
