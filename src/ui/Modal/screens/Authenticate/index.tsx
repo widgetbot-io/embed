@@ -2,7 +2,7 @@ import * as React from "react";
 import { inject, observer } from "mobx-react";
 import { Box, Close } from "@ui/Modal";
 import { AuthStore } from "@store/auth";
-import { Create, Greeting, Group, Input, Root, Title } from "./elements";
+import { Overlay, Create, Greeting, Group, Input, Root, Title, SSO, Discord } from "./elements";
 
 interface AuthStoreState {
   awaiting: boolean;
@@ -52,30 +52,32 @@ class Authenticate extends React.Component<AuthStoreProps, AuthStoreState> {
   render() {
     const { awaiting } = this.state;
     return this.state.closed ? null : (
-      <Box>
-        <Close onClick={() => this.setState({ closed: true })} />
-        <Root loading={awaiting}>
-          <Title>Welcome!</Title>
-          <Greeting>Pick a name to start chatting</Greeting>
-          <Group label="name" onSubmit={this.signUp.bind(this)}>
-            <Input
-              innerRef={ref => (this.nameField = ref)}
-              autoFocus={true}
-              spellCheck={false}
-              minLength={2}
-              maxLength={32}
-              required
-            />
-            <Create variant="large">Create</Create>
-          </Group>
-          <Group label={'discord'} onSubmit={this.discordSignOn.bind(this)}>
-            <Greeting>Have a Discord Account?</Greeting>
-            <Create variant={"large"} >
-              Discord
-            </Create>
-          </Group>
-        </Root>
-      </Box>
+      <Overlay>
+        <Box>
+          <Root loading={awaiting}>
+            <Close onClick={() => this.setState({ closed: true })} />
+            <Title>Welcome!</Title>
+            <Greeting>Pick a name to start chatting</Greeting>
+            <Group label="name" onSubmit={this.signUp.bind(this)}>
+              <Input
+                innerRef={ref => (this.nameField = ref)}
+                autoFocus={true}
+                spellCheck={false}
+                minLength={2}
+                maxLength={32}
+                required
+              />
+              <Create variant="large">Create</Create>
+              <SSO>
+                Discord account?
+                <Discord onClick={this.discordSignOn.bind(this)}>
+                    Log in
+                </Discord>
+              </SSO>
+            </Group>
+          </Root>
+        </Box>
+      </Overlay>
     );
   }
 }

@@ -78,6 +78,7 @@ export const Content = styled('div')`
 export const Close = styled('button')`
   position: absolute;
   right: 0;
+  top: 0;
   height: 30px;
   width: 30px;
   margin: 4px;

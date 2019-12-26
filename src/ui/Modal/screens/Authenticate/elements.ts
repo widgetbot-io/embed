@@ -10,13 +10,11 @@ export const Root = styled(Content)<Props>`
   padding: 18px 40px;
   text-align: center;
   user-select: none;
-  padding: 40px 40px;
-  width: 90%;
-  height: 50%;
+  width: auto;
   top: 50%;
   left: 50%;
-  margin-top: -20%;
-  margin-left: -45%;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
   ${({ loading }) =>
     loading
       ? css`
@@ -92,7 +90,7 @@ export const SSO = styled('div')`
   font-size: 14px;
   color: ${({ theme }) => theme.colors._primary.fade(0.8).string()};
 
-  text-align: left;
+  text-align: center;
 `
 
 export const Discord = styled('button')`
@@ -103,10 +101,24 @@ export const Discord = styled('button')`
   outline: none;
   cursor: pointer;
   font-weight: 500;
+  margin-left: 5%;
 
   color: ${({ theme }) => theme.colors.accent};
 
   &:hover {
     text-decoration: underline;
   }
+`
+
+export const Overlay = styled('div')`
+  position: fixed; /* Sit on top of the page content */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+  background-color: rgba(0, 0, 0, 0.7);
 `
