@@ -6,7 +6,7 @@
 // GraphQL fragment: Message
 // ====================================================
 
-export interface Message_BoostMessage_author {
+export interface Message_JoinMessage_author {
   __typename: "User";
   id: string;
   username: string;
@@ -16,14 +16,14 @@ export interface Message_BoostMessage_author {
   displayAvatarURL: string | null;
 }
 
-export interface Message_BoostMessage_member {
+export interface Message_JoinMessage_member {
   __typename: "IMember";
   displayName: string | null;
   displayHexColor: string | null;
 }
 
-export interface Message_BoostMessage {
-  __typename: "BoostMessage" | "JoinMessage" | "PinnedMessage";
+export interface Message_JoinMessage {
+  __typename: "JoinMessage" | "PinnedMessage";
   /**
    * Message ID
    */
@@ -35,11 +35,11 @@ export interface Message_BoostMessage {
   /**
    * General discord user who authored the message
    */
-  author: Message_BoostMessage_author;
+  author: Message_JoinMessage_author;
   /**
    * Author as member of guild.
    */
-  member: Message_BoostMessage_member | null;
+  member: Message_JoinMessage_member | null;
 }
 
 export interface Message_TextMessage_author {
@@ -168,4 +168,41 @@ export interface Message_TextMessage {
   embeds: Message_TextMessage_embeds[] | null;
 }
 
-export type Message = Message_BoostMessage | Message_TextMessage;
+export interface Message_BoostMessage_author {
+  __typename: "User";
+  id: string;
+  username: string;
+  bot: boolean;
+  discriminator: string;
+  defaultAvatarURL: string;
+  displayAvatarURL: string | null;
+}
+
+export interface Message_BoostMessage_member {
+  __typename: "IMember";
+  displayName: string | null;
+  displayHexColor: string | null;
+}
+
+export interface Message_BoostMessage {
+  __typename: "BoostMessage";
+  /**
+   * Message ID
+   */
+  id: string;
+  /**
+   * Message timestamp
+   */
+  createdAt: any;
+  /**
+   * General discord user who authored the message
+   */
+  author: Message_BoostMessage_author;
+  /**
+   * Author as member of guild.
+   */
+  member: Message_BoostMessage_member | null;
+  tier: number;
+}
+
+export type Message = Message_JoinMessage | Message_TextMessage | Message_BoostMessage;

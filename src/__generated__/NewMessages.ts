@@ -6,7 +6,7 @@
 // GraphQL subscription operation: NewMessages
 // ====================================================
 
-export interface NewMessages_message_BoostMessage_author {
+export interface NewMessages_message_JoinMessage_author {
   __typename: "User";
   id: string;
   username: string;
@@ -16,14 +16,14 @@ export interface NewMessages_message_BoostMessage_author {
   displayAvatarURL: string | null;
 }
 
-export interface NewMessages_message_BoostMessage_member {
+export interface NewMessages_message_JoinMessage_member {
   __typename: "IMember";
   displayName: string | null;
   displayHexColor: string | null;
 }
 
-export interface NewMessages_message_BoostMessage {
-  __typename: "BoostMessage" | "JoinMessage" | "PinnedMessage";
+export interface NewMessages_message_JoinMessage {
+  __typename: "JoinMessage" | "PinnedMessage";
   /**
    * Message ID
    */
@@ -35,11 +35,11 @@ export interface NewMessages_message_BoostMessage {
   /**
    * General discord user who authored the message
    */
-  author: NewMessages_message_BoostMessage_author;
+  author: NewMessages_message_JoinMessage_author;
   /**
    * Author as member of guild.
    */
-  member: NewMessages_message_BoostMessage_member | null;
+  member: NewMessages_message_JoinMessage_member | null;
 }
 
 export interface NewMessages_message_TextMessage_author {
@@ -168,7 +168,44 @@ export interface NewMessages_message_TextMessage {
   embeds: NewMessages_message_TextMessage_embeds[] | null;
 }
 
-export type NewMessages_message = NewMessages_message_BoostMessage | NewMessages_message_TextMessage;
+export interface NewMessages_message_BoostMessage_author {
+  __typename: "User";
+  id: string;
+  username: string;
+  bot: boolean;
+  discriminator: string;
+  defaultAvatarURL: string;
+  displayAvatarURL: string | null;
+}
+
+export interface NewMessages_message_BoostMessage_member {
+  __typename: "IMember";
+  displayName: string | null;
+  displayHexColor: string | null;
+}
+
+export interface NewMessages_message_BoostMessage {
+  __typename: "BoostMessage";
+  /**
+   * Message ID
+   */
+  id: string;
+  /**
+   * Message timestamp
+   */
+  createdAt: any;
+  /**
+   * General discord user who authored the message
+   */
+  author: NewMessages_message_BoostMessage_author;
+  /**
+   * Author as member of guild.
+   */
+  member: NewMessages_message_BoostMessage_member | null;
+  tier: number;
+}
+
+export type NewMessages_message = NewMessages_message_JoinMessage | NewMessages_message_TextMessage | NewMessages_message_BoostMessage;
 
 export interface NewMessages {
   message: NewMessages_message;

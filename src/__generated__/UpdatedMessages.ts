@@ -6,7 +6,7 @@
 // GraphQL subscription operation: UpdatedMessages
 // ====================================================
 
-export interface UpdatedMessages_messageUpdate_BoostMessage_author {
+export interface UpdatedMessages_messageUpdate_JoinMessage_author {
   __typename: "User";
   id: string;
   username: string;
@@ -16,14 +16,14 @@ export interface UpdatedMessages_messageUpdate_BoostMessage_author {
   displayAvatarURL: string | null;
 }
 
-export interface UpdatedMessages_messageUpdate_BoostMessage_member {
+export interface UpdatedMessages_messageUpdate_JoinMessage_member {
   __typename: "IMember";
   displayName: string | null;
   displayHexColor: string | null;
 }
 
-export interface UpdatedMessages_messageUpdate_BoostMessage {
-  __typename: "BoostMessage" | "JoinMessage" | "PinnedMessage";
+export interface UpdatedMessages_messageUpdate_JoinMessage {
+  __typename: "JoinMessage" | "PinnedMessage";
   /**
    * Message ID
    */
@@ -35,11 +35,11 @@ export interface UpdatedMessages_messageUpdate_BoostMessage {
   /**
    * General discord user who authored the message
    */
-  author: UpdatedMessages_messageUpdate_BoostMessage_author;
+  author: UpdatedMessages_messageUpdate_JoinMessage_author;
   /**
    * Author as member of guild.
    */
-  member: UpdatedMessages_messageUpdate_BoostMessage_member | null;
+  member: UpdatedMessages_messageUpdate_JoinMessage_member | null;
 }
 
 export interface UpdatedMessages_messageUpdate_TextMessage_author {
@@ -168,7 +168,44 @@ export interface UpdatedMessages_messageUpdate_TextMessage {
   embeds: UpdatedMessages_messageUpdate_TextMessage_embeds[] | null;
 }
 
-export type UpdatedMessages_messageUpdate = UpdatedMessages_messageUpdate_BoostMessage | UpdatedMessages_messageUpdate_TextMessage;
+export interface UpdatedMessages_messageUpdate_BoostMessage_author {
+  __typename: "User";
+  id: string;
+  username: string;
+  bot: boolean;
+  discriminator: string;
+  defaultAvatarURL: string;
+  displayAvatarURL: string | null;
+}
+
+export interface UpdatedMessages_messageUpdate_BoostMessage_member {
+  __typename: "IMember";
+  displayName: string | null;
+  displayHexColor: string | null;
+}
+
+export interface UpdatedMessages_messageUpdate_BoostMessage {
+  __typename: "BoostMessage";
+  /**
+   * Message ID
+   */
+  id: string;
+  /**
+   * Message timestamp
+   */
+  createdAt: any;
+  /**
+   * General discord user who authored the message
+   */
+  author: UpdatedMessages_messageUpdate_BoostMessage_author;
+  /**
+   * Author as member of guild.
+   */
+  member: UpdatedMessages_messageUpdate_BoostMessage_member | null;
+  tier: number;
+}
+
+export type UpdatedMessages_messageUpdate = UpdatedMessages_messageUpdate_JoinMessage | UpdatedMessages_messageUpdate_TextMessage | UpdatedMessages_messageUpdate_BoostMessage;
 
 export interface UpdatedMessages {
   messageUpdate: UpdatedMessages_messageUpdate;

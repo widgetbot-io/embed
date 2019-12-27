@@ -14,4 +14,7 @@ fragment Message on Message {
   ... on TextMessage {
     ...TextMessage
   }
+  ... on BoostMessage {
+    tier
+  }
 }

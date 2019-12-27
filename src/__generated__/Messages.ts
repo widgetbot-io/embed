@@ -11,7 +11,7 @@ export interface Messages_channel_StoreChannel {
   id: string;
 }
 
-export interface Messages_channel_TextChannel_messages_BoostMessage_author {
+export interface Messages_channel_TextChannel_messages_JoinMessage_author {
   __typename: "User";
   id: string;
   username: string;
@@ -21,14 +21,14 @@ export interface Messages_channel_TextChannel_messages_BoostMessage_author {
   displayAvatarURL: string | null;
 }
 
-export interface Messages_channel_TextChannel_messages_BoostMessage_member {
+export interface Messages_channel_TextChannel_messages_JoinMessage_member {
   __typename: "IMember";
   displayName: string | null;
   displayHexColor: string | null;
 }
 
-export interface Messages_channel_TextChannel_messages_BoostMessage {
-  __typename: "BoostMessage" | "JoinMessage" | "PinnedMessage";
+export interface Messages_channel_TextChannel_messages_JoinMessage {
+  __typename: "JoinMessage" | "PinnedMessage";
   /**
    * Message ID
    */
@@ -40,11 +40,11 @@ export interface Messages_channel_TextChannel_messages_BoostMessage {
   /**
    * General discord user who authored the message
    */
-  author: Messages_channel_TextChannel_messages_BoostMessage_author;
+  author: Messages_channel_TextChannel_messages_JoinMessage_author;
   /**
    * Author as member of guild.
    */
-  member: Messages_channel_TextChannel_messages_BoostMessage_member | null;
+  member: Messages_channel_TextChannel_messages_JoinMessage_member | null;
 }
 
 export interface Messages_channel_TextChannel_messages_TextMessage_author {
@@ -173,15 +173,7 @@ export interface Messages_channel_TextChannel_messages_TextMessage {
   embeds: Messages_channel_TextChannel_messages_TextMessage_embeds[] | null;
 }
 
-export type Messages_channel_TextChannel_messages = Messages_channel_TextChannel_messages_BoostMessage | Messages_channel_TextChannel_messages_TextMessage;
-
-export interface Messages_channel_TextChannel {
-  __typename: "TextChannel";
-  id: string;
-  messages: Messages_channel_TextChannel_messages[] | null;
-}
-
-export interface Messages_channel_NewsChannel_messages_BoostMessage_author {
+export interface Messages_channel_TextChannel_messages_BoostMessage_author {
   __typename: "User";
   id: string;
   username: string;
@@ -191,14 +183,14 @@ export interface Messages_channel_NewsChannel_messages_BoostMessage_author {
   displayAvatarURL: string | null;
 }
 
-export interface Messages_channel_NewsChannel_messages_BoostMessage_member {
+export interface Messages_channel_TextChannel_messages_BoostMessage_member {
   __typename: "IMember";
   displayName: string | null;
   displayHexColor: string | null;
 }
 
-export interface Messages_channel_NewsChannel_messages_BoostMessage {
-  __typename: "BoostMessage" | "JoinMessage" | "PinnedMessage";
+export interface Messages_channel_TextChannel_messages_BoostMessage {
+  __typename: "BoostMessage";
   /**
    * Message ID
    */
@@ -210,11 +202,56 @@ export interface Messages_channel_NewsChannel_messages_BoostMessage {
   /**
    * General discord user who authored the message
    */
-  author: Messages_channel_NewsChannel_messages_BoostMessage_author;
+  author: Messages_channel_TextChannel_messages_BoostMessage_author;
   /**
    * Author as member of guild.
    */
-  member: Messages_channel_NewsChannel_messages_BoostMessage_member | null;
+  member: Messages_channel_TextChannel_messages_BoostMessage_member | null;
+  tier: number;
+}
+
+export type Messages_channel_TextChannel_messages = Messages_channel_TextChannel_messages_JoinMessage | Messages_channel_TextChannel_messages_TextMessage | Messages_channel_TextChannel_messages_BoostMessage;
+
+export interface Messages_channel_TextChannel {
+  __typename: "TextChannel";
+  id: string;
+  messages: Messages_channel_TextChannel_messages[] | null;
+}
+
+export interface Messages_channel_NewsChannel_messages_JoinMessage_author {
+  __typename: "User";
+  id: string;
+  username: string;
+  bot: boolean;
+  discriminator: string;
+  defaultAvatarURL: string;
+  displayAvatarURL: string | null;
+}
+
+export interface Messages_channel_NewsChannel_messages_JoinMessage_member {
+  __typename: "IMember";
+  displayName: string | null;
+  displayHexColor: string | null;
+}
+
+export interface Messages_channel_NewsChannel_messages_JoinMessage {
+  __typename: "JoinMessage" | "PinnedMessage";
+  /**
+   * Message ID
+   */
+  id: string;
+  /**
+   * Message timestamp
+   */
+  createdAt: any;
+  /**
+   * General discord user who authored the message
+   */
+  author: Messages_channel_NewsChannel_messages_JoinMessage_author;
+  /**
+   * Author as member of guild.
+   */
+  member: Messages_channel_NewsChannel_messages_JoinMessage_member | null;
 }
 
 export interface Messages_channel_NewsChannel_messages_TextMessage_author {
@@ -343,7 +380,44 @@ export interface Messages_channel_NewsChannel_messages_TextMessage {
   embeds: Messages_channel_NewsChannel_messages_TextMessage_embeds[] | null;
 }
 
-export type Messages_channel_NewsChannel_messages = Messages_channel_NewsChannel_messages_BoostMessage | Messages_channel_NewsChannel_messages_TextMessage;
+export interface Messages_channel_NewsChannel_messages_BoostMessage_author {
+  __typename: "User";
+  id: string;
+  username: string;
+  bot: boolean;
+  discriminator: string;
+  defaultAvatarURL: string;
+  displayAvatarURL: string | null;
+}
+
+export interface Messages_channel_NewsChannel_messages_BoostMessage_member {
+  __typename: "IMember";
+  displayName: string | null;
+  displayHexColor: string | null;
+}
+
+export interface Messages_channel_NewsChannel_messages_BoostMessage {
+  __typename: "BoostMessage";
+  /**
+   * Message ID
+   */
+  id: string;
+  /**
+   * Message timestamp
+   */
+  createdAt: any;
+  /**
+   * General discord user who authored the message
+   */
+  author: Messages_channel_NewsChannel_messages_BoostMessage_author;
+  /**
+   * Author as member of guild.
+   */
+  member: Messages_channel_NewsChannel_messages_BoostMessage_member | null;
+  tier: number;
+}
+
+export type Messages_channel_NewsChannel_messages = Messages_channel_NewsChannel_messages_JoinMessage | Messages_channel_NewsChannel_messages_TextMessage | Messages_channel_NewsChannel_messages_BoostMessage;
 
 export interface Messages_channel_NewsChannel {
   __typename: "NewsChannel";
