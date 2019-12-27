@@ -5,12 +5,14 @@
 fragment Message on Message {
   id
   createdAt
+  __typename
   author {
     ...Author
   }
   member {
     ...Member
   }
+
   ... on TextMessage {
     ...TextMessage
   }
