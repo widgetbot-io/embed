@@ -10,6 +10,6 @@ export const ColorPill = styled('div')<Props>`
   flex-shrink: 0;
   background-color: ${({ color }) =>
     color
-      ? `rgba(${(color >> 16) & 0xff},${(color >> 8) & 0xff},${color & 0xff},1)`
+      ? color
       : `rgba(255, 255, 255, 0.2)`};
 `

@@ -159,7 +159,7 @@ const EmbedFields = ({ fields }) => {
 }
 
 const Embed = ({
-  color,
+  hexColor,
   author,
   title,
   url,
@@ -185,7 +185,7 @@ const Embed = ({
       })}
     >
       <Root>
-        <ColorPill color={color} />
+        <ColorPill color={hexColor} />
         <Wrapper>
           <Content>
             <div>
