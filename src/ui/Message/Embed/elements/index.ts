@@ -20,7 +20,7 @@ export const Wrapper = styled('div')<Props>`
   background-color: rgba(0, 0, 0, 0.15);
   overflow: hidden;
   border-left: 4px solid;
-  border-radius: 4px
+  border-radius: 4px;
   border-color: ${({ color }) =>
     color
       ? color
@@ -51,7 +51,7 @@ export const Content = styled('div')`
 export const Title = styled('div')`
   color: hsla(0, 0%, 100%, 1);
   display: inline-block;
-  font-weight: 6000;
+  font-weight: 600;
   font-size: 1rem;
   margin-top: 8px;
 `
