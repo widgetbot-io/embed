@@ -20,10 +20,10 @@ export class Semver {
 		const s1 = Semver.split(oldVersion);
 		const s2 = Semver.split(newVersion);
 
-		return s1[1] < s2[1];
+		return !s1[1] || s1[1] < s2[1];
 	}
 
-	public static newMinorOrMajor(oldVersion: string = 'v0.0.0', newVersion: string = 'v0.0.0'): boolean {
+	public static newMinorOrMajor(oldVersion: string, newVersion: string): boolean {
 		const s1 = Semver.split(oldVersion);
 		const s2 = Semver.split(newVersion);
 
