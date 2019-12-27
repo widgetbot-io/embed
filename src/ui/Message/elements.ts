@@ -100,7 +100,7 @@ export const Root = styled('div')`
   opacity: ${({ theme }) =>
     /* todo: theme.message.type === 'SENDING'* ? 0.5 : */ 1};
 
-  font-size: 0.9375rem;
+  font-size: 1rem;
   line-height: 1.1em;
   margin-top: 4px;
   white-space: pre-wrap;
