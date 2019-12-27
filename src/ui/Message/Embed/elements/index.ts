@@ -7,17 +7,24 @@ export const Root = styled('div')`
   display: flex;
   color: ${({ theme }) => theme.colors._primary.fade(0.3).string()};
 `
-
-export const Wrapper = styled('div')`
+interface Props {
+  color: number
+}
+export const Wrapper = styled('div')<Props>`
   padding: 8px 10px;
   border-radius: 0 3px 3px 0;
   position: relative;
   max-width: 520px;
-  display: flex;
-  flex-direction: column;
-  background-color: rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  display: inline-grid;
+  padding: 8px 16px 16px;
+  background-color: rgba(0, 0, 0, 0.15);
   overflow: hidden;
+  border-left: 4px solid;
+  border-radius: 4px
+  border-color: ${({ color }) =>
+    color
+      ? color
+      : `rgba(0, 0, 0, .4)`};
 `
 
 export const Content = styled('div')`
@@ -44,6 +51,7 @@ export const Content = styled('div')`
 export const Title = styled('div')`
   color: hsla(0, 0%, 100%, 1);
   display: inline-block;
-  font-weight: 500;
-  font-size: 14px;
+  font-weight: 6000;
+  font-size: 1rem;
+  margin-top: 8px;
 `

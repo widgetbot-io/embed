@@ -1,9 +1,9 @@
 import styled, { css } from '../ThemeContext'
 
 export const Description = styled('div')`
-  margin-top: 4px;
+  margin-top: 8px;
 
   & * {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 `

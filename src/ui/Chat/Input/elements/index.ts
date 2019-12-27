@@ -12,7 +12,7 @@ export const Textarea = styled('textarea')`
   border: none;
   resize: none;
   outline: none;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   font-weight: 400;
   letter-spacing: -0.025rem;
   line-height: 1.25rem;

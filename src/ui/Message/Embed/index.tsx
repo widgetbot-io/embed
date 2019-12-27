@@ -6,7 +6,6 @@ import * as React from 'react'
 
 import { Content, Root, Title, Wrapper } from './elements'
 import { Author, AuthorIcon, AuthorName } from './elements/author'
-import { ColorPill } from './elements/colorpill'
 import { Description } from './elements/description'
 import { Field, FieldName, Fields, FieldValue } from './elements/fields'
 import { Footer, FooterIcon, FooterText } from './elements/footer'
@@ -185,8 +184,7 @@ const Embed = ({
       })}
     >
       <Root>
-        <ColorPill color={hexColor} />
-        <Wrapper>
+        <Wrapper color={hexColor}>
           <Content>
             <div>
               <EmbedAuthor {...author} />
