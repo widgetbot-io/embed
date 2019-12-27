@@ -1,7 +1,7 @@
 import styled from '../ThemeContext'
 
 interface Props {
-  color: any
+  color: number
 }
 export const ColorPill = styled('div')<Props>`
   width: 4px;
