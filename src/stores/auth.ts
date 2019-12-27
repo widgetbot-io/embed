@@ -37,6 +37,7 @@ export class AuthStore {
   @observable token = window.localStorage.getItem('token');
 
   @observable menuOpen: boolean = false;
+  @observable guestEnabled: boolean = false;
 
   @observable inProgress: boolean = false;
   @observable needsUpdate: boolean = false;
