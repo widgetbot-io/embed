@@ -1,4 +1,4 @@
-import webpCheck from '@ui/Message/webpCheck'
+import webpCheck from '@ui/shared/webpCheck'
 import { MemberLink } from '@ui/shared/Member'
 
 import styled from './ThemeContext'

@@ -10,6 +10,7 @@ import { Plural } from '@lingui/react'
 import { addNotification } from "notify";
 import {store} from "@models";
 import {Close} from "@ui/Sidebar/elements";
+import webpCheck from '@ui/shared/webpCheck'
 
 const Header = () => (
   <Route path="/:guild">
@@ -35,16 +36,24 @@ const Header = () => (
 
           if (error) return null;
 
+          let icon = data.guild.iconURL
+
+          if(icon.includes('a_')) {
+            icon = icon.replace('jpg', 'gif?size=64')
+          } else {
+            icon = webpCheck(icon.replace('jpg', 'webp?size=64'))
+          }
+
           if (window.innerWidth < 520) return (
               <Root className="header">
-                <Icon src={data.guild.iconURL} className="icon" />
+                <Icon src={icon} className="icon" />
                 <Name className="name">{data.guild.name}</Name>
                 <Close onClick={store.sidebar.toggle} />
               </Root>
           )
           return (
             <Root className="header">
-              <Icon src={data.guild.iconURL} className="icon" />
+              <Icon src={icon} className="icon" />
               <Name className="name">{data.guild.name}</Name>
               <Tooltip
                 placement="bottom"
