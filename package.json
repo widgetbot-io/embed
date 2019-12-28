@@ -89,7 +89,7 @@
     "react-virtualized": "^9.21.0",
     "recompose": "0.30.0",
     "scroll-into-view-if-needed": "^2.2.20",
-    "simple-markdown": "^0.7.1",
+    "simple-markdown": "^0.4.2",
     "subscriptions-transport-ws": "^0.9.15",
     "tinyreq-cli": "^1.1.2",
     "ts-invariant": "^0.4.4",
