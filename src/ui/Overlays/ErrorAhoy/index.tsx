@@ -1,8 +1,8 @@
 import * as React from 'react'
 
 import { Error } from '..'
-import Header, { Name, Topic } from '../../Header'
-import Wrapper from '../../Wrapper'
+import Header, { Name, Topic } from './header'
+import Wrapper from './wrapper'
 import { Message } from './elements'
 import { Trans, withI18n, withI18nProps } from '@lingui/react'
 
@@ -10,10 +10,10 @@ const ErrorAhoy = ({ message, i18n }: { message?: string } & withI18nProps) => (
   <Wrapper>
     <Header>
       <Name>
-        <Trans id="ErrorScreen.Title">Error</Trans>
+        <Trans id="ErrorScreen.Title">Error Ahoy!</Trans>
       </Name>
       <Topic>
-        Something unexpected occurred
+        Something unexpected occurred! WidgetBot support (for site admins): https://discord.gg/NYBEhN7
       </Topic>
     </Header>
     <Error>
