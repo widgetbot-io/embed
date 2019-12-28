@@ -2,7 +2,7 @@ import memoize from 'memoizee'
 import * as R from 'ramda'
 import * as React from 'react'
 import baseRules from '@ui/shared/markdown/render/ast'
-import { Code, Highlighter, Link } from '@ui/shared/markdown/render/elements'
+import { Code, Highlighter, Link, QuoteContainer, QuoteBar, Quote } from '@ui/shared/markdown/render/elements'
 import {
   astToString,
   flattenAst,
@@ -35,7 +35,7 @@ function parserFor(rules, returnAst?) {
 }
 
 function createRules(rule: { [key: string]: any }) {
-  const { paragraph, url, link, codeBlock, inlineCode } = rule
+  const { paragraph, url, link, codeBlock, inlineCode, blockQuote } = rule
 
   return {
     ...rule,
@@ -87,6 +87,17 @@ function createRules(rule: { [key: string]: any }) {
         <Highlighter key={state.key} language={node.lang}>
           {recurse(node, recurseOutput, state)}
         </Highlighter>
+      )
+    },
+    blockQuote: {
+      ...blockQuote,
+      react: (node, recurseOutput, state) => (
+        <QuoteContainer key={state.key}>
+          <QuoteBar></QuoteBar>
+          <Quote>
+            {recurse(node, recurseOutput, state)}
+          </Quote>
+        </QuoteContainer>
       )
     }
   }

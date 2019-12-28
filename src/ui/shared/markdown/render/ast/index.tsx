@@ -1,6 +1,6 @@
 import { channel, mention, role } from '@ui/shared/markdown/render/ast/mention'
 import text from '@ui/shared/markdown/render/ast/text'
-import { defaultRules, inlineRegex } from 'simple-markdown'
+import { defaultRules, inlineRegex, blockRegex } from 'simple-markdown'
 
 import { customEmoji } from './customEmoji'
 
@@ -19,6 +19,11 @@ const baseRules = {
   autolink: {
     ...defaultRules.autolink,
     match: inlineRegex(/^<(https?:\/\/[^ >]+)>/)
+  },
+  blockQuote: {
+    ...defaultRules.blockQuote,
+    match: inlineRegex(/^( *>[^\n]+(\n[^\n]+)*\n*)/),
+      
   },
   emoticon: {
     order: defaultRules.text.order,
