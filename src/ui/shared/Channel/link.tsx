@@ -8,6 +8,8 @@ type Props = Partial<NavLinkProps> & {
   $ref?: any;
 };
 
+const toggle = () => window.innerWidth < 520 ? store.sidebar.toggle() : null
+
 class ChannelLink extends React.PureComponent<Props> {
   render() {
     // @ts-ignore
@@ -21,7 +23,7 @@ class ChannelLink extends React.PureComponent<Props> {
             to={`/${match.params.server}/${isStore ? "" : id}`}
             data-channel={id}
             innerRef={$ref}
-            onClick={store.sidebar.toggle}
+            onClick={toggle}
             {...props}
           />
         )}
