@@ -4,7 +4,8 @@ import { List, ListProps } from 'react-virtualized'
 
 const listStyle = {
   overflowX: null,
-  overflowY: null
+  overflowY: null,
+  outline: 'none'
 }
 
 const noop = () => {}
