@@ -25,7 +25,7 @@ class Category extends React.PureComponent<Props> {
     const { category, activeChannel } = this.props;
 
     return (
-      <Root className="category" style={this.props.index === 0 ? {paddingTop: 0} : {}}>
+      <Root className="category">
         {category.name && (
           <Name onClick={this.toggle}>
             {this.state.open ? <Collapse /> : <Expand />}

@@ -6,7 +6,7 @@ import {inject, observer} from "mobx-react";
 
 import {Selector} from "@ui/SelectItem";
 
-import {Refresh, Root} from "./elements";
+import {Root} from "./elements";
 import Category from "./Category";
 import categorise from "./categorise";
 import CHANNELS from "./Channels.graphql";
