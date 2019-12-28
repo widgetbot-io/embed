@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Tooltip from 'rc-tooltip'
 import CHANNEL from './Channel.graphql'
-import { Name, Topic, Join, Stretch } from '@ui/Header'
+import { Name, Emoji, Topic, Join, Stretch } from '@ui/Header'
 
 import { Root } from './elements'
 import { Trans } from '@lingui/react'
@@ -35,7 +35,7 @@ export const Header = observer(({ channel, guild, AuthStore }: HeaderProps) => {
     return (
         <Root>
             <Stretch>
-                <Name>{cData.channel && cData.channel.name}</Name>
+                <Name><Emoji>{cData.channel && cData.channel.name}</Emoji></Name>
                 {(() => {
                     return window.innerWidth < 520 ? null : (
                         <Topic

@@ -1,5 +1,6 @@
 import {ChannelLink, Hash, News, Store, NSFW} from '@ui/shared/Channel'
 import styled, { css, keyframes } from '@lib/emotion'
+import { Twemoji } from '@ui/shared/Emoji/emoji'
 import Item from '@ui/SelectItem'
 
 const fade = i => keyframes`
@@ -91,6 +92,13 @@ export const Name = styled('div')`
   text-overflow: ellipsis;
   width: 100%;
   overflow: hidden;
+`
+
+export const Emoji = styled(Twemoji)`
+  width: 18px !important;
+  height: 100% !important;
+  margin-right: 2px !important;
+  vertical-align: -0.7em;
 `
 
 export const Pings = styled('div')`

@@ -2,6 +2,8 @@ import Button from '@ui/shared/button'
 import { Hash } from '@ui/shared/Channel'
 import Markdown from '@ui/shared/markdown/render'
 import styled from '@lib/emotion'
+import { Twemoji } from '@ui/shared/Emoji/emoji'
+
 
 export const Root = styled('header')`
   overflow: hidden;
@@ -54,6 +56,13 @@ export const Name = styled(Hash)`
   @media (max-width: 270px) {
     font-size: 16px;
   }
+`
+
+export const Emoji = styled(Twemoji)`
+  width: 18px !important;
+  height: 100% !important;
+  margin-right: 2px !important;
+  vertical-align: -0.4em;
 `
 
 export const Topic = styled(Markdown.withComponent('div'))`
