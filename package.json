@@ -52,6 +52,7 @@
     "emotion-theming": "^9.2.6",
     "graphql": "^14.4.2",
     "graphql-tag": "^2.10.1",
+    "graphql.macro": "^1.4.2",
     "highlight.js": "^9.15.8",
     "husky": "^0.14.3",
     "immer": "^2.0.0",
