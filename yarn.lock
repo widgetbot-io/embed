@@ -6088,6 +6088,11 @@ graphql-config@2.0.1:
     lodash "^4.17.4"
     minimatch "^3.0.4"
 
+graphql-crunch@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/graphql-crunch/-/graphql-crunch-2.1.0.tgz#2ca7f3c0a48f88f8312450925d87a48fc8c9eaed"
+  integrity sha512-oMnYlMGZ3YKT+uRFZN7Iu9rEAGb4tC6bXjg8BKAJoIb2ZQf4TnxTDTOm7JzbM8y74buw0sd6vehNX/Atw7/Uog==
+
 graphql-import@^0.4.4:
   version "0.4.5"
   resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.4.5.tgz#e2f18c28d335733f46df8e0733d8deb1c6e2a645"

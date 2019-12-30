@@ -51,6 +51,7 @@
     "emotion": "^9.2.8",
     "emotion-theming": "^9.2.6",
     "graphql": "^14.4.2",
+    "graphql-crunch": "^2.1.0",
     "graphql-tag": "^2.10.1",
     "graphql.macro": "^1.4.2",
     "highlight.js": "^9.15.8",
