@@ -49,4 +49,5 @@ export const NoPerms = styled(`p`)`
     -moz-user-select: none; 
     -ms-user-select: none; 
     user-select: none;
+    cursor: pointer;
 `;

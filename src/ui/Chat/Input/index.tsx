@@ -159,7 +159,7 @@ class MagicTextarea extends React.Component<Props> {
         // }}
         onClick={onClick.bind({ props: { AuthStore: this.props.AuthStore }})}
       >
-        <b>{ !user ? 'Click here to log in to and participate in chat' : `You do not have permission to send messages in this channel.` }</b>
+        { !user ? 'Click here to log in to and participate in chat' : `You do not have permission to send messages in this channel.` }
       </NoPerms>
     );
   }

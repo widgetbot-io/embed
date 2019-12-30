@@ -4,6 +4,7 @@ export const Author = styled('div')`
   display: flex;
   align-items: center;
   margin-bottom: 5px;
+  margin-top: 8px
 `
 
 export const AuthorName = styled('span')`
