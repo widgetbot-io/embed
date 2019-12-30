@@ -226,7 +226,6 @@ const Embed = ({
           </Content>
           <EmbedImage {...image} />
           <EmbedFooter timestamp={timestamp} {...footer} />
-          {console.log(footer)}
         </Wrapper>
       </Root>
     </ThemeProvider>
