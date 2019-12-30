@@ -7,9 +7,6 @@ import { uncrunch } from 'graphql-crunch';
 
 const CRUNCH = false;
 
-const uncruncher =
-);
-
 const httpLink = ApolloLink.from([
   onError(({ graphQLErrors, networkError }) => {
     if (graphQLErrors)
