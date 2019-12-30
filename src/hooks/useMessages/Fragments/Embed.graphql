@@ -25,7 +25,7 @@ fragment Embed on Embed {
     url
   }
   footer {
-    proxyIconURL
+    iconURL
     text
   }
   thumbnail {

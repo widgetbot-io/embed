@@ -123,7 +123,7 @@ export interface Messages_channel_TextChannel_messages_TextMessage_embeds_provid
 
 export interface Messages_channel_TextChannel_messages_TextMessage_embeds_footer {
   __typename: "EmbedFooter";
-  proxyIconURL: string | null;
+  iconURL: string | null;
   text: string;
 }
 
@@ -355,7 +355,7 @@ export interface Messages_channel_NewsChannel_messages_TextMessage_embeds_provid
 
 export interface Messages_channel_NewsChannel_messages_TextMessage_embeds_footer {
   __typename: "EmbedFooter";
-  proxyIconURL: string | null;
+  iconURL: string | null;
   text: string;
 }
 

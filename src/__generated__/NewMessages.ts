@@ -118,7 +118,7 @@ export interface NewMessages_message_TextMessage_embeds_provider {
 
 export interface NewMessages_message_TextMessage_embeds_footer {
   __typename: "EmbedFooter";
-  proxyIconURL: string | null;
+  iconURL: string | null;
   text: string;
 }
 
