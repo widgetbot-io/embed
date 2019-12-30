@@ -23,11 +23,11 @@ const httpLink = ApolloLink.from([
     batchInterval: 20,
     batchMax: 2
   }),
-  new ApolloLink((operation, forward) =>
-      forward(operation).map(response => {
-        response.data = uncrunch(response.data);
-        return response
-  }))
+  // new ApolloLink((operation, forward) =>
+  //     forward(operation).map(response => {
+  //       response.data = uncrunch(response.data);
+  //       return response
+  // }))
 ].filter(Boolean) as any);
 
 export default httpLink
