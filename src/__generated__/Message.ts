@@ -118,7 +118,7 @@ export interface Message_TextMessage_embeds_provider {
 
 export interface Message_TextMessage_embeds_footer {
   __typename: "EmbedFooter";
-  iconURL: string | null;
+  proxyIconURL: string | null;
   text: string;
 }
 

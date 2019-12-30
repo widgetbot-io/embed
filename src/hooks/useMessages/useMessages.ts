@@ -1,12 +1,13 @@
 import produce from "immer";
 import { MESSAGES, DELETED_MESSAGES, NEW_MESSAGES, UPDATED_MESSAGES } from ".";
 import { useQuery, useSubscription } from "react-apollo-hooks";
+import {loader} from "graphql.macro";
 
 /**
  * Fetches the messages for a channel
  */
 export const useMessages = (channel: string) => {
-  const query = useQuery(MESSAGES, {
+  const query = useQuery(loader('./Messages.graphql'), {
     variables: { channel },
     fetchPolicy: 'network-only'
   });
@@ -31,7 +32,7 @@ export const useMessages = (channel: string) => {
     }
 
     await query.fetchMore({
-      query: MESSAGES,
+      query: loader('./Messages.graphql'),
       variables: { channel, ...options },
       updateQuery: (prev, { fetchMoreResult }) =>
         produce(prev, draftState => {
@@ -43,7 +44,7 @@ export const useMessages = (channel: string) => {
     })
   }
 
-  useSubscription(NEW_MESSAGES, {
+  useSubscription(loader('./NewMessages.graphql'), {
     variables: { channel },
     onSubscriptionData({ subscriptionData }) {
       query.updateQuery(prev =>
@@ -53,7 +54,7 @@ export const useMessages = (channel: string) => {
       )}
   });
 
-  useSubscription(UPDATED_MESSAGES, {
+  useSubscription(loader('./UpdatedMessages.graphql'), {
     variables: { channel },
     onSubscriptionData({ subscriptionData }) {
       query.updateQuery(prev =>
@@ -69,7 +70,7 @@ export const useMessages = (channel: string) => {
     }
   });
 
-  useSubscription(DELETED_MESSAGES, {
+  useSubscription(loader('./DeletedMessages.graphql'), {
     variables: { channel },
     onSubscriptionData({ subscriptionData }) {
       query.updateQuery(prev =>
