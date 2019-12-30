@@ -1,7 +1,7 @@
 import Tooltip from 'rc-tooltip'
 import * as React from 'react'
 
-import { Root, Settings, Version, Auth } from './elements'
+import { Root, Settings, Version, Auth, Developers } from './elements'
 import { Semver } from "@utils/semver";
 import { Trans } from '@lingui/react'
 import { store } from '@models'
@@ -40,15 +40,17 @@ export default class Panel extends React.Component<Props> {
 		//  {window.innerWidth > 520 ? (this.props.AuthStore.user ? `Logged in as ${this.props.AuthStore.user.username}` : undefined) : undefined}
 		return (
 			<Root className="panel">
-				<Auth
-					className="auth"
-					target="_blank"
-					onClick={this.onClick.bind(this)}
-				>
-					<React.Fragment>
-						{this.props.AuthStore.user ? 'Logout' : 'Login'}
-					</React.Fragment>
-				</Auth>
+				<Developers>
+					<Auth
+						className="auth"
+						target="_blank"
+						onClick={this.onClick.bind(this)}
+					>
+						<React.Fragment>
+							{this.props.AuthStore.user ? 'Logout' : 'Login'}
+						</React.Fragment>
+					</Auth>
+				</Developers>
 				<Version
 					href={`https://widgetbot.io`}
 					target="_blank"

@@ -4,7 +4,7 @@ import { ThemeProvider } from 'emotion-theming'
 import * as Moment from 'moment'
 import * as React from 'react'
 
-import { Content, Root, Title, Wrapper } from './elements'
+import { Content, Root, Title, Wrapper, Provider, Video, Gifv } from './elements'
 import { Author, AuthorIcon, AuthorName } from './elements/author'
 import { Description } from './elements/description'
 import { Field, FieldName, Fields, FieldValue } from './elements/fields'
@@ -49,12 +49,28 @@ const EmbedTitle = ({ title, url }) =>
     )
   ) : null
 
+const EmbedProvider = ({ name, url }) =>
+  name ? (
+    url ? (
+      <Provider>
+        <Link href={url}>{parseEmojis(parseEmbedTitle(name))}</Link>
+      </Provider>
+    ) : (
+      <Provider>{parseEmojis(parseEmbedTitle(name))}</Provider>
+    )
+  ) : null
+
 const EmbedDescription = ({ content }) =>
   content ? (
     <Description>{parseEmojis(parseAllowLinks(content))}</Description>
   ) : null
 
-const EmbedAuthor = ({ name, url, iconURL }) => {
+const EmbedVideo = ({ url, height, width }) =>
+  url ? (
+    <Video src={url} height={height} width={width}></Video>
+  ) : null
+
+const EmbedAuthor = ({ name, url, proxyIconURL }) => {
   if (!name) {
     return null
   }
@@ -71,7 +87,7 @@ const EmbedAuthor = ({ name, url, iconURL }) => {
     }
   }
 
-  const authorIcon = iconURL ? <AuthorIcon src={iconURL} /> : null
+  const authorIcon = proxyIconURL ? <AuthorIcon src={proxyIconURL} /> : null
 
   return (
     <Author>
@@ -102,15 +118,16 @@ const EmbedField = ({ name, value, inline }) => {
 }
 
 const EmbedThumbnail = ({ type, proxyURL, height, width }) =>
-  proxyURL ? (
-    <Thumbnail
-      src={proxyURL}
-      height={height}
-      width={width}
-      maxWidth={/^article|image$/.test(type) ? 400 : 80}
-      maxHeight={/^article|image$/.test(type) ? 300 : 80}
-    />
-  ) : null
+  type === 'video' ? null :
+    proxyURL ? (
+      <Thumbnail
+        src={proxyURL}
+        height={height}
+        width={width}
+        maxWidth={/^article|image$/.test(type) ? 400 : 80}
+        maxHeight={/^article|image$/.test(type) ? 300 : 80}
+      />
+    ) : null
 
 const EmbedImage = ({ proxyURL, height, width }) =>
   proxyURL ? (
@@ -126,7 +143,7 @@ const EmbedImage = ({ proxyURL, height, width }) =>
     </span>
   ) : null
 
-const EmbedFooter = ({ timestamp, text, proxyIconUrl }) => {
+const EmbedFooter = ({ timestamp, text, proxyIconURL }) => {
   if (!text && !timestamp) {
     return null
   }
@@ -139,7 +156,9 @@ const EmbedFooter = ({ timestamp, text, proxyIconUrl }) => {
     .join(' • ')
 
   const footerIcon =
-    text && proxyIconUrl ? <FooterIcon src={proxyIconUrl} /> : null
+    text && proxyIconURL ? <FooterIcon src={proxyIconURL} /> : null
+
+    console.log(!!(text && proxyIconURL))
 
   return (
     <Footer>
@@ -168,13 +187,21 @@ const Embed = ({
   image,
   timestamp,
   footer,
+  provider,
+  video,
   ...embed
 }) =>
   embed.type === 'gifv' ? (
+    <Gifv autoPlay loop
+      src={video.proxyURL || video.url}
+      width={+video.width}
+      height={+video.height}
+    ></Gifv>
+  ) : embed.type === 'image' ? (
     <Image
-      src={embed.video.url.replace('.mp4', '.gif')}
-      width={+embed.video.width}
-      height={+embed.video.height}
+      src={thumbnail.proxyURL}
+      width={+thumbnail.width}
+      height={+thumbnail.height}
     />
   ) : (
     <ThemeProvider
@@ -187,15 +214,19 @@ const Embed = ({
         <Wrapper color={hexColor}>
           <Content>
             <div>
+              <EmbedProvider {...provider}/>
               <EmbedAuthor {...author} />
               <EmbedTitle title={title} url={url} />
-              <EmbedDescription content={description} />
+              {embed.type === 'video' ? 
+                <EmbedVideo {...video} />:
+                <EmbedDescription content={description} />}
               <EmbedFields fields={fields} />
             </div>
             <EmbedThumbnail type={embed.type} {...thumbnail} />
           </Content>
           <EmbedImage {...image} />
           <EmbedFooter timestamp={timestamp} {...footer} />
+          {console.log(footer)}
         </Wrapper>
       </Root>
     </ThemeProvider>

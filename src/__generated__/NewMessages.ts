@@ -141,7 +141,7 @@ export interface NewMessages_message_TextMessage_embeds {
   title: string | null;
   description: string | null;
   url: string | null;
-  timestamp: any | null;
+  timestamp: number | null;
   hexColor: string | null;
   type: string | null;
   author: NewMessages_message_TextMessage_embeds_author | null;

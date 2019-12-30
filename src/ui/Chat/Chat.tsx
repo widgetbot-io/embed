@@ -1,4 +1,5 @@
 import * as React from 'react'
+import GET_CHANNEL_NAME from './ChannelName.graphql'
 import { useRouter, useSendMessage } from '@hooks'
 import { useQuery } from 'react-apollo-hooks'
 import Input from './Input'
@@ -9,7 +10,6 @@ import ErrorAhoy from "@ui/Overlays/ErrorAhoy";
 import { formatError } from "@views/Messages/utils";
 import { Loading } from "@ui/Overlays";
 import { addNotification } from "notify";
-import {loader} from "graphql.macro";
 
 
 export interface ChatProps {}
@@ -19,7 +19,7 @@ export const Chat: FunctionComponent<ChatProps> = (props) => {
   const sendMessage = useSendMessage();
   const [rows, setRows] = useState(1);
   const { channel } = useRouter();
-  const { data, error, errors, networkStatus, loading } = useQuery(loader('./ChannelName.graphql'), { variables: { channel } });
+  const { data, error, errors, networkStatus, loading } = useQuery(GET_CHANNEL_NAME, { variables: { channel } });
 
   if (loading) return <Loading />;
   if (!data || !data.channel) {

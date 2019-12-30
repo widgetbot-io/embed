@@ -58,7 +58,7 @@ export interface Embed {
   title: string | null;
   description: string | null;
   url: string | null;
-  timestamp: any | null;
+  timestamp: number | null;
   hexColor: string | null;
   type: string | null;
   author: Embed_author | null;

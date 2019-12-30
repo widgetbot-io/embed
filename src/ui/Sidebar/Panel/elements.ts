@@ -5,7 +5,7 @@ export const Root = styled('footer')`
   height: 40px;
   flex-shrink: 0;
   display: flex;
-  padding: 4px 10px;
+  padding: 4px 10px 8px;
   font-size: 12px;
   font-weight: 500;
   color: ${({ theme }) => theme.colors._primary.fade(0.7).string()};
@@ -77,6 +77,7 @@ export const Version = styled('a')`
   padding: 0 10px;
   cursor: pointer;
   text-decoration: none;
+  align-self: center;
 
   &:hover {
     text-decoration: underline;

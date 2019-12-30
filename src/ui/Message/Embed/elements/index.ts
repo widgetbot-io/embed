@@ -55,3 +55,29 @@ export const Title = styled('div')`
   font-size: 1rem;
   margin-top: 8px;
 `
+
+export const Provider = styled('div')`
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 400;
+  grid-column: 1/1;
+  margin-top: 8px;
+  & > a {
+    color: inherit;
+  }
+}
+`
+
+export const Video = styled('iframe')`
+  border: none;
+  margin-top: 8px;
+  max-height: 225px;
+  max-width: 400px;
+`
+
+export const Gifv = styled('video')`
+  margin-top: 8px;
+  max-height: 300px;
+  max-width: 400px;
+  width: auto;
+`

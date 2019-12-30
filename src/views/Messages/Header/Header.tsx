@@ -11,7 +11,6 @@ import GET_INFO from "@ui/Sidebar/Header/GuildInfo.graphql";
 import {AuthStore} from "@store/auth";
 import {Auth} from "@ui/Sidebar/Panel/elements";
 import {observer} from "mobx-react";
-import {loader} from "graphql.macro";
 
 const defaultInvite = 'https://discord.gg/56VgJZ4';
 
@@ -22,11 +21,11 @@ export interface HeaderProps {
 }
 
 export const Header = observer(({ channel, guild, AuthStore }: HeaderProps) => {
-    const { data: cData } = useQuery(loader('./Channel.graphql'), {
+    const { data: cData } = useQuery(CHANNEL, {
         variables: { channel },
         fetchPolicy: 'cache-first'
     });
-    const { data: gData } = useQuery(loader('../../../ui/Sidebar/Header/GuildInfo.graphql'), {
+    const { data: gData } = useQuery(GET_INFO, {
         variables: { guild },
         fetchPolicy: 'cache-first'
     });

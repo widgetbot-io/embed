@@ -16,5 +16,5 @@ export const FooterIcon = styled('img')`
   width: 18px;
   object-fit: contain;
   float: left;
-  border-radius: 2.45px;
+  border-radius: 50%;
 `

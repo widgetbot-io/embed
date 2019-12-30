@@ -146,7 +146,7 @@ export interface Messages_channel_TextChannel_messages_TextMessage_embeds {
   title: string | null;
   description: string | null;
   url: string | null;
-  timestamp: any | null;
+  timestamp: number | null;
   hexColor: string | null;
   type: string | null;
   author: Messages_channel_TextChannel_messages_TextMessage_embeds_author | null;
@@ -378,7 +378,7 @@ export interface Messages_channel_NewsChannel_messages_TextMessage_embeds {
   title: string | null;
   description: string | null;
   url: string | null;
-  timestamp: any | null;
+  timestamp: number | null;
   hexColor: string | null;
   type: string | null;
   author: Messages_channel_NewsChannel_messages_TextMessage_embeds_author | null;
