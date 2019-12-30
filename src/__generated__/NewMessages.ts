@@ -91,9 +91,9 @@ export interface NewMessages_message_TextMessage_attachments {
 
 export interface NewMessages_message_TextMessage_embeds_author {
   __typename: "EmbedAuthor";
-  iconURL: string | null;
-  name: number | null;
-  url: number | null;
+  proxyIconURL: string | null;
+  name: string | null;
+  url: string | null;
 }
 
 export interface NewMessages_message_TextMessage_embeds_fields {
@@ -105,15 +105,15 @@ export interface NewMessages_message_TextMessage_embeds_fields {
 
 export interface NewMessages_message_TextMessage_embeds_image {
   __typename: "EmbedImage";
-  url: string;
+  proxyURL: string;
   width: number;
   height: number;
 }
 
 export interface NewMessages_message_TextMessage_embeds_provider {
   __typename: "EmbedProvider";
-  name: string;
-  url: string;
+  name: string | null;
+  url: string | null;
 }
 
 export interface NewMessages_message_TextMessage_embeds_footer {
@@ -126,7 +126,7 @@ export interface NewMessages_message_TextMessage_embeds_thumbnail {
   __typename: "EmbedThumbnail";
   height: number;
   width: number;
-  url: string;
+  proxyURL: string;
 }
 
 export interface NewMessages_message_TextMessage_embeds_video {
@@ -147,7 +147,7 @@ export interface NewMessages_message_TextMessage_embeds {
   author: NewMessages_message_TextMessage_embeds_author | null;
   fields: NewMessages_message_TextMessage_embeds_fields[];
   image: NewMessages_message_TextMessage_embeds_image | null;
-  provider: NewMessages_message_TextMessage_embeds_provider;
+  provider: NewMessages_message_TextMessage_embeds_provider | null;
   footer: NewMessages_message_TextMessage_embeds_footer | null;
   thumbnail: NewMessages_message_TextMessage_embeds_thumbnail | null;
   video: NewMessages_message_TextMessage_embeds_video | null;

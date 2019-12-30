@@ -39,9 +39,9 @@ export interface TextMessage_attachments {
 
 export interface TextMessage_embeds_author {
   __typename: "EmbedAuthor";
-  iconURL: string | null;
-  name: number | null;
-  url: number | null;
+  proxyIconURL: string | null;
+  name: string | null;
+  url: string | null;
 }
 
 export interface TextMessage_embeds_fields {
@@ -53,15 +53,15 @@ export interface TextMessage_embeds_fields {
 
 export interface TextMessage_embeds_image {
   __typename: "EmbedImage";
-  url: string;
+  proxyURL: string;
   width: number;
   height: number;
 }
 
 export interface TextMessage_embeds_provider {
   __typename: "EmbedProvider";
-  name: string;
-  url: string;
+  name: string | null;
+  url: string | null;
 }
 
 export interface TextMessage_embeds_footer {
@@ -74,7 +74,7 @@ export interface TextMessage_embeds_thumbnail {
   __typename: "EmbedThumbnail";
   height: number;
   width: number;
-  url: string;
+  proxyURL: string;
 }
 
 export interface TextMessage_embeds_video {
@@ -95,7 +95,7 @@ export interface TextMessage_embeds {
   author: TextMessage_embeds_author | null;
   fields: TextMessage_embeds_fields[];
   image: TextMessage_embeds_image | null;
-  provider: TextMessage_embeds_provider;
+  provider: TextMessage_embeds_provider | null;
   footer: TextMessage_embeds_footer | null;
   thumbnail: TextMessage_embeds_thumbnail | null;
   video: TextMessage_embeds_video | null;

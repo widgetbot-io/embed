@@ -96,9 +96,9 @@ export interface Messages_channel_TextChannel_messages_TextMessage_attachments {
 
 export interface Messages_channel_TextChannel_messages_TextMessage_embeds_author {
   __typename: "EmbedAuthor";
-  iconURL: string | null;
-  name: number | null;
-  url: number | null;
+  proxyIconURL: string | null;
+  name: string | null;
+  url: string | null;
 }
 
 export interface Messages_channel_TextChannel_messages_TextMessage_embeds_fields {
@@ -110,15 +110,15 @@ export interface Messages_channel_TextChannel_messages_TextMessage_embeds_fields
 
 export interface Messages_channel_TextChannel_messages_TextMessage_embeds_image {
   __typename: "EmbedImage";
-  url: string;
+  proxyURL: string;
   width: number;
   height: number;
 }
 
 export interface Messages_channel_TextChannel_messages_TextMessage_embeds_provider {
   __typename: "EmbedProvider";
-  name: string;
-  url: string;
+  name: string | null;
+  url: string | null;
 }
 
 export interface Messages_channel_TextChannel_messages_TextMessage_embeds_footer {
@@ -131,7 +131,7 @@ export interface Messages_channel_TextChannel_messages_TextMessage_embeds_thumbn
   __typename: "EmbedThumbnail";
   height: number;
   width: number;
-  url: string;
+  proxyURL: string;
 }
 
 export interface Messages_channel_TextChannel_messages_TextMessage_embeds_video {
@@ -152,7 +152,7 @@ export interface Messages_channel_TextChannel_messages_TextMessage_embeds {
   author: Messages_channel_TextChannel_messages_TextMessage_embeds_author | null;
   fields: Messages_channel_TextChannel_messages_TextMessage_embeds_fields[];
   image: Messages_channel_TextChannel_messages_TextMessage_embeds_image | null;
-  provider: Messages_channel_TextChannel_messages_TextMessage_embeds_provider;
+  provider: Messages_channel_TextChannel_messages_TextMessage_embeds_provider | null;
   footer: Messages_channel_TextChannel_messages_TextMessage_embeds_footer | null;
   thumbnail: Messages_channel_TextChannel_messages_TextMessage_embeds_thumbnail | null;
   video: Messages_channel_TextChannel_messages_TextMessage_embeds_video | null;
@@ -328,9 +328,9 @@ export interface Messages_channel_NewsChannel_messages_TextMessage_attachments {
 
 export interface Messages_channel_NewsChannel_messages_TextMessage_embeds_author {
   __typename: "EmbedAuthor";
-  iconURL: string | null;
-  name: number | null;
-  url: number | null;
+  proxyIconURL: string | null;
+  name: string | null;
+  url: string | null;
 }
 
 export interface Messages_channel_NewsChannel_messages_TextMessage_embeds_fields {
@@ -342,15 +342,15 @@ export interface Messages_channel_NewsChannel_messages_TextMessage_embeds_fields
 
 export interface Messages_channel_NewsChannel_messages_TextMessage_embeds_image {
   __typename: "EmbedImage";
-  url: string;
+  proxyURL: string;
   width: number;
   height: number;
 }
 
 export interface Messages_channel_NewsChannel_messages_TextMessage_embeds_provider {
   __typename: "EmbedProvider";
-  name: string;
-  url: string;
+  name: string | null;
+  url: string | null;
 }
 
 export interface Messages_channel_NewsChannel_messages_TextMessage_embeds_footer {
@@ -363,7 +363,7 @@ export interface Messages_channel_NewsChannel_messages_TextMessage_embeds_thumbn
   __typename: "EmbedThumbnail";
   height: number;
   width: number;
-  url: string;
+  proxyURL: string;
 }
 
 export interface Messages_channel_NewsChannel_messages_TextMessage_embeds_video {
@@ -384,7 +384,7 @@ export interface Messages_channel_NewsChannel_messages_TextMessage_embeds {
   author: Messages_channel_NewsChannel_messages_TextMessage_embeds_author | null;
   fields: Messages_channel_NewsChannel_messages_TextMessage_embeds_fields[];
   image: Messages_channel_NewsChannel_messages_TextMessage_embeds_image | null;
-  provider: Messages_channel_NewsChannel_messages_TextMessage_embeds_provider;
+  provider: Messages_channel_NewsChannel_messages_TextMessage_embeds_provider | null;
   footer: Messages_channel_NewsChannel_messages_TextMessage_embeds_footer | null;
   thumbnail: Messages_channel_NewsChannel_messages_TextMessage_embeds_thumbnail | null;
   video: Messages_channel_NewsChannel_messages_TextMessage_embeds_video | null;

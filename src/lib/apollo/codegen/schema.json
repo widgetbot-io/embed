@@ -1635,13 +1635,9 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "EmbedProvider",
-                "ofType": null
-              }
+              "kind": "OBJECT",
+              "name": "EmbedProvider",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -1781,13 +1777,9 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -1797,13 +1789,9 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -1852,7 +1840,7 @@
             "deprecationReason": null
           },
           {
-            "name": "url",
+            "name": "proxyURL",
             "description": null,
             "args": [],
             "type": {
@@ -1962,7 +1950,7 @@
             "deprecationReason": null
           },
           {
-            "name": "url",
+            "name": "proxyURL",
             "description": null,
             "args": [],
             "type": {
@@ -1994,7 +1982,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "Float",
+              "name": "String",
               "ofType": null
             },
             "isDeprecated": false,
@@ -2006,14 +1994,14 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "Float",
+              "name": "String",
               "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "iconURL",
+            "name": "proxyIconURL",
             "description": null,
             "args": [],
             "type": {

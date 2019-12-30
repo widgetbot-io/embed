@@ -8,9 +8,9 @@
 
 export interface Embed_author {
   __typename: "EmbedAuthor";
-  iconURL: string | null;
-  name: number | null;
-  url: number | null;
+  proxyIconURL: string | null;
+  name: string | null;
+  url: string | null;
 }
 
 export interface Embed_fields {
@@ -22,15 +22,15 @@ export interface Embed_fields {
 
 export interface Embed_image {
   __typename: "EmbedImage";
-  url: string;
+  proxyURL: string;
   width: number;
   height: number;
 }
 
 export interface Embed_provider {
   __typename: "EmbedProvider";
-  name: string;
-  url: string;
+  name: string | null;
+  url: string | null;
 }
 
 export interface Embed_footer {
@@ -43,7 +43,7 @@ export interface Embed_thumbnail {
   __typename: "EmbedThumbnail";
   height: number;
   width: number;
-  url: string;
+  proxyURL: string;
 }
 
 export interface Embed_video {
@@ -64,7 +64,7 @@ export interface Embed {
   author: Embed_author | null;
   fields: Embed_fields[];
   image: Embed_image | null;
-  provider: Embed_provider;
+  provider: Embed_provider | null;
   footer: Embed_footer | null;
   thumbnail: Embed_thumbnail | null;
   video: Embed_video | null;
