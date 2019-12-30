@@ -66,7 +66,7 @@ export interface TextMessage_embeds_provider {
 
 export interface TextMessage_embeds_footer {
   __typename: "EmbedFooter";
-  iconURL: string | null;
+  proxyIconURL: string | null;
   text: string;
 }
 
@@ -89,7 +89,7 @@ export interface TextMessage_embeds {
   title: string | null;
   description: string | null;
   url: string | null;
-  timestamp: any | null;
+  timestamp: number | null;
   hexColor: string | null;
   type: string | null;
   author: TextMessage_embeds_author | null;

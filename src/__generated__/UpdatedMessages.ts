@@ -118,7 +118,7 @@ export interface UpdatedMessages_messageUpdate_TextMessage_embeds_provider {
 
 export interface UpdatedMessages_messageUpdate_TextMessage_embeds_footer {
   __typename: "EmbedFooter";
-  iconURL: string | null;
+  proxyIconURL: string | null;
   text: string;
 }
 
@@ -141,7 +141,7 @@ export interface UpdatedMessages_messageUpdate_TextMessage_embeds {
   title: string | null;
   description: string | null;
   url: string | null;
-  timestamp: any | null;
+  timestamp: number | null;
   hexColor: string | null;
   type: string | null;
   author: UpdatedMessages_messageUpdate_TextMessage_embeds_author | null;
