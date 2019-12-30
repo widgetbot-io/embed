@@ -35,7 +35,7 @@ export interface Embed_provider {
 
 export interface Embed_footer {
   __typename: "EmbedFooter";
-  iconURL: string | null;
+  proxyIconURL: string | null;
   text: string;
 }
 
