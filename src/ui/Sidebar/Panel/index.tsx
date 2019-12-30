@@ -25,12 +25,12 @@ export default class Panel extends React.Component<Props> {
 	};
 
 	render(): React.ReactNode {
-		const lastUpdate = localStorage.getItem('lastUpdate') || 'v0.0.0-canary';
-		if (!lastUpdate || Semver.newMinorOrMajor(lastUpdate, version)) {
-			localStorage.setItem('lastUpdate', version);
-			this.props.AuthStore.logout();
-			this.props.AuthStore.needsUpdate = true;
-		}
+		// const lastUpdate = localStorage.getItem('lastUpdate');
+		// if (!lastUpdate || Semver.newMinorOrMajor(lastUpdate, version)) {
+		// 	localStorage.setItem('lastUpdate', version);
+		// 	this.props.AuthStore.logout();
+		// 	this.props.AuthStore.needsUpdate = true;
+		// }
 		if (!localStorage.getItem('token')) {
 			this.props.AuthStore.logout();
 			this.props.AuthStore.needsUpdate = true;

@@ -12,6 +12,11 @@ export interface GuildInfo_guild {
   iconURL: string;
   invite: string | null;
   memberCount: number;
+  bannerURL: string | null;
+  splashURL: string | null;
+  partnered: string;
+  verified: string;
+  premiumTier: string;
 }
 
 export interface GuildInfo {

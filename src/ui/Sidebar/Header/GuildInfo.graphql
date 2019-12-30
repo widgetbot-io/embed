@@ -4,5 +4,10 @@ query GuildInfo($guild: String!) {
     iconURL
     invite
     memberCount
+    bannerURL
+    splashURL
+    partnered
+    verified
+    premiumTier
   }
 }

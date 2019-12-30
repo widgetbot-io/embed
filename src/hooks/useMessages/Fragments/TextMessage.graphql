@@ -13,6 +13,9 @@ fragment TextMessage on TextMessage {
     url
     height
     width
+    name
+    size
+    spoiler
   }
   embeds {
     ...Embed

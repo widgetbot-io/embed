@@ -4,20 +4,33 @@ fragment Embed on Embed {
   url
   timestamp
   hexColor
+  type
+  author {
+    iconURL
+    name
+    url
+  }
   fields {
     value
     name
     inline
   }
+  image {
+    url
+    width
+    height
+  }
+  provider {
+    name
+    url
+  }
   footer {
     iconURL
-    proxyIconURL
     text
   }
   thumbnail {
     height
     width
-    proxyURL
     url
   }
   video {
