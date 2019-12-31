@@ -78,14 +78,15 @@ class Message extends React.PureComponent<Props, any> {
                       </Content>
 
                         {message.attachments
-                            ? message.attachments.map((attachment, i) => (
-                                <Image
+                            ? message.attachments.map((attachment, i) => {
+                              if(attachment.height && attachment.width) {
+                                return <Image
                                     key={`${i}:${attachment}`}
                                     src={attachment.url}
                                     height={+attachment.height}
                                     width={+attachment.width}
-                                />
-                            ))
+                                />}
+                            })
                             : null}
 
                       {message.embeds.map((e, i) => (

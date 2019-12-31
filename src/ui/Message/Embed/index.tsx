@@ -158,8 +158,6 @@ const EmbedFooter = ({ timestamp, text, proxyIconURL }) => {
   const footerIcon =
     text && proxyIconURL ? <FooterIcon src={proxyIconURL} /> : null
 
-    console.log(!!(text && proxyIconURL))
-
   return (
     <Footer>
       {footerIcon}
