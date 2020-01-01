@@ -19,7 +19,7 @@ import register, { unregister } from './registerServiceWorker'
 const stores = { AuthStore };
 
 if (!window.location.hostname.includes(`127.0.0.1`) && !window.location.hostname.includes(`localhost`))
-    Sentry.init({dsn: 'https://273ba9f193d04b86864e10fa9451cecb@sentry.io/1843470'});
+    Sentry.init({dsn: 'https://65cfb83d192c4c3593adc09a0b9f6e5e@sentry.forbid.fun/2'});
 
 // Render App
 ReactDOM.render(
