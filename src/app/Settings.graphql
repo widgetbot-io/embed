@@ -1,0 +1,14 @@
+query Settings($guild: String!) {
+  guild(id: $guild) {
+    settings {
+      theme {
+        css
+        colors {
+          primary
+          accent
+          background
+        }
+      }
+    }
+  }
+}

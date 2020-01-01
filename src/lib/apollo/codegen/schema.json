@@ -767,6 +767,18 @@
         "description": null,
         "fields": [
           {
+            "name": "theme",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Theme",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "readonly",
             "description": null,
             "args": [],

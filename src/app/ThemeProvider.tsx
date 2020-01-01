@@ -4,7 +4,7 @@ import { ThemeProvider as Provider } from 'emotion-theming'
 import * as React from 'react'
 import * as _ from 'lodash'
 import { GlobalStyles } from './elements'
-import GET_THEME from './Theme.graphql'
+import GET_SETTINGS from './Settings.graphql'
 
 import { Theme_guild_theme } from '@generated'
 import * as Constants from '@constants'
@@ -21,15 +21,15 @@ export const ThemeProvider = ({ children }) => {
     guild = use.guild;
   }
 
-  const { data } = useQuery(GET_THEME, { variables: { guild }, fetchPolicy: 'network-only' });
+  const { data } = useQuery(GET_SETTINGS, { variables: { guild }, fetchPolicy: 'network-only' });
 
   let theme: Theme_guild_theme = {
     __typename: 'Theme',
     colors: {
       __typename: 'ThemeColors',
-      primary: data.guild && data.guild.theme && data.guild.theme.colors && data.guild.theme.colors.primary || Constants.THEME_COLOR_PRIMARY,
-      accent: data.guild && data.guild.theme && data.guild.theme.colors && data.guild.theme.colors.accent || Constants.THEME_COLOR_ACCENT,
-      background: data.guild && data.guild.theme && data.guild.theme.colors && data.guild.theme.colors.background || Constants.THEME_BACKGROUND
+      primary: data.guild && data.guild.settings.theme && data.guild.settings.theme.colors && data.guild.settings.theme.colors.primary || Constants.THEME_COLOR_PRIMARY,
+      accent: data.guild && data.guild.settings.theme && data.guild.settings.theme.colors && data.guild.settings.theme.colors.accent || Constants.THEME_COLOR_ACCENT,
+      background: data.guild && data.guild.settings.theme && data.guild.settings.theme.colors && data.guild.settings.theme.colors.background || Constants.THEME_BACKGROUND
     },
     css: ``
   };
@@ -46,6 +46,7 @@ export const ThemeProvider = ({ children }) => {
     },
     url: {} // TODO: Fix
   };
+  // TODO: I found why the URL parsing doesn't work l m a o.
 
   GlobalStyles.inject(themeContext);
 
