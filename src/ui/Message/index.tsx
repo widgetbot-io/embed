@@ -1,5 +1,5 @@
 import { Messages_channel_TextChannel_messages } from '@generated'
-import Markdown from '@ui/shared/markdown/render'
+import Markdown, {LinkMarkdown} from '@ui/shared/markdown/render'
 import { ThemeProvider } from 'emotion-theming'
 import Moment from 'moment'
 import Tooltip from 'rc-tooltip'
@@ -63,7 +63,9 @@ class Message extends React.PureComponent<Props, any> {
                   <ThemeProvider key={message.id} theme={this.theme(message)}>
                     <Root className="message" id={message.id}>
                       <Content className="content">
-                        <Markdown>{message.content}</Markdown>
+                        {message.author.discriminator === '0000'
+                          ? <LinkMarkdown>{message.content}</LinkMarkdown>
+                          : <Markdown>{message.content}</Markdown>}
                         {message.editedAt && (
                           <Tooltip
                             placement="top"
