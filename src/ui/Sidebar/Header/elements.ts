@@ -11,6 +11,16 @@ export const Root = styled('header')`
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 2px 0 rgba(0, 0, 0, 0.06);
 `
 
+interface Props {
+  backgroundImage: string
+}
+export const BannerRoot = styled(Root)<Props>`
+  height: 112px;
+  background-image: url(${({ backgroundImage }) => backgroundImage});
+  background-size: cover;
+  background-position: center;
+`
+
 export const Icon = styled('img')`
   height: 26px;
   width: 26px;
@@ -33,6 +43,10 @@ export const Name = styled('h1')`
   flex-grow: 1;
 `
 
+export const BannerName = styled(Name)`
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,.8))
+`
+
 export const Count = styled('div')`
   flex-shrink: 0;
   font-size: 10px;
@@ -45,4 +59,5 @@ export const Count = styled('div')`
   user-select: none;
   min-width: 25px;
   text-align: center;
+  height: 19px
 `

@@ -4,7 +4,7 @@ import { Query } from 'react-apollo'
 import { Route } from 'react-router-dom'
 
 import { GuildInfo, GuildInfoVariables } from '@generated'
-import { Count, Icon, Name, Root } from './elements'
+import { Count, Icon, Name, Root, BannerRoot, BannerName } from './elements'
 import GET_INFO from './GuildInfo.graphql'
 import { Plural } from '@lingui/react'
 import { addNotification } from "notify";
@@ -44,12 +44,41 @@ const Header = () => (
             icon = webpCheck(icon.replace('jpg', 'webp?size=64'))
           }
 
-          if (window.innerWidth < 520) return (
-              <Root className="header">
+          if(data.guild.bannerURL) {
+
+            let banner = webpCheck(data.guild.bannerURL)
+
+            if (window.innerWidth < 520) return (
+              <BannerRoot className="header" backgroundImage={banner}>
                 <Icon src={icon} className="icon" />
-                <Name className="name">{data.guild.name}</Name>
+                <BannerName className="name">{data.guild.name}</BannerName>
                 <Close onClick={store.sidebar.toggle} />
-              </Root>
+              </BannerRoot>
+            )
+            return (
+              <BannerRoot className="header" backgroundImage={banner}>
+                <Icon src={icon} className="icon" />
+                <BannerName className="name">{data.guild.name}</BannerName>
+                <Tooltip
+                  placement="bottom"
+                  overlay={
+                    `${data.guild.memberCount === 1 ? `${data.guild.memberCount} member in this server.` : `${data.guild.memberCount} members in this server.`}`
+                  }
+                >
+                  <Count className="count">{data.guild.memberCount}</Count>
+                </Tooltip>
+                <Close onClick={store.sidebar.toggle} />
+              </BannerRoot>
+            )
+
+          }
+
+          if (window.innerWidth < 520) return (
+            <Root className="header">
+              <Icon src={icon} className="icon" />
+              <Name className="name">{data.guild.name}</Name>
+              <Close onClick={store.sidebar.toggle} />
+            </Root>
           )
           return (
             <Root className="header">

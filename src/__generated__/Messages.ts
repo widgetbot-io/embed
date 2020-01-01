@@ -87,8 +87,8 @@ export interface Messages_channel_TextChannel_messages_TextMessage_reactions {
 export interface Messages_channel_TextChannel_messages_TextMessage_attachments {
   __typename: "Attachment";
   url: string;
-  height: number;
-  width: number;
+  height: number | null;
+  width: number | null;
   name: string;
   size: string;
   spoiler: boolean;
@@ -319,8 +319,8 @@ export interface Messages_channel_NewsChannel_messages_TextMessage_reactions {
 export interface Messages_channel_NewsChannel_messages_TextMessage_attachments {
   __typename: "Attachment";
   url: string;
-  height: number;
-  width: number;
+  height: number | null;
+  width: number | null;
   name: string;
   size: string;
   spoiler: boolean;

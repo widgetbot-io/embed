@@ -158,8 +158,6 @@ const EmbedFooter = ({ timestamp, text, proxyIconURL }) => {
   const footerIcon =
     text && proxyIconURL ? <FooterIcon src={proxyIconURL} /> : null
 
-    console.log(!!(text && proxyIconURL))
-
   return (
     <Footer>
       {footerIcon}
@@ -226,7 +224,6 @@ const Embed = ({
           </Content>
           <EmbedImage {...image} />
           <EmbedFooter timestamp={timestamp} {...footer} />
-          {console.log(footer)}
         </Wrapper>
       </Root>
     </ThemeProvider>

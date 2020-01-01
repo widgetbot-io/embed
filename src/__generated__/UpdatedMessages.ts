@@ -82,8 +82,8 @@ export interface UpdatedMessages_messageUpdate_TextMessage_reactions {
 export interface UpdatedMessages_messageUpdate_TextMessage_attachments {
   __typename: "Attachment";
   url: string;
-  height: number;
-  width: number;
+  height: number | null;
+  width: number | null;
   name: string;
   size: string;
   spoiler: boolean;
