@@ -20,6 +20,7 @@ import {
 import { Image } from './Embed/elements/media'
 import Reaction from './Reaction'
 import Embed from './Embed'
+import AttachmentSpoiler from '@ui/shared/markdown/render/elements/AttachmentSpoiler'
 
 interface Props {
   messages: Messages_channel_TextChannel_messages[],
@@ -37,7 +38,6 @@ class Message extends React.PureComponent<Props, any> {
   render() {
     const { messages } = this.props;
     const [firstMessage] = messages;
-
     return (
       <Group style={this.props.style} className="group">
         {firstMessage.__typename === 'TextMessage' ? (
@@ -78,16 +78,20 @@ class Message extends React.PureComponent<Props, any> {
                       </Content>
 
                         {message.attachments
-                            ? message.attachments.map((attachment, i) => (
-                                <Image
-                                    key={`${i}:${attachment}`}
-                                    src={attachment.url}
-                                    height={+attachment.height}
-                                    width={+attachment.width}
-                                />
-                            ))
-                            : null}
-
+                            ? message.attachments.map((attachment, i) => attachment.spoiler ? (
+                              <AttachmentSpoiler
+                                key={`${i}:${attachment}`}
+                                src={attachment.url}
+                                height={+attachment.height} 
+                                width={+attachment.width}
+                              />) : (
+                              <Image
+                                key={`${i}:${attachment}`}
+                                src={attachment.url}
+                                height={+attachment.height}
+                                width={+attachment.width}
+                            />))
+                          : null}
                       {message.embeds.map((e, i) => (
                           // @ts-ignore
                           <Embed key={i} {...e} />

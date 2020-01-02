@@ -19,6 +19,15 @@ export const Image = styled(EImage)<ImageProps>`
   border-radius: 3px;  
 `;
 
+export const SpoilerImage = styled(EImage)<ImageProps>`
+  display: block;
+  margin: 10px 0;
+  cursor: pointer;
+  border-radius: 3px;
+  filter: blur(44px);
+  --webkit-filter: blur(44px);
+`;
+
 /*
 @media (max-width: 700px) {
     width: 65%;

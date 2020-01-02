@@ -9,6 +9,7 @@ import {
   recurse
 } from '@ui/shared/markdown/render/util'
 import SimpleMarkdown from 'simple-markdown'
+import TextSpoiler from "@ui/shared/markdown/render/elements/TextSpoiler";
 
 function parserFor(rules, returnAst?) {
   const parser = SimpleMarkdown.parserFor(rules)
@@ -35,7 +36,7 @@ function parserFor(rules, returnAst?) {
 }
 
 function createRules(rule: { [key: string]: any }) {
-  const { paragraph, url, link, codeBlock, inlineCode, blockQuote } = rule
+  const { paragraph, url, link, codeBlock, inlineCode, blockQuote, spoiler } = rule
 
   return {
     ...rule,
@@ -99,6 +100,10 @@ function createRules(rule: { [key: string]: any }) {
           </Quote>
         </QuoteContainer>
       )
+    },
+    spoiler: {
+      ...spoiler,
+      react: (node, recurseOutput, state) => (<TextSpoiler content={recurse(node, recurseOutput, state)}/>)
     }
   }
 }

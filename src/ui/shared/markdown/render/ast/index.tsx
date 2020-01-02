@@ -49,6 +49,12 @@ const baseRules = {
     order: defaultRules.u.order,
     match: inlineRegex(/^~~([\s\S]+?)~~(?!_)/),
     parse: defaultRules.u.parse
+  },
+
+  spoiler: {
+    order: defaultRules.inlineCode.order + 1,
+    match: inlineRegex(/^\|\|([\s\S]+?)\|\|/),
+    parse: defaultRules.strong.parse
   }
 }
 
