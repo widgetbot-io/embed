@@ -174,4 +174,5 @@ export const Video = styled('video')`
   max-height: 225px;
   max-width: 400px;
   width: auto;
+  outline: none;
 `
