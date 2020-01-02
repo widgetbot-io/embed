@@ -15,7 +15,8 @@ import {
   Secondary,
   Messages,
   Reactions,
-  Root
+  Root,
+  Video
 } from './elements'
 import { Image } from './Embed/elements/media'
 import Reaction from './Reaction'
@@ -82,12 +83,22 @@ class Message extends React.PureComponent<Props, any> {
                         {message.attachments
                             ? message.attachments.map((attachment, i) => {
                               if(attachment.height && attachment.width) {
-                                return <Image
+                                if(attachment.url.endsWith('.mp4') || attachment.url.endsWith('.mov') || attachment.url.endsWith('.webm')) {
+                                  return <Video controls
                                     key={`${i}:${attachment}`}
                                     src={attachment.url}
                                     height={+attachment.height}
                                     width={+attachment.width}
-                                />}
+                                  ></Video>
+                                } else { 
+                                  return <Image
+                                      key={`${i}:${attachment}`}
+                                      src={attachment.url}
+                                      height={+attachment.height}
+                                      width={+attachment.width}
+                                  />
+                                }
+                              }
                             })
                             : null}
 

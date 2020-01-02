@@ -4,13 +4,14 @@ import { ThemeProvider } from 'emotion-theming'
 import * as Moment from 'moment'
 import * as React from 'react'
 
-import { Content, Root, Title, Wrapper, Provider, Video, Gifv } from './elements'
+import { Content, Root, Title, Wrapper, Provider, VideoIframe, Gifv } from './elements'
 import { Author, AuthorIcon, AuthorName } from './elements/author'
 import { Description } from './elements/description'
 import { Field, FieldName, Fields, FieldValue } from './elements/fields'
 import { Footer, FooterIcon, FooterText } from './elements/footer'
 import { Image } from './elements/media'
 import { Thumbnail } from './elements/thumbnail'
+import { Video } from '@ui/Message/elements'
 
 // TODO: Refactor / cleanup
 
@@ -67,7 +68,7 @@ const EmbedDescription = ({ content }) =>
 
 const EmbedVideo = ({ url, height, width }) =>
   url ? (
-    <Video src={url} height={height} width={width}></Video>
+    <VideoIframe src={url} height={height} width={width}></VideoIframe>
   ) : null
 
 const EmbedAuthor = ({ name, url, proxyIconURL }) => {
@@ -201,6 +202,12 @@ const Embed = ({
       width={+thumbnail.width}
       height={+thumbnail.height}
     />
+  ) : embed.type === 'video' && !thumbnail ? (
+    <Video controls
+      src={video.proxyURL || video.url}
+      width={+video.width}
+      height={+video.height}
+    ></Video>
   ) : (
     <ThemeProvider
       theme={theme => ({

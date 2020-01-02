@@ -68,7 +68,7 @@ export const Provider = styled('div')`
 }
 `
 
-export const Video = styled('iframe')`
+export const VideoIframe = styled('iframe')`
   border: none;
   margin-top: 8px;
   max-height: 225px;
