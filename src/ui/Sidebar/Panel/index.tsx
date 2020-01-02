@@ -1,14 +1,8 @@
-import Tooltip from 'rc-tooltip'
 import * as React from 'react'
 
-import { Root, Settings, Version, Auth, Developers } from './elements'
-import { Semver } from "@utils/semver";
-import { Trans } from '@lingui/react'
-import { store } from '@models'
-import Button from "@ui/shared/button";
-import { inject, observer } from "mobx-react";
-import { AuthStore } from "@store/auth";
-import {CSSProperties} from "react";
+import {Auth, Developers, Root, Version} from './elements'
+import {inject, observer} from "mobx-react";
+import {AuthStore} from "@store/auth";
 import {onClick} from "@views/Messages/Header";
 
 const { version } = require('../../../../package.json');

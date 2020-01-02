@@ -44,8 +44,12 @@ export class AuthStore {
   @observable errors: string | undefined = undefined;
   @observable user: User = JSON.parse(window.localStorage.getItem('user'));
 
-  @action toggleMenu(res: boolean = true) {
+  @action toggleMenu(res: boolean = this.menuOpen) {
     this.menuOpen = res
+  }
+
+  @action toggleGuest(res: boolean = !this.guestEnabled) {
+    this.guestEnabled = res;
   }
 
   @action async fetchDiscordUser() {

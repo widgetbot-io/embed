@@ -9,5 +9,10 @@ query GuildInfo($guild: String!) {
     partnered
     verified
     premiumTier
+
+    settings {
+      guestMode
+      readonly
+    }
   }
 }

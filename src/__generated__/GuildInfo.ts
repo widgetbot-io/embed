@@ -6,6 +6,12 @@
 // GraphQL query operation: GuildInfo
 // ====================================================
 
+export interface GuildInfo_guild_settings {
+  __typename: "Settings";
+  guestMode: boolean;
+  readonly: boolean;
+}
+
 export interface GuildInfo_guild {
   __typename: "Guild";
   name: string;
@@ -17,6 +23,7 @@ export interface GuildInfo_guild {
   partnered: string;
   verified: string;
   premiumTier: string;
+  settings: GuildInfo_guild_settings;
 }
 
 export interface GuildInfo {
