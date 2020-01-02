@@ -38,6 +38,7 @@ export class AuthStore {
 
   @observable menuOpen: boolean = false;
   @observable guestEnabled: boolean = false;
+  @observable readOnly: boolean = false;
 
   @observable inProgress: boolean = false;
   @observable needsUpdate: boolean = false;
@@ -50,6 +51,10 @@ export class AuthStore {
 
   @action toggleGuest(res: boolean = !this.guestEnabled) {
     this.guestEnabled = res;
+  }
+
+  @action toggleRead(res: boolean = !this.readOnly) {
+    this.readOnly = res;
   }
 
   @action async fetchDiscordUser() {

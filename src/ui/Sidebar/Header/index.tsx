@@ -52,7 +52,8 @@ export class Header extends React.Component<Props, any> {
 								icon = webpCheck(icon.replace('jpg', 'webp?size=64'))
 							}
 
-							this.props.AuthStore.toggleGuest()
+							this.props.AuthStore.toggleGuest(data.guild.settings.guestMode);
+							this.props.AuthStore.toggleRead(data.guild.settings.readonly);
 
 							if (data.guild.bannerURL) {
 
