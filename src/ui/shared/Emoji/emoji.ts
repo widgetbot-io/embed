@@ -12,8 +12,8 @@ const emoji = (enlarged: boolean) => css`
 
   ${enlarged
     ? css`
-        height: 34px;
-        width: 34px;
+        height: 3rem;
+        width: 3rem;
         margin: 3px 1px;
         vertical-align: bottom;
       `

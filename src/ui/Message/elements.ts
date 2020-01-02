@@ -169,3 +169,9 @@ export namespace Sys {
     background: #36393e;
   `
 }
+
+export const Video = styled('video')`
+  max-height: 225px;
+  max-width: 400px;
+  width: auto;
+`

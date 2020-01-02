@@ -137,4 +137,16 @@ namespace Markdown {
   )
 }
 
+export function LinkMarkdown({ children }: { children: string }) {
+  return children ? parseAllowLinks(children) : null
+}
+
+export namespace LinkMarkdown {
+  export const withComponent = Component => ({ children, ...props }) => (
+    <Component {...props}>
+      <LinkMarkdown>{children}</LinkMarkdown>
+    </Component>
+  )
+}
+
 export default Markdown
