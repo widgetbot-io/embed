@@ -1,17 +1,22 @@
 import React, { PureComponent } from "react";
-import { Image, SpoilerImage } from "../../../../Message/Embed/elements/media";
+import { Image, SpoilerImage } from "@ui/Message/Embed/elements/media";
 
 interface Props {
-    src: string
-    height?: number
+    src: string,
+    height?: number,
     width?: number
-};
+}
 
-export default class AttachmentSpoiler extends PureComponent<Props, any> {
+interface State {
+    showing: boolean,
+    hovering: boolean
+}
+
+export default class AttachmentSpoiler extends PureComponent<Props, State> {
+    public state = { showing: false, hovering: false };
 
     constructor(props) {
         super(props);
-        this.state = { showing: false, hovering: false };
         this.onHover = this.onHover.bind(this);
         this.onClick = this.onClick.bind(this);
     }
@@ -28,7 +33,7 @@ export default class AttachmentSpoiler extends PureComponent<Props, any> {
     render() {
         if (this.state.showing) return <Image src={this.props.src} height={this.props.height} width={this.props.width} />;
         return (
-            <div 
+            <div
                 style={{ textAlign:"center", display:"inline-block", cursor: "pointer" }}
                 onClick={this.onClick}
                 onMouseEnter={this.onHover}
@@ -52,5 +57,4 @@ export default class AttachmentSpoiler extends PureComponent<Props, any> {
             </div>
         );
     }
-
 }

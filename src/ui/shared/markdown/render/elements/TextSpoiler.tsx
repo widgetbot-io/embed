@@ -4,10 +4,17 @@ interface Props {
     content: string;
 }
 
-export default class TextSpoiler extends PureComponent<Props, any> {
+interface State {
+    showing: boolean,
+    hover: boolean,
+    role: string
+}
+
+export default class TextSpoiler extends PureComponent<Props, State> {
+    public state = { showing: false, hover: false, role: "button" };
+
     constructor(props) {
         super(props);
-        this.state = { showing: false, hover: false, role: "button" };
         this.onHover = this.onHover.bind(this);
         this.onClick = this.onClick.bind(this);
         this.computeStyle = this.computeStyle.bind(this);
