@@ -31,9 +31,9 @@ export default class TextSpoiler extends PureComponent<Props, State> {
     }
 
     computeStyle() {
-        if (this.state.showing) return { background: "hsla(0, 0%, 100%, .1)", color: "inherit" };
-        if (this.state.hover) return { background: "rgba(0, 0, 0, 31%)", color: "rgba(0, 0, 0, 0%)", cursor: "pointer" };
-        return { background: "rgba(0, 0, 0, 41%)", color: "rgba(0, 0, 0, 0%)" };
+        if (this.state.showing) return { background: "hsla(0, 0%, 100%, .1)", color: "inherit", borderRadius: "3px" };
+        if (this.state.hover) return { background: "rgba(0, 0, 0, 31%)", color: "rgba(0, 0, 0, 0%)", cursor: "pointer", borderRadius: "3px" };
+        return { background: "rgba(0, 0, 0, 41%)", color: "rgba(0, 0, 0, 0%)", borderRadius: "3px" };
     }
 
     render() {
