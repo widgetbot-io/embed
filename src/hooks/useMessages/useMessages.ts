@@ -74,8 +74,9 @@ export const useMessages = (channel: string) => {
     onSubscriptionData({ subscriptionData }) {
       query.updateQuery(prev =>
         produce(prev, ({ channel }) => {
-          const deletedMessages = subscriptionData.data.messageDelete;
+          let deletedMessages = subscriptionData.data.messageDelete;
 
+          if (!deletedMessages[0]) deletedMessages = [deletedMessages];
           channel.messages = channel.messages.filter(
             message => !deletedMessages.find(m => m.id === message.id)
           );
