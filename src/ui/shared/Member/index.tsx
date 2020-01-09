@@ -21,7 +21,24 @@ const Member = ({ id: member, children, className }: Props) => (
         params: { server }
       }
     }) => (
-      <Query<MemberInfo, { server: string, member: string }>
+        <MemberLink id={member} className={cx('member-link', className)}>
+          {children({
+            __typename: 'Member',
+            displayName: member,
+            displayHexColor: "0x0000ff",
+            id: member
+          })}
+        </MemberLink>
+    )}
+  </Route>
+)
+
+export default Member
+
+export { default as MemberLink } from './link'
+
+/*
+<Query<MemberInfo, { server: string, member: string }>
         key={`member_info:${member}`}
         query={MEMBER_INFO}
         variables={{ server, member }}
@@ -43,10 +60,4 @@ const Member = ({ id: member, children, className }: Props) => (
           )
         }}
       </Query>
-    )}
-  </Route>
-)
-
-export default Member
-
-export { default as MemberLink } from './link'
+ */

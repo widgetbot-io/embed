@@ -7,10 +7,9 @@ export const mention = {
   match: source => /^<@!?([0-9]+?)>/.exec(source),
   parse: ([mention, id]) => ({ mention, id }),
   react: ({ mention, id }, recurseOutput, state) => (
-      <p>{{ id }}</p>
-      // <Mention key={state.key} id={id}>
-    //   {({ displayName }) => `${displayName}`}
-    // </Mention>
+      <Mention key={state.key} id={id}>
+      {({ displayName }) => `${displayName}`}
+    </Mention>
   )
 }
 
@@ -19,10 +18,9 @@ export const channel = {
   match: source => /^<#?([0-9]+?)>/.exec(source),
   parse: ([mention, id]) => ({ mention, id }),
   react: ({ mention, id }, recurseOutput, state) => (
-      <p>{{ id }}</p>
-      // <Channel key={state.key} id={id}>
-    //   {({ name }) => `#${name}`}
-    // </Channel>
+      <Channel key={state.key} id={id}>
+      {({ name }) => `#${name}`}
+    </Channel>
   )
 }
 
@@ -30,8 +28,8 @@ export const role = {
   order: SimpleMarkdown.defaultRules.text.order,
   match: source => /^<@&?([0-9]+?)>/.exec(source),
   parse: ([mention, id]) => ({ mention, id }),
-  react: ({ mention, id }, recurseOutput, state) => <p>{{ id }}</p>
-  // <Role key={state.key} id={id}>
-  //   {({ displayName }) => `${displayName}`}
-  // </Role>
+  react: ({ mention, id }, recurseOutput, state) =>
+    <Role key={state.key} id={id}>
+      {({ displayName }) => `${displayName}`}
+    </Role>
 }

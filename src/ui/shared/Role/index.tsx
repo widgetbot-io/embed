@@ -19,7 +19,24 @@ const Role = ({ id: role, children, className }: Props) => (
         params: { server }
       }
     }) => (
-      <Query<any, { server: string, role: string }>
+        <RoleLink id={role} className={cx('role-link', className)}>
+          {children({
+            __typename: 'Member',
+            displayName: role,
+            color: "0x0000ff",
+            id: role
+          })}
+        </RoleLink>
+    )}
+  </Route>
+)
+
+export default Role
+
+export { default as MemberLink } from './link'
+
+/*
+<Query<any, { server: string, role: string }>
         key={`role_info:${role}`}
         query={ROLE_INFO}
         variables={{ server, role }}
@@ -41,10 +58,4 @@ const Role = ({ id: role, children, className }: Props) => (
           )
         }}
       </Query>
-    )}
-  </Route>
-)
-
-export default Role
-
-export { default as MemberLink } from './link'
+ */

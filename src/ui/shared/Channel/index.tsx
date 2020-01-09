@@ -21,7 +21,31 @@ interface Props {
 }
 
 const Channel = ({ id: channel, children, className }: Props) => (
-  <Query<ChannelInfo, ChannelInfoVariables>
+    <Tooltip
+        placement="top"
+        overlay={<Emoji>{''}</Emoji>}
+        mouseLeaveDelay={0}
+        trigger={[]}
+    >
+          <span>
+            <ChannelLink id={channel} className={cx('channel-link', className)}>
+              {children({
+                  name: channel,
+                  id: channel,
+                  category: 'category && category.name'
+              })}
+            </ChannelLink>
+          </span>
+    </Tooltip>
+);
+
+export default Channel
+
+export * from './elements'
+export { default as ChannelLink } from './link'
+
+/*
+<Query<ChannelInfo, ChannelInfoVariables>
     key={`channel_info:${channel}`}
     query={CHANNEL_INFO}
     variables={{ channel }}
@@ -62,9 +86,4 @@ const Channel = ({ id: channel, children, className }: Props) => (
       )
     }}
   </Query>
-)
-
-export default Channel
-
-export * from './elements'
-export { default as ChannelLink } from './link'
+ */
