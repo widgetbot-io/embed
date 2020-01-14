@@ -31,7 +31,7 @@ export const ThemeProvider = ({ children }) => {
       accent: data.guild && data.guild.settings.theme && data.guild.settings.theme.colors && data.guild.settings.theme.colors.accent || Constants.THEME_COLOR_ACCENT,
       background: data.guild && data.guild.settings.theme && data.guild.settings.theme.colors && data.guild.settings.theme.colors.background || Constants.THEME_BACKGROUND
     },
-    css: ``
+    css: data.guild || ''
   };
 
   // if (data.guild && data.guild.theme) _.merge(theme, data.guild.theme);
