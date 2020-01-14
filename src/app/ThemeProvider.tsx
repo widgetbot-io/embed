@@ -23,6 +23,8 @@ export const ThemeProvider = ({ children }) => {
 
   const { data } = useQuery(GET_SETTINGS, { variables: { guild }, fetchPolicy: 'network-only' });
 
+  console.log(data);
+
   let theme: Theme_guild_theme = {
     __typename: 'Theme',
     colors: {
@@ -31,8 +33,12 @@ export const ThemeProvider = ({ children }) => {
       accent: data.guild && data.guild.settings.theme && data.guild.settings.theme.colors && data.guild.settings.theme.colors.accent || Constants.THEME_COLOR_ACCENT,
       background: data.guild && data.guild.settings.theme && data.guild.settings.theme.colors && data.guild.settings.theme.colors.background || Constants.THEME_BACKGROUND
     },
-    css: data.guild || ''
+    css: data.guild && data.guild.settings.theme && data.guild.settings.theme.css || ``
   };
+
+  console.log(theme);
+
+  console.log(theme);
 
   // if (data.guild && data.guild.theme) _.merge(theme, data.guild.theme);
 

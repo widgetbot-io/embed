@@ -60,12 +60,12 @@ export namespace GlobalStyles {
         word-break: break-word;
       }
     `
-    CSS.setAttribute('custom-css', '')
+    CSS.setAttribute('custom-css', theme.css)
     document.body.appendChild(CSS)
   }
 
   function update(theme: Theme) {
-    CSS.innerText = ''; // TODO: theme.css
+    CSS.innerText = theme.css; // TODO: theme.css
 
     injectGlobal`
       html, body, #root {
