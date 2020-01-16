@@ -12,8 +12,6 @@ import {AuthStore} from "@store/auth";
 import {Auth} from "@ui/Sidebar/Panel/elements";
 import {observer} from "mobx-react";
 
-const defaultInvite = 'https://discord.gg/56VgJZ4';
-
 export interface HeaderProps {
   channel: string,
   guild: string,
@@ -30,34 +28,32 @@ export const Header = observer(({ channel, guild, AuthStore }: HeaderProps) => {
         fetchPolicy: 'cache-first'
     });
 
-    const invite = gData.guild ? gData.guild.invite : defaultInvite;
+    const invite = gData.guild && gData.guild.invite;
 
     return (
         <Root>
             <Stretch>
                 <Name><Emoji>{cData.channel && cData.channel.name}</Emoji></Name>
-                {
-                     window.innerWidth < 520 ? null : (
+                {window.innerWidth < 520 ? null : (
                         <Topic
                             onClick={() => store.modal.openTopic(cData.channel.topic)}
                             className="topic"
                         >
                             {cData.channel && cData.channel.topic}
                         </Topic>
-                    )
-                }
+                    )}
             </Stretch>
-            <Tooltip placement="bottom" overlay="Open in Discord app">
-                <Join
-                    className="join"
-                    href={invite}
-                    target="_blank"
-                    // TODO: Fix join button
-                    // onClick={this.join}
-                >
-                    Open Discord App
-                </Join>
-            </Tooltip>
+            {invite ? <Tooltip placement="bottom" overlay="Open in Discord app">
+                    <Join
+                        className="join"
+                        href={invite}
+                        target="_blank"
+                        // TODO: Fix join button
+                        // onClick={this.join}
+                    >
+                        Open Discord App
+                    </Join>
+                </Tooltip> : null}
         </Root>
     )
 });
