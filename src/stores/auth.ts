@@ -5,7 +5,7 @@ import { url } from "@lib/env";
 import { ICategory } from "@ui/Sidebar/Channels/categorise";
 import { useRouter } from "@hooks";
 import CHANNELS from "@ui/Sidebar/Channels/Channels.graphql";
-import { addNotification } from '../app/notify';
+import { addNotification } from 'notify';
 
 interface DiscordUser {
   createdAt: string,
@@ -32,7 +32,7 @@ const loginError = (msg: string) => addNotification({
   autoDismiss: 0,
 });
 export class AuthStore {
-  @observable appName = 'DisWeb';
+  @observable appName = 'WidgetBot';
   @observable channels: ICategory[] = [];
   @observable token = window.localStorage.getItem('token');
 
