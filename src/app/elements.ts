@@ -65,7 +65,7 @@ export namespace GlobalStyles {
   }
 
   function update(theme: Theme) {
-    CSS.innerText = theme.css; // TODO: theme.css
+    CSS.innerText = theme.css;
 
     injectGlobal`
       html, body, #root {

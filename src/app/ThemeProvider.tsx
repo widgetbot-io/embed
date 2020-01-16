@@ -23,7 +23,6 @@ export const ThemeProvider = ({ children }) => {
 
   const { data } = useQuery(GET_SETTINGS, { variables: { guild }, fetchPolicy: 'network-only' });
 
-  console.log(data);
 
   let theme: Theme_guild_theme = {
     __typename: 'Theme',
@@ -35,10 +34,6 @@ export const ThemeProvider = ({ children }) => {
     },
     css: data.guild && data.guild.settings.theme && data.guild.settings.theme.css || ``
   };
-
-  console.log(theme);
-
-  console.log(theme);
 
   // if (data.guild && data.guild.theme) _.merge(theme, data.guild.theme);
 
