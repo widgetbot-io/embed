@@ -36,8 +36,8 @@ export const Header = observer(({ channel, guild, AuthStore }: HeaderProps) => {
         <Root>
             <Stretch>
                 <Name><Emoji>{cData.channel && cData.channel.name}</Emoji></Name>
-                {(() => {
-                    return window.innerWidth < 520 ? null : (
+                {
+                     window.innerWidth < 520 ? null : (
                         <Topic
                             onClick={() => store.modal.openTopic(cData.channel.topic)}
                             className="topic"
@@ -45,7 +45,7 @@ export const Header = observer(({ channel, guild, AuthStore }: HeaderProps) => {
                             {cData.channel && cData.channel.topic}
                         </Topic>
                     )
-                })()}
+                }
             </Stretch>
             <Tooltip placement="bottom" overlay="Open in Discord app">
                 <Join
