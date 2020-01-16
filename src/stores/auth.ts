@@ -43,7 +43,7 @@ export class AuthStore {
   @observable inProgress: boolean = false;
   @observable needsUpdate: boolean = false;
   @observable errors: string | undefined = undefined;
-  @observable user: User = JSON.parse(window.localStorage.getItem('user'));
+  @observable user: User | null = JSON.parse(window.localStorage.getItem('user'));
 
   @action toggleMenu(res: boolean = this.menuOpen) {
     this.menuOpen = res
