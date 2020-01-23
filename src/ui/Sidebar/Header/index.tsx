@@ -5,7 +5,7 @@ import {Route} from 'react-router-dom'
 
 import {GuildInfo, GuildInfoVariables} from '@generated'
 import {BannerName, BannerRoot, Count, Icon, Name, Root} from './elements'
-import { AuthStore } from "@store/auth";
+import {AuthStore} from "@store/auth";
 import GET_INFO from './GuildInfo.graphql'
 import {addNotification} from "notify";
 import {store} from "@models";
@@ -14,7 +14,7 @@ import webpCheck from '@ui/shared/webpCheck'
 import {inject, observer} from "mobx-react";
 
 interface Props {
-  AuthStore?: AuthStore
+	AuthStore?: AuthStore
 }
 
 @inject('AuthStore')
@@ -28,7 +28,7 @@ export class Header extends React.Component<Props, any> {
 						key={`guild_info:${match.params.guild}`}
 						query={GET_INFO}
 						variables={match.params}
-						fetchPolicy="cache-first"
+						fetchPolicy='cache-and-network'
 					>
 						{({loading, error, data}) => {
 							if (loading) return null;
