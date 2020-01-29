@@ -56,8 +56,8 @@ export class Scale {
     this.scaleImage()
 
     this.css = css`
-      ${this.width && `width: ${this.width}px`};
-      ${this.height && `height: ${this.height}px`};
+      ${this.width && `max-width: ${this.width}px`};
+      ${this.height && `max-height: ${this.height}px`};
     `
   }
 

@@ -16,7 +16,7 @@ export const Image = styled(EImage)<ImageProps>`
   display: block;
   margin: 10px 0;
   cursor: pointer;
-  border-radius: 3px;  
+  border-radius: 3px;
 `;
 
 export const SpoilerImage = styled(EImage)<ImageProps>`
