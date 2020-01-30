@@ -8,14 +8,9 @@ export const Group = styled('div')`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 20px 35px 13px 20px;
+  padding: 20px 35px 0 20px;
   user-select: text;
   word-wrap: break-word;
-
-  &:not(:nth-last-of-type(1)) {
-    border-bottom: 1px solid
-      ${({ theme }) => theme.colors._primary.fade(0.96).string()};
-  }
 
   @media (max-width: 500px), (max-height: 370px) {
     padding: 12px 35px 10px 15px;
@@ -96,7 +91,7 @@ export const Member = styled(MemberLink)<NameProps>`
 `
 
 export const Root = styled('div')`
-  color: ${({ theme }) => theme.colors._primary.fade(0.3).string()};
+  color: ${({ theme }) => theme.colors._primary.fade(0.173).string()};
   opacity: ${({ theme }) =>
     /* todo: theme.message.type === 'SENDING'* ? 0.5 : */ 1};
 
