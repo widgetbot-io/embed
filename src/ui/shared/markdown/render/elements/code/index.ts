@@ -27,7 +27,8 @@ export const Code = styled('code')<Props>`
     inline
       ? css`
           padding: 0.2em;
-          color: ${theme.colors._primary.darken(0.3).string()};
+          background-color: rgba(0, 0, 0, 0.15) !important;
+          border-radius: 3px;
         `
       : css`
           color: ${theme.colors._primary.darken(0.4).string()} !important;
