@@ -57,7 +57,7 @@ export class Scale {
 
     this.css = css`
       ${this.width && `max-width: ${this.width}px`};
-      ${this.height && `max-height: ${this.height}px`};
+      ${this.height && `height: ${this.height}px`};
     `
   }
 
