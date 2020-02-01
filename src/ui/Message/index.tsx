@@ -30,6 +30,10 @@ interface Props {
 
 const DEFAULT_AVATAR = 'https://cdn.discordapp.com/embed/avatars/0.png';
 
+const gifCheck = (url: string) => {
+  return url.includes('/a_') ? url.replace('webp', 'gif') : url
+}
+
 class Message extends React.PureComponent<Props, any> {
   theme = message => theme => ({
     ...theme,
@@ -43,7 +47,7 @@ class Message extends React.PureComponent<Props, any> {
       <Group style={this.props.style} className="group">
         {firstMessage.__typename === 'TextMessage' ? (
           <Avatar
-            url={firstMessage.author.displayAvatarURL || firstMessage.author.defaultAvatarURL || DEFAULT_AVATAR}
+            url={gifCheck(firstMessage.author.displayAvatarURL) || firstMessage.author.defaultAvatarURL || DEFAULT_AVATAR}
             className="avatar"
           />
         ) : null}
