@@ -25,13 +25,6 @@ export class Selector extends React.Component<SelectorProps, SelectorState> {
     window.addEventListener('resize', this.handleResize)
   }
 
-  componentWillUnmount() {
-    const { itemID } = this.props
-
-    Selector.store.delete(itemID)
-    window.removeEventListener('resize', this.handleResize)
-  }
-
   componentDidUpdate() {
     this.recalculate()
   }
