@@ -4,6 +4,7 @@ export const Modal = types
   .model('Modal', {
     type: types.maybeNull(types.string),
     data: types.maybeNull(types.string),
+    channel: types.maybeNull(types.string),
     isOpen: false
   })
   .actions(self => ({
@@ -17,10 +18,11 @@ export const Modal = types
       self.type = 'settings'
       self.data = null
     },
-    openTopic(topic) {
+    openTopic(topic, channel) {
       self.isOpen = true
       self.type = 'topic'
       self.data = topic
+      self.channel = channel
     },
     close() {
       self.isOpen = false

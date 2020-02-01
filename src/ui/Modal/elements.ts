@@ -26,7 +26,7 @@ export const Root = styled('dialog')<IRoot>`
   left: 0;
 
   z-index: 10;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.95);
   border: none;
   opacity: 0;
   transition: opacity 0.1s ease;
@@ -59,7 +59,7 @@ export const Box = styled('div')`
 
 export const Content = styled('div')`
   z-index: 100;
-  width: 90%;
+  width: auto;
   position: absolute;
   display: flex;
   flex-direction: column;

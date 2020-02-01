@@ -60,30 +60,28 @@ class Authenticate extends React.Component<AuthStoreProps, AuthStoreState> {
     const { awaiting } = this.state;
     return !this.props.AuthStore.menuOpen ? null : (this.props.AuthStore.guestEnabled ? (
         <Overlay>
-          <Box>
-            <Root loading={awaiting}>
-              <Close onClick={() => this.props.AuthStore.toggleMenu(false)} />
-              <Title>Welcome!</Title>
-              <Greeting>Pick a name to start chatting</Greeting>
-              <Group label="name" onSubmit={this.signUp.bind(this)}>
-                <Input
-                    innerRef={ref => (this.nameField = ref)}
-                    autoFocus={true}
-                    spellCheck={false}
-                    minLength={2}
-                    maxLength={32}
-                    required
-                />
-                <Create variant="large">Create</Create>
-                <SSO>
-                  Discord account?
-                  <Discord onClick={this.discordSignOn.bind(this)}>
-                    Log in
-                  </Discord>
-                </SSO>
-              </Group>
-            </Root>
-          </Box>
+          <Root loading={awaiting}>
+            <Close onClick={() => this.props.AuthStore.toggleMenu(false)} />
+            <Title>Welcome!</Title>
+            <Greeting>Pick a name to start chatting</Greeting>
+            <Group label="name" onSubmit={this.signUp.bind(this)}>
+              <Input
+                  innerRef={ref => (this.nameField = ref)}
+                  autoFocus={true}
+                  spellCheck={false}
+                  minLength={2}
+                  maxLength={32}
+                  required
+              />
+              <Create variant="large">Create</Create>
+              <SSO>
+                Discord account?
+                <Discord onClick={this.discordSignOn.bind(this)}>
+                  Log in
+                </Discord>
+              </SSO>
+            </Group>
+          </Root>
         </Overlay>
     ) : null)
   }

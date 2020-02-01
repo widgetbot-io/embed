@@ -36,7 +36,7 @@ export const Header = observer(({ channel, guild, AuthStore }: HeaderProps) => {
                 <Name><Emoji>{cData.channel && cData.channel.name}</Emoji></Name>
                 {window.innerWidth < 520 ? null : (
                         <Topic
-                            onClick={() => store.modal.openTopic(cData.channel.topic)}
+                            onClick={() => store.modal.openTopic(cData.channel.topic, cData.channel.name)}
                             className="topic"
                         >
                             {cData.channel && cData.channel.topic}
