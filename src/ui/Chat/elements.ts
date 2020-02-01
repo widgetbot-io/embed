@@ -4,10 +4,8 @@ export const Root = styled('form')`
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  padding-top: 10px;
   position: relative;
   margin: 0 15px 20px;
-  box-shadow: 0 -1px 0 hsla(0, 0%, 100%, 0.06);
 
   ${({ theme }) =>
     theme.url.preset === 'crate' &&
