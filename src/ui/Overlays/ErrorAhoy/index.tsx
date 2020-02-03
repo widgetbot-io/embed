@@ -10,7 +10,7 @@ const ErrorAhoy = ({ message, i18n }: { message?: string } & withI18nProps) => (
   <Wrapper>
     <Header>
       <Name>
-        <Trans id="ErrorScreen.Title">Error Ahoy!</Trans>
+        Error Ahoy!
       </Name>
       <Topic>
         Something unexpected occurred! WidgetBot support (for site admins): https://discord.gg/NYBEhN7
