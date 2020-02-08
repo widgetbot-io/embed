@@ -7,7 +7,7 @@
 // ====================================================
 
 export interface DeletedMessages_messageDelete {
-  __typename: "TextMessage" | "BoostMessage" | "JoinMessage" | "PinnedMessage";
+  __typename: "DeletedMessage";
   /**
    * Message ID
    */

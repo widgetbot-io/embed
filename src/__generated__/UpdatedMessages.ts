@@ -6,7 +6,7 @@
 // GraphQL subscription operation: UpdatedMessages
 // ====================================================
 
-export interface UpdatedMessages_messageUpdate_JoinMessage_author {
+export interface UpdatedMessages_messageUpdate_FollowMessage_author {
   __typename: "User";
   id: string;
   username: string;
@@ -16,14 +16,14 @@ export interface UpdatedMessages_messageUpdate_JoinMessage_author {
   displayAvatarURL: string | null;
 }
 
-export interface UpdatedMessages_messageUpdate_JoinMessage_member {
+export interface UpdatedMessages_messageUpdate_FollowMessage_member {
   __typename: "IMember";
   displayName: string | null;
   displayHexColor: string | null;
 }
 
-export interface UpdatedMessages_messageUpdate_JoinMessage {
-  __typename: "JoinMessage" | "PinnedMessage";
+export interface UpdatedMessages_messageUpdate_FollowMessage {
+  __typename: "FollowMessage" | "JoinMessage" | "PinnedMessage";
   /**
    * Message ID
    */
@@ -35,11 +35,11 @@ export interface UpdatedMessages_messageUpdate_JoinMessage {
   /**
    * General discord user who authored the message
    */
-  author: UpdatedMessages_messageUpdate_JoinMessage_author;
+  author: UpdatedMessages_messageUpdate_FollowMessage_author;
   /**
    * Author as member of guild.
    */
-  member: UpdatedMessages_messageUpdate_JoinMessage_member | null;
+  member: UpdatedMessages_messageUpdate_FollowMessage_member | null;
 }
 
 export interface UpdatedMessages_messageUpdate_TextMessage_author {
@@ -230,7 +230,7 @@ export interface UpdatedMessages_messageUpdate_BoostMessage {
   tier: number;
 }
 
-export type UpdatedMessages_messageUpdate = UpdatedMessages_messageUpdate_JoinMessage | UpdatedMessages_messageUpdate_TextMessage | UpdatedMessages_messageUpdate_BoostMessage;
+export type UpdatedMessages_messageUpdate = UpdatedMessages_messageUpdate_FollowMessage | UpdatedMessages_messageUpdate_TextMessage | UpdatedMessages_messageUpdate_BoostMessage;
 
 export interface UpdatedMessages {
   messageUpdate: UpdatedMessages_messageUpdate;
