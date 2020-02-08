@@ -9,22 +9,20 @@ interface Props {
 @inject("AuthStore")
 export class Locale extends React.Component<Props> {
 
-    public static userLocale;
-    public static locale: { [key: string]: string };
+    public static cur: string;
     public static cache: { [key: string]: { [key: string]: string } };
 
     constructor(props) {
         super(props);
-        Locale.userLocale = this.props.AuthStore.locale;
-        Locale.locale = {};
+        Locale.cur = this.props.AuthStore.locale;
         Locale.cache = {};
         this.cacheLocales().then(() => null);
     }
 
     static translate(key: string, replacements?: { [key: string]: any; }): string {
-        if (!Locale.locale) Locale.locale = Locale.cache[Locale.userLocale];
-        if (!Locale.locale[key]) return "";
-        let str = Locale.locale[key];
+        const locale = Locale.cache[Locale.cur];
+        if (!locale[key]) return key;
+        let str = locale[key];
         for (const k in replacements) {
             const v: any  = replacements[k];
             str = str.replace(new RegExp(`{${k}}`, "g"), v);
