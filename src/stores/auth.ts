@@ -49,7 +49,10 @@ export class AuthStore {
   @observable user: User | null = JSON.parse(window.localStorage.getItem('user'));
 
   @action setLocale(locale: string) {
-    console.log(Locale.getKeys());
+    const keys = Locale.getKeys();
+    if (!keys.includes(locale)) return; // Temp solution
+    window.localStorage.setItem("locale", locale);
+    this.locale = locale;
   }
 
   @action toggleMenu(res: boolean = this.menuOpen) {
