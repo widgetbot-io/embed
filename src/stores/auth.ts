@@ -6,6 +6,8 @@ import { ICategory } from "@ui/Sidebar/Channels/categorise";
 import { useRouter } from "@hooks";
 import CHANNELS from "@ui/Sidebar/Channels/Channels.graphql";
 import { addNotification } from 'notify';
+import {act} from "react-dom/test-utils";
+import {Locale} from "@lib/Locale";
 
 interface DiscordUser {
   createdAt: string,
@@ -35,6 +37,7 @@ export class AuthStore {
   @observable appName = 'WidgetBot';
   @observable channels: ICategory[] = [];
   @observable token = window.localStorage.getItem('token');
+  @observable locale = window.localStorage.getItem("locale") || "en";
 
   @observable menuOpen: boolean = false;
   @observable guestEnabled: boolean = false;
@@ -44,6 +47,10 @@ export class AuthStore {
   @observable needsUpdate: boolean = false;
   @observable errors: string | undefined = undefined;
   @observable user: User | null = JSON.parse(window.localStorage.getItem('user'));
+
+  @action setLocale(locale: string) {
+    console.log(Locale.getKeys());
+  }
 
   @action toggleMenu(res: boolean = this.menuOpen) {
     this.menuOpen = res

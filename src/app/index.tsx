@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { I18nProvider } from '@lingui/react'
 import Modal from '@ui/Modal'
 import Sidebar from '@ui/Sidebar'
 import ChooseChannel from '@views/ChooseChannel'
@@ -8,22 +7,18 @@ import Notifications from 'notify'
 import { Redirect, Route, Switch } from 'react-router-dom'
 
 import { ThemeProvider } from './ThemeProvider'
-import i18n from '@lib/i18n'
 import { observer } from 'mobx-react'
 import { store } from '@models'
 import { useCacheLoaded } from '@hooks'
 import Authenticate from "@ui/Modal/screens/Authenticate";
+import {Locale} from "@lib/Locale";
 
 const App = observer(() => {
   const cacheLoaded = useCacheLoaded()
   if (!cacheLoaded) return null
 
   return (
-    <I18nProvider
-      language={store.locale.language}
-      i18n={i18n}
-      catalogs={store.locale.catalog || undefined}
-    >
+    <Locale>
       <ThemeProvider>
         <Switch>
           <Route path="/:guild">
@@ -42,7 +37,7 @@ const App = observer(() => {
           <Redirect to="/299881420891881473" />
         </Switch>
       </ThemeProvider>
-    </I18nProvider>
+    </Locale>
   )
 });
 // class App extends React.PureComponent<

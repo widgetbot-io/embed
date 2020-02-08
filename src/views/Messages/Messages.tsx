@@ -12,6 +12,7 @@ import {
 } from "react-virtualized";
 import { observer, useObservable } from "mobx-react-lite";
 import Message from "@ui/Message";
+import {Locale} from "@lib/Locale";
 
 type MessagesProps = {
   guild: string;

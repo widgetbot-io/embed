@@ -4,9 +4,8 @@ import { Error } from '..'
 import Header, { Name, Topic } from './header'
 import Wrapper from './wrapper'
 import { Message } from './elements'
-import { Trans, withI18n, withI18nProps } from '@lingui/react'
 
-const ErrorAhoy = ({ message, i18n }: { message?: string } & withI18nProps) => (
+const ErrorAhoy = ({ message }) => (
   <Wrapper>
     <Header>
       <Name>
@@ -20,6 +19,6 @@ const ErrorAhoy = ({ message, i18n }: { message?: string } & withI18nProps) => (
       {message ? <Message length={message.length}>{message}</Message> : null}
     </Error>
   </Wrapper>
-)
+);
 
-export default withI18n()(ErrorAhoy)
+export default ErrorAhoy;

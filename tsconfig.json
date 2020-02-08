@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "resolveJsonModule": true,
     "skipLibCheck": true,
     "target": "es2015",
     "module": "esnext",
