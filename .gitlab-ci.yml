@@ -1,5 +1,7 @@
 variables:
   GIT_SSL_NO_VERIFY: "true"
+  GIT_SUBMODULE_STRATEGY: recursive
+
 
 stages:
   - build
