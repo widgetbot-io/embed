@@ -37,7 +37,13 @@ class ChannelSwitcher extends React.Component<Props> {
             variables={{ guild }}
           >
             {({ loading, error, data, refetch }) => {
-              if (!loading && !error) this.props.AuthStore.channels = categorise((data.guild.channels as any).sort((a, b) => { return a.position - b.position }));
+              if (!loading && !error) {
+                try {
+                  this.props.AuthStore.channels = categorise((data.guild.channels as any).sort((a, b) => { return a.position - b.position }));
+                } catch (_) {
+                  this.props.AuthStore.channels = [];
+                }
+              }
               setInterval(async () => {
                 if (this.props.AuthStore.needsUpdate) {
                   await refetch();

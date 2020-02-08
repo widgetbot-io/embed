@@ -5,9 +5,7 @@ fragment TextMessage on TextMessage {
   editedAt
   reactions {
     count
-    emoji {
-      ...Emoji
-    }
+    emoji { name, url }
   }
   attachments {
     url
@@ -19,17 +17,5 @@ fragment TextMessage on TextMessage {
   }
   embeds {
     ...Embed
-  }
-}
-
-fragment Emoji on Emoji {
-  name
-  ... on CustomEmoji {
-    id
-    url
-  }
-
-  ... on TextEmoji {
-    utf8
   }
 }

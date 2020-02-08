@@ -58,25 +58,16 @@ export interface UpdatedMessages_messageUpdate_TextMessage_member {
   displayHexColor: string | null;
 }
 
-export interface UpdatedMessages_messageUpdate_TextMessage_reactions_emoji_CustomEmoji {
-  __typename: "CustomEmoji";
-  name: string | null;
-  id: string;
-  url: string;
+export interface UpdatedMessages_messageUpdate_TextMessage_reactions_emoji {
+  __typename: "ReactionEmoji";
+  name: string;
+  url: string | null;
 }
-
-export interface UpdatedMessages_messageUpdate_TextMessage_reactions_emoji_TextEmoji {
-  __typename: "TextEmoji";
-  name: string | null;
-  utf8: string;
-}
-
-export type UpdatedMessages_messageUpdate_TextMessage_reactions_emoji = UpdatedMessages_messageUpdate_TextMessage_reactions_emoji_CustomEmoji | UpdatedMessages_messageUpdate_TextMessage_reactions_emoji_TextEmoji;
 
 export interface UpdatedMessages_messageUpdate_TextMessage_reactions {
   __typename: "Reaction";
   count: number;
-  emoji: UpdatedMessages_messageUpdate_TextMessage_reactions_emoji | null;
+  emoji: UpdatedMessages_messageUpdate_TextMessage_reactions_emoji;
 }
 
 export interface UpdatedMessages_messageUpdate_TextMessage_attachments {

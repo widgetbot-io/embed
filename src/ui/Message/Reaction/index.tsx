@@ -18,10 +18,10 @@ class Reaction extends React.Component<Props> {
       >
         <span>
           <Root className="reaction">
-            {emoji.__typename === 'CustomEmoji' ? (
+            {emoji.url ? (
               <Emoji src={emoji.url} />
             ) : (
-              <Emoji className="reaction-emoji">{emoji.utf8}</Emoji>
+              <Emoji className="reaction-emoji">{emoji.name}</Emoji>
             )}
             <Count className="reaction-count">{count}</Count>
           </Root>

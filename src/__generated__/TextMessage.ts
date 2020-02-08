@@ -6,25 +6,16 @@
 // GraphQL fragment: TextMessage
 // ====================================================
 
-export interface TextMessage_reactions_emoji_CustomEmoji {
-  __typename: "CustomEmoji";
-  name: string | null;
-  id: string;
-  url: string;
+export interface TextMessage_reactions_emoji {
+  __typename: "ReactionEmoji";
+  name: string;
+  url: string | null;
 }
-
-export interface TextMessage_reactions_emoji_TextEmoji {
-  __typename: "TextEmoji";
-  name: string | null;
-  utf8: string;
-}
-
-export type TextMessage_reactions_emoji = TextMessage_reactions_emoji_CustomEmoji | TextMessage_reactions_emoji_TextEmoji;
 
 export interface TextMessage_reactions {
   __typename: "Reaction";
   count: number;
-  emoji: TextMessage_reactions_emoji | null;
+  emoji: TextMessage_reactions_emoji;
 }
 
 export interface TextMessage_attachments {

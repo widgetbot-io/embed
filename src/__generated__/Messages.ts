@@ -63,25 +63,16 @@ export interface Messages_channel_TextChannel_messages_TextMessage_member {
   displayHexColor: string | null;
 }
 
-export interface Messages_channel_TextChannel_messages_TextMessage_reactions_emoji_CustomEmoji {
-  __typename: "CustomEmoji";
-  name: string | null;
-  id: string;
-  url: string;
+export interface Messages_channel_TextChannel_messages_TextMessage_reactions_emoji {
+  __typename: "ReactionEmoji";
+  name: string;
+  url: string | null;
 }
-
-export interface Messages_channel_TextChannel_messages_TextMessage_reactions_emoji_TextEmoji {
-  __typename: "TextEmoji";
-  name: string | null;
-  utf8: string;
-}
-
-export type Messages_channel_TextChannel_messages_TextMessage_reactions_emoji = Messages_channel_TextChannel_messages_TextMessage_reactions_emoji_CustomEmoji | Messages_channel_TextChannel_messages_TextMessage_reactions_emoji_TextEmoji;
 
 export interface Messages_channel_TextChannel_messages_TextMessage_reactions {
   __typename: "Reaction";
   count: number;
-  emoji: Messages_channel_TextChannel_messages_TextMessage_reactions_emoji | null;
+  emoji: Messages_channel_TextChannel_messages_TextMessage_reactions_emoji;
 }
 
 export interface Messages_channel_TextChannel_messages_TextMessage_attachments {
@@ -295,25 +286,16 @@ export interface Messages_channel_NewsChannel_messages_TextMessage_member {
   displayHexColor: string | null;
 }
 
-export interface Messages_channel_NewsChannel_messages_TextMessage_reactions_emoji_CustomEmoji {
-  __typename: "CustomEmoji";
-  name: string | null;
-  id: string;
-  url: string;
+export interface Messages_channel_NewsChannel_messages_TextMessage_reactions_emoji {
+  __typename: "ReactionEmoji";
+  name: string;
+  url: string | null;
 }
-
-export interface Messages_channel_NewsChannel_messages_TextMessage_reactions_emoji_TextEmoji {
-  __typename: "TextEmoji";
-  name: string | null;
-  utf8: string;
-}
-
-export type Messages_channel_NewsChannel_messages_TextMessage_reactions_emoji = Messages_channel_NewsChannel_messages_TextMessage_reactions_emoji_CustomEmoji | Messages_channel_NewsChannel_messages_TextMessage_reactions_emoji_TextEmoji;
 
 export interface Messages_channel_NewsChannel_messages_TextMessage_reactions {
   __typename: "Reaction";
   count: number;
-  emoji: Messages_channel_NewsChannel_messages_TextMessage_reactions_emoji | null;
+  emoji: Messages_channel_NewsChannel_messages_TextMessage_reactions_emoji;
 }
 
 export interface Messages_channel_NewsChannel_messages_TextMessage_attachments {
