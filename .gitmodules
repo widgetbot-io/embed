@@ -1,0 +1,3 @@
+[submodule "src/locales"]
+	path = src/locales
+	url = https://lab.venix.dev/widgetbot/locales.git
