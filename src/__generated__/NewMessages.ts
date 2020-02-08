@@ -6,7 +6,7 @@
 // GraphQL subscription operation: NewMessages
 // ====================================================
 
-export interface NewMessages_message_JoinMessage_author {
+export interface NewMessages_message_FollowMessage_author {
   __typename: "User";
   id: string;
   username: string;
@@ -16,14 +16,14 @@ export interface NewMessages_message_JoinMessage_author {
   displayAvatarURL: string | null;
 }
 
-export interface NewMessages_message_JoinMessage_member {
+export interface NewMessages_message_FollowMessage_member {
   __typename: "IMember";
   displayName: string | null;
   displayHexColor: string | null;
 }
 
-export interface NewMessages_message_JoinMessage {
-  __typename: "JoinMessage" | "PinnedMessage";
+export interface NewMessages_message_FollowMessage {
+  __typename: "FollowMessage" | "JoinMessage" | "PinnedMessage";
   /**
    * Message ID
    */
@@ -35,11 +35,11 @@ export interface NewMessages_message_JoinMessage {
   /**
    * General discord user who authored the message
    */
-  author: NewMessages_message_JoinMessage_author;
+  author: NewMessages_message_FollowMessage_author;
   /**
    * Author as member of guild.
    */
-  member: NewMessages_message_JoinMessage_member | null;
+  member: NewMessages_message_FollowMessage_member | null;
 }
 
 export interface NewMessages_message_TextMessage_author {
@@ -230,7 +230,7 @@ export interface NewMessages_message_BoostMessage {
   tier: number;
 }
 
-export type NewMessages_message = NewMessages_message_JoinMessage | NewMessages_message_TextMessage | NewMessages_message_BoostMessage;
+export type NewMessages_message = NewMessages_message_FollowMessage | NewMessages_message_TextMessage | NewMessages_message_BoostMessage;
 
 export interface NewMessages {
   message: NewMessages_message;
