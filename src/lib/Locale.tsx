@@ -8,26 +8,35 @@ interface Props {
 
 @inject("AuthStore")
 export class Locale extends React.Component<Props> {
-
+    public static cache: { [key: string]: { [key: string]: string } } = {};
     public static cur: string;
-    public static cache: { [key: string]: { [key: string]: string } };
 
     constructor(props) {
         super(props);
         Locale.cur = this.props.AuthStore.locale;
-        Locale.cache = {};
         this.cacheLocales().then(() => null);
     }
 
     static translate(key: string, replacements?: { [key: string]: any; }): string {
+        let lang: any, content: string;
         const locale = Locale.cache[Locale.cur];
-        if (!locale[key]) return key;
-        let str = locale[key];
-        for (const k in replacements) {
-            const v: any  = replacements[k];
-            str = str.replace(new RegExp(`{${k}}`, "g"), v);
+
+        if (!locale) {
+            if (Locale.cache['en'] && Locale.cache['en'][key]) {
+                lang = Locale.cache['en']
+            } else {
+                return key;
+            }
         }
-        return str;
+        if (!replacements) return lang[key];
+        content = lang[key];
+
+        for (const replace in replacements) {
+            const use: any = replacements[replace];
+            content = content.replace(new RegExp(`{${replace}}`, 'g'), use);
+        }
+
+        return content;
     }
 
     async cacheLocales() {
