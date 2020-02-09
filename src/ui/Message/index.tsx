@@ -22,6 +22,7 @@ import { Image } from './Embed/elements/media'
 import Reaction from './Reaction'
 import Embed from './Embed'
 import AttachmentSpoiler from '@ui/shared/markdown/render/elements/AttachmentSpoiler'
+import { Locale } from '@lib/Locale'
 
 interface Props {
   messages: Messages_channel_TextChannel_messages[],
@@ -79,7 +80,7 @@ class Message extends React.PureComponent<Props, any> {
                             mouseLeaveDelay={0}
                           >
                             <Edited className="edited">
-                              (edited)
+                              {Locale.translate('frontend.edited')}
                             </Edited>
                           </Tooltip>
                         )}

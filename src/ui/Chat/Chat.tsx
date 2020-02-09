@@ -9,6 +9,7 @@ import ErrorAhoy from "@ui/Overlays/ErrorAhoy";
 import { formatError } from "@views/Messages/utils";
 import { Loading } from "@ui/Overlays";
 import { addNotification } from "notify";
+import { Locale } from '@lib/Locale'
 
 
 export interface ChatProps {}
@@ -24,8 +25,8 @@ export const Chat: FunctionComponent<ChatProps> = (props) => {
   if (!data || !data.channel) {
     addNotification({
       level: 'error',
-      title: 'Channel unavailable',
-      message: 'This channel is not available.',
+      title: Locale.translate('frontend.notif.channelunavailable'),
+      message: Locale.translate('frontend.notif.channelunavailable.desc'),
       autoDismiss: 0,
 
     });
@@ -55,7 +56,7 @@ export const Chat: FunctionComponent<ChatProps> = (props) => {
           }}
           innerRef={ref => (inputRef.current = ref)}
           innerProps={{
-            placeholder: channelName ? `Message #${channelName}` : null
+            placeholder: channelName ? Locale.translate('frontend.input.message', {NAME: channelName}) : null
           }}
         />
 

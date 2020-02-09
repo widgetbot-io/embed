@@ -3,6 +3,7 @@ import * as React from 'react'
 import N from 'react-notification-system'
 
 import { Notifications } from './elements'
+import { Locale } from '@lib/Locale'
 
 const initial: N.Notification[] = []
 let ref
@@ -16,7 +17,7 @@ export const addNotification = (
     const notification = {
       ...(/^warning|error$/.test(n.level) && {
         action: {
-          label: 'Support server',
+          label: Locale.translate('frontend.notif.supportserver'),
           callback() {
             window.open('https://discord.gg/zyqZWr2')
           }

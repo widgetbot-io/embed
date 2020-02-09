@@ -29,7 +29,7 @@ type User = DiscordUser | GuestUser;
 
 const loginError = (msg: string) => addNotification({
   level: 'warning',
-  title: 'Login Unsuccessful',
+  title: Locale.translate('frontend.notif.login.unsuccessful'),
   message: msg,
   autoDismiss: 0,
 });

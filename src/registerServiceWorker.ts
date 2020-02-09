@@ -1,4 +1,5 @@
 import { addNotification } from 'notify'
+import { Locale } from '@lib/Locale'
 // In production, we register a service worker to serve assets from local cache.
 
 // This lets the app load faster on subsequent visits in production, and gives
@@ -68,8 +69,8 @@ function registerValidSW(swUrl: string) {
               if (navigator.serviceWorker.controller) {
                 addNotification({
                   level: 'info',
-                  title: 'Update available',
-                  message: 'A new update is available! Please refresh',
+                  title: Locale.translate('frontend.notif.update'),
+                  message: Locale.translate('frontend.notif.update.desc'),
                   autoDismiss: 0,
                   action: {
                     label: 'Refresh',
@@ -117,10 +118,10 @@ function checkValidServiceWorker(swUrl: string) {
     .catch(() => {
       addNotification({
         level: 'warning',
-        title: `Server issues`,
+        title: Locale.translate('frontend.notif.serverissues'),
         autoDismiss: 15,
         message:
-          'Failed to connect to the server, the embed is currently working offline'
+        Locale.translate('frontend.notif.serverissues.desc')
       })
     })
 }

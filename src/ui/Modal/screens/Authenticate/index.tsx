@@ -4,6 +4,7 @@ import { Box, Close } from "@ui/Modal";
 import { AuthStore } from "@store/auth";
 import { Overlay, Create, Greeting, Group, Input, Root, Title, SSO, Discord } from "./elements";
 import {store} from "@models";
+import { Locale } from "@lib/Locale";
 
 interface AuthStoreState {
   awaiting: boolean;
@@ -24,7 +25,7 @@ class Authenticate extends React.Component<AuthStoreProps, AuthStoreState> {
     e.preventDefault();
 
     const name = this.nameField.value;
-    if (name.length < 2) return;
+    if (name.length < 1) return;
 
     this.setState({
       awaiting: true
@@ -62,22 +63,22 @@ class Authenticate extends React.Component<AuthStoreProps, AuthStoreState> {
         <Overlay>
           <Root loading={awaiting}>
             <Close onClick={() => this.props.AuthStore.toggleMenu(false)} />
-            <Title>Welcome!</Title>
-            <Greeting>Pick a name to start chatting</Greeting>
-            <Group label="name" onSubmit={this.signUp.bind(this)}>
+            <Title>{Locale.translate('frontend.auth.welcome')}</Title>
+            <Greeting>{Locale.translate('frontend.auth.pickname')}</Greeting>
+            <Group label={Locale.translate('frontend.auth.name')} onSubmit={this.signUp.bind(this)}>
               <Input
                   innerRef={ref => (this.nameField = ref)}
                   autoFocus={true}
                   spellCheck={false}
-                  minLength={2}
-                  maxLength={32}
+                  minLength={1}
+                  maxLength={80}
                   required
               />
-              <Create variant="large">Create</Create>
+              <Create variant="large">{Locale.translate('frontend.auth.create')}</Create>
               <SSO>
-                Discord account?
+              {Locale.translate('frontend.auth.discordacc')}
                 <Discord onClick={this.discordSignOn.bind(this)}>
-                  Log in
+                  {Locale.translate('frontend.auth.login2')}
                 </Discord>
               </SSO>
             </Group>

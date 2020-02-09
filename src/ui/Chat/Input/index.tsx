@@ -12,6 +12,7 @@ import { ChatProps } from "../Chat";
 import { inject, observer } from "mobx-react";
 import { AuthStore } from "@store/auth";
 import { onClick } from "@views/Messages/Header";
+import { Locale } from "@lib/Locale";
 
 interface Props extends ChatProps {
   innerRef?: (textarea: HTMLTextAreaElement) => void,
@@ -159,7 +160,7 @@ class MagicTextarea extends React.Component<Props> {
         // }}
         onClick={onClick.bind({ props: { AuthStore: this.props.AuthStore }})}
       >
-        { !user ? 'Click here to log in to and participate in chat' : `You do not have permission to send messages in this channel.` }
+        { !user ? Locale.translate('frontend.input.login') : Locale.translate('frontend.input.noperms') }
       </NoPerms>
     );
   }

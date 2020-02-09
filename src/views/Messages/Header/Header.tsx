@@ -4,7 +4,7 @@ import CHANNEL from './Channel.graphql'
 import { Name, Emoji, Topic, Join, Stretch } from '@ui/Header'
 
 import { Root } from './elements'
-import { Trans } from '@lingui/react'
+import { Locale } from "@lib/Locale"
 import { store } from '@models'
 import { useQuery } from 'react-apollo-hooks'
 import GET_INFO from "@ui/Sidebar/Header/GuildInfo.graphql";
@@ -43,7 +43,7 @@ export const Header = observer(({ channel, guild, AuthStore }: HeaderProps) => {
                         </Topic>
                     )}
             </Stretch>
-            {invite ? <Tooltip placement="bottom" overlay="Open in Discord app">
+            {invite ? <Tooltip placement="bottom" overlay={Locale.translate('frontend.opendiscord.tooltip')}>
                     <Join
                         className="join"
                         href={invite}
@@ -51,7 +51,7 @@ export const Header = observer(({ channel, guild, AuthStore }: HeaderProps) => {
                         // TODO: Fix join button
                         // onClick={this.join}
                     >
-                        Open Discord App
+                        {Locale.translate('frontend.opendiscord')}
                     </Join>
                 </Tooltip> : null}
         </Root>

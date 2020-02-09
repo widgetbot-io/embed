@@ -53,7 +53,7 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
   if (!groupedMessages.length)
     return (
       <NoMessages className="no-messages">
-        <Info>No messages to be seen here!</Info>
+        <Info>{Locale.translate('frontend.nomessages')}</Info>
       </NoMessages>
     );
 

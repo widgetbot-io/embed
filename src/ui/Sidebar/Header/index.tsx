@@ -12,6 +12,7 @@ import {store} from "@models";
 import {Close} from "@ui/Sidebar/elements";
 import webpCheck from '@ui/shared/webpCheck'
 import {inject, observer} from "mobx-react";
+import { Locale } from '@lib/Locale'
 
 interface Props {
 	AuthStore?: AuthStore
@@ -35,8 +36,8 @@ export class Header extends React.Component<Props, any> {
 							if (!data || !data.guild) {
 								addNotification({
 									level: 'error',
-									title: 'Guild unavailable',
-									message: 'This guild is not available.',
+									title: Locale.translate('frontend.notif.serverunavailable'),
+									message: Locale.translate('frontend.notif.serverunavailable.desc'),
 									autoDismiss: 0,
 
 								});

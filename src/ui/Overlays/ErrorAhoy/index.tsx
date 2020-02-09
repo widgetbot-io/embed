@@ -4,15 +4,16 @@ import { Error } from '..'
 import Header, { Name, Topic } from './header'
 import Wrapper from './wrapper'
 import { Message } from './elements'
+import { Locale } from '@lib/Locale'
 
 const ErrorAhoy = ({ message }) => (
   <Wrapper>
     <Header>
       <Name>
-        Error Ahoy!
+        {Locale.translate('frontend.errorahoy')}
       </Name>
       <Topic>
-        Something unexpected occurred! WidgetBot support (for site admins): https://discord.gg/NYBEhN7
+      {Locale.translate('frontend.errorahoy.desc')}
       </Topic>
     </Header>
     <Error>
