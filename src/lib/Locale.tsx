@@ -14,7 +14,7 @@ export class Locale extends React.Component<Props> {
     constructor(props) {
         super(props);
         Locale.cur = this.props.AuthStore.locale;
-        Locale.init().then(() => null);
+        Locale.init().then(() => {});
     }
 
     static translate(key: string, replacements?: { [key: string]: any; }): string {
@@ -38,7 +38,7 @@ export class Locale extends React.Component<Props> {
         return content;
     }
 
-    protected static async init() {
+    private static async init() {
         const temp = {};
         // @ts-ignore
         temp["en"] = (await import("../locales/en.json"));
