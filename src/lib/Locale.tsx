@@ -1,6 +1,6 @@
 import React from "react";
 import { AuthStore } from "@store/auth";
-import {inject, observer} from "mobx-react";
+import {inject} from "mobx-react";
 
 interface Props {
     AuthStore?: AuthStore;
@@ -8,22 +8,22 @@ interface Props {
 
 @inject("AuthStore")
 export class Locale extends React.Component<Props> {
-    public static cache: { [key: string]: { [key: string]: string } } = {};
+    public static cache: { [key: string]: { [key: string]: string } } = JSON.parse(window.localStorage.getItem("locales") || '{}');
     public static cur: string;
 
     constructor(props) {
         super(props);
         Locale.cur = this.props.AuthStore.locale;
-        this.cacheLocales().then(() => null);
+        Locale.init().then(() => null);
     }
 
     static translate(key: string, replacements?: { [key: string]: any; }): string {
-        let lang: any, content: string;
-        const locale = Locale.cache[Locale.cur];
+        let lang: any = Locale.cache[Locale.cur], content: string;
+        console.log(Locale.cache["en"], Locale.cur);
 
-        if (!locale) {
+        if (!lang) {
             if (Locale.cache['en'] && Locale.cache['en'][key]) {
-                lang = Locale.cache['en']
+                lang = Locale.cache['en'];
             } else {
                 return key;
             }
@@ -39,9 +39,17 @@ export class Locale extends React.Component<Props> {
         return content;
     }
 
-    async cacheLocales() {
+    protected static async init() {
+        const temp = {};
         // @ts-ignore
-        Locale.cache["en"] = (await import("../locales/en.json"));
+        temp["en"] = (await import("../locales/en.json"));
+
+        // When adding new locales, do it ABOVE this line!
+        const cached = Object.keys(Locale.cache).length < 1 ? null : JSON.stringify(Locale.cache);
+        if (!cached || cached !== JSON.stringify(temp)) {
+            Locale.cache = temp;
+            window.localStorage.setItem("locales", JSON.stringify(temp));
+        }
     }
 
     static getKeys(): String[] {
