@@ -6,7 +6,7 @@
 // GraphQL subscription operation: NewMessages
 // ====================================================
 
-export interface NewMessages_message_FollowMessage_author {
+export interface NewMessages_message_JoinMessage_author {
   __typename: "User";
   id: string;
   username: string;
@@ -16,13 +16,13 @@ export interface NewMessages_message_FollowMessage_author {
   displayAvatarURL: string | null;
 }
 
-export interface NewMessages_message_FollowMessage_member {
+export interface NewMessages_message_JoinMessage_member {
   __typename: "IMember";
   displayName: string | null;
   displayHexColor: string | null;
 }
 
-export interface NewMessages_message_FollowMessage_flags {
+export interface NewMessages_message_JoinMessage_flags {
   __typename: "MessageFlags";
   CROSSPOSTED: boolean;
   IS_CROSSPOST: boolean;
@@ -31,8 +31,8 @@ export interface NewMessages_message_FollowMessage_flags {
   URGENT: boolean;
 }
 
-export interface NewMessages_message_FollowMessage {
-  __typename: "FollowMessage" | "JoinMessage" | "PinnedMessage";
+export interface NewMessages_message_JoinMessage {
+  __typename: "JoinMessage" | "PinnedMessage";
   /**
    * Message ID
    */
@@ -44,15 +44,15 @@ export interface NewMessages_message_FollowMessage {
   /**
    * General discord user who authored the message
    */
-  author: NewMessages_message_FollowMessage_author;
+  author: NewMessages_message_JoinMessage_author;
   /**
    * Author as member of guild.
    */
-  member: NewMessages_message_FollowMessage_member | null;
+  member: NewMessages_message_JoinMessage_member | null;
   /**
    * Message flags
    */
-  flags: NewMessages_message_FollowMessage_flags;
+  flags: NewMessages_message_JoinMessage_flags;
 }
 
 export interface NewMessages_message_TextMessage_author {
@@ -260,7 +260,57 @@ export interface NewMessages_message_BoostMessage {
   tier: number;
 }
 
-export type NewMessages_message = NewMessages_message_FollowMessage | NewMessages_message_TextMessage | NewMessages_message_BoostMessage;
+export interface NewMessages_message_FollowMessage_author {
+  __typename: "User";
+  id: string;
+  username: string;
+  bot: boolean;
+  discriminator: string;
+  defaultAvatarURL: string;
+  displayAvatarURL: string | null;
+}
+
+export interface NewMessages_message_FollowMessage_member {
+  __typename: "IMember";
+  displayName: string | null;
+  displayHexColor: string | null;
+}
+
+export interface NewMessages_message_FollowMessage_flags {
+  __typename: "MessageFlags";
+  CROSSPOSTED: boolean;
+  IS_CROSSPOST: boolean;
+  SUPPRESS_EMBEDS: boolean;
+  SOURCE_MESSAGE_DELETED: boolean;
+  URGENT: boolean;
+}
+
+export interface NewMessages_message_FollowMessage {
+  __typename: "FollowMessage";
+  /**
+   * Message ID
+   */
+  id: string;
+  /**
+   * Message timestamp
+   */
+  createdAt: any;
+  /**
+   * General discord user who authored the message
+   */
+  author: NewMessages_message_FollowMessage_author;
+  /**
+   * Author as member of guild.
+   */
+  member: NewMessages_message_FollowMessage_member | null;
+  /**
+   * Message flags
+   */
+  flags: NewMessages_message_FollowMessage_flags;
+  content: string;
+}
+
+export type NewMessages_message = NewMessages_message_JoinMessage | NewMessages_message_TextMessage | NewMessages_message_BoostMessage | NewMessages_message_FollowMessage;
 
 export interface NewMessages {
   message: NewMessages_message;

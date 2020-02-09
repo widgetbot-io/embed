@@ -6,7 +6,7 @@
 // GraphQL fragment: Message
 // ====================================================
 
-export interface Message_FollowMessage_author {
+export interface Message_JoinMessage_author {
   __typename: "User";
   id: string;
   username: string;
@@ -16,13 +16,13 @@ export interface Message_FollowMessage_author {
   displayAvatarURL: string | null;
 }
 
-export interface Message_FollowMessage_member {
+export interface Message_JoinMessage_member {
   __typename: "IMember";
   displayName: string | null;
   displayHexColor: string | null;
 }
 
-export interface Message_FollowMessage_flags {
+export interface Message_JoinMessage_flags {
   __typename: "MessageFlags";
   CROSSPOSTED: boolean;
   IS_CROSSPOST: boolean;
@@ -31,8 +31,8 @@ export interface Message_FollowMessage_flags {
   URGENT: boolean;
 }
 
-export interface Message_FollowMessage {
-  __typename: "FollowMessage" | "JoinMessage" | "PinnedMessage";
+export interface Message_JoinMessage {
+  __typename: "JoinMessage" | "PinnedMessage";
   /**
    * Message ID
    */
@@ -44,15 +44,15 @@ export interface Message_FollowMessage {
   /**
    * General discord user who authored the message
    */
-  author: Message_FollowMessage_author;
+  author: Message_JoinMessage_author;
   /**
    * Author as member of guild.
    */
-  member: Message_FollowMessage_member | null;
+  member: Message_JoinMessage_member | null;
   /**
    * Message flags
    */
-  flags: Message_FollowMessage_flags;
+  flags: Message_JoinMessage_flags;
 }
 
 export interface Message_TextMessage_author {
@@ -260,4 +260,54 @@ export interface Message_BoostMessage {
   tier: number;
 }
 
-export type Message = Message_FollowMessage | Message_TextMessage | Message_BoostMessage;
+export interface Message_FollowMessage_author {
+  __typename: "User";
+  id: string;
+  username: string;
+  bot: boolean;
+  discriminator: string;
+  defaultAvatarURL: string;
+  displayAvatarURL: string | null;
+}
+
+export interface Message_FollowMessage_member {
+  __typename: "IMember";
+  displayName: string | null;
+  displayHexColor: string | null;
+}
+
+export interface Message_FollowMessage_flags {
+  __typename: "MessageFlags";
+  CROSSPOSTED: boolean;
+  IS_CROSSPOST: boolean;
+  SUPPRESS_EMBEDS: boolean;
+  SOURCE_MESSAGE_DELETED: boolean;
+  URGENT: boolean;
+}
+
+export interface Message_FollowMessage {
+  __typename: "FollowMessage";
+  /**
+   * Message ID
+   */
+  id: string;
+  /**
+   * Message timestamp
+   */
+  createdAt: any;
+  /**
+   * General discord user who authored the message
+   */
+  author: Message_FollowMessage_author;
+  /**
+   * Author as member of guild.
+   */
+  member: Message_FollowMessage_member | null;
+  /**
+   * Message flags
+   */
+  flags: Message_FollowMessage_flags;
+  content: string;
+}
+
+export type Message = Message_JoinMessage | Message_TextMessage | Message_BoostMessage | Message_FollowMessage;

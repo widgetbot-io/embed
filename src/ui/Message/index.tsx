@@ -193,6 +193,23 @@ class Message extends React.PureComponent<Props, any> {
                 }
               }
 
+              case 'FollowMessage': {
+                const member = (
+                  <Member id={message.author.id} color={message.member.displayHexColor}>
+                    {message.member.displayName || message.author.username}
+                  </Member>
+                );
+
+                return (
+                  <React.Fragment key={message.id}>
+                    <Secondary.Join>
+                      {member}has added {message.content} to this channel. Its most important updates will show up here.
+                    </Secondary.Join>
+                    <Timestamp time={message.createdAt} />
+                  </React.Fragment>
+                )
+              }
+
               default:
                 return null
             }

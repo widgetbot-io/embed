@@ -26,4 +26,8 @@ fragment Message on Message {
   ... on BoostMessage {
     tier
   }
+
+  ... on FollowMessage {
+    content
+  }
 }

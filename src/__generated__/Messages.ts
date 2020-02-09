@@ -11,7 +11,7 @@ export interface Messages_channel_StoreChannel {
   id: string;
 }
 
-export interface Messages_channel_TextChannel_messages_FollowMessage_author {
+export interface Messages_channel_TextChannel_messages_JoinMessage_author {
   __typename: "User";
   id: string;
   username: string;
@@ -21,13 +21,13 @@ export interface Messages_channel_TextChannel_messages_FollowMessage_author {
   displayAvatarURL: string | null;
 }
 
-export interface Messages_channel_TextChannel_messages_FollowMessage_member {
+export interface Messages_channel_TextChannel_messages_JoinMessage_member {
   __typename: "IMember";
   displayName: string | null;
   displayHexColor: string | null;
 }
 
-export interface Messages_channel_TextChannel_messages_FollowMessage_flags {
+export interface Messages_channel_TextChannel_messages_JoinMessage_flags {
   __typename: "MessageFlags";
   CROSSPOSTED: boolean;
   IS_CROSSPOST: boolean;
@@ -36,8 +36,8 @@ export interface Messages_channel_TextChannel_messages_FollowMessage_flags {
   URGENT: boolean;
 }
 
-export interface Messages_channel_TextChannel_messages_FollowMessage {
-  __typename: "FollowMessage" | "JoinMessage" | "PinnedMessage";
+export interface Messages_channel_TextChannel_messages_JoinMessage {
+  __typename: "JoinMessage" | "PinnedMessage";
   /**
    * Message ID
    */
@@ -49,15 +49,15 @@ export interface Messages_channel_TextChannel_messages_FollowMessage {
   /**
    * General discord user who authored the message
    */
-  author: Messages_channel_TextChannel_messages_FollowMessage_author;
+  author: Messages_channel_TextChannel_messages_JoinMessage_author;
   /**
    * Author as member of guild.
    */
-  member: Messages_channel_TextChannel_messages_FollowMessage_member | null;
+  member: Messages_channel_TextChannel_messages_JoinMessage_member | null;
   /**
    * Message flags
    */
-  flags: Messages_channel_TextChannel_messages_FollowMessage_flags;
+  flags: Messages_channel_TextChannel_messages_JoinMessage_flags;
 }
 
 export interface Messages_channel_TextChannel_messages_TextMessage_author {
@@ -265,15 +265,7 @@ export interface Messages_channel_TextChannel_messages_BoostMessage {
   tier: number;
 }
 
-export type Messages_channel_TextChannel_messages = Messages_channel_TextChannel_messages_FollowMessage | Messages_channel_TextChannel_messages_TextMessage | Messages_channel_TextChannel_messages_BoostMessage;
-
-export interface Messages_channel_TextChannel {
-  __typename: "TextChannel";
-  id: string;
-  messages: Messages_channel_TextChannel_messages[] | null;
-}
-
-export interface Messages_channel_NewsChannel_messages_FollowMessage_author {
+export interface Messages_channel_TextChannel_messages_FollowMessage_author {
   __typename: "User";
   id: string;
   username: string;
@@ -283,13 +275,13 @@ export interface Messages_channel_NewsChannel_messages_FollowMessage_author {
   displayAvatarURL: string | null;
 }
 
-export interface Messages_channel_NewsChannel_messages_FollowMessage_member {
+export interface Messages_channel_TextChannel_messages_FollowMessage_member {
   __typename: "IMember";
   displayName: string | null;
   displayHexColor: string | null;
 }
 
-export interface Messages_channel_NewsChannel_messages_FollowMessage_flags {
+export interface Messages_channel_TextChannel_messages_FollowMessage_flags {
   __typename: "MessageFlags";
   CROSSPOSTED: boolean;
   IS_CROSSPOST: boolean;
@@ -298,8 +290,8 @@ export interface Messages_channel_NewsChannel_messages_FollowMessage_flags {
   URGENT: boolean;
 }
 
-export interface Messages_channel_NewsChannel_messages_FollowMessage {
-  __typename: "FollowMessage" | "JoinMessage" | "PinnedMessage";
+export interface Messages_channel_TextChannel_messages_FollowMessage {
+  __typename: "FollowMessage";
   /**
    * Message ID
    */
@@ -311,15 +303,73 @@ export interface Messages_channel_NewsChannel_messages_FollowMessage {
   /**
    * General discord user who authored the message
    */
-  author: Messages_channel_NewsChannel_messages_FollowMessage_author;
+  author: Messages_channel_TextChannel_messages_FollowMessage_author;
   /**
    * Author as member of guild.
    */
-  member: Messages_channel_NewsChannel_messages_FollowMessage_member | null;
+  member: Messages_channel_TextChannel_messages_FollowMessage_member | null;
   /**
    * Message flags
    */
-  flags: Messages_channel_NewsChannel_messages_FollowMessage_flags;
+  flags: Messages_channel_TextChannel_messages_FollowMessage_flags;
+  content: string;
+}
+
+export type Messages_channel_TextChannel_messages = Messages_channel_TextChannel_messages_JoinMessage | Messages_channel_TextChannel_messages_TextMessage | Messages_channel_TextChannel_messages_BoostMessage | Messages_channel_TextChannel_messages_FollowMessage;
+
+export interface Messages_channel_TextChannel {
+  __typename: "TextChannel";
+  id: string;
+  messages: Messages_channel_TextChannel_messages[] | null;
+}
+
+export interface Messages_channel_NewsChannel_messages_JoinMessage_author {
+  __typename: "User";
+  id: string;
+  username: string;
+  bot: boolean;
+  discriminator: string;
+  defaultAvatarURL: string;
+  displayAvatarURL: string | null;
+}
+
+export interface Messages_channel_NewsChannel_messages_JoinMessage_member {
+  __typename: "IMember";
+  displayName: string | null;
+  displayHexColor: string | null;
+}
+
+export interface Messages_channel_NewsChannel_messages_JoinMessage_flags {
+  __typename: "MessageFlags";
+  CROSSPOSTED: boolean;
+  IS_CROSSPOST: boolean;
+  SUPPRESS_EMBEDS: boolean;
+  SOURCE_MESSAGE_DELETED: boolean;
+  URGENT: boolean;
+}
+
+export interface Messages_channel_NewsChannel_messages_JoinMessage {
+  __typename: "JoinMessage" | "PinnedMessage";
+  /**
+   * Message ID
+   */
+  id: string;
+  /**
+   * Message timestamp
+   */
+  createdAt: any;
+  /**
+   * General discord user who authored the message
+   */
+  author: Messages_channel_NewsChannel_messages_JoinMessage_author;
+  /**
+   * Author as member of guild.
+   */
+  member: Messages_channel_NewsChannel_messages_JoinMessage_member | null;
+  /**
+   * Message flags
+   */
+  flags: Messages_channel_NewsChannel_messages_JoinMessage_flags;
 }
 
 export interface Messages_channel_NewsChannel_messages_TextMessage_author {
@@ -527,7 +577,57 @@ export interface Messages_channel_NewsChannel_messages_BoostMessage {
   tier: number;
 }
 
-export type Messages_channel_NewsChannel_messages = Messages_channel_NewsChannel_messages_FollowMessage | Messages_channel_NewsChannel_messages_TextMessage | Messages_channel_NewsChannel_messages_BoostMessage;
+export interface Messages_channel_NewsChannel_messages_FollowMessage_author {
+  __typename: "User";
+  id: string;
+  username: string;
+  bot: boolean;
+  discriminator: string;
+  defaultAvatarURL: string;
+  displayAvatarURL: string | null;
+}
+
+export interface Messages_channel_NewsChannel_messages_FollowMessage_member {
+  __typename: "IMember";
+  displayName: string | null;
+  displayHexColor: string | null;
+}
+
+export interface Messages_channel_NewsChannel_messages_FollowMessage_flags {
+  __typename: "MessageFlags";
+  CROSSPOSTED: boolean;
+  IS_CROSSPOST: boolean;
+  SUPPRESS_EMBEDS: boolean;
+  SOURCE_MESSAGE_DELETED: boolean;
+  URGENT: boolean;
+}
+
+export interface Messages_channel_NewsChannel_messages_FollowMessage {
+  __typename: "FollowMessage";
+  /**
+   * Message ID
+   */
+  id: string;
+  /**
+   * Message timestamp
+   */
+  createdAt: any;
+  /**
+   * General discord user who authored the message
+   */
+  author: Messages_channel_NewsChannel_messages_FollowMessage_author;
+  /**
+   * Author as member of guild.
+   */
+  member: Messages_channel_NewsChannel_messages_FollowMessage_member | null;
+  /**
+   * Message flags
+   */
+  flags: Messages_channel_NewsChannel_messages_FollowMessage_flags;
+  content: string;
+}
+
+export type Messages_channel_NewsChannel_messages = Messages_channel_NewsChannel_messages_JoinMessage | Messages_channel_NewsChannel_messages_TextMessage | Messages_channel_NewsChannel_messages_BoostMessage | Messages_channel_NewsChannel_messages_FollowMessage;
 
 export interface Messages_channel_NewsChannel {
   __typename: "NewsChannel";
