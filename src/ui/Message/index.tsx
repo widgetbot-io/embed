@@ -58,6 +58,7 @@ class Message extends React.PureComponent<Props, any> {
               author={firstMessage.author}
               member={firstMessage.member}
               time={firstMessage.createdAt}
+              crosspost={firstMessage.flags.IS_CROSSPOST}
             />
           ) : null}
 

@@ -4,11 +4,13 @@ import * as React from 'react'
 
 import { Sysadmin, Tag, Verified } from "./Badges";
 import { Name, Root, Time } from './elements'
+import { Locale } from '@lib/Locale';
 
 interface Props {
   author: $Author,
   member: $Member,
-  time: number
+  time: number,
+  crosspost: boolean
 }
 
 const developers = {
@@ -32,11 +34,11 @@ export const Timestamp = ({ time }: { time: number }) => (
 
 class Author extends React.PureComponent<Props> {
   tags() {
-    const { author } = this.props;
+    const { author, crosspost } = this.props;
 
     return (
       <React.Fragment>
-        {author.bot && <Tag className="bot">Bot</Tag>}
+        {author.bot && (crosspost ? <Tag className="bot">{Locale.translate('frontend.tag.server')}</Tag> : <Tag className="bot">{Locale.translate('frontend.tag.bot')}</Tag>)}
               {author.id === 'aaaa' && <Tag className="guest">Guest</Tag>}
               {Author.verified({ id: author.id }) ||
                 (author.id === '190916650143318016' && (
