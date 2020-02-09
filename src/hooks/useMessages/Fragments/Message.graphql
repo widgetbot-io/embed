@@ -12,6 +12,13 @@ fragment Message on Message {
   member {
     ...Member
   }
+  flags {
+    CROSSPOSTED,
+    IS_CROSSPOST,
+    SUPPRESS_EMBEDS,
+    SOURCE_MESSAGE_DELETED,
+    URGENT
+  }
 
   ... on TextMessage {
     ...TextMessage

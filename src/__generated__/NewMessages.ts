@@ -22,6 +22,15 @@ export interface NewMessages_message_FollowMessage_member {
   displayHexColor: string | null;
 }
 
+export interface NewMessages_message_FollowMessage_flags {
+  __typename: "MessageFlags";
+  CROSSPOSTED: boolean;
+  IS_CROSSPOST: boolean;
+  SUPPRESS_EMBEDS: boolean;
+  SOURCE_MESSAGE_DELETED: boolean;
+  URGENT: boolean;
+}
+
 export interface NewMessages_message_FollowMessage {
   __typename: "FollowMessage" | "JoinMessage" | "PinnedMessage";
   /**
@@ -40,6 +49,10 @@ export interface NewMessages_message_FollowMessage {
    * Author as member of guild.
    */
   member: NewMessages_message_FollowMessage_member | null;
+  /**
+   * Message flags
+   */
+  flags: NewMessages_message_FollowMessage_flags;
 }
 
 export interface NewMessages_message_TextMessage_author {
@@ -56,6 +69,15 @@ export interface NewMessages_message_TextMessage_member {
   __typename: "IMember";
   displayName: string | null;
   displayHexColor: string | null;
+}
+
+export interface NewMessages_message_TextMessage_flags {
+  __typename: "MessageFlags";
+  CROSSPOSTED: boolean;
+  IS_CROSSPOST: boolean;
+  SUPPRESS_EMBEDS: boolean;
+  SOURCE_MESSAGE_DELETED: boolean;
+  URGENT: boolean;
 }
 
 export interface NewMessages_message_TextMessage_reactions_emoji {
@@ -163,6 +185,10 @@ export interface NewMessages_message_TextMessage {
    */
   member: NewMessages_message_TextMessage_member | null;
   /**
+   * Message flags
+   */
+  flags: NewMessages_message_TextMessage_flags;
+  /**
    * Message content
    */
   content: string | null;
@@ -200,6 +226,15 @@ export interface NewMessages_message_BoostMessage_member {
   displayHexColor: string | null;
 }
 
+export interface NewMessages_message_BoostMessage_flags {
+  __typename: "MessageFlags";
+  CROSSPOSTED: boolean;
+  IS_CROSSPOST: boolean;
+  SUPPRESS_EMBEDS: boolean;
+  SOURCE_MESSAGE_DELETED: boolean;
+  URGENT: boolean;
+}
+
 export interface NewMessages_message_BoostMessage {
   __typename: "BoostMessage";
   /**
@@ -218,6 +253,10 @@ export interface NewMessages_message_BoostMessage {
    * Author as member of guild.
    */
   member: NewMessages_message_BoostMessage_member | null;
+  /**
+   * Message flags
+   */
+  flags: NewMessages_message_BoostMessage_flags;
   tier: number;
 }
 

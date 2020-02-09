@@ -22,6 +22,15 @@ export interface Message_FollowMessage_member {
   displayHexColor: string | null;
 }
 
+export interface Message_FollowMessage_flags {
+  __typename: "MessageFlags";
+  CROSSPOSTED: boolean;
+  IS_CROSSPOST: boolean;
+  SUPPRESS_EMBEDS: boolean;
+  SOURCE_MESSAGE_DELETED: boolean;
+  URGENT: boolean;
+}
+
 export interface Message_FollowMessage {
   __typename: "FollowMessage" | "JoinMessage" | "PinnedMessage";
   /**
@@ -40,6 +49,10 @@ export interface Message_FollowMessage {
    * Author as member of guild.
    */
   member: Message_FollowMessage_member | null;
+  /**
+   * Message flags
+   */
+  flags: Message_FollowMessage_flags;
 }
 
 export interface Message_TextMessage_author {
@@ -56,6 +69,15 @@ export interface Message_TextMessage_member {
   __typename: "IMember";
   displayName: string | null;
   displayHexColor: string | null;
+}
+
+export interface Message_TextMessage_flags {
+  __typename: "MessageFlags";
+  CROSSPOSTED: boolean;
+  IS_CROSSPOST: boolean;
+  SUPPRESS_EMBEDS: boolean;
+  SOURCE_MESSAGE_DELETED: boolean;
+  URGENT: boolean;
 }
 
 export interface Message_TextMessage_reactions_emoji {
@@ -163,6 +185,10 @@ export interface Message_TextMessage {
    */
   member: Message_TextMessage_member | null;
   /**
+   * Message flags
+   */
+  flags: Message_TextMessage_flags;
+  /**
    * Message content
    */
   content: string | null;
@@ -200,6 +226,15 @@ export interface Message_BoostMessage_member {
   displayHexColor: string | null;
 }
 
+export interface Message_BoostMessage_flags {
+  __typename: "MessageFlags";
+  CROSSPOSTED: boolean;
+  IS_CROSSPOST: boolean;
+  SUPPRESS_EMBEDS: boolean;
+  SOURCE_MESSAGE_DELETED: boolean;
+  URGENT: boolean;
+}
+
 export interface Message_BoostMessage {
   __typename: "BoostMessage";
   /**
@@ -218,6 +253,10 @@ export interface Message_BoostMessage {
    * Author as member of guild.
    */
   member: Message_BoostMessage_member | null;
+  /**
+   * Message flags
+   */
+  flags: Message_BoostMessage_flags;
   tier: number;
 }
 

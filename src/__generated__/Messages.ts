@@ -27,6 +27,15 @@ export interface Messages_channel_TextChannel_messages_FollowMessage_member {
   displayHexColor: string | null;
 }
 
+export interface Messages_channel_TextChannel_messages_FollowMessage_flags {
+  __typename: "MessageFlags";
+  CROSSPOSTED: boolean;
+  IS_CROSSPOST: boolean;
+  SUPPRESS_EMBEDS: boolean;
+  SOURCE_MESSAGE_DELETED: boolean;
+  URGENT: boolean;
+}
+
 export interface Messages_channel_TextChannel_messages_FollowMessage {
   __typename: "FollowMessage" | "JoinMessage" | "PinnedMessage";
   /**
@@ -45,6 +54,10 @@ export interface Messages_channel_TextChannel_messages_FollowMessage {
    * Author as member of guild.
    */
   member: Messages_channel_TextChannel_messages_FollowMessage_member | null;
+  /**
+   * Message flags
+   */
+  flags: Messages_channel_TextChannel_messages_FollowMessage_flags;
 }
 
 export interface Messages_channel_TextChannel_messages_TextMessage_author {
@@ -61,6 +74,15 @@ export interface Messages_channel_TextChannel_messages_TextMessage_member {
   __typename: "IMember";
   displayName: string | null;
   displayHexColor: string | null;
+}
+
+export interface Messages_channel_TextChannel_messages_TextMessage_flags {
+  __typename: "MessageFlags";
+  CROSSPOSTED: boolean;
+  IS_CROSSPOST: boolean;
+  SUPPRESS_EMBEDS: boolean;
+  SOURCE_MESSAGE_DELETED: boolean;
+  URGENT: boolean;
 }
 
 export interface Messages_channel_TextChannel_messages_TextMessage_reactions_emoji {
@@ -168,6 +190,10 @@ export interface Messages_channel_TextChannel_messages_TextMessage {
    */
   member: Messages_channel_TextChannel_messages_TextMessage_member | null;
   /**
+   * Message flags
+   */
+  flags: Messages_channel_TextChannel_messages_TextMessage_flags;
+  /**
    * Message content
    */
   content: string | null;
@@ -205,6 +231,15 @@ export interface Messages_channel_TextChannel_messages_BoostMessage_member {
   displayHexColor: string | null;
 }
 
+export interface Messages_channel_TextChannel_messages_BoostMessage_flags {
+  __typename: "MessageFlags";
+  CROSSPOSTED: boolean;
+  IS_CROSSPOST: boolean;
+  SUPPRESS_EMBEDS: boolean;
+  SOURCE_MESSAGE_DELETED: boolean;
+  URGENT: boolean;
+}
+
 export interface Messages_channel_TextChannel_messages_BoostMessage {
   __typename: "BoostMessage";
   /**
@@ -223,6 +258,10 @@ export interface Messages_channel_TextChannel_messages_BoostMessage {
    * Author as member of guild.
    */
   member: Messages_channel_TextChannel_messages_BoostMessage_member | null;
+  /**
+   * Message flags
+   */
+  flags: Messages_channel_TextChannel_messages_BoostMessage_flags;
   tier: number;
 }
 
@@ -250,6 +289,15 @@ export interface Messages_channel_NewsChannel_messages_FollowMessage_member {
   displayHexColor: string | null;
 }
 
+export interface Messages_channel_NewsChannel_messages_FollowMessage_flags {
+  __typename: "MessageFlags";
+  CROSSPOSTED: boolean;
+  IS_CROSSPOST: boolean;
+  SUPPRESS_EMBEDS: boolean;
+  SOURCE_MESSAGE_DELETED: boolean;
+  URGENT: boolean;
+}
+
 export interface Messages_channel_NewsChannel_messages_FollowMessage {
   __typename: "FollowMessage" | "JoinMessage" | "PinnedMessage";
   /**
@@ -268,6 +316,10 @@ export interface Messages_channel_NewsChannel_messages_FollowMessage {
    * Author as member of guild.
    */
   member: Messages_channel_NewsChannel_messages_FollowMessage_member | null;
+  /**
+   * Message flags
+   */
+  flags: Messages_channel_NewsChannel_messages_FollowMessage_flags;
 }
 
 export interface Messages_channel_NewsChannel_messages_TextMessage_author {
@@ -284,6 +336,15 @@ export interface Messages_channel_NewsChannel_messages_TextMessage_member {
   __typename: "IMember";
   displayName: string | null;
   displayHexColor: string | null;
+}
+
+export interface Messages_channel_NewsChannel_messages_TextMessage_flags {
+  __typename: "MessageFlags";
+  CROSSPOSTED: boolean;
+  IS_CROSSPOST: boolean;
+  SUPPRESS_EMBEDS: boolean;
+  SOURCE_MESSAGE_DELETED: boolean;
+  URGENT: boolean;
 }
 
 export interface Messages_channel_NewsChannel_messages_TextMessage_reactions_emoji {
@@ -391,6 +452,10 @@ export interface Messages_channel_NewsChannel_messages_TextMessage {
    */
   member: Messages_channel_NewsChannel_messages_TextMessage_member | null;
   /**
+   * Message flags
+   */
+  flags: Messages_channel_NewsChannel_messages_TextMessage_flags;
+  /**
    * Message content
    */
   content: string | null;
@@ -428,6 +493,15 @@ export interface Messages_channel_NewsChannel_messages_BoostMessage_member {
   displayHexColor: string | null;
 }
 
+export interface Messages_channel_NewsChannel_messages_BoostMessage_flags {
+  __typename: "MessageFlags";
+  CROSSPOSTED: boolean;
+  IS_CROSSPOST: boolean;
+  SUPPRESS_EMBEDS: boolean;
+  SOURCE_MESSAGE_DELETED: boolean;
+  URGENT: boolean;
+}
+
 export interface Messages_channel_NewsChannel_messages_BoostMessage {
   __typename: "BoostMessage";
   /**
@@ -446,6 +520,10 @@ export interface Messages_channel_NewsChannel_messages_BoostMessage {
    * Author as member of guild.
    */
   member: Messages_channel_NewsChannel_messages_BoostMessage_member | null;
+  /**
+   * Message flags
+   */
+  flags: Messages_channel_NewsChannel_messages_BoostMessage_flags;
   tier: number;
 }
 

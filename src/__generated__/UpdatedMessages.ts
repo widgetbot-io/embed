@@ -22,6 +22,15 @@ export interface UpdatedMessages_messageUpdate_FollowMessage_member {
   displayHexColor: string | null;
 }
 
+export interface UpdatedMessages_messageUpdate_FollowMessage_flags {
+  __typename: "MessageFlags";
+  CROSSPOSTED: boolean;
+  IS_CROSSPOST: boolean;
+  SUPPRESS_EMBEDS: boolean;
+  SOURCE_MESSAGE_DELETED: boolean;
+  URGENT: boolean;
+}
+
 export interface UpdatedMessages_messageUpdate_FollowMessage {
   __typename: "FollowMessage" | "JoinMessage" | "PinnedMessage";
   /**
@@ -40,6 +49,10 @@ export interface UpdatedMessages_messageUpdate_FollowMessage {
    * Author as member of guild.
    */
   member: UpdatedMessages_messageUpdate_FollowMessage_member | null;
+  /**
+   * Message flags
+   */
+  flags: UpdatedMessages_messageUpdate_FollowMessage_flags;
 }
 
 export interface UpdatedMessages_messageUpdate_TextMessage_author {
@@ -56,6 +69,15 @@ export interface UpdatedMessages_messageUpdate_TextMessage_member {
   __typename: "IMember";
   displayName: string | null;
   displayHexColor: string | null;
+}
+
+export interface UpdatedMessages_messageUpdate_TextMessage_flags {
+  __typename: "MessageFlags";
+  CROSSPOSTED: boolean;
+  IS_CROSSPOST: boolean;
+  SUPPRESS_EMBEDS: boolean;
+  SOURCE_MESSAGE_DELETED: boolean;
+  URGENT: boolean;
 }
 
 export interface UpdatedMessages_messageUpdate_TextMessage_reactions_emoji {
@@ -163,6 +185,10 @@ export interface UpdatedMessages_messageUpdate_TextMessage {
    */
   member: UpdatedMessages_messageUpdate_TextMessage_member | null;
   /**
+   * Message flags
+   */
+  flags: UpdatedMessages_messageUpdate_TextMessage_flags;
+  /**
    * Message content
    */
   content: string | null;
@@ -200,6 +226,15 @@ export interface UpdatedMessages_messageUpdate_BoostMessage_member {
   displayHexColor: string | null;
 }
 
+export interface UpdatedMessages_messageUpdate_BoostMessage_flags {
+  __typename: "MessageFlags";
+  CROSSPOSTED: boolean;
+  IS_CROSSPOST: boolean;
+  SUPPRESS_EMBEDS: boolean;
+  SOURCE_MESSAGE_DELETED: boolean;
+  URGENT: boolean;
+}
+
 export interface UpdatedMessages_messageUpdate_BoostMessage {
   __typename: "BoostMessage";
   /**
@@ -218,6 +253,10 @@ export interface UpdatedMessages_messageUpdate_BoostMessage {
    * Author as member of guild.
    */
   member: UpdatedMessages_messageUpdate_BoostMessage_member | null;
+  /**
+   * Message flags
+   */
+  flags: UpdatedMessages_messageUpdate_BoostMessage_flags;
   tier: number;
 }
 
