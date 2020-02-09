@@ -19,7 +19,6 @@ export class Locale extends React.Component<Props> {
 
     static translate(key: string, replacements?: { [key: string]: any; }): string {
         let lang: any = Locale.cache[Locale.cur], content: string;
-        console.log(Locale.cache["en"], Locale.cur);
 
         if (!lang) {
             if (Locale.cache['en'] && Locale.cache['en'][key]) {
