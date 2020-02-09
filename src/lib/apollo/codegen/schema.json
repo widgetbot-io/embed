@@ -2252,9 +2252,13 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "INTERFACE",
-              "name": "Emoji",
-              "ofType": null
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "ReactionEmoji",
+                "ofType": null
+              }
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -2282,12 +2286,28 @@
         "possibleTypes": null
       },
       {
-        "kind": "INTERFACE",
-        "name": "Emoji",
+        "kind": "OBJECT",
+        "name": "ReactionEmoji",
         "description": null,
         "fields": [
           {
             "name": "name",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "url",
             "description": null,
             "args": [],
             "type": {
@@ -2300,20 +2320,9 @@
           }
         ],
         "inputFields": null,
-        "interfaces": null,
+        "interfaces": [],
         "enumValues": null,
-        "possibleTypes": [
-          {
-            "kind": "OBJECT",
-            "name": "CustomEmoji",
-            "ofType": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "TextEmoji",
-            "ofType": null
-          }
-        ]
+        "possibleTypes": null
       },
       {
         "kind": "OBJECT",
@@ -3712,6 +3721,40 @@
         "possibleTypes": null
       },
       {
+        "kind": "INTERFACE",
+        "name": "Emoji",
+        "description": null,
+        "fields": [
+          {
+            "name": "name",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": [
+          {
+            "kind": "OBJECT",
+            "name": "CustomEmoji",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "TextEmoji",
+            "ofType": null
+          }
+        ]
+      },
+      {
         "kind": "OBJECT",
         "name": "FollowMessage",
         "description": null,
@@ -3784,6 +3827,22 @@
               "kind": "SCALAR",
               "name": "DateTime",
               "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "content",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "isDeprecated": false,
             "deprecationReason": null
