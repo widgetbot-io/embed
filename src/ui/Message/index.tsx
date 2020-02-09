@@ -157,7 +157,7 @@ class Message extends React.PureComponent<Props, any> {
                 return (
                   <React.Fragment key={message.id}>
                     <Secondary.Pinned>
-                      {member}pinned a message to this channel.
+                      {member}{Locale.translate('frontend.messages.pinned')}
                     </Secondary.Pinned>
                     <Timestamp time={message.createdAt} />
                   </React.Fragment>
@@ -177,8 +177,7 @@ class Message extends React.PureComponent<Props, any> {
                   return (
                     <React.Fragment key={message.id}>
                       <Secondary.Boost>
-                        // @ts-ignore
-                        {member}just boosted the server! guildName has achieved <strong>Level {message.tier}!</strong>
+                        {member}{Locale.translate('frontend.messages.boost')} {Locale.translate('frontend.messages.boost.achieved', {GUILD: 'TODO guildName', TIER: message.tier})}
                       </Secondary.Boost>
                       <Timestamp time={message.createdAt} />
                     </React.Fragment>
@@ -187,7 +186,7 @@ class Message extends React.PureComponent<Props, any> {
                   return (
                     <React.Fragment key={message.id}>
                       <Secondary.Boost>
-                        {member}just boosted the server! 
+                        {member}{Locale.translate('frontend.messages.boost')}
                       </Secondary.Boost>
                       <Timestamp time={message.createdAt} />
                     </React.Fragment>
@@ -205,7 +204,7 @@ class Message extends React.PureComponent<Props, any> {
                 return (
                   <React.Fragment key={message.id}>
                     <Secondary.Join>
-                      {member}has added {message.content} to this channel. Its most important updates will show up here.
+                      {member}{Locale.translate('frontend.messages.follow', {HOOK: message.content})}
                     </Secondary.Join>
                     <Timestamp time={message.createdAt} />
                   </React.Fragment>
