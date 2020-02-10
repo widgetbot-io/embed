@@ -42,7 +42,7 @@ export class Locale extends React.Component<Props, { cache: { [key: string]: { [
         });
     }
 
-    static translate(key: string, replacements?: { [key: string]: string; }) {
+    static translate(key: string, replacements?: { [key: string]: string; }): string {
         const { state: { cur, cache } }: any = useContext(LocaleContext);
         let lang: any = cache[cur], content: string;
         if (!lang) {
