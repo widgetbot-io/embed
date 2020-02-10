@@ -74,7 +74,7 @@ export class Header extends React.Component<Props, any> {
 										<Tooltip
 											placement="bottom"
 											overlay={
-												`${data.guild.memberCount === 1 ? Locale.translate('frontend.membercount.one.tooltip') : Locale.translate('frontend.membercount.tooltip', {COUNT: data.guild.memberCount})}`
+												`${data.guild.memberCount === 1 ? Locale.translate('frontend.membercount.one.tooltip') : Locale.translate('frontend.membercount.tooltip', {COUNT: String(data.guild.memberCount)})}`
 											}
 										>
 											<Count className="count">{data.guild.memberCount}</Count>

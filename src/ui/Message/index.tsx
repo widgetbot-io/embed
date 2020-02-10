@@ -177,7 +177,7 @@ class Message extends React.PureComponent<Props, any> {
                   return (
                     <React.Fragment key={message.id}>
                       <Secondary.Boost>
-                        {member}{Locale.translate('frontend.messages.boost')} {Locale.translate('frontend.messages.boost.achieved', {GUILD: 'TODO guildName', TIER: message.tier})}
+                        {member}{Locale.translate('frontend.messages.boost')} {Locale.translate('frontend.messages.boost.achieved', {GUILD: 'TODO guildName', TIER: String(message.tier)})}
                       </Secondary.Boost>
                       <Timestamp time={message.createdAt} />
                     </React.Fragment>
