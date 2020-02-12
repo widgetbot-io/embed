@@ -31,7 +31,6 @@ const Init = ({ children, cur, cache }) => {
 @inject("AuthStore")
 export class Locale extends React.PureComponent<Props, { cache: { [key: string]: { [key: string]: string; } } }> {
 
-    static contextType = LocaleContext;
     static staticContext: { state: LocaleContextState, dispatch: React.Dispatch<any> };
 
     constructor(props) {
@@ -52,10 +51,10 @@ export class Locale extends React.PureComponent<Props, { cache: { [key: string]:
         let lang: any = cache[cur], content: string;
         if (!lang) {
             if (cache["en"] && cache["en"][key]) {
-            lang = cache["en"];
-        } else {
-            return key;
-        }
+                lang = cache["en"];
+            } else {
+                return key;
+            }
         }
         if (!lang[key]) return key;
         if (!replacements) return lang[key];

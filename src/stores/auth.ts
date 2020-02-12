@@ -49,6 +49,8 @@ export class AuthStore {
   @observable user: User | null = JSON.parse(window.localStorage.getItem('user'));
 
   @action setLocale(locale: string) {
+    const keys = Locale.allKeys();
+    if (!keys.includes(locale)) return; // Temp fix
     window.localStorage.setItem("locale", locale);
     this.locale = locale;
   }
