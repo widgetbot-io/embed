@@ -44,24 +44,23 @@ export class Locale extends React.Component<Props, { cache: { [key: string]: { [
     }
 
     static translate(key: string, replacements?: { [key: string]: string; }): string {
-        // const { state: { cur, cache } }: any = useContext(LocaleContext);
-        // let lang: any = cache[cur], content: string;
-        // if (!lang) {
-        //     if (cache["en"] && cache["en"][key]) {
-        //         lang = cache["en"];
-        //     } else {
-        //         return key;
-        //     }
-        // }
-        // if (!lang[key]) return key;
-        // if (!replacements) return lang[key];
-        // content = lang[key];
-        // for (const replace in replacements) {
-        //     const use: any = replacements[replace];
-        //     content = content.replace(new RegExp(`{${replace}}`, "g"), use);
-        // }
-        // return content;
-        return key;
+        const { state: { cur, cache } }: any = useContext(LocaleContext);
+        let lang: any = cache[cur], content: string;
+        if (!lang) {
+            if (cache["en"] && cache["en"][key]) {
+                lang = cache["en"];
+            } else {
+                return key;
+            }
+        }
+        if (!lang[key]) return key;
+        if (!replacements) return lang[key];
+        content = lang[key];
+        for (const replace in replacements) {
+            const use: any = replacements[replace];
+            content = content.replace(new RegExp(`{${replace}}`, "g"), use);
+        }
+        return content;
     };
 
     render() {
