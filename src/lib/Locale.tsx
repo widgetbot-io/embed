@@ -15,9 +15,10 @@ interface LocaleContextState {
 const LocaleContext = createContext({});
 
 const reducer = (state: LocaleContextState, action: { type: string; body: any }) => {
-    switch (action.type) {
-        case "SET_LOCALE": return { ...state, cur: action.body };
-        default: return state;
+    if (action.type === "SET_LOCALE") {
+        return { ...state, cur: action.body };
+    } else {
+        return state;
     }
 };
 
@@ -43,23 +44,24 @@ export class Locale extends React.Component<Props, { cache: { [key: string]: { [
     }
 
     static translate(key: string, replacements?: { [key: string]: string; }): string {
-        const { state: { cur, cache } }: any = useContext(LocaleContext);
-        let lang: any = cache[cur], content: string;
-        if (!lang) {
-            if (cache["en"] && cache["en"][key]) {
-                lang = cache["en"];
-            } else {
-                return key;
-            }
-        }
-        if (!lang[key]) return key;
-        if (!replacements) return lang[key];
-        content = lang[key];
-        for (const replace in replacements) {
-            const use: any = replacements[replace];
-            content = content.replace(new RegExp(`{${replace}}`, "g"), use);
-        }
-        return content;
+        // const { state: { cur, cache } }: any = useContext(LocaleContext);
+        // let lang: any = cache[cur], content: string;
+        // if (!lang) {
+        //     if (cache["en"] && cache["en"][key]) {
+        //         lang = cache["en"];
+        //     } else {
+        //         return key;
+        //     }
+        // }
+        // if (!lang[key]) return key;
+        // if (!replacements) return lang[key];
+        // content = lang[key];
+        // for (const replace in replacements) {
+        //     const use: any = replacements[replace];
+        //     content = content.replace(new RegExp(`{${replace}}`, "g"), use);
+        // }
+        // return content;
+        return key;
     };
 
     render() {

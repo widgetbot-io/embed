@@ -312,7 +312,7 @@ export interface Messages_channel_TextChannel_messages_FollowMessage {
    * Message flags
    */
   flags: Messages_channel_TextChannel_messages_FollowMessage_flags;
-  content: string;
+  content: string | null;
 }
 
 export type Messages_channel_TextChannel_messages = Messages_channel_TextChannel_messages_JoinMessage | Messages_channel_TextChannel_messages_TextMessage | Messages_channel_TextChannel_messages_BoostMessage | Messages_channel_TextChannel_messages_FollowMessage;
@@ -624,7 +624,7 @@ export interface Messages_channel_NewsChannel_messages_FollowMessage {
    * Message flags
    */
   flags: Messages_channel_NewsChannel_messages_FollowMessage_flags;
-  content: string;
+  content: string | null;
 }
 
 export type Messages_channel_NewsChannel_messages = Messages_channel_NewsChannel_messages_JoinMessage | Messages_channel_NewsChannel_messages_TextMessage | Messages_channel_NewsChannel_messages_BoostMessage | Messages_channel_NewsChannel_messages_FollowMessage;

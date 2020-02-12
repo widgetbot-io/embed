@@ -307,7 +307,7 @@ export interface UpdatedMessages_messageUpdate_FollowMessage {
    * Message flags
    */
   flags: UpdatedMessages_messageUpdate_FollowMessage_flags;
-  content: string;
+  content: string | null;
 }
 
 export type UpdatedMessages_messageUpdate = UpdatedMessages_messageUpdate_JoinMessage | UpdatedMessages_messageUpdate_TextMessage | UpdatedMessages_messageUpdate_BoostMessage | UpdatedMessages_messageUpdate_FollowMessage;

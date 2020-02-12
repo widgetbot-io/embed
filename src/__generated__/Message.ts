@@ -307,7 +307,7 @@ export interface Message_FollowMessage {
    * Message flags
    */
   flags: Message_FollowMessage_flags;
-  content: string;
+  content: string | null;
 }
 
 export type Message = Message_JoinMessage | Message_TextMessage | Message_BoostMessage | Message_FollowMessage;

@@ -17,7 +17,7 @@ export interface ChannelName_channel_TextChannel {
   name: string;
   id: string;
   nsfw: boolean;
-  canSend: boolean;
+  canSend: boolean | null;
 }
 
 export interface ChannelName_channel_NewsChannel {
@@ -25,7 +25,7 @@ export interface ChannelName_channel_NewsChannel {
   name: string;
   id: string;
   nsfw: boolean;
-  canSend: boolean;
+  canSend: boolean | null;
 }
 
 export type ChannelName_channel = ChannelName_channel_StoreChannel | ChannelName_channel_TextChannel | ChannelName_channel_NewsChannel;
