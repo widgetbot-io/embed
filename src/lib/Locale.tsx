@@ -1,18 +1,18 @@
-import React, { createContext, useContext, useReducer } from "react";
+import React, {createContext, Dispatch, useContext, useReducer} from "react";
 import { AuthStore } from "../stores/auth";
 import {inject} from "mobx-react";
 
 interface Props {
     AuthStore?: AuthStore;
-    cache?: [[string, { [key: string]: string; }]]
+    cache?: { [key: string]: { [key: string]: string; } }
 }
 
-interface LocaleContextState {
+export interface LocaleContextState {
     cur: string;
     cache: { [key: string]: { [key: string]: string; } };
 }
 
-const LocaleContext = createContext({});
+export const LocaleContext = createContext({});
 
 const reducer = (state: LocaleContextState, action: { type: string; body: any }) => {
     if (action.type === "SET_LOCALE") {
@@ -24,11 +24,15 @@ const reducer = (state: LocaleContextState, action: { type: string; body: any })
 
 const Init = ({ children, cur, cache }) => {
     const [state, dispatch] = useReducer(reducer, { cur, cache });
+    Locale.staticContext = { state, dispatch };
     return <LocaleContext.Provider value={{ state, dispatch }}>{children}</LocaleContext.Provider>;
 };
 
 @inject("AuthStore")
-export class Locale extends React.Component<Props, { cache: { [key: string]: { [key: string]: string; } } }> {
+export class Locale extends React.PureComponent<Props, { cache: { [key: string]: { [key: string]: string; } } }> {
+
+    static contextType = LocaleContext;
+    static staticContext: { state: LocaleContextState, dispatch: React.Dispatch<any> };
 
     constructor(props) {
         super(props);
@@ -43,15 +47,15 @@ export class Locale extends React.Component<Props, { cache: { [key: string]: { [
         });
     }
 
-    static translate(key: string, replacements?: { [key: string]: string; }): string {
-        const { state: { cur, cache } }: any = useContext(LocaleContext);
+    static translate(key: string, replacements?: { [key: string]: string; }) {
+        const { state: { cur, cache } }: any = Locale.staticContext;
         let lang: any = cache[cur], content: string;
         if (!lang) {
             if (cache["en"] && cache["en"][key]) {
-                lang = cache["en"];
-            } else {
-                return key;
-            }
+            lang = cache["en"];
+        } else {
+            return key;
+        }
         }
         if (!lang[key]) return key;
         if (!replacements) return lang[key];
@@ -62,6 +66,11 @@ export class Locale extends React.Component<Props, { cache: { [key: string]: { [
         }
         return content;
     };
+
+    static allKeys(): string[] {
+        const { state } = Locale.staticContext;
+        return Object.keys(state.cache);
+    }
 
     render() {
         if (Object.keys(this.state.cache).length < 1) return null;
