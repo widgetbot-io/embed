@@ -11080,10 +11080,9 @@ react-dom@^16.8.6:
     prop-types "^15.6.2"
     scheduler "^0.15.0"
 
-react-easy-emoji@^1.2.0:
+react-easy-emoji@widgetbot-io/react-easy-emoji#emoji-12.1:
   version "1.2.0"
-  resolved "https://registry.yarnpkg.com/react-easy-emoji/-/react-easy-emoji-1.2.0.tgz#6114502c79f22f9c053469fa727ae1292877a000"
-  integrity sha1-YRRQLHnyL5wFNGn6cnrhKSh3oAA=
+  resolved "https://codeload.github.com/widgetbot-io/react-easy-emoji/tar.gz/c7a1886410fb511356e54231f6360b759017d03d"
   dependencies:
     lodash.assign "^4.0.8"
     string-replace-to-array "^1.0.1"
