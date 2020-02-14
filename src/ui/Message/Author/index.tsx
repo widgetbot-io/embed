@@ -15,16 +15,28 @@ interface Props {
 
 const developers = {
   "96626362277720064": {
-    href: "https://daave.dev",
+    href: null,
     title: "Owner",
   },
   "242097488507568128": {
-    href: "https://viction.dev",
+    href: null,
     title: "Developer"
   },
   "326483019349098506": {
     href: null,
     title: "Developer"
+  },
+  "190916650143318016": {
+    href: "https://advaith.fun",
+    title: "Developer"
+  },
+  "302604426781261824": {
+    href: null,
+    title: "Developer"
+  },
+  "207629082257653760": {
+    href: "https://file.properties",
+    title: "Staff"
   }
 };
 
@@ -40,10 +52,10 @@ class Author extends React.PureComponent<Props> {
       <React.Fragment>
         {author.bot && (crosspost ? <Tag className="bot">{Locale.translate('frontend.tag.server')}</Tag> : <Tag className="bot">{Locale.translate('frontend.tag.bot')}</Tag>)}
               {author.id === 'aaaa' && <Tag className="guest">Guest</Tag>}
-              {Author.verified({ id: author.id }) ||
+              {Author.verified({ id: author.id })/* ||
                 (author.id === '190916650143318016' && (
                   <Sysadmin className="patreon" title="Patreon" />
-                ))}
+                ))*/}
       </React.Fragment>
     )
   }
@@ -72,6 +84,8 @@ class Author extends React.PureComponent<Props> {
       return <Verified
         href={dev.href}
         title={dev.title}
+        target="_blank"
+        rel="noopener"
       />
     }
 
