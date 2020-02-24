@@ -39,6 +39,9 @@ export const ThemeProvider = ({ children }) => {
 
   const themeContext: ThemeContext = {
     ...theme,
+    readonly: data.guild && data.guild.settings.readonly || false,
+    guestMode: data.guild && data.guild.settings.guestMode || false,
+    singleChannel: data.guild && data.guild.settings.singleChannel || false,
     colors: {
       ...theme.colors,
       _primary: Color(theme.colors.primary),

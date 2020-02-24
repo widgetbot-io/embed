@@ -7,6 +7,9 @@ import { Theme_guild_theme } from '@generated'
 export * from 'react-emotion'
 
 export interface Theme extends Theme_guild_theme {
+  readonly: boolean,
+  guestMode: boolean,
+  singleChannel: boolean,
   colors: {
     __typename: 'ThemeColors'
     _primary: Color
