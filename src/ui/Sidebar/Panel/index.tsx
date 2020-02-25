@@ -4,6 +4,7 @@ import {Auth, Developers, Root, Version} from './elements'
 import {inject, observer} from "mobx-react";
 import {AuthStore} from "@store/auth";
 import {onClick} from "@views/Messages/Header";
+import { Locale } from '@lib/Locale';
 
 const { version } = require('../../../../package.json');
 
@@ -41,7 +42,7 @@ export default class Panel extends React.Component<Props> {
 						onClick={this.onClick.bind(this)}
 					>
 						<React.Fragment>
-							{this.props.AuthStore.user ? 'Logout' : 'Login'}
+							{this.props.AuthStore.user ? Locale.translate('frontend.auth.logout') : Locale.translate('frontend.auth.login')}
 						</React.Fragment>
 					</Auth>
 				</Developers>

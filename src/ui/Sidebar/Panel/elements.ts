@@ -87,5 +87,6 @@ export const Version = styled('a')`
 const AuthButton = Button.withComponent('a');
 
 export const Auth = styled(AuthButton)`
+    display: ${({theme}) => theme.readonly ? 'none' : 'unset'};
     background: ${({ theme }) => theme.colors._accent.fade(0.6).string()};
 `;

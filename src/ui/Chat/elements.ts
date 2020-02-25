@@ -1,7 +1,7 @@
 import styled, { css } from '@lib/emotion'
 
 export const Root = styled('form')`
-  display: flex;
+  display: ${({theme}) => theme.readonly ? 'none' : 'flex'};
   flex-direction: column;
   flex-shrink: 0;
   position: relative;
