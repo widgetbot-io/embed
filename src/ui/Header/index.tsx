@@ -1,15 +1,21 @@
 import * as React from 'react'
 
-import { Root } from './elements'
+import { Root, SingleChannel, Inner } from './elements'
 import Hamburger from './Hamburger'
 import { store } from '@models'
 import { observer } from 'mobx-react'
+import { Header as ServerInfo } from '@ui/Sidebar/Header'
+
 
 const Header = observer(({ children }) => (
   <Root className="header">
-    <Hamburger onClick={store.sidebar.toggle} open={store.sidebar.isOpen} />
-
+    <SingleChannel>
+      <ServerInfo />
+    </SingleChannel>
+    <Inner>
+      <Hamburger onClick={store.sidebar.toggle} open={store.sidebar.isOpen} />
       {children}
+    </Inner>
   </Root>
 ))
 

@@ -11,14 +11,23 @@ export const Root = styled('header')`
   display: flex;
   flex-shrink: 0;
   z-index: 8;
-  height: 47px;
   line-height: 25px;
-  padding: 10px 0;
   background-color: rgba(0, 0, 0, 0.1);
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.1),
     0px 4px 5px 0px rgba(0, 0, 0, 0.12), 0px 1px 10px 0px rgba(0, 0, 0, 0.09),
     0 1px 0 rgba(0, 0, 0, 0.1), 0 2px 0 rgba(0, 0, 0, 0.06);
+`
 
+export const SingleChannel = styled('div')`
+  ${({theme}) => theme.singleChannel ? null : 'display: none'}
+`
+
+export const Inner = styled('div')`
+  display: flex;
+  flex-shrink: 0;
+  flex-grow: 1;
+  height: 47px;
+  padding: 10px 0;
   @media (max-width: 270px), (max-height: 300px) {
     height: 41px;
     padding: 7px 0;

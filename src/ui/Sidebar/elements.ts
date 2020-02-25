@@ -23,8 +23,8 @@ export const Root = styled('div')<Props>`
     padding-bottom: 10px;
   }
 
-  ${({ visible }) =>
-    visible
+  ${({ visible, theme }) =>
+    visible && !theme.singleChannel
       ? css`
           @media (max-width: 520px) {
             box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2),

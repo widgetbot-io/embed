@@ -27,8 +27,8 @@ export const Wrapper = styled('div')<Props>`
     opacity: 0;
   }
 
-  ${({ squashed }) =>
-    squashed
+  ${({ squashed, theme }) =>
+    squashed && !theme.singleChannel
       ? css`
           @media (min-width: 521px) {
             margin-left: 200px;
