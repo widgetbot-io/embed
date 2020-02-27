@@ -109,3 +109,11 @@ export const Join = styled(JoinLink)`
   background: ${({ theme }) => theme.colors._accent.fade(0.6).string()};
   margin-right: 20px;
 `;
+
+export const SingleChannelAuthWrapper = styled('div')`
+  ${({theme}) => theme.singleChannel ? null : 'display: none'};
+  margin-right: 10px;
+  > a {
+    display: block;
+  }
+`

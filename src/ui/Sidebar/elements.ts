@@ -75,6 +75,8 @@ export const Close = styled('button')`
           outline: none;
           cursor: pointer;
           transition: background-color 0.1s ease;
+
+          ${({theme}) => theme.singleChannel ? 'display: none' : null};
         
           &:hover,
           &:focus {

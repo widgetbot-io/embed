@@ -4,9 +4,13 @@ import {Auth, Developers, Root, Version} from './elements'
 import {inject, observer} from "mobx-react";
 import {AuthStore} from "@store/auth";
 import {onClick} from "@views/Messages/Header";
-import { Locale } from '@lib/Locale';
+import {Locale} from '@lib/Locale';
+import {FiLogOut, FiLogIn} from 'react-icons/fi'
+import Tooltip from 'rc-tooltip';
 
 const { version } = require('../../../../package.json');
+
+console.log(`WidgetBot version: ${version}`)
 
 interface Props {
 	AuthStore?: AuthStore
@@ -74,3 +78,32 @@ export default class Panel extends React.Component<Props> {
 	}
 }
 
+@inject('AuthStore')
+@observer
+export class SingleChannelAuth extends React.Component<Props> {
+	onClick(e: React.MouseEvent<HTMLAnchorElement>)  {
+		onClick.call({ props: { AuthStore: this.props.AuthStore }}, e)
+	};
+
+	render(): React.ReactNode {
+		if (!localStorage.getItem('token')) {
+			this.props.AuthStore.logout();
+			this.props.AuthStore.needsUpdate = true;
+			localStorage.setItem('lastUpdate', version)
+		}
+		return (
+			<Tooltip placement="bottom" overlay={this.props.AuthStore.user ? Locale.translate('frontend.auth.logout') : Locale.translate('frontend.auth.login')}>
+				<Auth
+					className="auth"
+					target="_blank"
+					onClick={this.onClick.bind(this)}
+					style={{padding: '2px 0', minWidth: '28px'}}
+				>
+					<React.Fragment>
+						{this.props.AuthStore.user ? <FiLogOut /> : <FiLogIn />}
+					</React.Fragment>
+				</Auth>
+			</Tooltip>
+		)
+	}
+}

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Tooltip from 'rc-tooltip'
 import CHANNEL from './Channel.graphql'
-import { Name, Emoji, Topic, Join, Stretch } from '@ui/Header'
+import { Name, Emoji, Topic, Join, Stretch, SingleChannel, SingleChannelAuthWrapper } from '@ui/Header'
 
 import { Root } from './elements'
 import { Locale } from "@lib/Locale"
@@ -11,6 +11,7 @@ import GET_INFO from "@ui/Sidebar/Header/GuildInfo.graphql";
 import {AuthStore} from "@store/auth";
 import {Auth} from "@ui/Sidebar/Panel/elements";
 import {observer} from "mobx-react";
+import { SingleChannelAuth } from '@ui/Sidebar/Panel'
 
 export interface HeaderProps {
   channel: string,
@@ -43,6 +44,9 @@ export const Header = observer(({ channel, guild, AuthStore }: HeaderProps) => {
                         </Topic>
                     )}
             </Stretch>
+            <SingleChannelAuthWrapper>
+                <SingleChannelAuth />
+            </SingleChannelAuthWrapper>
             {invite ? <Tooltip placement="bottom" overlay={Locale.translate('frontend.opendiscord.tooltip')}>
                     <Join
                         className="join"
