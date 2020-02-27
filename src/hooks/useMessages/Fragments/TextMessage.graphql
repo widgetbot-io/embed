@@ -5,7 +5,10 @@ fragment TextMessage on TextMessage {
   editedAt
   reactions {
     count
-    emoji { name, url }
+    emoji {
+      name,
+      url
+    }
   }
   attachments {
     url
