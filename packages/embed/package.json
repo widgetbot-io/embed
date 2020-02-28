@@ -97,7 +97,7 @@
     "moment": "^2.22.2",
     "qs": "^6.5.2",
     "ramda": "^0.25.0",
-    "rc-tooltip": "^3.7.2",
+    "rc-tooltip": "^4.0.0",
     "react-apollo": "^2.1.11",
     "react-app-rewired": "^2.0.2",
     "react-custom-scrollbars": "^4.2.1",
