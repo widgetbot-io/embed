@@ -56,7 +56,7 @@ export const Chat: FunctionComponent<ChatProps> = (props) => {
           }}
           innerRef={ref => (inputRef.current = ref)}
           innerProps={{
-            placeholder: channelName ? Locale.translate('frontend.input.message', {NAME: channelName}) : null
+            placeholder: channelName ? Locale.translate('frontend.input.message', {CHANNEL: channelName}) : null
           }}
         />
 
