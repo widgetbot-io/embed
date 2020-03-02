@@ -28,6 +28,7 @@ export interface GuildInfo_guild_channels_TextChannel {
   __typename: "TextChannel";
   name: string;
   id: string;
+  topic: string | null;
   canSend: boolean | null;
   nsfw: boolean | null;
   category: GuildInfo_guild_channels_TextChannel_category | null;
@@ -43,6 +44,7 @@ export interface GuildInfo_guild_channels_NewsChannel {
   __typename: "NewsChannel";
   name: string;
   id: string;
+  topic: string | null;
   canSend: boolean | null;
   nsfw: boolean | null;
   category: GuildInfo_guild_channels_NewsChannel_category | null;

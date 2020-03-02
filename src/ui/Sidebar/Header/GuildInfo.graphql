@@ -21,6 +21,7 @@ query GuildInfo($guild: String!) {
       name
       id
       ... on TextChannel {
+        topic
         canSend
         nsfw
         category {
@@ -29,6 +30,7 @@ query GuildInfo($guild: String!) {
         }
       }
       ... on NewsChannel {
+        topic
         canSend
         nsfw
         category {

@@ -14,17 +14,13 @@ import {AuthStore} from "@store/auth";
 import {NEW_MESSAGES, useRouter} from "@hooks";
 import {useSubscription} from "react-apollo-hooks";
 import {generalStore} from "@store";
+import {Loading} from "@ui/Overlays";
 
 export const ITEM_ID = 'channel';
 
-interface Props {
-  AuthStore?: AuthStore
-}
-
-@inject('AuthStore')
 @observer
-class ChannelSwitcher extends React.Component<Props> {
-  render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
+class ChannelSwitcher extends React.Component<{}> {
+  render() {
     return (
       <Route path="/:guild/:channel?">
         {({
