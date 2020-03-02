@@ -26,11 +26,6 @@ export default class Panel extends React.Component<{}> {
 		// 	authStore.logout();
 		// 	authStore.needsUpdate = true;
 		// }
-		if (!localStorage.getItem('token')) {
-			authStore.logout();
-			generalStore.needsUpdate = true;
-			localStorage.setItem('lastUpdate', version)
-		}
 		//  <LoginButton AuthStore={authStore}/>
 		//  {window.innerWidth > 520 ? (authStore.user ? `Logged in as ${authStore.user.username}` : undefined) : undefined}
 		return (
@@ -81,11 +76,6 @@ export class SingleChannelAuth extends React.Component<{}> {
 	};
 
 	render(): React.ReactNode {
-		if (!localStorage.getItem('token')) {
-			authStore.logout();
-			generalStore.needsUpdate = true;
-			localStorage.setItem('lastUpdate', version)
-		}
 		return (
 			<Tooltip placement="bottom" overlay={authStore.user ? Locale.translate('frontend.auth.logout') : Locale.translate('frontend.auth.login')}>
 				<Auth

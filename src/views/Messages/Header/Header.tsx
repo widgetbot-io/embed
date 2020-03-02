@@ -69,6 +69,7 @@ export function onClick()  {
 
 export function login() {
     authStore.discordLogin().then(async () => {
+        debugger
         await authStore.fetchDiscordUser();
         generalStore.needsUpdate = true;
         // await authStore.refreshChannels();

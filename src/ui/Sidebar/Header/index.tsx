@@ -14,6 +14,7 @@ import webpCheck from '@ui/shared/webpCheck'
 import {inject, observer} from "mobx-react";
 import { Locale } from '@lib/Locale'
 import categorise from "@ui/Sidebar/Channels/categorise";
+import {autorun} from "mobx";
 
 
 @observer
@@ -29,12 +30,7 @@ export class Header extends React.Component<{}, {}> {
 						fetchPolicy='cache-and-network'
 					>
 						{({loading, error, data, refetch}) => {
-							setInterval(async () => {
-								if (generalStore.needsUpdate) {
-									refetch();
-									generalStore.needsUpdate = false;
-								}
-							}, 1000);
+							generalStore.fetchGuild = refetch;
 							generalStore.loading = loading;
 
 							if (loading) return null;
