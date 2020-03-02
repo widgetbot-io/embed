@@ -34,17 +34,10 @@ const loginError = (msg: string) => addNotification({
   autoDismiss: 0,
 });
 export class AuthStore {
-  @observable appName = 'WidgetBot';
-  @observable channels: ICategory[] = [];
   @observable token = window.localStorage.getItem('token');
   @observable locale = window.localStorage.getItem("locale") || "en";
 
-  @observable menuOpen: boolean = false;
-  @observable guestEnabled: boolean = false;
-  @observable readOnly: boolean = false;
-
   @observable inProgress: boolean = false;
-  @observable needsUpdate: boolean = false;
   @observable errors: string | undefined = undefined;
   @observable user: User | null = JSON.parse(window.localStorage.getItem('user'));
 
@@ -53,18 +46,6 @@ export class AuthStore {
     if (!keys.includes(locale)) return; // Temp fix
     window.localStorage.setItem("locale", locale);
     this.locale = locale;
-  }
-
-  @action toggleMenu(res: boolean = this.menuOpen) {
-    this.menuOpen = res
-  }
-
-  @action toggleGuest(res: boolean = !this.guestEnabled) {
-    this.guestEnabled = res;
-  }
-
-  @action toggleRead(res: boolean = !this.readOnly) {
-    this.readOnly = res;
   }
 
   @action async fetchDiscordUser() {
