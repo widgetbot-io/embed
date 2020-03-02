@@ -14,5 +14,28 @@ query GuildInfo($guild: String!) {
       guestMode
       readonly
     }
+
+    channels {
+      __typename
+
+      name
+      id
+      ... on TextChannel {
+        canSend
+        nsfw
+        category {
+          name
+          position
+        }
+      }
+      ... on NewsChannel {
+        canSend
+        nsfw
+        category {
+          name
+          position
+        }
+      }
+    }
   }
 }

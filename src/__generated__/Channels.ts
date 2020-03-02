@@ -23,7 +23,7 @@ export interface Channels_guild_channels_TextChannel {
   name: string;
   id: string;
   canSend: boolean | null;
-  nsfw: boolean;
+  nsfw: boolean | null;
   category: Channels_guild_channels_TextChannel_category | null;
 }
 
@@ -38,7 +38,7 @@ export interface Channels_guild_channels_NewsChannel {
   name: string;
   id: string;
   canSend: boolean | null;
-  nsfw: boolean;
+  nsfw: boolean | null;
   category: Channels_guild_channels_NewsChannel_category | null;
 }
 

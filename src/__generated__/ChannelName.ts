@@ -16,7 +16,7 @@ export interface ChannelName_channel_TextChannel {
   __typename: "TextChannel";
   name: string;
   id: string;
-  nsfw: boolean;
+  nsfw: boolean | null;
   canSend: boolean | null;
 }
 
@@ -24,7 +24,7 @@ export interface ChannelName_channel_NewsChannel {
   __typename: "NewsChannel";
   name: string;
   id: string;
-  nsfw: boolean;
+  nsfw: boolean | null;
   canSend: boolean | null;
 }
 
