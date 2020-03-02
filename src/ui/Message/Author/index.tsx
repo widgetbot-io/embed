@@ -27,8 +27,8 @@ const developers = {
     title: "Developer"
   },
   "190916650143318016": {
-    href: "https://advaith.fun",
-    title: "Developer"
+    href: null,
+    title: "Staff"
   },
   "302604426781261824": {
     href: null,
