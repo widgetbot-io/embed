@@ -8,10 +8,11 @@ import { Locale } from "@lib/Locale"
 import { store } from '@models'
 import { useQuery } from 'react-apollo-hooks'
 import GET_INFO from "@ui/Sidebar/Header/GuildInfo.graphql";
-import {AuthStore} from "@store/auth";
+import {authStore, AuthStore} from "@store/auth";
 import {Auth} from "@ui/Sidebar/Panel/elements";
 import {observer} from "mobx-react";
 import { SingleChannelAuth } from '@ui/Sidebar/Panel'
+import {generalStore} from "@store";
 
 export interface HeaderProps {
   channel: string,
@@ -19,28 +20,26 @@ export interface HeaderProps {
   AuthStore?: AuthStore
 }
 
-export const Header = observer(({ channel, guild, AuthStore }: HeaderProps) => {
-    const { data: cData } = useQuery(CHANNEL, {
-        variables: { channel },
-        fetchPolicy: 'cache-first'
-    });
-    const { data: gData } = useQuery(GET_INFO, {
-        variables: { guild },
-        fetchPolicy: 'cache-first'
-    });
+export const Header = observer(({ channel, guild }: HeaderProps) => {
+    let cData;
+    try {
+        cData = generalStore.guild.channels.find(c => c.id === channel);
+    } catch (_) {
+        cData = {}
+    }
 
-    const invite = gData.guild && gData.guild.invite;
+    const invite = generalStore.guild && generalStore.guild.invite;
 
     return (
         <Root>
             <Stretch>
-                <Name><Emoji>{cData.channel && cData.channel.name}</Emoji></Name>
+                <Name><Emoji>{cData && cData.name}</Emoji></Name>
                 {window.innerWidth < 520 ? null : (
                         <Topic
-                            onClick={() => store.modal.openTopic(cData.channel.topic, cData.channel.name)}
+                            onClick={() => store.modal.openTopic('topic' in cData ? cData.topic : 'No topic for this channel.', cData.name)}
                             className="topic"
                         >
-                            {cData.channel && cData.channel.topic}
+                            {'topic' in cData ? cData.topic : 'No topic for this channel.'}
                         </Topic>
                     )}
             </Stretch>
@@ -62,24 +61,24 @@ export const Header = observer(({ channel, guild, AuthStore }: HeaderProps) => {
     )
 });
 
-export function onClick(e: React.MouseEvent<HTMLAnchorElement>)  {
-    this.props.AuthStore.guestEnabled
-        ? (this.props.AuthStore.user ? logout.call(this) : this.props.AuthStore.toggleMenu(true))
-        : (this.props.AuthStore.user ? logout.call(this) : login.call(this))
+export function onClick()  {
+    generalStore.guestEnabled
+        ? (authStore.user ? logout() : generalStore.toggleMenu(true))
+        : (authStore.user ? logout() : login())
 }
 
 export function login() {
-    this.props.AuthStore.discordLogin().then(async r => {
-        await this.props.AuthStore.fetchDiscordUser();
-        this.props.AuthStore.needsUpdate = true;
-        // await this.props.AuthStore.refreshChannels();
+    authStore.discordLogin().then(async () => {
+        await authStore.fetchDiscordUser();
+        generalStore.needsUpdate = true;
+        // await authStore.refreshChannels();
     });
 }
 
 
 export function logout() {
-    this.props.AuthStore.logout();
-    this.props.AuthStore.needsUpdate = true;
+    authStore.logout();
+    generalStore.needsUpdate = true;
 }
 
 export const Fallback = () => (

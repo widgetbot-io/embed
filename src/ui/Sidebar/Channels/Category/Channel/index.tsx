@@ -15,14 +15,12 @@ interface Props {
     selected: boolean,
     nsfw: boolean,
     __typename: string,
-    AuthStore?: AuthStore,
     pings: number
 }
 
-@inject('AuthStore')
 @observer
 class Channel extends React.PureComponent<Props> {
-    render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
+    render() {
         const nameLength = this.props.__typename === 'StoreChannel' ? 10 : 13;
         const name = this.props.name.length > nameLength ? `${this.props.name.slice(0, nameLength)}...` : this.props.name;
         return (

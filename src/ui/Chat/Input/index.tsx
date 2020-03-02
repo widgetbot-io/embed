@@ -10,14 +10,13 @@ import extractQuery from "./utils/extractQuery";
 import injectValue from "./utils/injectValue";
 import { ChatProps } from "../Chat";
 import { inject, observer } from "mobx-react";
-import { AuthStore } from "@store/auth";
+import {authStore, AuthStore} from "@store/auth";
 import { onClick } from "@views/Messages/Header";
 import { Locale } from "@lib/Locale";
 
 interface Props extends ChatProps {
   innerRef?: (textarea: HTMLTextAreaElement) => void,
   innerProps?: React.InputHTMLAttributes<HTMLTextAreaElement>,
-  AuthStore?: AuthStore,
   onChange?: Function,
   onKeyPress?: Function,
   onSubmit?: Function,
@@ -26,7 +25,6 @@ interface Props extends ChatProps {
 
 export const handlers = [Emojis, Mentions, Commands, Channels];
 
-@inject("AuthStore")
 @observer
 class MagicTextarea extends React.Component<Props> {
   initialState = {
@@ -53,8 +51,8 @@ class MagicTextarea extends React.Component<Props> {
   }
 
   render() {
-    const user = this.props.AuthStore.user;
-    return (this.props.AuthStore.user && this.props.channel.canSend) ? (
+    const user = authStore.user;
+    return (authStore.user && this.props.channel.canSend) ? (
       <Root>
         <Textarea
           {...this.props.innerProps}
@@ -158,7 +156,7 @@ class MagicTextarea extends React.Component<Props> {
         //   marginBottom: 0,
         //   marginLeft: "10px"
         // }}
-        onClick={onClick.bind({ props: { AuthStore: this.props.AuthStore }})}
+        onClick={onClick.bind({ props: { AuthStore: authStore }})}
       >
         { !user ? Locale.translate('frontend.input.login') : Locale.translate('frontend.input.noperms') }
       </NoPerms>

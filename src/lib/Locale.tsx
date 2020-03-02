@@ -1,9 +1,8 @@
 import React, {createContext, Dispatch, useContext, useReducer} from "react";
-import { AuthStore } from "../stores/auth";
+import {authStore, AuthStore} from "../stores/auth";
 import {inject} from "mobx-react";
 
 interface Props {
-    AuthStore?: AuthStore;
     cache?: { [key: string]: { [key: string]: string; } }
 }
 
@@ -28,7 +27,6 @@ const Init = ({ children, cur, cache }) => {
     return <LocaleContext.Provider value={{ state, dispatch }}>{children}</LocaleContext.Provider>;
 };
 
-@inject("AuthStore")
 export class Locale extends React.PureComponent<Props, { cache: { [key: string]: { [key: string]: string; } } }> {
 
     static staticContext: { state: LocaleContextState, dispatch: React.Dispatch<any> };
@@ -73,7 +71,6 @@ export class Locale extends React.PureComponent<Props, { cache: { [key: string]:
 
     render() {
         if (Object.keys(this.state.cache).length < 1) return null;
-        return <Init cur={this.props.AuthStore.locale} cache={this.state.cache}>{this.props.children}</Init>;
+        return <Init cur={authStore.locale} cache={this.state.cache}>{this.props.children}</Init>;
     }
-
 }

@@ -15,13 +15,9 @@ import {inject, observer} from "mobx-react";
 import { Locale } from '@lib/Locale'
 import categorise from "@ui/Sidebar/Channels/categorise";
 
-interface Props {
-	AuthStore?: AuthStore
-}
 
-@inject('AuthStore')
 @observer
-export class Header extends React.Component<Props, any> {
+export class Header extends React.Component<{}, {}> {
 	render() {
 		return (
 			<Route path="/:guild">
@@ -32,7 +28,15 @@ export class Header extends React.Component<Props, any> {
 						variables={match.params}
 						fetchPolicy='cache-and-network'
 					>
-						{({loading, error, data}) => {
+						{({loading, error, data, refetch}) => {
+							setInterval(async () => {
+								if (generalStore.needsUpdate) {
+									refetch();
+									generalStore.needsUpdate = false;
+								}
+							}, 1000);
+							generalStore.loading = loading;
+
 							if (loading) return null;
 							if (!data || !data.guild) {
 								addNotification({
@@ -46,15 +50,15 @@ export class Header extends React.Component<Props, any> {
 							}
 
 							try {
-								generalStore.channels = categorise((generalStore.guild.channels as any).sort((a, b) => { return a.position - b.position }));
-							} catch (_) {
-								generalStore.channels = [];
-							}
-
-							try {
 								generalStore.setGuild(data.guild);
 							} catch (_) {
 								// noop
+							}
+
+							try {
+								generalStore.channels = categorise((data.guild.channels as any).sort((a, b) => { return a.position - b.position }));
+							} catch (_) {
+								generalStore.channels = [];
 							}
 
 							if (error) return null;
