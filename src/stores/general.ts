@@ -6,6 +6,7 @@ export class GeneralStore {
   @observable appName = 'WidgetBot';
 
   @observable needsUpdate: boolean = false;
+  @observable loading?: boolean;
   @observable guild?: GuildInfo_guild;
   @observable channels: ICategory[] = [];
 

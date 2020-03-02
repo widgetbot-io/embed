@@ -12,26 +12,21 @@ import { Router } from 'react-router-dom'
 
 import App from './app'
 import { history } from '@lib/history'
-import AuthStore from "./stores/auth";
 
 import register, { unregister } from './registerServiceWorker'
-
-const stores = { AuthStore };
 
 // if (!window.location.hostname.includes(`127.0.0.1`) && !window.location.hostname.includes(`localhost`))
     // Sentry.init({dsn: 'https://65cfb83d192c4c3593adc09a0b9f6e5e@sentry.forbid.fun/2'});
 
 // Render App
 ReactDOM.render(
-  <Provider {...stores}>
     <ApolloProvider client={client}>
       <ApolloHooksProvider client={client}>
         <Router history={history}>
           <App />
         </Router>
       </ApolloHooksProvider>
-    </ApolloProvider>
-  </Provider>,
+    </ApolloProvider>,
   document.getElementById('root')
 );
 
