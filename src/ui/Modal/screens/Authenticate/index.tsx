@@ -5,6 +5,7 @@ import { AuthStore } from "@store/auth";
 import { Overlay, Create, Greeting, Group, Input, Root, Title, SSO, Discord } from "./elements";
 import {store} from "@models";
 import { Locale } from "@lib/Locale";
+import {generalStore} from "@store";
 
 interface AuthStoreState {
   awaiting: boolean;
@@ -32,9 +33,9 @@ class Authenticate extends React.Component<AuthStoreProps, AuthStoreState> {
     });
     this.props.AuthStore.guestLogin(name).then(async () => {
       await this.props.AuthStore.setGuestUser(name);
-      this.props.AuthStore.needsUpdate = true;
+      generalStore.needsUpdate = true;
 
-      this.props.AuthStore.toggleMenu(false);
+      generalStore.toggleMenu(false);
       // this.setState({
       //   awaiting: false
       // });
@@ -48,9 +49,9 @@ class Authenticate extends React.Component<AuthStoreProps, AuthStoreState> {
     });
     this.props.AuthStore.discordLogin().then(async () => {
       await this.props.AuthStore.fetchDiscordUser();
-      this.props.AuthStore.needsUpdate = true;
+      generalStore.needsUpdate = true;
 
-      this.props.AuthStore.toggleMenu(false);
+      generalStore.toggleMenu(false);
       this.setState({
         awaiting: false
       });
@@ -59,10 +60,10 @@ class Authenticate extends React.Component<AuthStoreProps, AuthStoreState> {
 
   render() {
     const { awaiting } = this.state;
-    return !this.props.AuthStore.menuOpen ? null : (this.props.AuthStore.guestEnabled ? (
+    return !generalStore.menuOpen ? null : (generalStore.guestEnabled ? (
         <Overlay>
           <Root loading={awaiting}>
-            <Close onClick={() => this.props.AuthStore.toggleMenu(false)} />
+            <Close onClick={() => generalStore.toggleMenu(false)} />
             <Title>{Locale.translate('frontend.auth.welcome')}</Title>
             <Greeting>{Locale.translate('frontend.auth.pickname')}</Greeting>
             <Group label={Locale.translate('frontend.auth.name')} onSubmit={this.signUp.bind(this)}>

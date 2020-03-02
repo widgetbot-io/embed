@@ -5,7 +5,7 @@ import {Route} from 'react-router-dom'
 
 import {GuildInfo, GuildInfoVariables} from '@generated'
 import {BannerName, BannerRoot, Count, Icon, Name, Root} from './elements'
-import {AuthStore} from "@store/auth";
+import {AuthStore, generalStore} from "@store";
 import GET_INFO from './GuildInfo.graphql'
 import {addNotification} from "notify";
 import {store} from "@models";
@@ -13,6 +13,7 @@ import {Close} from "@ui/Sidebar/elements";
 import webpCheck from '@ui/shared/webpCheck'
 import {inject, observer} from "mobx-react";
 import { Locale } from '@lib/Locale'
+import categorise from "@ui/Sidebar/Channels/categorise";
 
 interface Props {
 	AuthStore?: AuthStore
@@ -43,6 +44,19 @@ export class Header extends React.Component<Props, any> {
 								});
 								return null;
 							}
+
+							try {
+								generalStore.channels = categorise((generalStore.guild.channels as any).sort((a, b) => { return a.position - b.position }));
+							} catch (_) {
+								generalStore.channels = [];
+							}
+
+							try {
+								generalStore.setGuild(data.guild);
+							} catch (_) {
+								// noop
+							}
+
 							if (error) return null;
 
 							let icon = data.guild.iconURL;
@@ -53,8 +67,8 @@ export class Header extends React.Component<Props, any> {
 								icon = webpCheck(icon.replace('jpg', 'webp?size=64'))
 							}
 
-							this.props.AuthStore.toggleGuest(data.guild.settings.guestMode);
-							this.props.AuthStore.toggleRead(data.guild.settings.readonly);
+							generalStore.toggleGuest(data.guild.settings.guestMode);
+							generalStore.toggleRead(data.guild.settings.readonly);
 
 							if (data.guild.bannerURL) {
 

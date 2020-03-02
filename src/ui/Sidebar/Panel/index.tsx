@@ -7,6 +7,7 @@ import {onClick} from "@views/Messages/Header";
 import {Locale} from '@lib/Locale';
 import {FiLogOut, FiLogIn} from 'react-icons/fi'
 import Tooltip from 'rc-tooltip';
+import {generalStore} from "@store";
 
 const { version } = require('../../../../package.json');
 
@@ -32,7 +33,7 @@ export default class Panel extends React.Component<Props> {
 		// }
 		if (!localStorage.getItem('token')) {
 			this.props.AuthStore.logout();
-			this.props.AuthStore.needsUpdate = true;
+			generalStore.needsUpdate = true;
 			localStorage.setItem('lastUpdate', version)
 		}
 		//  <LoginButton AuthStore={this.props.AuthStore}/>
@@ -88,7 +89,7 @@ export class SingleChannelAuth extends React.Component<Props> {
 	render(): React.ReactNode {
 		if (!localStorage.getItem('token')) {
 			this.props.AuthStore.logout();
-			this.props.AuthStore.needsUpdate = true;
+			generalStore.needsUpdate = true;
 			localStorage.setItem('lastUpdate', version)
 		}
 		return (

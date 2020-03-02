@@ -13,6 +13,7 @@ import CHANNELS from "./Channels.graphql";
 import {AuthStore} from "@store/auth";
 import {NEW_MESSAGES, useRouter} from "@hooks";
 import {useSubscription} from "react-apollo-hooks";
+import {generalStore} from "@store";
 
 export const ITEM_ID = 'channel';
 
@@ -30,38 +31,47 @@ class ChannelSwitcher extends React.Component<Props> {
             match: {
               params: { guild, channel }
             }
-          }) => (
-          <Query<Channels, ChannelsVariables>
-            key={`channel_list:${guild}:${channel}`}
-            query={CHANNELS}
-            variables={{ guild }}
-          >
-            {({ loading, error, data, refetch }) => {
-              if (!loading && !error) {
-                try {
-                  this.props.AuthStore.channels = categorise((data.guild.channels as any).sort((a, b) => { return a.position - b.position }));
-                } catch (_) {
-                  this.props.AuthStore.channels = [];
-                }
-              }
-              setInterval(async () => {
-                if (this.props.AuthStore.needsUpdate) {
-                  await refetch();
-                  this.props.AuthStore.needsUpdate = false;
-                }
-              }, 1000);
-              return (
-                <Root className="channels">
-                  <Selector itemID={ITEM_ID} />
-                  {this.props.AuthStore.channels.map((category, i) => (
-                        <Category key={i} category={category} activeChannel={channel} index={i} />
-                    )
-                  )}
-                </Root>
-              )
-            }}
-          </Query>
-        )}
+          }) => {
+          return (
+              <Root className="channels">
+                 <Selector itemID={ITEM_ID} />
+                 {generalStore.channels.map((category, i) => (
+                         <Category key={i} category={category} activeChannel={channel} index={i} />
+                     )
+                   )}
+               </Root>
+          )
+          // <Query<Channels, ChannelsVariables>
+          //   key={`channel_list:${guild}:${channel}`}
+          //   query={CHANNELS}
+          //   variables={{ guild }}
+          // >
+          //   {({ loading, error, data, refetch }) => {
+          //     if (!loading && !error) {
+          //       try {
+          //         generalStore.channels = categorise((data.guild.channels as any).sort((a, b) => { return a.position - b.position }));
+          //       } catch (_) {
+          //         generalStore.channels = [];
+          //       }
+          //     }
+          //     setInterval(async () => {
+          //       if (generalStore.needsUpdate) {
+          //         await refetch();
+          //         generalStore.needsUpdate = false;
+          //       }
+          //     }, 1000);
+          //     return (
+          //       <Root className="channels">
+          //         <Selector itemID={ITEM_ID} />
+          //         {generalStore.channels.map((category, i) => (
+          //               <Category key={i} category={category} activeChannel={channel} index={i} />
+          //           )
+          //         )}
+          //       </Root>
+          //     )
+          //   }}
+          // </Query>
+        }}
       </Route>
     )
   }
