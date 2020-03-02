@@ -36,10 +36,10 @@ export const Header = observer(({ channel, guild }: HeaderProps) => {
                 <Name><Emoji>{cData && cData.name}</Emoji></Name>
                 {window.innerWidth < 520 ? null : (
                         <Topic
-                            onClick={() => store.modal.openTopic('topic' in cData ? cData.topic : 'No topic for this channel.', cData.name)}
+                            onClick={() => store.modal.openTopic(cData && cData.topic, cData.name)}
                             className="topic"
                         >
-                            {'topic' in cData ? cData.topic : 'No topic for this channel.'}
+                            {cData && cData.topic}
                         </Topic>
                     )}
             </Stretch>
@@ -69,7 +69,6 @@ export function onClick()  {
 
 export function login() {
     authStore.discordLogin().then(async () => {
-        debugger
         await authStore.fetchDiscordUser();
         generalStore.needsUpdate = true;
         // await authStore.refreshChannels();

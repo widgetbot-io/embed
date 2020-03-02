@@ -8,6 +8,7 @@ import CHANNELS from "@ui/Sidebar/Channels/Channels.graphql";
 import { addNotification } from 'notify';
 import {act} from "react-dom/test-utils";
 import {Locale} from "@lib/Locale";
+import {generalStore} from "@store/general";
 
 interface DiscordUser {
   createdAt: string,
@@ -40,6 +41,14 @@ export class AuthStore {
   @observable inProgress: boolean = false;
   @observable errors: string | undefined = undefined;
   @observable user: User | null = JSON.parse(window.localStorage.getItem('user'));
+
+  constructor() {
+    if (!localStorage.getItem('token')) {
+      this.logout();
+      generalStore.needsUpdate = true;
+      // localStorage.setItem('lastUpdate', version)
+    }
+  }
 
   @action setLocale(locale: string) {
     const keys = Locale.allKeys();
