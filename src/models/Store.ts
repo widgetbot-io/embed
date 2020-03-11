@@ -16,7 +16,3 @@ export const store = Store.create({
   modal: {},
   authmenu: {}
 })
-
-// Debugging
-;(window as any).store = store;
-// TODO: this prolly needs to be removed

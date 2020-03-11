@@ -40,7 +40,6 @@ export class Header extends React.Component<{}, {}> {
 									title: Locale.translate('frontend.notif.serverunavailable'),
 									message: Locale.translate('frontend.notif.serverunavailable.desc'),
 									autoDismiss: 0,
-
 								});
 								return null;
 							}

@@ -18,7 +18,3 @@ api.on('sendMessage', data => {
 })
 
 export default api
-
-if (window) {
-  ;(window as any).api = api
-}

@@ -66,8 +66,3 @@ class Notify extends React.PureComponent {
 }
 
 export default Notify
-
-// Debugging
-if (window) {
-  ;(window as any).addNotification = addNotification
-}
