@@ -2,7 +2,6 @@ variables:
   GIT_SSL_NO_VERIFY: "true"
   GIT_SUBMODULE_STRATEGY: recursive
 
-
 stages:
   - build
   - docker
@@ -12,7 +11,7 @@ production:
   stage: build
   image: node:11
   script:
-    - sed -i s/0.0.0-canary/$CI_COMMIT_TAG/g package.json
+    - sed -i s/v0.0.0-canary/$CI_COMMIT_TAG/g package.json
 
     - yarn
     - yarn run build
@@ -30,7 +29,7 @@ canary:
   stage: build
   image: node:11
   script:
-    - sed -i s/0.0.0-canary/$CI_COMMIT_TAG/g package.json
+    - sed -i s/v0.0.0-canary/$CI_COMMIT_TAG/g package.json
 
     - yarn
     - yarn run build
@@ -46,9 +45,7 @@ canary:
 
 build:
   stage: docker
-  image: docker:18.09.8
-  services:
-    - docker:18.09.8-dind
+  image: docker:stable
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
@@ -59,7 +56,7 @@ build:
 
 production-build:
   stage: docker
-  image: docker:18.09.8
+  image: docker:stable
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:

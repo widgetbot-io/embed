@@ -9,7 +9,7 @@ import wsLink from './websocket'
 import { url } from "@lib/env";
 
 const DEVELOPMENT = process.env.NODE_ENV === 'development';
-console.log(`${location.protocol === 'https:' ? 'wss' : 'ws'}://${url}/api/graphql`);
+console.log(`${url.includes('127.0.0.1') ? 'ws' : 'wss'}://${url}/api/graphql`);
 
 
 const link = ApolloLink.from(
