@@ -16,3 +16,7 @@ export const store = Store.create({
   modal: {},
   authmenu: {}
 })
+
+// The application breaks if you remove this??!?!?
+;(window as any).store = store;
+// TODO: this prolly needs to be removed
