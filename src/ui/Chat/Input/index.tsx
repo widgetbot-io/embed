@@ -88,7 +88,7 @@ class MagicTextarea extends React.Component<Props> {
                   return;
                 }
 
-                if (!event.shiftKey) {
+                if (!event.shiftKey || window.innerWidth < 768) {
                   const { onSubmit, onChange } = this.props;
 
                   // Submit
