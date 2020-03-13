@@ -5,7 +5,7 @@ export const Root = styled('form')`
   flex-direction: column;
   flex-shrink: 0;
   position: relative;
-  margin: 0 15px 20px;
+  margin: auto 15px 20px;
 
   ${({ theme }) =>
     theme.url.preset === 'crate' &&
