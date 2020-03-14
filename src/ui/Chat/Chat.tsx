@@ -32,6 +32,13 @@ export const Chat: FunctionComponent<ChatProps> = (props) => {
     });
     return null;
   }
+  if (error) addNotification({
+    level: 'warning',
+    title: Locale.translate('frontend.notif.loaderror.chat'),
+    message: formatError(error),
+    autoDismiss: 0,
+
+  });
   if (error) return <ErrorAhoy message={formatError(error)} />;
 
 

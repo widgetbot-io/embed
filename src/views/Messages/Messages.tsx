@@ -13,6 +13,7 @@ import {
 import { observer, useObservable } from "mobx-react-lite";
 import Message from "@ui/Message";
 import {Locale} from "@lib/Locale";
+import { addNotification } from "notify";
 
 type MessagesProps = {
   guild: string;
@@ -47,6 +48,13 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
     keyMapper: getKey
   });
 
+  if (error) addNotification({
+    level: 'warning',
+    title: Locale.translate('frontend.notif.loaderror.messages'),
+    message: formatError(error),
+    autoDismiss: 0,
+
+  });
   if (error) return <ErrorAhoy message={formatError(error)} />;
   if (!ready) return <Loading />;
 
