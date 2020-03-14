@@ -17,6 +17,6 @@ export const store = Store.create({
   authmenu: {}
 })
 
-// Debugging
+// The application breaks if you remove this??!?!?
 ;(window as any).store = store;
 // TODO: this prolly needs to be removed

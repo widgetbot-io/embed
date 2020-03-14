@@ -1,7 +1,7 @@
 {
   "name": "embed",
   "main": "src/index.tsx",
-  "version": "0.0.0-canary",
+  "version": "v0.0.0-canary",
   "homepage": "/",
   "scripts": {
     "start": "react-app-rewired start --scripts-version react-scripts-ts",

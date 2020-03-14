@@ -8,6 +8,7 @@ import CHANNELS from "@ui/Sidebar/Channels/Channels.graphql";
 import { addNotification } from 'notify';
 import {act} from "react-dom/test-utils";
 import {Locale} from "@lib/Locale";
+import {generalStore} from "@store/general";
 
 interface DiscordUser {
   createdAt: string,
@@ -34,37 +35,26 @@ const loginError = (msg: string) => addNotification({
   autoDismiss: 0,
 });
 export class AuthStore {
-  @observable appName = 'WidgetBot';
-  @observable channels: ICategory[] = [];
   @observable token = window.localStorage.getItem('token');
   @observable locale = window.localStorage.getItem("locale") || "en";
 
-  @observable menuOpen: boolean = false;
-  @observable guestEnabled: boolean = false;
-  @observable readOnly: boolean = false;
-
   @observable inProgress: boolean = false;
-  @observable needsUpdate: boolean = false;
   @observable errors: string | undefined = undefined;
   @observable user: User | null = JSON.parse(window.localStorage.getItem('user'));
+
+  constructor() {
+    if (!localStorage.getItem('token')) {
+      this.logout();
+      generalStore.needsUpdate = true;
+      // localStorage.setItem('lastUpdate', version)
+    }
+  }
 
   @action setLocale(locale: string) {
     const keys = Locale.allKeys();
     if (!keys.includes(locale)) return; // Temp fix
     window.localStorage.setItem("locale", locale);
     this.locale = locale;
-  }
-
-  @action toggleMenu(res: boolean = this.menuOpen) {
-    this.menuOpen = res
-  }
-
-  @action toggleGuest(res: boolean = !this.guestEnabled) {
-    this.guestEnabled = res;
-  }
-
-  @action toggleRead(res: boolean = !this.readOnly) {
-    this.readOnly = res;
   }
 
   @action async fetchDiscordUser() {
@@ -205,4 +195,4 @@ export class AuthStore {
   }
 }
 
-export default new AuthStore();
+export const authStore = new AuthStore();

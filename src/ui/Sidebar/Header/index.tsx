@@ -5,7 +5,7 @@ import {Route} from 'react-router-dom'
 
 import {GuildInfo, GuildInfoVariables} from '@generated'
 import {BannerName, BannerRoot, Count, Icon, Name, Root} from './elements'
-import {AuthStore} from "@store/auth";
+import {AuthStore, generalStore} from "@store";
 import GET_INFO from './GuildInfo.graphql'
 import {addNotification} from "notify";
 import {store} from "@models";
@@ -13,14 +13,12 @@ import {Close} from "@ui/Sidebar/elements";
 import webpCheck from '@ui/shared/webpCheck'
 import {inject, observer} from "mobx-react";
 import { Locale } from '@lib/Locale'
+import categorise from "@ui/Sidebar/Channels/categorise";
+import {autorun} from "mobx";
 
-interface Props {
-	AuthStore?: AuthStore
-}
 
-@inject('AuthStore')
 @observer
-export class Header extends React.Component<Props, any> {
+export class Header extends React.Component<{}, {}> {
 	render() {
 		return (
 			<Route path="/:guild">
@@ -31,7 +29,10 @@ export class Header extends React.Component<Props, any> {
 						variables={match.params}
 						fetchPolicy='cache-and-network'
 					>
-						{({loading, error, data}) => {
+						{({loading, error, data, refetch}) => {
+							generalStore.fetchGuild = refetch;
+							generalStore.loading = loading;
+
 							if (loading) return null;
 							if (!data || !data.guild) {
 								addNotification({
@@ -39,10 +40,22 @@ export class Header extends React.Component<Props, any> {
 									title: Locale.translate('frontend.notif.serverunavailable'),
 									message: Locale.translate('frontend.notif.serverunavailable.desc'),
 									autoDismiss: 0,
-
 								});
 								return null;
 							}
+
+							try {
+								generalStore.setGuild(data.guild);
+							} catch (_) {
+								// noop
+							}
+
+							try {
+								generalStore.channels = categorise((data.guild.channels as any).sort((a, b) => { return a.position - b.position }));
+							} catch (_) {
+								generalStore.channels = [];
+							}
+
 							if (error) return null;
 
 							let icon = data.guild.iconURL;
@@ -53,8 +66,8 @@ export class Header extends React.Component<Props, any> {
 								icon = webpCheck(icon.replace('jpg', 'webp?size=64'))
 							}
 
-							this.props.AuthStore.toggleGuest(data.guild.settings.guestMode);
-							this.props.AuthStore.toggleRead(data.guild.settings.readonly);
+							generalStore.toggleGuest(data.guild.settings.guestMode);
+							generalStore.toggleRead(data.guild.settings.readonly);
 
 							if (data.guild.bannerURL) {
 

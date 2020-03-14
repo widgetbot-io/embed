@@ -2,41 +2,32 @@ import * as React from 'react'
 
 import {Auth, Developers, Root, Version} from './elements'
 import {inject, observer} from "mobx-react";
-import {AuthStore} from "@store/auth";
+import {authStore, AuthStore} from "@store/auth";
 import {onClick} from "@views/Messages/Header";
 import {Locale} from '@lib/Locale';
 import {FiLogOut, FiLogIn} from 'react-icons/fi'
 import Tooltip from 'rc-tooltip';
+import {generalStore} from "@store";
 
 const { version } = require('../../../../package.json');
 
 console.log(`WidgetBot version: ${version}`)
 
-interface Props {
-	AuthStore?: AuthStore
-}
-
-@inject('AuthStore')
 @observer
-export default class Panel extends React.Component<Props> {
+export default class Panel extends React.Component<{}> {
 	onClick(e: React.MouseEvent<HTMLAnchorElement>)  {
-		onClick.call({ props: { AuthStore: this.props.AuthStore }}, e)
+		onClick.call({ props: { AuthStore: authStore }}, e)
 	};
 
 	render(): React.ReactNode {
 		// const lastUpdate = localStorage.getItem('lastUpdate');
 		// if (!lastUpdate || Semver.newMinorOrMajor(lastUpdate, version)) {
 		// 	localStorage.setItem('lastUpdate', version);
-		// 	this.props.AuthStore.logout();
-		// 	this.props.AuthStore.needsUpdate = true;
+		// 	authStore.logout();
+		// 	authStore.needsUpdate = true;
 		// }
-		if (!localStorage.getItem('token')) {
-			this.props.AuthStore.logout();
-			this.props.AuthStore.needsUpdate = true;
-			localStorage.setItem('lastUpdate', version)
-		}
-		//  <LoginButton AuthStore={this.props.AuthStore}/>
-		//  {window.innerWidth > 520 ? (this.props.AuthStore.user ? `Logged in as ${this.props.AuthStore.user.username}` : undefined) : undefined}
+		//  <LoginButton AuthStore={authStore}/>
+		//  {window.innerWidth > 520 ? (authStore.user ? `Logged in as ${authStore.user.username}` : undefined) : undefined}
 		return (
 			<Root className="panel">
 				<Developers>
@@ -46,7 +37,7 @@ export default class Panel extends React.Component<Props> {
 						onClick={this.onClick.bind(this)}
 					>
 						<React.Fragment>
-							{this.props.AuthStore.user ? Locale.translate('frontend.auth.logout') : Locale.translate('frontend.auth.login')}
+							{authStore.user ? Locale.translate('frontend.auth.logout') : Locale.translate('frontend.auth.login')}
 						</React.Fragment>
 					</Auth>
 				</Developers>
@@ -78,21 +69,15 @@ export default class Panel extends React.Component<Props> {
 	}
 }
 
-@inject('AuthStore')
 @observer
-export class SingleChannelAuth extends React.Component<Props> {
+export class SingleChannelAuth extends React.Component<{}> {
 	onClick(e: React.MouseEvent<HTMLAnchorElement>)  {
-		onClick.call({ props: { AuthStore: this.props.AuthStore }}, e)
+		onClick()
 	};
 
 	render(): React.ReactNode {
-		if (!localStorage.getItem('token')) {
-			this.props.AuthStore.logout();
-			this.props.AuthStore.needsUpdate = true;
-			localStorage.setItem('lastUpdate', version)
-		}
 		return (
-			<Tooltip placement="bottom" overlay={this.props.AuthStore.user ? Locale.translate('frontend.auth.logout') : Locale.translate('frontend.auth.login')}>
+			<Tooltip placement="bottom" overlay={authStore.user ? Locale.translate('frontend.auth.logout') : Locale.translate('frontend.auth.login')}>
 				<Auth
 					className="auth"
 					target="_blank"
@@ -100,7 +85,7 @@ export class SingleChannelAuth extends React.Component<Props> {
 					style={{padding: '2px 0', minWidth: '28px'}}
 				>
 					<React.Fragment>
-						{this.props.AuthStore.user ? <FiLogOut /> : <FiLogIn />}
+						{authStore.user ? <FiLogOut /> : <FiLogIn />}
 					</React.Fragment>
 				</Auth>
 			</Tooltip>

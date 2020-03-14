@@ -14,7 +14,6 @@ type MessageProps = RouteComponentProps<{
 }>
 
 interface Props {
-    AuthStore?: AuthStore
     match: {
         params: {
             channel: string,
@@ -23,14 +22,13 @@ interface Props {
     }
 }
 
-@inject('AuthStore')
 @observer
 export class MessagesView extends React.PureComponent<Props> {
- render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
+ render() {
      return (
          <Wrapper>
              <React.Suspense fallback={<Fallback />}>
-                 <Header channel={this.props.match.params.channel} guild={this.props.match.params.guild} AuthStore={this.props.AuthStore}/>
+                 <Header channel={this.props.match.params.channel} guild={this.props.match.params.guild}/>
              </React.Suspense>
 
              <React.Suspense fallback={<Loading />}>

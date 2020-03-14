@@ -1,11 +1,11 @@
 export const Endpoints =  {
     auth: {
-        login: () => 'GET /auth/login',
+        login: () => 'GET /api/auth/login',
 
-        protected: () => `GET /auth/protected`,
-        fetchLatestProfile: () => `GET /auth/fetchLatestProfile`,
+        protected: () => `GET /api/auth/protected`,
+        fetchLatestProfile: () => `GET /api/auth/fetchLatestProfile`,
 
-        discord: () => `GET /auth/discord`,
-        discordCallBack: () => `GET /auth/discord/cb`,
+        discord: () => `GET /api/auth/discord`,
+        discordCallBack: () => `GET /api/auth/discord/cb`,
     }
 };

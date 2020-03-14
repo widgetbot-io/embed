@@ -1,22 +1,19 @@
 import * as React from "react";
 import { inject, observer } from "mobx-react";
 import { Box, Close } from "@ui/Modal";
-import { AuthStore } from "@store/auth";
+import {authStore, AuthStore} from "@store/auth";
 import { Overlay, Create, Greeting, Group, Input, Root, Title, SSO, Discord } from "./elements";
 import {store} from "@models";
 import { Locale } from "@lib/Locale";
+import {generalStore} from "@store";
 
-interface AuthStoreState {
+interface State {
   awaiting: boolean;
 }
-interface AuthStoreProps {
-  AuthStore?: AuthStore;
-}
 
-@inject("AuthStore")
 @observer
-class Authenticate extends React.Component<AuthStoreProps, AuthStoreState> {
-  state: AuthStoreState = {
+class Authenticate extends React.Component<{}, State> {
+  state: State = {
     awaiting: false
   };
   nameField: HTMLInputElement;
@@ -30,11 +27,11 @@ class Authenticate extends React.Component<AuthStoreProps, AuthStoreState> {
     this.setState({
       awaiting: true
     });
-    this.props.AuthStore.guestLogin(name).then(async () => {
-      await this.props.AuthStore.setGuestUser(name);
-      this.props.AuthStore.needsUpdate = true;
+    authStore.guestLogin(name).then(async () => {
+      await authStore.setGuestUser(name);
+      generalStore.needsUpdate = true;
 
-      this.props.AuthStore.toggleMenu(false);
+      generalStore.toggleMenu(false);
       // this.setState({
       //   awaiting: false
       // });
@@ -46,11 +43,11 @@ class Authenticate extends React.Component<AuthStoreProps, AuthStoreState> {
     this.setState({
       awaiting: true
     });
-    this.props.AuthStore.discordLogin().then(async () => {
-      await this.props.AuthStore.fetchDiscordUser();
-      this.props.AuthStore.needsUpdate = true;
+    authStore.discordLogin().then(async () => {
+      await authStore.fetchDiscordUser();
+      generalStore.needsUpdate = true;
 
-      this.props.AuthStore.toggleMenu(false);
+      generalStore.toggleMenu(false);
       this.setState({
         awaiting: false
       });
@@ -59,10 +56,10 @@ class Authenticate extends React.Component<AuthStoreProps, AuthStoreState> {
 
   render() {
     const { awaiting } = this.state;
-    return !this.props.AuthStore.menuOpen ? null : (this.props.AuthStore.guestEnabled ? (
+    return !generalStore.menuOpen ? null : (generalStore.guestEnabled ? (
         <Overlay>
           <Root loading={awaiting}>
-            <Close onClick={() => this.props.AuthStore.toggleMenu(false)} />
+            <Close onClick={() => generalStore.toggleMenu(false)} />
             <Title>{Locale.translate('frontend.auth.welcome')}</Title>
             <Greeting>{Locale.translate('frontend.auth.pickname')}</Greeting>
             <Group label={Locale.translate('frontend.auth.name')} onSubmit={this.signUp.bind(this)}>

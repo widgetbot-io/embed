@@ -24,5 +24,4 @@ export const cacheLoaded = persistCache({
   storage: localForage as any
 })
 
-export default cache
-;(window as any).cache = cache
+export default cache;

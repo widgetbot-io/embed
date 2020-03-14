@@ -30,13 +30,3 @@ const client = new ApolloClient({
 });
 
 export default client
-;(window as any).client = client
-;(window as any).gql = gql
-
-// Usage: mutation`mutation {}`
-;(window as any).mutation = (...args) =>
-  client.mutate({ mutation: (gql as any)(...args) })
-
-// Usage: query`query {}`
-;(window as any).query = (...args) =>
-  client.query({ query: (gql as any)(...args) })

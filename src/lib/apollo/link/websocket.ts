@@ -2,7 +2,7 @@ import { WebSocketLink } from 'apollo-link-ws'
 import { url } from "@lib/env";
 
 const wsLink = new WebSocketLink({
-  uri: `${location.protocol === 'https:' ? 'wss' : 'ws'}://${url}/api/graphql`,
+  uri: `${url.includes('127.0.0.1') ? 'ws' : 'wss'}://${url}/api/graphql`,
   options: {
     reconnect: true
   }
