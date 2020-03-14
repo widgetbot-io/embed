@@ -23,8 +23,6 @@ import Reaction from './Reaction'
 import Embed from './Embed'
 import AttachmentSpoiler from '@ui/shared/markdown/render/elements/AttachmentSpoiler'
 import { Locale } from '@lib/Locale'
-import { store } from '@models'
-import gifCheck from '@ui/shared/gifCheck'
 
 interface Props {
   messages: Messages_channel_TextChannel_messages[],
@@ -33,6 +31,9 @@ interface Props {
 
 const DEFAULT_AVATAR = 'https://cdn.discordapp.com/embed/avatars/0.png';
 
+const gifCheck = (url: string) => {
+  return url.includes('/a_') ? url.replace('webp', 'gif') : url
+}
 
 class Message extends React.PureComponent<Props, any> {
   theme = message => theme => ({
@@ -49,7 +50,6 @@ class Message extends React.PureComponent<Props, any> {
           <Avatar
             url={gifCheck(firstMessage.author.displayAvatarURL) || firstMessage.author.defaultAvatarURL || DEFAULT_AVATAR}
             className="avatar"
-            onClick={() => store.modal.openProfile(firstMessage.member, firstMessage.author)}
           />
         ) : null}
 

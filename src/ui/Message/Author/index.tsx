@@ -5,7 +5,6 @@ import * as React from 'react'
 import { Sysadmin, Tag, Verified } from "./Badges";
 import { Name, Root, Time } from './elements'
 import { Locale } from '@lib/Locale';
-import { store } from '@models';
 
 interface Props {
   author: $Author,
@@ -70,7 +69,7 @@ class Author extends React.PureComponent<Props> {
 
     return (
       <Root className="author">
-        <Name color={hexColor} className="name" onClick={() => store.modal.openProfile(member, author)}>
+        <Name color={hexColor} className="name">
           {member.displayName || author.username}
         </Name>
         {this.tags()}

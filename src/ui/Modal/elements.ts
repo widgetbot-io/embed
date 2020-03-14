@@ -95,13 +95,12 @@ export const Close = styled('button')`
   border: none;
   outline: none;
   cursor: pointer;
-  transition: background-color 0.1s ease, opacity .2s ease-in-out;
+  transition: background-color 0.1s ease;
 
   &:hover,
   &:focus {
     background-color: ${({ theme }) =>
       theme.colors._primary.fade(0.8).string()};
-    opacity: 1;
   }
 
   &,
