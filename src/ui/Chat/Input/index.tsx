@@ -10,7 +10,7 @@ import extractQuery from "./utils/extractQuery";
 import injectValue from "./utils/injectValue";
 import { ChatProps } from "../Chat";
 import { inject, observer } from "mobx-react";
-import {authStore, AuthStore} from "@store/auth";
+import {authStore} from "@store";
 import { onClick } from "@views/Messages/Header";
 import { Locale } from "@lib/Locale";
 
