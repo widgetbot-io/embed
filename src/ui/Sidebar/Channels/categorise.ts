@@ -29,6 +29,8 @@ const categorise = (
       // The channel belongs in a named category
       let index = indexes.get(category.name)
 
+      if(index === 0) index = 1
+
       // If the category already exists
       if (typeof index === 'number') {
         // Push the channel
