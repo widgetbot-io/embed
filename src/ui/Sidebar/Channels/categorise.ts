@@ -19,8 +19,6 @@ const categorise = (
   channels.forEach((channel, i) => {
     const category: ChannelInfo_channel_TextChannel_category = channel.category ? channel.category : { name: null, position: -1, __typename: 'Category'};
 
-    console.log(category)
-
     const newCategory = {
       name: category && category.name,
       channels: [channel],
