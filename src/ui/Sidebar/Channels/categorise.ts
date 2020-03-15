@@ -17,7 +17,9 @@ const categorise = (
   let categorised = new Array<ICategory>()
 
   channels.forEach((channel, i) => {
-    const category: ChannelInfo_channel_TextChannel_category = channel.category ? channel.category : null;
+    const category: ChannelInfo_channel_TextChannel_category = channel.category ? channel.category : { name: null, position: -1, __typename: 'Category'};
+
+    console.log(category)
 
     const newCategory = {
       name: category && category.name,
@@ -25,32 +27,17 @@ const categorise = (
       position: category && category.position
     };
 
-    if (category) {
-      // The channel belongs in a named category
-      let index = indexes.get(category.name)
+    // The channel belongs in a named category
+    let index = indexes.get(category.name)
 
-      if(index === 0) index = 1
-
-      // If the category already exists
-      if (typeof index === 'number') {
-        // Push the channel
-        categorised[index].channels.push(channel)
-      } else {
-        // Create a new category
-        index = categorised.push(newCategory) - 1
-        indexes.set(category.name, index)
-      }
+    // If the category already exists
+    if (typeof index === 'number') {
+      // Push the channel
+      categorised[index].channels.push(channel)
     } else {
-      // The channel doesn't belong in a named category
-      const [firstCategory] = categorised
-
-      // If the first category is unnamed, then insert
-      // this channel into it
-      if (firstCategory && !firstCategory.name) {
-        firstCategory.channels.push(channel)
-      } else {
-        categorised.unshift(newCategory)
-      }
+      // Create a new category
+      index = categorised.push(newCategory) - 1
+      indexes.set(category.name, index)
     }
   })
 

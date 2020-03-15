@@ -16,6 +16,7 @@ export interface GuildInfo_guild_channels_StoreChannel {
   __typename: "StoreChannel" | "VoiceChannel";
   name: string;
   id: string;
+  position: number | null;
 }
 
 export interface GuildInfo_guild_channels_TextChannel_category {
@@ -28,6 +29,7 @@ export interface GuildInfo_guild_channels_TextChannel {
   __typename: "TextChannel";
   name: string;
   id: string;
+  position: number | null;
   topic: string | null;
   canSend: boolean | null;
   nsfw: boolean | null;
@@ -44,6 +46,7 @@ export interface GuildInfo_guild_channels_NewsChannel {
   __typename: "NewsChannel";
   name: string;
   id: string;
+  position: number | null;
   topic: string | null;
   canSend: boolean | null;
   nsfw: boolean | null;

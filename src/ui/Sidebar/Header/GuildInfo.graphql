@@ -20,6 +20,7 @@ query GuildInfo($guild: String!) {
 
       name
       id
+      position
       ... on TextChannel {
         topic
         canSend
