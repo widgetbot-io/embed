@@ -10,6 +10,7 @@ export interface Channels_guild_channels_StoreChannel {
   __typename: "StoreChannel" | "VoiceChannel";
   name: string;
   id: string;
+  position: number | null;
 }
 
 export interface Channels_guild_channels_TextChannel_category {
@@ -22,6 +23,7 @@ export interface Channels_guild_channels_TextChannel {
   __typename: "TextChannel";
   name: string;
   id: string;
+  position: number | null;
   canSend: boolean | null;
   nsfw: boolean | null;
   category: Channels_guild_channels_TextChannel_category | null;
@@ -37,6 +39,7 @@ export interface Channels_guild_channels_NewsChannel {
   __typename: "NewsChannel";
   name: string;
   id: string;
+  position: number | null;
   canSend: boolean | null;
   nsfw: boolean | null;
   category: Channels_guild_channels_NewsChannel_category | null;

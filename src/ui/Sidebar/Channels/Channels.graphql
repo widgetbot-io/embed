@@ -5,6 +5,7 @@ query Channels($guild: String!) {
 
       name
       id
+      position
       ... on TextChannel {
         canSend
         nsfw
