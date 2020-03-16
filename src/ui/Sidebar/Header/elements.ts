@@ -33,6 +33,21 @@ export const Icon = styled('img')`
   }
 `
 
+
+export const Acronym = styled.span`
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+  transition: border-radius 0.6s ease;
+  background-color: rgba(255,255,255,.1);
+  font-size: .95em;
+  text-align: center;
+
+  &:hover {
+    border-radius: 30%;
+  }
+`
+
 export const Name = styled('h1')`
   font-size: 15px;
   font-weight: 600;

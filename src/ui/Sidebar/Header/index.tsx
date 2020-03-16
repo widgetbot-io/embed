@@ -4,7 +4,7 @@ import {Query} from 'react-apollo'
 import {Route} from 'react-router-dom'
 
 import {GuildInfo, GuildInfoVariables} from '@generated'
-import {BannerName, BannerRoot, Count, Icon, Name, Root} from './elements'
+import {BannerName, BannerRoot, Count, Icon, Acronym, Name, Root} from './elements'
 import {AuthStore, generalStore} from "@store";
 import GET_INFO from './GuildInfo.graphql'
 import {addNotification} from "notify";
@@ -75,14 +75,20 @@ export class Header extends React.Component<{}, {}> {
 
 								if (window.innerWidth < 520) return (
 									<BannerRoot className="header" backgroundImage={banner}>
-										<Icon src={icon} className="icon"/>
+										{icon.includes('null') ?
+											<Acronym>{data.guild.name.replace(/\w+/g, name => name[0]).replace(/\s/g, '')}</Acronym> :
+											<Icon src={icon} className="icon"/>
+										}
 										<BannerName className="name">{data.guild.name}</BannerName>
 										<Close onClick={store.sidebar.toggle}/>
 									</BannerRoot>
 								)
 								return (
 									<BannerRoot className="header" backgroundImage={banner}>
-										<Icon src={icon} className="icon"/>
+										{icon.includes('null') ?
+											<Acronym>{data.guild.name.replace(/\w+/g, name => name[0]).replace(/\s/g, '')}</Acronym> :
+											<Icon src={icon} className="icon"/>
+										}
 										<BannerName className="name">{data.guild.name}</BannerName>
 										<Tooltip
 											placement="bottom"
@@ -100,14 +106,20 @@ export class Header extends React.Component<{}, {}> {
 
 							if (window.innerWidth < 520) return (
 								<Root className="header">
-									<Icon src={icon} className="icon"/>
+									{icon.includes('null') ?
+										<Acronym>{data.guild.name.replace(/\w+/g, name => name[0]).replace(/\s/g, '')}</Acronym> :
+										<Icon src={icon} className="icon"/>
+									}
 									<Name className="name">{data.guild.name}</Name>
 									<Close onClick={store.sidebar.toggle}/>
 								</Root>
 							)
 							return (
 								<Root className="header">
-									<Icon src={icon} className="icon"/>
+									{icon.includes('null') ?
+										<Acronym>{data.guild.name.replace(/\w+/g, name => name[0]).replace(/\s/g, '')}</Acronym> :
+										<Icon src={icon} className="icon"/>
+									}
 									<Name className="name">{data.guild.name}</Name>
 									<Tooltip
 										placement="bottom"
