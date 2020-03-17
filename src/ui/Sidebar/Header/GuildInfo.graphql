@@ -10,11 +10,6 @@ query GuildInfo($guild: String!) {
     verified
     premiumTier
 
-    settings {
-      guestMode
-      readonly
-    }
-
     channels {
       __typename
 

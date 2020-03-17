@@ -10,6 +10,7 @@ import { Theme_guild_theme } from '@generated'
 import * as Constants from '@constants'
 import { useQuery } from 'react-apollo-hooks'
 import {useCacheLoaded, useRouter} from '@hooks'
+import {generalStore} from '@store';
 
 export const ThemeProvider = ({ children }) => {
   let guild;
@@ -36,6 +37,8 @@ export const ThemeProvider = ({ children }) => {
   };
 
   // if (data.guild && data.guild.theme) _.merge(theme, data.guild.theme);
+  generalStore.toggleGuest(data.guild && data.guild.settings.guestMode);
+  generalStore.toggleRead(data.guild && data.guild.settings.readonly);
 
   const themeContext: ThemeContext = {
     ...theme,

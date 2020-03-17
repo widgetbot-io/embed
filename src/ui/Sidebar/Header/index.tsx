@@ -66,9 +66,6 @@ export class Header extends React.Component<{}, {}> {
 								icon = webpCheck(icon.replace('jpg', 'webp?size=64'))
 							}
 
-							generalStore.toggleGuest(data.guild.settings.guestMode);
-							generalStore.toggleRead(data.guild.settings.readonly);
-
 							if (data.guild.bannerURL) {
 
 								let banner = webpCheck(data.guild.bannerURL);

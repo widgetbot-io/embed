@@ -1,6 +1,8 @@
 query Settings($guild: String!) {
   guild(id: $guild) {
     settings {
+      guestMode
+      readonly
       theme {
         css
         colors {
