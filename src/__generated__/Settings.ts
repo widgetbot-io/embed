@@ -36,6 +36,8 @@ export interface Settings_guild_settings_theme {
 
 export interface Settings_guild_settings {
   __typename: "Settings";
+  guestMode: boolean;
+  readonly: boolean;
   theme: Settings_guild_settings_theme | null;
 }
 
