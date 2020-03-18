@@ -167,7 +167,7 @@ export namespace Sys {
 
 export const Video = styled('video')`
   max-height: 225px;
-  max-width: 400px;
-  width: auto;
+  width: 400px;
+  max-width: 100%;
   outline: none;
 `
