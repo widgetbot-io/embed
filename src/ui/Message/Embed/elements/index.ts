@@ -72,12 +72,12 @@ export const VideoIframe = styled('iframe')`
   border: none;
   margin-top: 8px;
   max-height: 225px;
-  max-width: 400px;
+  width: 400px;
+  max-width: 100%;
 `
 
 export const Gifv = styled('video')`
-  margin-top: 8px;
   max-height: 300px;
-  max-width: 400px;
-  width: auto;
+  width: 400px;
+  max-width: 100%;
 `
