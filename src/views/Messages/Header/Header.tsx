@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Tooltip from 'rc-tooltip'
 import CHANNEL from './Channel.graphql'
-import { Name, Emoji, Topic, Join, Stretch, SingleChannel, SingleChannelAuthWrapper } from '@ui/Header'
+import { Name, NewsName, NSFWName, Emoji, Topic, Join, Stretch, SingleChannel, SingleChannelAuthWrapper } from '@ui/Header'
 
 import { Root } from './elements'
 import { Locale } from "@lib/Locale"
@@ -33,7 +33,12 @@ export const Header = observer(({ channel, guild }: HeaderProps) => {
     return (
         <Root>
             <Stretch>
-                <Name><Emoji>{cData && cData.name}</Emoji></Name>
+                {cData.__typename === 'NewsChannel' ?
+                    <NewsName><Emoji>{cData && cData.name}</Emoji></NewsName>
+                : cData.nsfw ?
+                    <NSFWName><Emoji>{cData && cData.name}</Emoji></NSFWName>
+                :
+                    <Name><Emoji>{cData && cData.name}</Emoji></Name>}
                 {window.innerWidth < 520 ? null : (
                         <Topic
                             onClick={() => store.modal.openTopic(cData && cData.topic, cData.name)}

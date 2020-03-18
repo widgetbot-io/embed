@@ -1,5 +1,5 @@
 import Button from '@ui/shared/button'
-import { Hash } from '@ui/shared/Channel'
+import { Hash, NSFW, News } from '@ui/shared/Channel'
 import Markdown from '@ui/shared/markdown/render'
 import styled from '@lib/emotion'
 import { Twemoji } from '@ui/shared/Emoji/emoji'
@@ -41,6 +41,60 @@ export const Stretch = styled('div')`
 `
 
 export const Name = styled(Hash)`
+  font-size: 18px;
+  font-weight: 600;
+  height: 25px;
+  margin: 0 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-shrink: 0;
+
+  background-position: 0 50%;
+  padding-left: 25px;
+
+  @media (max-width: 350px) {
+    background: none;
+    padding-left: 0;
+  }
+
+  @media (max-width: 330px) {
+    flex-shrink: 1;
+  }
+
+  @media (max-width: 270px) {
+    font-size: 16px;
+  }
+`
+
+export const NewsName = styled(News)`
+  font-size: 18px;
+  font-weight: 600;
+  height: 25px;
+  margin: 0 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-shrink: 0;
+
+  background-position: 0 50%;
+  padding-left: 25px;
+
+  @media (max-width: 350px) {
+    background: none;
+    padding-left: 0;
+  }
+
+  @media (max-width: 330px) {
+    flex-shrink: 1;
+  }
+
+  @media (max-width: 270px) {
+    font-size: 16px;
+  }
+`
+
+export const NSFWName = styled(NSFW)`
   font-size: 18px;
   font-weight: 600;
   height: 25px;
