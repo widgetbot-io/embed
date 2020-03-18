@@ -6,6 +6,41 @@
 // GraphQL query operation: GuildInfo
 // ====================================================
 
+export interface GuildInfo_guild_settings_theme_colors {
+  __typename: "ThemeColors";
+  /**
+   * Primary theme color (font color)
+   */
+  primary: string | null;
+  /**
+   * Accent color (buttons)
+   */
+  accent: string | null;
+  /**
+   * Background color
+   */
+  background: string | null;
+}
+
+export interface GuildInfo_guild_settings_theme {
+  __typename: "Theme";
+  /**
+   * Custom CSS for the server
+   */
+  css: string | null;
+  /**
+   * Custom colors for the server
+   */
+  colors: GuildInfo_guild_settings_theme_colors | null;
+}
+
+export interface GuildInfo_guild_settings {
+  __typename: "Settings";
+  guestMode: boolean;
+  readonly: boolean;
+  theme: GuildInfo_guild_settings_theme | null;
+}
+
 export interface GuildInfo_guild_channels_StoreChannel {
   __typename: "StoreChannel" | "VoiceChannel";
   name: string;
@@ -60,6 +95,7 @@ export interface GuildInfo_guild {
   partnered: string;
   verified: string;
   premiumTier: string;
+  settings: GuildInfo_guild_settings;
   channels: GuildInfo_guild_channels[];
 }
 

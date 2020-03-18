@@ -11,18 +11,34 @@ import * as Constants from '@constants'
 import { useQuery } from 'react-apollo-hooks'
 import {useCacheLoaded, useRouter} from '@hooks'
 import {generalStore} from '@store';
+import {addNotification} from 'notify';
+import {Locale} from '@lib/Locale';
+import categorise from '@ui/Sidebar/Channels/categorise';
 
 export const ThemeProvider = ({ children }) => {
   let guild;
   const use = useRouter();
 
   if (!use) {
-    guild  = null;
+    guild = null;
   } else {
     guild = use.guild;
   }
 
-  const { data } = useQuery(GET_SETTINGS, { variables: { guild }, fetchPolicy: 'network-only' });
+  const { data, loading, refetch, error } = useQuery(GET_SETTINGS, { variables: { guild }, fetchPolicy: 'network-only' });
+  generalStore.fetchGuild = refetch;
+
+  if (loading) return null;
+  if (error) return null;
+  if (!data || !data.guild) {
+    addNotification({
+      level: 'error',
+      title: Locale.translate('frontend.notif.serverunavailable'),
+      message: Locale.translate('frontend.notif.serverunavailable.desc'),
+      autoDismiss: 0,
+    });
+    return null;
+  }
 
 
   let theme: Theme_guild_theme = {
@@ -37,6 +53,17 @@ export const ThemeProvider = ({ children }) => {
   };
 
   // if (data.guild && data.guild.theme) _.merge(theme, data.guild.theme);
+  try {
+    generalStore.setGuild(data.guild);
+  } catch (_) {
+    // noop
+  }
+  try {
+    generalStore.channels = categorise((data.guild.channels as any).sort((a, b) => { return a.position - b.position }));
+  } catch (_) {
+    generalStore.channels = [];
+  }
+
   generalStore.toggleGuest(data.guild && data.guild.settings.guestMode);
   generalStore.toggleRead(data.guild && data.guild.settings.readonly);
 
