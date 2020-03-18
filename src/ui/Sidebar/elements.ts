@@ -60,7 +60,7 @@ export const Close = styled('button')`
           right: 0;
           height: 30px;
           width: 30px;
-          margin: 4px;
+          margin: auto 4px;
         
           background: ${({ theme }) =>
             `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' fill='${encodeURIComponent(
