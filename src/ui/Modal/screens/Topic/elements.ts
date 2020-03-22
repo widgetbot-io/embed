@@ -1,5 +1,6 @@
 import styled from 'react-emotion'
 import * as Modal from '@ui/Modal'
+import { Twemoji } from '@ui/shared/Emoji/emoji'
 
 export const Root = styled(Modal.Content)`
   padding: 0;
@@ -23,6 +24,13 @@ export const Title = styled('h4')`
   margin: 10px 0;
   display: flex;
   flex-grow: 1;
+`
+
+export const Emoji = styled(Twemoji)`
+  width: 18px !important;
+  height: 100% !important;
+  margin-right: 2px !important;
+  vertical-align: top;
 `
 
 export const Close = styled(Modal.Close)`
