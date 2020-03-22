@@ -106,7 +106,7 @@ export const Root = styled('div')`
   }
 
   a {
-    color: #0096cf;
+    color: #00b0f4;
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -170,4 +170,49 @@ export const Video = styled('video')`
   width: 400px;
   max-width: 100%;
   outline: none;
+`
+
+export const Attachment = styled.div`
+  border: 1px solid rgba(0,0,0,.05);
+  background-color: rgba(0,0,0,.04);
+  max-width: 520px;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+`
+
+export const AttachmentIcon = styled.img`
+  width: 30px;
+  height: 40px;
+  margin-right: 8px;
+`
+
+export const AttachmentInner = styled.div`
+  flex: 1;
+`
+
+export const AttachmentSize = styled.div`
+  color: rgba(255,255,255,.22);
+  line-height: 16px;
+  font-size: 12px;
+`
+
+export const Audio = styled.div`
+  border: 1px solid rgba(0,0,0,.05);
+  background-color: rgba(0,0,0,.04);
+  width: 400px;
+  max-width: 100%;
+  padding: 10px;
+`
+
+export const AudioMetadata = styled.div`
+  display: flex;
+`
+
+export const AudioPlayer = styled.audio`
+  width: 100%;
+  height: 32px;
+  margin-top: 8px;
+  outline: 0;
+  border-radius: 3px;
 `

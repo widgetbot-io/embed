@@ -16,7 +16,14 @@ import {
   Messages,
   Reactions,
   Root,
-  Video
+  Video,
+  Attachment,
+  AttachmentIcon,
+  AttachmentInner,
+  AttachmentSize,
+  Audio,
+  AudioMetadata,
+  AudioPlayer
 } from './elements'
 import { Image } from './Embed/elements/media'
 import Reaction from './Reaction'
@@ -110,6 +117,39 @@ class Message extends React.PureComponent<Props, any> {
                                       height={+attachment.height}
                                       width={+attachment.width}
                                   />)
+                              }
+                            } else {
+                              if(attachment.url.endsWith('.mp3') || attachment.url.endsWith('.wav') || attachment.url.endsWith('.ogg')) {
+                                return <Audio>
+                                    <AudioMetadata>
+                                      <AttachmentIcon src="https://discordapp.com/assets/5b0da31dc2b00717c1e35fb1f84f9b9b.svg"/>
+                                      <AttachmentInner>
+                                        <div><a href={attachment.url}>{attachment.name}</a></div>
+                                        <AttachmentSize>{attachment.size} bytes</AttachmentSize>
+                                      </AttachmentInner>
+                                      <a href={attachment.url} style={{margin: 'auto'}}>
+                                        <svg aria-hidden="false" width="24" height="24" viewBox="0 0 24 24"><g fill="none" fill-rule="evenodd"><path d="M0 0h24v24H0z"></path><path fill="#4f545c" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></g></svg>
+                                      </a>
+                                    </AudioMetadata>
+                                    <AudioPlayer controls src={attachment.url}></AudioPlayer>
+                                  </Audio>
+                              } else {
+                                return <Attachment>
+                                    <AttachmentIcon 
+                                      src={attachment.url.endsWith('.html') || attachment.url.endsWith('.xml') ? 'https://discordapp.com/assets/a11e895b46cde503a094dd31641060a6.svg'
+                                      : attachment.url.endsWith('.doc') || attachment.url.endsWith('.docx') || attachment.url.endsWith('.ppt') || attachment.url.endsWith('.rtf') ? 'https://discordapp.com/assets/9f358f466473586417baee7bacfba5ca.svg'
+                                      : attachment.url.endsWith('.xls') || attachment.url.endsWith('.xlsx') || attachment.url.endsWith('.csv') ? 'https://discordapp.com/assets/85f7a4063578f6e0e2c73f60bca0fcce.svg'
+                                      : attachment.url.endsWith('.pdf') ? 'https://discordapp.com/assets/f167b4196f02faf2dc2e7eb266a24275.svg'
+                                      : attachment.url.endsWith('.js') || attachment.url.endsWith('.json') ? 'https://discordapp.com/assets/481aa700fab464f2332ca9b5f4eb6ba4.svg'
+                                      : 'https://discordapp.com/assets/985ea67d2edab4424c62009886f12e44.svg'}/>
+                                    <AttachmentInner>
+                                      <div><a href={attachment.url}>{attachment.name}</a></div>
+                                      <AttachmentSize>{attachment.size} bytes</AttachmentSize>
+                                    </AttachmentInner>
+                                    <a href={attachment.url} style={{margin: 'auto'}}>
+                                      <svg aria-hidden="false" width="24" height="24" viewBox="0 0 24 24"><g fill="none" fill-rule="evenodd"><path d="M0 0h24v24H0z"></path><path fill="#4f545c" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></g></svg>
+                                    </a>
+                                  </Attachment>
                               }
                             }
                           }) : null}
