@@ -96,7 +96,7 @@ class Message extends React.PureComponent<Props, any> {
                         {message.attachments
                             ? message.attachments.map((attachment, i) => {
                               if(attachment.height && attachment.width) {
-                                if(attachment.url.endsWith('.mp4') || attachment.url.endsWith('.mov') || attachment.url.endsWith('.webm')) {
+                                if(/\.(?:mp4|webm|mov)$/.test(attachment.name)) {
                                   return <Video controls
                                     key={`${i}:${attachment}`}
                                     src={attachment.url}
@@ -119,7 +119,7 @@ class Message extends React.PureComponent<Props, any> {
                                   />)
                               }
                             } else {
-                              if(attachment.url.endsWith('.mp3') || attachment.url.endsWith('.wav') || attachment.url.endsWith('.ogg')) {
+                              if(/\.(?:mp3|ogg|wav|flac)$/.test(attachment.name)) {
                                 return <Audio>
                                     <AudioMetadata>
                                       <AttachmentIcon src="https://discordapp.com/assets/5b0da31dc2b00717c1e35fb1f84f9b9b.svg"/>
@@ -128,7 +128,7 @@ class Message extends React.PureComponent<Props, any> {
                                         <AttachmentSize>{attachment.size} bytes</AttachmentSize>
                                       </AttachmentInner>
                                       <a href={attachment.url} style={{margin: 'auto'}}>
-                                        <svg aria-hidden="false" width="24" height="24" viewBox="0 0 24 24"><g fill="none" fill-rule="evenodd"><path d="M0 0h24v24H0z"></path><path fill="#4f545c" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></g></svg>
+                                        <svg aria-hidden="false" width="24" height="24" viewBox="0 0 24 24"><g fill="none" fillRule="evenodd"><path d="M0 0h24v24H0z"></path><path fill="#4f545c" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></g></svg>
                                       </a>
                                     </AudioMetadata>
                                     <AudioPlayer controls src={attachment.url}></AudioPlayer>
@@ -136,18 +136,23 @@ class Message extends React.PureComponent<Props, any> {
                               } else {
                                 return <Attachment>
                                     <AttachmentIcon 
-                                      src={attachment.url.endsWith('.html') || attachment.url.endsWith('.xml') ? 'https://discordapp.com/assets/a11e895b46cde503a094dd31641060a6.svg'
-                                      : attachment.url.endsWith('.doc') || attachment.url.endsWith('.docx') || attachment.url.endsWith('.ppt') || attachment.url.endsWith('.rtf') ? 'https://discordapp.com/assets/9f358f466473586417baee7bacfba5ca.svg'
-                                      : attachment.url.endsWith('.xls') || attachment.url.endsWith('.xlsx') || attachment.url.endsWith('.csv') ? 'https://discordapp.com/assets/85f7a4063578f6e0e2c73f60bca0fcce.svg'
-                                      : attachment.url.endsWith('.pdf') ? 'https://discordapp.com/assets/f167b4196f02faf2dc2e7eb266a24275.svg'
-                                      : attachment.url.endsWith('.js') || attachment.url.endsWith('.json') ? 'https://discordapp.com/assets/481aa700fab464f2332ca9b5f4eb6ba4.svg'
-                                      : 'https://discordapp.com/assets/985ea67d2edab4424c62009886f12e44.svg'}/>
+                                      src={ /\.pdf$/.test(attachment.name) ? 'https://discordapp.com/assets/f167b4196f02faf2dc2e7eb266a24275.svg' // acrobat
+                                          : /\.ae/.test(attachment.name) ? 'https://canary.discordapp.com/assets/982bd8aedd89b0607f492d1175b3b3a5.svg' // ae
+                                          : /\.sketch$/.test(attachment.name) ? 'https://canary.discordapp.com/assets/f812168e543235a62b9f6deb2b094948.svg' // sketch
+                                          : /\.ai$/.test(attachment.name) ? 'https://canary.discordapp.com/assets/03ad68e1f4d47f2671d629cfeac048ef.svg' // ai
+                                          : /\.(?:rar|zip|7z|tar|tar\.gz)$/.test(attachment.name) ? 'https://canary.discordapp.com/assets/73d212e3701483c36a4660b28ac15b62.svg' // archive
+                                          : /\.(?:c\+\+|cpp|cc|c|h|hpp|mm|m|json|js|rb|rake|py|asm|fs|pyc|dtd|cgi|bat|rss|java|graphml|idb|lua|o|gml|prl|sls|conf|cmake|make|sln|vbe|cxx|wbf|vbs|r|wml|php|bash|applescript|fcgi|yaml|ex|exs|sh|ml|actionscript)$/.test(attachment.url) ? 'https://canary.discordapp.com/assets/481aa700fab464f2332ca9b5f4eb6ba4.svg' // code
+                                          : /\.(?:txt|rtf|doc|docx|md|pages|ppt|pptx|pptm|key|log)$/.test(attachment.name) ? 'https://canary.discordapp.com/assets/9f358f466473586417baee7bacfba5ca.svg' // document
+                                          : /\.(?:xls|xlsx|numbers|csv)$/.test(attachment.name) ? 'https://canary.discordapp.com/assets/85f7a4063578f6e0e2c73f60bca0fcce.svg' // spreadsheet
+                                          : /\.(?:html|xhtml|htm|js|xml|xls|xsd|css|styl)$/.test(attachment.name) ? 'https://canary.discordapp.com/assets/a11e895b46cde503a094dd31641060a6.svg' // webcode
+                                          : 'https://discordapp.com/assets/985ea67d2edab4424c62009886f12e44.svg' // unknown
+                                          }/>
                                     <AttachmentInner>
                                       <div><a href={attachment.url}>{attachment.name}</a></div>
                                       <AttachmentSize>{attachment.size} bytes</AttachmentSize>
                                     </AttachmentInner>
                                     <a href={attachment.url} style={{margin: 'auto'}}>
-                                      <svg aria-hidden="false" width="24" height="24" viewBox="0 0 24 24"><g fill="none" fill-rule="evenodd"><path d="M0 0h24v24H0z"></path><path fill="#4f545c" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></g></svg>
+                                      <svg aria-hidden="false" width="24" height="24" viewBox="0 0 24 24"><g fill="none" fillRule="evenodd"><path d="M0 0h24v24H0z"></path><path fill="#4f545c" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></g></svg>
                                     </a>
                                   </Attachment>
                               }
