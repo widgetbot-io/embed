@@ -21,11 +21,13 @@ export const Image = styled(EImage)<ImageProps>`
 
 export const SpoilerImage = styled(EImage)<ImageProps>`
   display: block;
-  margin: 10px 0;
   cursor: pointer;
   border-radius: 3px;
-  filter: blur(44px);
-  --webkit-filter: blur(44px);
+  box-shadow: 0.5px 0.5px 1px 1px rgba(0,0,0,.1);
+
+  & > img {
+    filter: blur(44px);
+  }
 `;
 
 /*
