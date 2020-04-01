@@ -10,7 +10,7 @@ import {Locale} from '@lib/Locale'
 
 
 @observer
-export class Header extends React.Component<{}, {}> {
+export class Header extends React.Component {
 	render() {
 		let icon = generalStore.guild.iconURL;
 
