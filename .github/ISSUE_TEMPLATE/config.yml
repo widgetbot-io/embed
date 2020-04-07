@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Support Discord server
+    url: https://discord.gg/NYBEhN7
+    about: If you need help, have a question, or something isn't working, please ask in our Discord server!
+  - name: See existing issues
+    url: https://github.com/widgetbot-io/embed/issues
+    about: Please look through the current issues before creating a new one, to make sure it hasn't been reported/suggested before!
