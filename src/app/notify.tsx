@@ -19,7 +19,7 @@ export const addNotification = (
         action: {
           label: Locale.translate('frontend.notif.supportserver'),
           callback() {
-            window.open('https://discord.gg/zyqZWr2')
+            window.open('https://widgetbot.io')
           }
         }
       }),
