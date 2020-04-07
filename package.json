@@ -10,7 +10,7 @@
     "lingui": "lingui",
     "test": "react-app-rewired test --env=jsdom --scripts-version react-scripts-ts",
     "eject": "react-app-rewired eject --scripts-version react-scripts-ts",
-    "schema": "apollo schema:download --endpoint=https://stanks.widgetbot.io/api/graphql src/lib/apollo/codegen/schema.json",
+    "schema": "apollo schema:download --endpoint=http://127.0.0.1:8443/api/graphql src/lib/apollo/codegen/schema.json",
     "codegen:tasks": "ts-node --skip-project src/lib/apollo/codegen/tasks",
     "codegen": "apollo codegen:generate --target=typescript --addTypename --outputFlat src/__generated__",
     "codegen:live": "apollo codegen:generate --target=typescript --addTypename --outputFlat src/__generated__ --schema=\"http://127.0.0.1:8443/api/graphql\"",

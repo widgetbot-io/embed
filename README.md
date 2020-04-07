@@ -1,15 +1,29 @@
-# Discord embed
+# [WidgetBot](https://widgetbot.io) ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg) [![](https://data.jsdelivr.com/v1/package/npm/@widgetbot/crate/badge?style=rounded)](https://www.jsdelivr.com/package/npm/@widgetbot/crate) [![](https://data.jsdelivr.com/v1/package/npm/@widgetbot/html-embed/badge?style=rounded)](https://www.jsdelivr.com/package/npm/@widgetbot/html-embed)
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/widgetbot-io/embed.svg)](https://greenkeeper.io/) [![Maintainability](https://api.codeclimate.com/v1/badges/b59560cf2c74db9f3e96/maintainability)](https://codeclimate.com/github/widgetbot-io/embed/maintainability)
+> WidgetBot is a pixel-perfect open-source Discord chat widget for your website.
 
-![Screenshot](https://i.imgur.com/eGKcLlN.png)
+[![Banner](./.github/banner.png)](https://widgetbot.io)
 
-## Introduction
+| @widgetbot/                                                    | Description                         |                                                      |                                                  |
+| -------------------------------------------------------------- | ----------------------------------- | ---------------------------------------------------- | ------------------------------------------------ |
+| [embed](https://widgetbot.io)                                  | ReactJS widget client               | [Docs](https://docs.widgetbot.io/embed/)             | [/packages/embed/](/packages/embed/)             |
+| [crate](http://npmjs.com/package/@widgetbot/crate)             | JS library that provides popup chat | [Docs](https://docs.widgetbot.io/embed/crate/)       | [/packages/crate/](/packages/crate/)             |
+| [react-embed](http://npmjs.com/package/@widgetbot/react-embed) | React component for the embed       | [Docs](https://docs.widgetbot.io/embed/react-embed/) | [/packages/react-embed/](/packages/react-embed/) |
+| [html-embed](http://npmjs.com/package/@widgetbot/html-embed)   | HTML element for the embed          | [Docs](https://docs.widgetbot.io/embed/html-embed/)  | [/packages/html-embed/](/packages/html-embed/)   |
+| [embed-api](http://npmjs.com/package/@widgetbot/embed-api)     | Embed GraphQL JS API                | [Docs](https://docs.widgetbot.io/embed/embed-api/)   | [/packages/embed-api/](/packages/embed-api/)     |
 
-This repo was bootstrapped from [create-react-app-typescript](https://github.com/wmonk/create-react-app-typescript).
+## Getting started
 
-## Testing
+**Requirements:**
 
-Cross-browser testing proudly sponsered by [BrowserStack](https://browserstack.com)
+- Node.js 10+
+- Yarn
 
-[![BrowserStack Logo](https://d98b8t1nnulk5.cloudfront.net/production/images/layout/logo-header.png?1469004780)](https://browserstack.com)
+## Embed
+
+The embed is mostly React.JS with Typescript.
+
+- [React.js](https://reactjs.org) for describing the UI
+- [apollo-client](npmjs.com/package/apollo-client) and GraphQL for data fetching
+- [Mobx](https://mobx.js.org/) and [mobx-state-tree](https://github.com/mobxjs/mobx-state-tree) for state management
+- [Emotion](https://emotion.sh) for styling components
