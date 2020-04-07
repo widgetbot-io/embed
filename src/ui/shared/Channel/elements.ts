@@ -21,6 +21,12 @@ export const News = styled('div')`
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' name='Megaphone' class='icon-1_QxNX' aria-hidden='false' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath d='M3.9 8.26H2V15.2941H3.9V8.26Z' fill='${({theme})=>encodeURIComponent(theme.colors._primary.fade(0.6).string())}'%3E%3C/path%3E%3Cpath d='M19.1 4V5.12659L4.85 8.26447V18.1176C4.85 18.5496 5.1464 18.9252 5.5701 19.0315L9.3701 19.9727C9.4461 19.9906 9.524 20 9.6 20C9.89545 20 10.1776 19.8635 10.36 19.6235L12.7065 16.5242L19.1 17.9304V19.0588H21V4H19.1ZM9.2181 17.9944L6.75 17.3826V15.2113L10.6706 16.0753L9.2181 17.9944Z' fill='${({theme})=>encodeURIComponent(theme.colors._primary.fade(0.6).string())}'%3E%3C/path%3E%3C/svg%3E");
 `;
 
+export const NSFWNews = styled('div')`
+  background-position: 50%;
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' class='icon-1_QxNX'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' fill='${({theme})=>encodeURIComponent(theme.colors._primary.fade(0.6).string())}' d='M15.5 6.24963L4.85 8.26448V18.1177C4.85 18.5497 5.1464 18.9252 5.5701 19.0315L9.3701 19.9727C9.4461 19.9906 9.524 20 9.6 20C9.89545 20 10.1776 19.8635 10.36 19.6235L12.7065 16.5242L19.1 17.9304V19.0588H21V11.25H16C14.9801 11.25 14.1386 10.2735 14.0155 9.25434C13.9954 9.08825 14.042 8.92305 14.1221 8.77618L15.5 6.24963ZM6.75 17.3826L9.2181 17.9944L10.6706 16.0753L6.75 15.2113V17.3826Z'%3E%3C/path%3E%3Cpath d='M2 8.26001H3.9V15.2941H2V8.26001Z' fill='${({theme})=>encodeURIComponent(theme.colors._primary.fade(0.6).string())}'%3E%3C/path%3E%3Cpath fill='${({theme})=>encodeURIComponent(theme.colors._primary.fade(0.6).string())}' fill-rule='evenodd' clip-rule='evenodd' d='M19.9173 3.80204L22.2821 8.55654C22.6126 9.22119 22.1265 9.99999 21.3811 10L16.6265 10C15.8793 10 15.3932 9.21769 15.7274 8.55279L18.1172 3.79829C18.4885 3.05951 19.5491 3.06172 19.9173 3.80204ZM18.5184 5H19.5237V7.5H18.5184L18.5184 5ZM18.5184 8.49887C18.5184 8.77589 18.7436 9 19.021 9C19.2985 9 19.5237 8.77589 19.5237 8.49887C19.5237 8.22224 19.2985 7.99773 19.021 7.99773C18.7436 7.99773 18.5184 8.22224 18.5184 8.49887Z'%3E%3C/path%3E%3C/svg%3E");`;
+
 export const Store = styled('div')`
   background-position: 50%;
   background-repeat: no-repeat;

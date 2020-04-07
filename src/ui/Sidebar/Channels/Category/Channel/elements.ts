@@ -1,4 +1,4 @@
-import {ChannelLink, Hash, News, Store, NSFW} from '@ui/shared/Channel'
+import {ChannelLink, Hash, News, Store, NSFW, NSFWNews} from '@ui/shared/Channel'
 import styled, { css, keyframes } from '@lib/emotion'
 import { Twemoji } from '@ui/shared/Emoji/emoji'
 import Item from '@ui/SelectItem'
@@ -70,6 +70,14 @@ export const NSFWTag = styled(NSFW)`
 `;
 
 export const Newstag = styled(News)`
+  flex-shrink: 0;
+  opacity: 0.6;
+  height: 100%;
+  width: 16px;
+  margin-right: 7px;
+`;
+
+export const NSFWNewstag = styled(NSFWNews)`
   flex-shrink: 0;
   opacity: 0.6;
   height: 100%;
