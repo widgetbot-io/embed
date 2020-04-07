@@ -1,15 +1,5 @@
 query Settings($guild: String!) {
   guild(id: $guild) {
-    name
-    iconURL
-    invite
-    memberCount
-    bannerURL
-    splashURL
-    partnered
-    verified
-    premiumTier
-
     settings {
       guestMode
       readonly
@@ -19,32 +9,6 @@ query Settings($guild: String!) {
           primary
           accent
           background
-        }
-      }
-    }
-
-    channels {
-      __typename
-
-      name
-      id
-      position
-      ... on TextChannel {
-        topic
-        canSend
-        nsfw
-        category {
-          name
-          position
-        }
-      }
-      ... on NewsChannel {
-        topic
-        canSend
-        nsfw
-        category {
-          name
-          position
         }
       }
     }

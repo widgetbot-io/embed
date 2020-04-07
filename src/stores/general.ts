@@ -18,6 +18,8 @@ export class GeneralStore {
   constructor() {
     autorun(() => {
       if (this.needsUpdate) {
+        console.log('raaa')
+        console.log(this.fetchGuild)
         this.fetchGuild && this.fetchGuild();
         this.needsUpdate = false;
       }

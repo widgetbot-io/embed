@@ -10,19 +10,6 @@ query GuildInfo($guild: String!) {
     verified
     premiumTier
 
-    settings {
-      guestMode
-      readonly
-      theme {
-        css
-        colors {
-          primary
-          accent
-          background
-        }
-      }
-    }
-
     channels {
       __typename
 
