@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Tooltip from 'rc-tooltip'
 import CHANNEL from './Channel.graphql'
-import { Name, NewsName, NSFWName, Emoji, Topic, Join, Stretch, SingleChannel, SingleChannelAuthWrapper } from '@ui/Header'
+import { Name, NewsName, NSFWName, NSFWNewsName, Emoji, Topic, Join, Stretch, SingleChannel, SingleChannelAuthWrapper } from '@ui/Header'
 
 import { Root } from './elements'
 import { Locale } from "@lib/Locale"
@@ -33,7 +33,9 @@ export const Header = observer(({ channel, guild }: HeaderProps) => {
     return (
         <Root>
             <Stretch>
-                {cData.__typename === 'NewsChannel' ?
+                { cData.nsfw && cData.__typename === 'NewsChannel' ?
+                    <NSFWNewsName><Emoji>{cData && cData.name}</Emoji></NSFWNewsName>
+                : cData.__typename === 'NewsChannel' ?
                     <NewsName><Emoji>{cData && cData.name}</Emoji></NewsName>
                 : cData.nsfw ?
                     <NSFWName><Emoji>{cData && cData.name}</Emoji></NSFWName>
