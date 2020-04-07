@@ -32,9 +32,9 @@ class Authenticate extends React.Component<{}, State> {
       generalStore.needsUpdate = true;
 
       generalStore.toggleMenu(false);
-      // this.setState({
-      //   awaiting: false
-      // });
+      this.setState({
+        awaiting: false
+      });
     });
   }
 
