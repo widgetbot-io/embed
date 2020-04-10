@@ -7,8 +7,7 @@ const compareGroupability = (
   a: Messages_channel_TextChannel_messages,
   b: Messages_channel_TextChannel_messages
 ) => {
-  // @ts-ignore TODO: MOre join channel memes
-  const nonGroupable = ['JoinMessage', 'PinnedMessage', 'BoostMessage'].includes(a.__typename);
+  const nonGroupable = a.__typename !== 'TextMessage' || b.__typename !== 'TextMessage';
   const differentAuthor = a.author.id !== b.author.id || a.author.username !== b.author.username;
   const staleGroup = (Number(new Date(b.createdAt)) - Number(new Date(a.createdAt))) > 5 * 60 * 1000;
 
