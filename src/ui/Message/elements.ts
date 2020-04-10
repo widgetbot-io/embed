@@ -82,7 +82,6 @@ interface NameProps {
 
 export const Member = styled(MemberLink)<NameProps>`
   color: ${({ color }) => (color !== '#000000' ? color : null)};
-  margin-right: 5px;
   cursor: pointer;
 
   &:hover {

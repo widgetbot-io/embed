@@ -1,4 +1,4 @@
-import { Messages_channel_TextChannel_messages } from '@generated'
+import { Messages_channel_TextChannel_messages, Messages_channel_TextChannel_messages_JoinMessage } from '@generated'
 import Markdown, {LinkMarkdown} from '@ui/shared/markdown/render'
 import { ThemeProvider } from 'emotion-theming'
 import Moment from 'moment'
@@ -185,7 +185,7 @@ class Message extends React.PureComponent<Props, any> {
                 return (
                   <React.Fragment key={message.id}>
                     <Secondary.Join>
-                        {member}{randomMessage()}
+                      {joinMessageBeginning(message)}{member}{joinMessageEnd(message)}
                     </Secondary.Join>
                     <Timestamp time={message.createdAt} />
                   </React.Fragment>
@@ -202,7 +202,7 @@ class Message extends React.PureComponent<Props, any> {
                 return (
                   <React.Fragment key={message.id}>
                     <Secondary.Pinned>
-                      {member}{Locale.translate('frontend.messages.pinned')}
+                      {member} {Locale.translate('frontend.messages.pinned')}
                     </Secondary.Pinned>
                     <Timestamp time={message.createdAt} />
                   </React.Fragment>
@@ -222,7 +222,7 @@ class Message extends React.PureComponent<Props, any> {
                   return (
                     <React.Fragment key={message.id}>
                       <Secondary.Boost>
-                        {member}{Locale.translate('frontend.messages.boost')} {Locale.translate('frontend.messages.boost.achieved', {GUILD: 'TODO guildName', TIER: String(message.tier)})}
+                        {member} {Locale.translate('frontend.messages.boost')} {Locale.translate('frontend.messages.boost.achieved', {GUILD: 'TODO guildName', TIER: String(message.tier)})}
                       </Secondary.Boost>
                       <Timestamp time={message.createdAt} />
                     </React.Fragment>
@@ -249,7 +249,7 @@ class Message extends React.PureComponent<Props, any> {
                 return (
                   <React.Fragment key={message.id}>
                     <Secondary.Join>
-                      {member}{Locale.translate('frontend.messages.follow', {HOOK: message.content})}
+                      {member} {Locale.translate('frontend.messages.follow', {HOOK: message.content})}
                     </Secondary.Join>
                     <Timestamp time={message.createdAt} />
                   </React.Fragment>
@@ -269,21 +269,47 @@ class Message extends React.PureComponent<Props, any> {
 
 export default Message
 
-function randomMessage(): string {
+
+// Join messages: https://github.com/DJScias/Discord-Datamining/commit/c79bf619ca341d97af219fe127efac2b31d0dde5#comments
+
+function joinMessageBeginning(message: Messages_channel_TextChannel_messages_JoinMessage): string {
   const messages: string[] = [
-      `just joined. Everyone, look busy!`,
-      `just joined. Can I get a heal?`,
-      `joined your party.`,
-      `joined. You must construct additional pylons.`,
-      `just joined... or did they?`,
-      `just arrived. Seems OP - please nerf.`,
-      `hopped into the server. Kangaroo!!`,
-      `has joined the battle bus.`,
-      `has joined the server! It's super effective!`,
-      `is here, as the prophecy foretold.`,
-      `has joined. Stay a while and listen!`
+      '',
+      '',
+      'Welcome, ',
+      'A wild ',
+      '',
+      '',
+      '',
+      'Welcome ',
+      '',
+      'Everyone welcome ',
+      'Glad you\'re here, ',
+      'Good to see you, ',
+      'Yay you made it, '
   ];
 
 
-  return messages[Math.floor(Math.random() * messages.length)]
+  return messages[(Number(new Date(message.createdAt))) % messages.length]
+}
+
+function joinMessageEnd(message: Messages_channel_TextChannel_messages_JoinMessage): string {
+  const messages: string[] = [
+      ' joined the party.',
+      ' is here.',
+      '. We hope you brought pizza.',
+      ' appeared.',
+      ' just landed.',
+      ' just slid into the server.',
+      ' just showed up!',
+      '. Say hi!',
+      ' hopped into the server.',
+      '!',
+      '.',
+      '.',
+      '!'
+  ];
+
+
+  return messages[(Number(new Date(message.createdAt))) % messages.length]
 }
