@@ -10,7 +10,7 @@ const compareGroupability = (
   // @ts-ignore TODO: MOre join channel memes
   const nonGroupable = ['JoinMessage', 'PinnedMessage', 'BoostMessage'].includes(a.__typename);
   const differentAuthor = a.author.id !== b.author.id || a.author.username !== b.author.username;
-  const staleGroup = b.createdAt - a.createdAt > 5 * 60 * 1000;
+  const staleGroup = (Number(new Date(b.createdAt)) - Number(new Date(a.createdAt))) > 5 * 60 * 1000;
 
   return nonGroupable || differentAuthor || staleGroup
 };
