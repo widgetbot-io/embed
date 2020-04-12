@@ -7,8 +7,8 @@ jobs:
     steps:
       - name: Docker login
         run: echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com --username yomanz --password-stdin
-      - name: Use actions/checkout@v1
-        uses: actions/checkout@v1
+      - name: Use actions/checkout@v2
+        uses: actions/checkout@v2
       - name: Submoules
         run: git submodule update --init --recursive --remote
       - name: Docker build
