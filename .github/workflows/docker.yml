@@ -5,12 +5,12 @@ jobs:
     name: Build and Publish
     runs-on: ubuntu-latest
     steps:
-      - name: Submoules
-        run: git submodule update --init --recursive --remote
       - name: Docker login
         run: echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com --username yomanz --password-stdin
       - name: Use actions/checkout@v1
         uses: actions/checkout@v1
+      - name: Submoules
+        run: git submodule update --init --recursive --remote
       - name: Docker build
         run: docker build -t docker.pkg.github.com/widgetbot-io/embed:latest .
       - name: Docker push tag latest
