@@ -1,0 +1,37 @@
+name: "Build and Deploy"
+on: pull_request
+jobs:
+  docker-build-publish:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Submodules
+        run: git submodule update --init --recursive --remote
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v1
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Build
+        run: yarn && yarn build
+      - name: Docker login
+        run: echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com --username yomanz --password-stdin
+      - name: Docker build
+        run: docker build -t docker.pkg.github.com/widgetbot-io/embed/staging:${{github.sha}} .
+      - name: Docker push tag latest
+        run: docker push docker.pkg.github.com/widgetbot-io/embed/staging:${{github.sha}}
+      - name: Notify of Registry URL
+        uses: unsplash/comment-on-pr@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          msg: "The latest commit built at: docker.pkg.github.com/widgetbot-io/embed/staging:${{github.sha}}"
