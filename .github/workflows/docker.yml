@@ -1,4 +1,5 @@
 name: "Build and Deploy"
+on: [push]
 jobs:
   docker-build-publish:
     name: Build and Publish
