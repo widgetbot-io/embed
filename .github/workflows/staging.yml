@@ -1,8 +1,8 @@
 name: "Build and Deploy"
-on: [push]
+on: pull_request
 jobs:
   docker-build-publish:
-    name: Build and Publish
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,6 +16,6 @@ jobs:
       - name: Docker login
         run: echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com --username yomanz --password-stdin
       - name: Docker build
-        run: docker build -t docker.pkg.github.com/widgetbot-io/embed/${{github.sha}}:latest .
+        run: docker build -t docker.pkg.github.com/widgetbot-io/embed/staging:${{github.sha}} .
       - name: Docker push tag latest
-        run: docker push docker.pkg.github.com/widgetbot-io/embed/${{github.sha}}:latest
+        run: docker push docker.pkg.github.com/widgetbot-io/embed/staging:${{github.sha}}
