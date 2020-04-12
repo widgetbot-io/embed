@@ -1,8 +1,4 @@
 name: "Build and Deploy"
-on:
-  push:
-    branches:
-      - master
 jobs:
   docker-build-publish:
     name: Build and Publish
