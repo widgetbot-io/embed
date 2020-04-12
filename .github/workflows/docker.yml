@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Docker login
-        run: echo ${{ secrets.GITHUB_ACTIONS_TOKEN }} | docker login docker.pkg.github.com --username yomanz --password-stdin
+        run: echo ${{ GITHUB_TOKEN }} | docker login docker.pkg.github.com --username yomanz --password-stdin
       - name: Use actions/checkout@v1
         uses: actions/checkout@v1
       - name: Docker build
