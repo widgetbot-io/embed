@@ -9,7 +9,7 @@ jobs:
         run: echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com --username yomanz --password-stdin
       - name: Use actions/checkout@v2
         uses: actions/checkout@v2
-      - name: Submoules
+      - name: Submodules
         run: git submodule update --init --recursive --remote
       - name: Docker build
         run: docker build -t docker.pkg.github.com/widgetbot-io/embed/${{github.sha}}:latest .
