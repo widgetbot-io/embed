@@ -12,6 +12,6 @@ jobs:
       - name: Submoules
         run: git submodule update --init --recursive --remote
       - name: Docker build
-        run: docker build -t docker.pkg.github.com/widgetbot-io/embed:latest .
+        run: docker build -t docker.pkg.github.com/widgetbot-io/embed/${{GITHUB_REF}}:latest .
       - name: Docker push tag latest
-        run: docker push docker.pkg.github.com/widgetbot-io/embed:latest
+        run: docker push docker.pkg.github.com/widgetbot-io/embed/${{GITHUB_REF}}:latest
