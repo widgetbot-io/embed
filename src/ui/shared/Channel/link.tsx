@@ -12,19 +12,17 @@ const toggle = () => window.innerWidth < 520 ? store.sidebar.toggle() : null
 
 class ChannelLink extends React.PureComponent<Props> {
   render() {
-    // @ts-ignore
-    const { id, $ref, __typename, ...props } = this.props;
-    // @ts-ignore
-    const isStore = __typename === "StoreChannel";
+    const { id, $ref, children, className } = this.props;
     return (
       <Route path="/:server">
         {({ match }) => (
           <NavLink
-            to={`/${match.params.server}/${isStore ? "" : id}`}
+            to={`/${match.params.server}/${id}`}
             data-channel={id}
             innerRef={$ref}
             onClick={toggle}
-            {...props}
+            children={children}
+            className={className}
           />
         )}
       </Route>
