@@ -2,6 +2,7 @@ import { useMutation } from 'react-apollo-hooks'
 import SEND_MESSAGE from './SendMessage.graphql'
 import { MESSAGES } from '../useMessages'
 import { useRouter } from '@hooks'
+import {TextMessage} from '@generated';
 
 export const useSendMessage = () => {
   const { channel } = useRouter()

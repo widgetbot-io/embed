@@ -23,6 +23,7 @@ export const useMessages = (channel: string) => {
     before?: string;
     limit?: number;
   }) {
+    if(!channel) return;
     if (!options) {
       const [firstMessage] = messages;
       if (!firstMessage) return;
