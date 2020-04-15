@@ -23,7 +23,7 @@ export interface HeaderProps {
 export const Header = observer(({ channel, guild }: HeaderProps) => {
     let cData;
     try {
-        cData = generalStore.guild.channels.find(c => c.id === channel);
+        cData = generalStore.guild.channels.find(c => c.id === channel) || {};
     } catch (_) {
         cData = {}
     }
