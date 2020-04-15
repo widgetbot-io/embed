@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "WidgetBot",
+  "name": "Pixel perfect discord embed for your website",
   "icons": [
     {
       "src": "favicon.ico",
