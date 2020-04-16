@@ -24,7 +24,7 @@ export const SingleChannel = styled('div')`
 
 export const Inner = styled('div')`
   display: flex;
-  flex-shrink: 0;
+  flex-shrink: 1;
   flex-grow: 1;
   height: 47px;
   padding: 10px 0;
@@ -38,6 +38,7 @@ export const Stretch = styled('div')`
   display: flex;
   flex-grow: 1;
   overflow: hidden;
+  flex-shrink: 0
 `
 
 export const Name = styled(Hash)`
