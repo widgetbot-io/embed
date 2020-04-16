@@ -24,7 +24,7 @@ class Channel extends React.PureComponent<Props> {
         const nameLength = this.props.__typename === 'StoreChannel' ? 10 : 13;
         const name = this.props.name.length > nameLength ? `${this.props.name.slice(0, nameLength)}...` : this.props.name;
         return (
-            <Root {...this.props} itemID={ITEM_ID} className="channel">
+            <Root selected={this.props.selected} unread={this.props.unread} order={this.props.order} itemID={ITEM_ID} className="channel">
                 {(() => {
                     switch(this.props.__typename) {
                         case 'NewsChannel': {

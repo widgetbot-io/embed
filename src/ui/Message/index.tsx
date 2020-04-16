@@ -98,7 +98,7 @@ class Message extends React.PureComponent<Props, any> {
                               if(attachment.height && attachment.width) {
                                 if(/\.(?:mp4|webm|mov)$/.test(attachment.name)) {
                                   return <Video controls
-                                    key={`${i}:${attachment}`}
+                                    key={attachment.url}
                                     src={attachment.url}
                                     height={+attachment.height}
                                     width={+attachment.width}
@@ -106,13 +106,13 @@ class Message extends React.PureComponent<Props, any> {
                                 } else {
                                     return attachment.spoiler ? (
                                     <AttachmentSpoiler
-                                      key={`${i}:${attachment}`}
+                                      key={attachment.url}
                                       src={attachment.url}
                                       height={+attachment.height} 
                                       width={+attachment.width}
                                     />) : (
                                     <Image
-                                      key={`${i}:${attachment}`}
+                                      key={attachment.url}
                                       src={attachment.url}
                                       height={+attachment.height}
                                       width={+attachment.width}
@@ -120,7 +120,7 @@ class Message extends React.PureComponent<Props, any> {
                               }
                             } else {
                               if(/\.(?:mp3|ogg|wav|flac)$/.test(attachment.name)) {
-                                return <Audio>
+                                return <Audio key={attachment.url}>
                                     <AudioMetadata>
                                       <AttachmentIcon src="https://discordapp.com/assets/5b0da31dc2b00717c1e35fb1f84f9b9b.svg"/>
                                       <AttachmentInner>
@@ -134,7 +134,7 @@ class Message extends React.PureComponent<Props, any> {
                                     <AudioPlayer controls src={attachment.url}></AudioPlayer>
                                   </Audio>
                               } else {
-                                return <Attachment>
+                                return <Attachment key={attachment.url}>
                                     <AttachmentIcon 
                                       src={ /\.pdf$/.test(attachment.name) ? 'https://discordapp.com/assets/f167b4196f02faf2dc2e7eb266a24275.svg' // acrobat
                                           : /\.ae/.test(attachment.name) ? 'https://canary.discordapp.com/assets/982bd8aedd89b0607f492d1175b3b3a5.svg' // ae
