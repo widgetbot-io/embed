@@ -12,6 +12,11 @@ import { useQuery } from 'react-apollo-hooks'
 import {useCacheLoaded, useRouter} from '@hooks'
 import {generalStore} from '@store';
 
+const getQueryParam = (query: string) => {
+  const matched = window.location.search.match(new RegExp(`[?&]${query}=([^&#]*)`))
+  return matched && matched[1];
+};
+
 export const ThemeProvider = ({ children }) => {
   let guild;
   const use = useRouter();
@@ -51,7 +56,10 @@ export const ThemeProvider = ({ children }) => {
       _background: Color(theme.colors.background),
       _accent: Color(theme.colors.accent)
     },
-    url: {} // TODO: Fix
+    url: {
+      preset: getQueryParam('preset') as 'crate' | null,
+      api: getQueryParam('api')
+    }
   };
   // TODO: I found why the URL parsing doesn't work l m a o.
 
