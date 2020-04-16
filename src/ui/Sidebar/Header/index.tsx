@@ -51,9 +51,9 @@ export class Header extends React.Component {
 							}
 
 							try {
-								generalStore.channels = categorise((data.guild.channels as any).sort((a, b) => { return a.position - b.position }));
+								generalStore.setChannels(categorise((data.guild.channels as any).sort((a, b) => { return a.position - b.position })))
 							} catch (_) {
-								generalStore.channels = [];
+								generalStore.setChannels([]);
 							}
 
 							if (error) return null;

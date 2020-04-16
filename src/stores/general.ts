@@ -39,6 +39,10 @@ export class GeneralStore {
   @action setGuild(guild: GuildInfo_guild) {
     this.guild = guild
   }
+
+  @action setChannels(channels: ICategory[]) {
+    this.channels = channels
+  }
 }
 
 // export default new GeneralStore();
