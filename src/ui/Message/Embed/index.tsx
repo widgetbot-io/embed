@@ -191,7 +191,7 @@ const Embed = ({
   ...embed
 }) =>
   embed.type === 'gifv' ? (
-    <Gifv autoPlay loop
+    <Gifv autoPlay loop muted
       src={video.proxyURL || video.url}
       width={+video.width}
       height={+video.height}
