@@ -13,8 +13,13 @@ interface Command {
 
 const commands: Command[] = [
   {
-    id: '294916911194570754',
-    name: 'samdd#3245',
+    id: '96626362277720064',
+    name: 'Daave#0001',
+    type: 'user'
+  },
+  {
+    id: '242097488507568128',
+    name: 'viction#0001',
     type: 'user'
   }
 ]
