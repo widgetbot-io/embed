@@ -10,7 +10,7 @@ export const Root = styled('form')`
   ${({ theme }) =>
     theme.url.preset === 'crate' &&
     css`
-      margin: 0;
+      margin: auto 0 0;
       padding: 6px;
       background-color: ${theme.colors._primary.fade(0.9).string()};
 
