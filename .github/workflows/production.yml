@@ -32,3 +32,31 @@ jobs:
         run: docker build -t docker.pkg.github.com/widgetbot-io/embed/production:latest .
       - name: Docker push tag latest
         run: docker push docker.pkg.github.com/widgetbot-io/embed/production:latest
+  kubernetes-deploy:
+    name: Kubernetes deploy
+    needs: docker-build-publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use actions/checkout@v2
+        uses: actions/checkout@v2
+      - name: Submodules
+        run: git submodule update --init --recursive --remote
+#      - name: Set version enviroment variable
+#        run: |
+#          echo ::set-env name=VERSION::`cat $GITHUB_WORKSPACE/modules/service/link/redirector/VERSION`
+      - name: Kubernetes install
+        run: |
+          curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+          chmod +x kubectl
+          sudo mv kubectl /bin/kubectl
+      - name: Kubernetes setup
+        run: |
+          mkdir ~/.kube
+          echo "${{ secrets.CLUSTER_CONFIG }}" > ~/.kube/config
+      - name: Kubernetes rolling update
+        run: kubectl rollout restart deployment/embed
+      - name: Kubernetes verify
+        run: kubectl rollout status deployment/embed
+      - name: Kubernetes rollback
+        if: failure()
+        run: kubectl rollout undo deployment/embed
