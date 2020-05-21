@@ -51,8 +51,10 @@ jobs:
           sudo mv kubectl /bin/kubectl
       - name: Kubernetes setup
         run: |
-          mkdir ~/.kube
-          echo "${{ secrets.CLUSTER_CONFIG }}" > ~/.kube/config
+          kubectl config set-cluster default-cluster --server=$KUBE_URL --certificate-authority=$KUBE_CA_PEM_FILE
+          kubectl config set-credentials default-admin --token=$KUBE_TOKEN
+          kubectl config set-context default-system --cluster=default-cluster --user=default-admin --namespace=default
+          kubectl config use-context default-system
       - name: Kubernetes rolling update
         run: kubectl rollout restart deployment/embed
       - name: Kubernetes verify
