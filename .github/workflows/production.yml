@@ -49,16 +49,25 @@ jobs:
           curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
           chmod +x kubectl
           sudo mv kubectl /bin/kubectl
-      - name: Kubernetes setup
+      - name: Kubernetes rolling update
         run: |
           kubectl config set-cluster default-cluster --server=$KUBE_URL --certificate-authority=$KUBE_CA_PEM_FILE
           kubectl config set-credentials default-admin --token=$KUBE_TOKEN
           kubectl config set-context default-system --cluster=default-cluster --user=default-admin --namespace=default
           kubectl config use-context default-system
-      - name: Kubernetes rolling update
-        run: kubectl rollout restart deployment/embed
+          kubectl rollout restart deployment/embed
       - name: Kubernetes verify
-        run: kubectl rollout status deployment/embed
+        run: |
+          kubectl config set-cluster default-cluster --server=$KUBE_URL --certificate-authority=$KUBE_CA_PEM_FILE
+          kubectl config set-credentials default-admin --token=$KUBE_TOKEN
+          kubectl config set-context default-system --cluster=default-cluster --user=default-admin --namespace=default
+          kubectl config use-context default-system
+          kubectl rollout status deployment/embed
       - name: Kubernetes rollback
         if: failure()
-        run: kubectl rollout undo deployment/embed
+        run: |
+          kubectl config set-cluster default-cluster --server=$KUBE_URL --certificate-authority=$KUBE_CA_PEM_FILE
+          kubectl config set-credentials default-admin --token=$KUBE_TOKEN
+          kubectl config set-context default-system --cluster=default-cluster --user=default-admin --namespace=default
+          kubectl config use-context default-system
+          kubectl rollout undo deployment/embed
