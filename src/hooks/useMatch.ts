@@ -4,11 +4,6 @@ import { __RouterContext, matchPath, match } from 'react-router-dom'
 import { Location } from 'history'
 import { history } from '@lib/history'
 
-export const useLocation = () => {
-  let context = useContext<any>(__RouterContext)
-  return context.location
-}
-
 interface useMatchProps {
   exact?: boolean
   sensitive?: boolean
@@ -21,9 +16,7 @@ export const useMatch = <T = any>(
   path: string,
   options: useMatchProps = {}
 ) => {
-  const location = !options.relative
-    ? history.location
-    : options.location || useLocation()
+  const location = history.location
 
   const match: match<T> = matchPath<T>(location.pathname, { ...options, path });
 

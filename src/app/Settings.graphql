@@ -2,6 +2,7 @@ query Settings($guild: String!) {
   guild(id: $guild) {
     settings {
       guestMode
+      singleChannel
       readonly
       theme {
         css

@@ -9,7 +9,7 @@ export * from 'react-emotion'
 export interface Theme extends Theme_guild_theme {
   readonly: boolean,
   guestMode: boolean,
-  singleChannel: boolean,
+  singleChannel?: string,
   colors: {
     __typename: 'ThemeColors'
     _primary: Color

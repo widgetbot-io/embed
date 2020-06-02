@@ -15,7 +15,7 @@ interface Props {
   backgroundImage: string
 }
 export const BannerRoot = styled(Root)<Props>`
-  ${({theme}) => theme.singleChannel ? null : 'height: 112px'};
+  ${({theme}) => !!theme.singleChannel ? null : 'height: 112px'};
   background-image: url(${({ backgroundImage }) => backgroundImage});
   background-size: cover;
   background-position: center;
