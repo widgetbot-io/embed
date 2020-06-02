@@ -10,7 +10,6 @@ import {Theme_guild_theme} from '@generated'
 import * as Constants from '@constants'
 import {useQuery} from 'react-apollo-hooks'
 import {useCacheLoaded, useRouter} from '@hooks'
-// @ts-ignore
 import {Redirect, useHistory} from 'react-router-dom';
 import {generalStore} from '@store';
 
@@ -21,7 +20,6 @@ const getQueryParam = (query: string) => {
 
 export const ThemeProvider = ({children}) => {
 	const router = useRouter();
-	// @ts-ignore
 	const history = useHistory();
 
 	const {data} = useQuery(GET_SETTINGS, {variables: { guild: router.guild }, fetchPolicy: 'network-only'});
