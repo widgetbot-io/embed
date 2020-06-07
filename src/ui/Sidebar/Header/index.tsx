@@ -73,7 +73,7 @@ export class Header extends React.Component {
 								if (window.innerWidth < 520) return (
 									<BannerRoot className="header" backgroundImage={banner}>
 										{icon.includes('null') ?
-											<Acronym>{data.guild.name.replace(/\w+/g, name => name[0]).replace(/\s/g, '')}</Acronym> :
+											<Acronym>{data.guild.name.replace(/'s /g, ' ').replace(/\w+/g, e => e[0]).replace(/\s/g, '')}</Acronym> :
 											<Icon src={icon} className="icon"/>
 										}
 										<BannerName className="name">{data.guild.name}</BannerName>
@@ -83,7 +83,7 @@ export class Header extends React.Component {
 								return (
 									<BannerRoot className="header" backgroundImage={banner}>
 										{icon.includes('null') ?
-											<Acronym>{data.guild.name.replace(/\w+/g, name => name[0]).replace(/\s/g, '')}</Acronym> :
+											<Acronym>{data.guild.name.replace(/'s /g, ' ').replace(/\w+/g, e => e[0]).replace(/\s/g, '')}</Acronym> :
 											<Icon src={icon} className="icon"/>
 										}
 										<BannerName className="name">{data.guild.name}</BannerName>
@@ -104,7 +104,7 @@ export class Header extends React.Component {
 							if (window.innerWidth < 520) return (
 								<Root className="header">
 									{icon.includes('null') ?
-										<Acronym>{data.guild.name.replace(/\w+/g, name => name[0]).replace(/\s/g, '')}</Acronym> :
+										<Acronym>{data.guild.name.replace(/'s /g, ' ').replace(/\w+/g, e => e[0]).replace(/\s/g, '')}</Acronym> :
 										<Icon src={icon} className="icon"/>
 									}
 									<Name className="name">{data.guild.name}</Name>
@@ -114,7 +114,7 @@ export class Header extends React.Component {
 							return (
 								<Root className="header">
 									{icon.includes('null') ?
-										<Acronym>{data.guild.name.replace(/\w+/g, name => name[0]).replace(/\s/g, '')}</Acronym> :
+										<Acronym>{data.guild.name.replace(/'s /g, ' ').replace(/\w+/g, e => e[0]).replace(/\s/g, '')}</Acronym> :
 										<Icon src={icon} className="icon"/>
 									}
 									<Name className="name">{data.guild.name}</Name>
