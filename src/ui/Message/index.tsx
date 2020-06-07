@@ -231,7 +231,7 @@ class Message extends React.PureComponent<Props, any> {
                   return (
                     <React.Fragment key={message.id}>
                       <Secondary.Boost>
-                        {member}{Locale.translate('frontend.messages.boost')}
+                        {member} {Locale.translate('frontend.messages.boost')}
                       </Secondary.Boost>
                       <Timestamp time={message.createdAt} />
                     </React.Fragment>
