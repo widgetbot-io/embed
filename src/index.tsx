@@ -16,7 +16,7 @@ import { history } from '@lib/history'
 import register, { unregister } from './registerServiceWorker'
 
 if (!window.location.hostname.includes(`127.0.0.1`) && !window.location.hostname.includes(`localhost`))
-    Sentry.init({dsn: 'https://33c8c42761f846a8b08ca08cc866b8ac@turret.forbid.fun/2'});
+    Sentry.init({dsn: 'https://dc53893051504a7f9f94b1c207364f5f@o328116.ingest.sentry.io/1840509'});
 
 // Render App
 ReactDOM.render(
