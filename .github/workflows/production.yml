@@ -29,9 +29,9 @@ jobs:
       - name: Docker login
         run: echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com --username yomanz --password-stdin
       - name: Docker build
-        run: docker build -t docker.pkg.github.com/widgetbot-io/embed/production:latest .
+        run: docker build -t docker.pkg.github.com/widgetbot-io/widgetbot/embed/production:latest .
       - name: Docker push tag latest
-        run: docker push docker.pkg.github.com/widgetbot-io/embed/production:latest
+        run: docker push docker.pkg.github.com/widgetbot-io/widgetbot/embed/production:latest
   kubernetes-deploy:
     name: Kubernetes deploy
     needs: docker-build-publish
