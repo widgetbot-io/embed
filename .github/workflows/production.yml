@@ -36,7 +36,7 @@ jobs:
         run: docker push docker.pkg.github.com/widgetbot-io/embed/embed:${GITHUB_REF#refs/tags/}
   kubernetes-deploy:
     name: Kubernetes deploy
-    needs: docker-build-publish
+    needs: docker
     runs-on: ubuntu-latest
     steps:
       - name: Use actions/checkout@v2
