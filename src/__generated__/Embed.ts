@@ -1,5 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -8,9 +9,8 @@
 
 export interface Embed_author {
   __typename: "EmbedAuthor";
-  proxyIconURL: string | null;
-  name: string | null;
   url: string | null;
+  name: string | null;
 }
 
 export interface Embed_fields {
@@ -22,7 +22,7 @@ export interface Embed_fields {
 
 export interface Embed_image {
   __typename: "EmbedImage";
-  proxyURL: string;
+  url: string;
   width: number;
   height: number;
 }
@@ -35,7 +35,7 @@ export interface Embed_provider {
 
 export interface Embed_footer {
   __typename: "EmbedFooter";
-  proxyIconURL: string | null;
+  url: string | null;
   text: string;
 }
 
@@ -43,7 +43,7 @@ export interface Embed_thumbnail {
   __typename: "EmbedThumbnail";
   height: number;
   width: number;
-  proxyURL: string;
+  url: string;
 }
 
 export interface Embed_video {
@@ -58,7 +58,7 @@ export interface Embed {
   title: string | null;
   description: string | null;
   url: string | null;
-  timestamp: number | null;
+  timestamp: string | null;
   hexColor: string | null;
   type: string | null;
   author: Embed_author | null;

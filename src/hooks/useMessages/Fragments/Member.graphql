@@ -1,4 +1,0 @@
-fragment Member on IMember {
-    displayName
-    displayHexColor
-}

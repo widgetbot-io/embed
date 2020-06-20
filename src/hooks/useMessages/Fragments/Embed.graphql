@@ -6,7 +6,7 @@ fragment Embed on Embed {
   hexColor
   type
   author {
-    proxyIconURL
+    url
     name
     url
   }
@@ -16,7 +16,7 @@ fragment Embed on Embed {
     inline
   }
   image {
-    proxyURL
+    url
     width
     height
   }
@@ -25,13 +25,13 @@ fragment Embed on Embed {
     url
   }
   footer {
-    proxyIconURL
+    url
     text
   }
   thumbnail {
     height
     width
-    proxyURL
+    url
   }
   video {
     height

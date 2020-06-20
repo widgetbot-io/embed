@@ -1,21 +1,17 @@
 /* tslint:disable */
 /* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
 // GraphQL fragment: TextMessage
 // ====================================================
 
-export interface TextMessage_reactions_emoji {
-  __typename: "ReactionEmoji";
-  name: string;
-  url: string | null;
-}
-
 export interface TextMessage_reactions {
   __typename: "Reaction";
   count: number;
-  emoji: TextMessage_reactions_emoji;
+  name: string;
+  url: string | null;
 }
 
 export interface TextMessage_attachments {
@@ -30,9 +26,8 @@ export interface TextMessage_attachments {
 
 export interface TextMessage_embeds_author {
   __typename: "EmbedAuthor";
-  proxyIconURL: string | null;
-  name: string | null;
   url: string | null;
+  name: string | null;
 }
 
 export interface TextMessage_embeds_fields {
@@ -44,7 +39,7 @@ export interface TextMessage_embeds_fields {
 
 export interface TextMessage_embeds_image {
   __typename: "EmbedImage";
-  proxyURL: string;
+  url: string;
   width: number;
   height: number;
 }
@@ -57,7 +52,7 @@ export interface TextMessage_embeds_provider {
 
 export interface TextMessage_embeds_footer {
   __typename: "EmbedFooter";
-  proxyIconURL: string | null;
+  url: string | null;
   text: string;
 }
 
@@ -65,7 +60,7 @@ export interface TextMessage_embeds_thumbnail {
   __typename: "EmbedThumbnail";
   height: number;
   width: number;
-  proxyURL: string;
+  url: string;
 }
 
 export interface TextMessage_embeds_video {
@@ -80,7 +75,7 @@ export interface TextMessage_embeds {
   title: string | null;
   description: string | null;
   url: string | null;
-  timestamp: number | null;
+  timestamp: string | null;
   hexColor: string | null;
   type: string | null;
   author: TextMessage_embeds_author | null;
@@ -94,24 +89,9 @@ export interface TextMessage_embeds {
 
 export interface TextMessage {
   __typename: "TextMessage";
-  /**
-   * Message content
-   */
-  content: string | null;
-  /**
-   * Time the message was edited
-   */
-  editedAt: any | null;
-  /**
-   * Message reactions
-   */
+  content: string;
+  editedAt: string | null;
   reactions: TextMessage_reactions[];
-  /**
-   * Message attachments
-   */
   attachments: TextMessage_attachments[];
-  /**
-   * Message embeds
-   */
   embeds: TextMessage_embeds[] | null;
 }

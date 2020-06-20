@@ -1,21 +1,15 @@
 /* tslint:disable */
 /* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
 // GraphQL query operation: RoleInfo
 // ====================================================
 
-export interface RoleInfo_guild_role {
-  __typename: "Role";
-  id: string | null;
-  name: string | null;
-  hexColor: string | null;
-}
-
 export interface RoleInfo_guild {
   __typename: "Guild";
-  role: RoleInfo_guild_role | null;
+  id: string;
 }
 
 export interface RoleInfo {
@@ -24,5 +18,4 @@ export interface RoleInfo {
 
 export interface RoleInfoVariables {
   server: string;
-  role: string;
 }

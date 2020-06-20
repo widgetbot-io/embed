@@ -1,9 +1,10 @@
-query MemberInfo($server: String!, $member: String!) {
+query MemberInfo($server: String!) { # , $member: String!
   guild(id: $server) {
-    member(id: $member) {
-      id
-      displayName
-      displayHexColor
-    }
+    id
+#    member(id: $member) {
+#      id
+#      displayName
+#      displayHexColor
+#    }
   }
 }

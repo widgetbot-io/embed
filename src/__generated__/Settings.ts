@@ -1,5 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -7,36 +8,22 @@
 // ====================================================
 
 export interface Settings_guild_settings_theme_colors {
-  __typename: "ThemeColors";
-  /**
-   * Primary theme color (font color)
-   */
+  __typename: "ThemeColorSettings";
   primary: string | null;
-  /**
-   * Accent color (buttons)
-   */
   accent: string | null;
-  /**
-   * Background color
-   */
   background: string | null;
 }
 
 export interface Settings_guild_settings_theme {
-  __typename: "Theme";
-  /**
-   * Custom CSS for the server
-   */
+  __typename: "ThemeSettings";
   css: string | null;
-  /**
-   * Custom colors for the server
-   */
-  colors: Settings_guild_settings_theme_colors | null;
+  colors: Settings_guild_settings_theme_colors;
 }
 
 export interface Settings_guild_settings {
-  __typename: "Settings";
+  __typename: "GuildSettings";
   guestMode: boolean;
+  singleChannel: string | null;
   readonly: boolean;
   theme: Settings_guild_settings_theme | null;
 }

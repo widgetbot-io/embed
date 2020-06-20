@@ -1,17 +1,18 @@
 #import "./TextMessage.graphql"
-#import "./Author.graphql"
-#import "./Member.graphql"
 
 fragment Message on Message {
   id
   createdAt
   __typename
-  author {
-    ...Author
+
+  user {
+    id
+    name
+    discrim
+    avatar
+    color
   }
-  member {
-    ...Member
-  }
+
   flags {
     CROSSPOSTED,
     IS_CROSSPOST,
@@ -23,11 +24,11 @@ fragment Message on Message {
   ... on TextMessage {
     ...TextMessage
   }
-  ... on BoostMessage {
-    tier
-  }
-
-  ... on FollowMessage {
-    content
-  }
+#  ... on BoostMessage {
+#    tier
+#  }
+#
+#  ... on FollowMessage {
+#    content
+#  }
 }

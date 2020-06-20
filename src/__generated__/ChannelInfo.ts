@@ -1,32 +1,27 @@
 /* tslint:disable */
 /* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
 // GraphQL query operation: ChannelInfo
 // ====================================================
 
-export interface ChannelInfo_channel_NewsChannel {
-  __typename: "NewsChannel" | "StoreChannel" | "VoiceChannel";
-}
-
-export interface ChannelInfo_channel_TextChannel_category {
+export interface ChannelInfo_channel_category {
   __typename: "Category";
   name: string;
   position: number;
 }
 
-export interface ChannelInfo_channel_TextChannel {
+export interface ChannelInfo_channel {
   __typename: "TextChannel";
   name: string;
   id: string;
-  category: ChannelInfo_channel_TextChannel_category | null;
+  category: ChannelInfo_channel_category;
 }
 
-export type ChannelInfo_channel = ChannelInfo_channel_NewsChannel | ChannelInfo_channel_TextChannel;
-
 export interface ChannelInfo {
-  channel: ChannelInfo_channel | null;
+  channel: ChannelInfo_channel;
 }
 
 export interface ChannelInfoVariables {

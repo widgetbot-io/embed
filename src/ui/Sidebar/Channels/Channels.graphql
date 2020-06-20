@@ -14,14 +14,14 @@ query Channels($guild: String!) {
           position
         }
       }
-      ... on NewsChannel {
-        canSend
-        nsfw
-        category {
-          name
-          position
-        }
-      }
+#      ... on NewsChannel {
+#        canSend
+#        nsfw
+#        category {
+#          name
+#          position
+#        }
+#      }
     }
   }
 }

@@ -33,10 +33,6 @@ const developers = {
   "302604426781261824": {
     href: null,
     title: "Developer"
-  },
-  "207629082257653760": {
-    href: "https://file.properties",
-    title: "Staff"
   }
 };
 

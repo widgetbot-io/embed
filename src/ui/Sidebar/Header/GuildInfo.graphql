@@ -1,14 +1,14 @@
 query GuildInfo($guild: String!) {
   guild(id: $guild) {
     name
-    iconURL
+    icon
     invite
     memberCount
-    bannerURL
-    splashURL
+    banner
+    splash
     partnered
     verified
-    premiumTier
+    tier
 
     channels {
       __typename
@@ -25,15 +25,15 @@ query GuildInfo($guild: String!) {
           position
         }
       }
-      ... on NewsChannel {
-        topic
-        canSend
-        nsfw
-        category {
-          name
-          position
-        }
-      }
+#      ... on NewsChannel {
+#        topic
+#        canSend
+#        nsfw
+#        category {
+#          name
+#          position
+#        }
+#      }
     }
   }
 }
