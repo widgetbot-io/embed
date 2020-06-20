@@ -7,16 +7,17 @@
 // GraphQL query operation: Messages
 // ====================================================
 
-export interface Messages_channel_messages_user {
+export interface Messages_channel_messages_PinnedMessage_user {
   __typename: "User";
   id: string;
   name: string;
   discrim: string;
   avatar: string;
   color: string;
+  bot: boolean;
 }
 
-export interface Messages_channel_messages_flags {
+export interface Messages_channel_messages_PinnedMessage_flags {
   __typename: "MessageFlags";
   CROSSPOSTED: boolean | null;
   IS_CROSSPOST: boolean | null;
@@ -25,14 +26,41 @@ export interface Messages_channel_messages_flags {
   URGENT: boolean | null;
 }
 
-export interface Messages_channel_messages_reactions {
+export interface Messages_channel_messages_PinnedMessage {
+  __typename: "PinnedMessage";
+  id: string;
+  createdAt: number;
+  user: Messages_channel_messages_PinnedMessage_user;
+  flags: Messages_channel_messages_PinnedMessage_flags;
+}
+
+export interface Messages_channel_messages_TextMessage_user {
+  __typename: "User";
+  id: string;
+  name: string;
+  discrim: string;
+  avatar: string;
+  color: string;
+  bot: boolean;
+}
+
+export interface Messages_channel_messages_TextMessage_flags {
+  __typename: "MessageFlags";
+  CROSSPOSTED: boolean | null;
+  IS_CROSSPOST: boolean | null;
+  SUPPRESS_EMBEDS: boolean | null;
+  SOURCE_MESSAGE_DELETED: boolean | null;
+  URGENT: boolean | null;
+}
+
+export interface Messages_channel_messages_TextMessage_reactions {
   __typename: "Reaction";
   count: number;
   name: string;
   url: string | null;
 }
 
-export interface Messages_channel_messages_attachments {
+export interface Messages_channel_messages_TextMessage_attachments {
   __typename: "Attachment";
   url: string;
   height: number | null;
@@ -42,53 +70,53 @@ export interface Messages_channel_messages_attachments {
   spoiler: boolean;
 }
 
-export interface Messages_channel_messages_embeds_author {
+export interface Messages_channel_messages_TextMessage_embeds_author {
   __typename: "EmbedAuthor";
   url: string | null;
   name: string | null;
 }
 
-export interface Messages_channel_messages_embeds_fields {
+export interface Messages_channel_messages_TextMessage_embeds_fields {
   __typename: "EmbedField";
   value: string;
   name: string;
   inline: boolean;
 }
 
-export interface Messages_channel_messages_embeds_image {
+export interface Messages_channel_messages_TextMessage_embeds_image {
   __typename: "EmbedImage";
   url: string;
   width: number;
   height: number;
 }
 
-export interface Messages_channel_messages_embeds_provider {
+export interface Messages_channel_messages_TextMessage_embeds_provider {
   __typename: "EmbedProvider";
   name: string | null;
   url: string | null;
 }
 
-export interface Messages_channel_messages_embeds_footer {
+export interface Messages_channel_messages_TextMessage_embeds_footer {
   __typename: "EmbedFooter";
   url: string | null;
   text: string;
 }
 
-export interface Messages_channel_messages_embeds_thumbnail {
+export interface Messages_channel_messages_TextMessage_embeds_thumbnail {
   __typename: "EmbedThumbnail";
   height: number;
   width: number;
   url: string;
 }
 
-export interface Messages_channel_messages_embeds_video {
+export interface Messages_channel_messages_TextMessage_embeds_video {
   __typename: "EmbedVideo";
   height: number;
   width: number;
   url: string;
 }
 
-export interface Messages_channel_messages_embeds {
+export interface Messages_channel_messages_TextMessage_embeds {
   __typename: "Embed";
   title: string | null;
   description: string | null;
@@ -96,27 +124,29 @@ export interface Messages_channel_messages_embeds {
   timestamp: string | null;
   hexColor: string | null;
   type: string | null;
-  author: Messages_channel_messages_embeds_author | null;
-  fields: Messages_channel_messages_embeds_fields[];
-  image: Messages_channel_messages_embeds_image | null;
-  provider: Messages_channel_messages_embeds_provider | null;
-  footer: Messages_channel_messages_embeds_footer | null;
-  thumbnail: Messages_channel_messages_embeds_thumbnail | null;
-  video: Messages_channel_messages_embeds_video | null;
+  author: Messages_channel_messages_TextMessage_embeds_author | null;
+  fields: Messages_channel_messages_TextMessage_embeds_fields[];
+  image: Messages_channel_messages_TextMessage_embeds_image | null;
+  provider: Messages_channel_messages_TextMessage_embeds_provider | null;
+  footer: Messages_channel_messages_TextMessage_embeds_footer | null;
+  thumbnail: Messages_channel_messages_TextMessage_embeds_thumbnail | null;
+  video: Messages_channel_messages_TextMessage_embeds_video | null;
 }
 
-export interface Messages_channel_messages {
+export interface Messages_channel_messages_TextMessage {
   __typename: "TextMessage";
   id: string;
-  createdAt: string;
-  user: Messages_channel_messages_user;
-  flags: Messages_channel_messages_flags;
+  createdAt: number;
+  user: Messages_channel_messages_TextMessage_user;
+  flags: Messages_channel_messages_TextMessage_flags;
   content: string;
-  editedAt: string | null;
-  reactions: Messages_channel_messages_reactions[];
-  attachments: Messages_channel_messages_attachments[];
-  embeds: Messages_channel_messages_embeds[] | null;
+  editedAt: number | null;
+  reactions: Messages_channel_messages_TextMessage_reactions[];
+  attachments: Messages_channel_messages_TextMessage_attachments[];
+  embeds: Messages_channel_messages_TextMessage_embeds[] | null;
 }
+
+export type Messages_channel_messages = Messages_channel_messages_PinnedMessage | Messages_channel_messages_TextMessage;
 
 export interface Messages_channel {
   __typename: "TextChannel";
