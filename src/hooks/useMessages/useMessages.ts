@@ -1,5 +1,5 @@
 import produce from "immer";
-import { MESSAGES, DELETED_MESSAGES, NEW_MESSAGES, UPDATED_MESSAGES } from ".";
+import { MESSAGES } from ".";
 import { useQuery, useSubscription } from "react-apollo-hooks";
 
 /**
