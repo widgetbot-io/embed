@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom'
 import * as React from 'react'
 import { Query } from 'react-apollo'
 
-import {MemberInfo, MemberInfo_guild_member} from '@generated'
+import {MemberInfo, Message_TextMessage_user} from '@generated'
 import MemberLink from './link'
 import MEMBER_INFO from './MemberInfo.graphql'
 
@@ -11,7 +11,7 @@ import MEMBER_INFO from './MemberInfo.graphql'
 interface Props {
   id: string
   className?: string
-  children: (member: MemberInfo_guild_member) => any
+  children: (member: Message_TextMessage_user) => any
 }
 
 const Member = ({ id: member, children, className }: Props) => (
@@ -20,15 +20,16 @@ const Member = ({ id: member, children, className }: Props) => (
       match: {
         params: { server }
       }
-    }) => (
-        <MemberLink id={member} className={cx('member-link', className)}>
-          {children({
-            __typename: 'Member',
-            displayName: member,
-            displayHexColor: "0x0000ff",
-            id: member
-          })}
-        </MemberLink>
+    }) => ( // TODO: FEATURE/S: When Member Type is Added
+        <div></div>
+        // <MemberLink id={member} className={cx('member-link', className)}>
+        //   {children({
+        //     __typename: 'User',
+        //     name: member,
+        //     color: "0x0000ff",
+        //     id: member
+        //   })}
+        // </MemberLink>
     )}
   </Route>
 )

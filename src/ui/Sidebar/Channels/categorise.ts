@@ -1,6 +1,6 @@
-import {ChannelInfo_channel_TextChannel_category, Channels_guild_channels_TextChannel} from '@generated'
+import {ChannelInfo_channel_category, ChannelInfo_channel} from '@generated'
 
-interface Channel extends Channels_guild_channels_TextChannel {
+interface Channel extends ChannelInfo_channel {
   pings?: number
 }
 
@@ -11,13 +11,13 @@ export interface ICategory {
 }
 
 const categorise = (
-  channels: Channels_guild_channels_TextChannel[]
+  channels: ChannelInfo_channel[]
 ): ICategory[] => {
   let indexes = new Map<string, number>()
   let categorised = new Array<ICategory>()
 
   channels.forEach((channel, i) => {
-    const category: ChannelInfo_channel_TextChannel_category = channel.category ? channel.category : { name: null, position: -1, __typename: 'Category'};
+    const category: ChannelInfo_channel_category = channel.category ? channel.category : { name: null, position: -1, __typename: 'Category'};
 
     const newCategory = {
       name: category && category.name,
