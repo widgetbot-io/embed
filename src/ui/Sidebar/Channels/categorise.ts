@@ -1,6 +1,6 @@
-import {ChannelInfo_channel_category, ChannelInfo_channel} from '@generated'
+import {ChannelInfo_channel_category, GuildInfo_guild_channels} from '@generated'
 
-interface Channel extends ChannelInfo_channel {
+interface Channel extends GuildInfo_guild_channels {
   pings?: number
 }
 
@@ -11,7 +11,7 @@ export interface ICategory {
 }
 
 const categorise = (
-  channels: ChannelInfo_channel[]
+  channels: GuildInfo_guild_channels[]
 ): ICategory[] => {
   let indexes = new Map<string, number>()
   let categorised = new Array<ICategory>()

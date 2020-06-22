@@ -58,7 +58,7 @@ export class Header extends React.Component {
 
 							if (error) return null;
 
-							let icon = data.guild.iconURL;
+							let icon = data.guild.icon;
 
 							if (icon.includes('a_')) {
 								icon = icon.replace('jpg', 'gif?size=64')
@@ -66,9 +66,9 @@ export class Header extends React.Component {
 								icon = webpCheck(icon.replace('jpg', 'webp?size=64'))
 							}
 
-							if (data.guild.bannerURL) {
+							if (data.guild.banner) {
 
-								let banner = webpCheck(data.guild.bannerURL);
+								let banner = webpCheck(data.guild.banner);
 
 								if (window.innerWidth < 520) return (
 									<BannerRoot className="header" backgroundImage={banner}>
