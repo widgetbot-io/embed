@@ -1,5 +1,4 @@
 import { ApolloClient } from 'apollo-client'
-import gql from 'graphql-tag'
 import { setContext } from 'apollo-link-context';
 
 import cache from './cache'
