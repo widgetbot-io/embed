@@ -30,6 +30,7 @@ import Reaction from './Reaction'
 import Embed from './Embed'
 import AttachmentSpoiler from '@ui/shared/markdown/render/elements/AttachmentSpoiler'
 import { Locale } from '@lib/Locale'
+import {Util} from '@lib/Util';
 
 interface Props {
   messages: Messages_channel_messages[],
@@ -51,11 +52,13 @@ class Message extends React.PureComponent<Props, any> {
   render() {
     const { messages } = this.props;
     const [firstMessage] = messages;
+
+    const avatarUrl = !firstMessage.user.avatar.startsWith('http') ? Util.craftAvatarUrl(firstMessage.user.id, firstMessage.user.avatar) : firstMessage.user.avatar;
     return (
       <Group style={this.props.style} className="group">
         {firstMessage.__typename === 'TextMessage' ? (
           <Avatar
-            url={gifCheck(firstMessage.user.avatar) || DEFAULT_AVATAR}
+            url={gifCheck(avatarUrl) || DEFAULT_AVATAR}
             className="avatar"
           />
         ) : null}
