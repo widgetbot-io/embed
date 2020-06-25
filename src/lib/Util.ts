@@ -4,4 +4,8 @@ export class Util {
 	static craftAvatarUrl(snowflake: string, avatar: string): string {
 		return `https://cdn.discordapp.com/avatars/${snowflake}/${avatar}.jpg`
 	}
+
+	static craftServerUrl(snowflake: string, icon: string): string {
+		return `https://cdn.discordapp.com/icons/${snowflake}/${icon}.jpg`
+	}
 }
