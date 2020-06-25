@@ -15,6 +15,7 @@ import {inject, observer} from "mobx-react";
 import { Locale } from '@lib/Locale'
 import categorise from "@ui/Sidebar/Channels/categorise";
 import {autorun} from "mobx";
+import {Util} from '@lib/Util';
 
 
 @observer
@@ -58,7 +59,7 @@ export class Header extends React.Component {
 
 							if (error) return null;
 
-							let icon = data.guild.icon;
+							let icon = data.guild.icon && Util.craftServerUrl(data.guild.id, data.guild.icon);
 
 							if (icon.includes('a_')) {
 								icon = icon.replace('jpg', 'gif?size=64')

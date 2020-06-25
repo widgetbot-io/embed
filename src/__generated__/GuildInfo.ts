@@ -26,6 +26,7 @@ export interface GuildInfo_guild_channels {
 
 export interface GuildInfo_guild {
   __typename: "Guild";
+  id: string;
   name: string;
   icon: string;
   invite: string;

@@ -90,7 +90,7 @@ export interface TextMessage_embeds {
 export interface TextMessage {
   __typename: "TextMessage";
   content: string;
-  editedAt: number | null;
+  editedAt: any | null;
   reactions: TextMessage_reactions[];
   attachments: TextMessage_attachments[];
   embeds: TextMessage_embeds[] | null;

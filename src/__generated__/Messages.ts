@@ -29,7 +29,7 @@ export interface Messages_channel_messages_PinnedMessage_flags {
 export interface Messages_channel_messages_PinnedMessage {
   __typename: "PinnedMessage";
   id: string;
-  createdAt: number;
+  createdAt: any;
   user: Messages_channel_messages_PinnedMessage_user;
   flags: Messages_channel_messages_PinnedMessage_flags;
 }
@@ -136,11 +136,11 @@ export interface Messages_channel_messages_TextMessage_embeds {
 export interface Messages_channel_messages_TextMessage {
   __typename: "TextMessage";
   id: string;
-  createdAt: number;
+  createdAt: any;
   user: Messages_channel_messages_TextMessage_user;
   flags: Messages_channel_messages_TextMessage_flags;
   content: string;
-  editedAt: number | null;
+  editedAt: any | null;
   reactions: Messages_channel_messages_TextMessage_reactions[];
   attachments: Messages_channel_messages_TextMessage_attachments[];
   embeds: Messages_channel_messages_TextMessage_embeds[] | null;

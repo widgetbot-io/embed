@@ -29,7 +29,7 @@ export interface Message_PinnedMessage_flags {
 export interface Message_PinnedMessage {
   __typename: "PinnedMessage";
   id: string;
-  createdAt: number;
+  createdAt: any;
   user: Message_PinnedMessage_user;
   flags: Message_PinnedMessage_flags;
 }
@@ -136,11 +136,11 @@ export interface Message_TextMessage_embeds {
 export interface Message_TextMessage {
   __typename: "TextMessage";
   id: string;
-  createdAt: number;
+  createdAt: any;
   user: Message_TextMessage_user;
   flags: Message_TextMessage_flags;
   content: string;
-  editedAt: number | null;
+  editedAt: any | null;
   reactions: Message_TextMessage_reactions[];
   attachments: Message_TextMessage_attachments[];
   embeds: Message_TextMessage_embeds[] | null;
