@@ -100,6 +100,7 @@ export const Name = styled('div')`
   text-overflow: ellipsis;
   width: 100%;
   overflow: hidden;
+  white-space: nowrap;
 `
 
 export const Emoji = styled(Twemoji)`

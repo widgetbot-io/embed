@@ -18,8 +18,6 @@ interface Props {
 @observer
 class Channel extends React.PureComponent<Props> {
     render() {
-        const nameLength = this.props.__typename === 'StoreChannel' ? 10 : 13;
-        const name = this.props.name.length > nameLength ? `${this.props.name.slice(0, nameLength)}...` : this.props.name;
         return (
             <Root id={this.props.id} selected={this.props.selected} unread={this.props.unread} order={this.props.order} itemID={ITEM_ID} className="channel">
                 {(() => {
@@ -35,7 +33,7 @@ class Channel extends React.PureComponent<Props> {
                         }
                     }
                 })()}
-                <Name className="name"><Emoji>{name}</Emoji> {this.props.__typename === 'StoreChannel' ? <WIP>WIP</WIP> : null}</Name>
+                <Name className="name"><Emoji>{this.props.name}</Emoji> {this.props.__typename === 'StoreChannel' ? <WIP>WIP</WIP> : null}</Name>
                 {(() => {
                     if (this.props.pings > 0) return <Pings className="pings">{this.props.pings}</Pings>;
                 })()}
