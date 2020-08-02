@@ -62,9 +62,9 @@ export class Header extends React.Component {
 							let icon = data.guild.icon && Util.craftServerUrl(data.guild.id, data.guild.icon);
 
 							if (icon.includes('a_')) {
-								icon = icon.replace('jpg', 'gif?size=64')
+								icon = icon.replace('webp', 'gif?size=64')
 							} else {
-								icon = webpCheck(icon.replace('jpg', 'webp?size=64'))
+								icon = webpCheck(icon) + '?size=64'
 							}
 
 							if (data.guild.banner) {
