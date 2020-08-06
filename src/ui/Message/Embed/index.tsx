@@ -216,6 +216,7 @@ const Embed = ({
       })}
     >
       <Root>
+        {/* @ts-expect-error */}
         <Wrapper color={hexColor}>
           <Content>
             <div>
