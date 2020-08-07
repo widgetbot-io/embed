@@ -98,7 +98,7 @@
     "ts-node": "^8.3.0",
     "ts-node-dev": "^1.0.0-pre.40",
     "typedi": "^0.8.0",
-    "typescript": "^3.5.3"
+    "typescript": "^3.9.7"
   },
   "devDependencies": {
     "@lingui/babel-preset-react": "^2.8.3",

@@ -31,15 +31,23 @@ export default class TextSpoiler extends PureComponent<Props, State> {
     }
 
     computeStyle() {
-        if (this.state.showing) return { background: "hsla(0, 0%, 100%, .1)", color: "inherit", borderRadius: "3px" };
-        if (this.state.hover) return { background: "rgba(0, 0, 0, 31%)", color: "rgba(0, 0, 0, 0%)", cursor: "pointer", borderRadius: "3px" };
-        return { background: "rgba(0, 0, 0, 41%)", color: "rgba(0, 0, 0, 0%)", borderRadius: "3px" };
+        if (this.state.showing) return { background: "hsla(0, 0%, 100%, .1)", borderRadius: "3px" };
+        if (this.state.hover) return { background: "rgba(0, 0, 0, 31%)", cursor: "pointer", borderRadius: "3px" };
+        return { background: "rgba(0, 0, 0, 41%)", borderRadius: "3px" };
+    }
+
+    computeInnerStyle() {
+        if (this.state.showing) return { opacity: 1 };
+        return { opacity: 0, pointerEvents: "none" };
     }
 
     render() {
         return (
-            <span role={this.state.role} style={this.computeStyle()} onClick={this.onClick}  onMouseEnter={this.onHover} onMouseLeave={this.onHover}>
-                {this.props.content}
+            <span role={this.state.role} style={this.computeStyle()} onClick={this.onClick} onMouseEnter={this.onHover} onMouseLeave={this.onHover}>
+                {/* @ts-expect-error */}
+                <span style={this.computeInnerStyle()}>
+                    {this.props.content}
+                </span>
             </span>
         );
     }
