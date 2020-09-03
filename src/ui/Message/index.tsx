@@ -211,36 +211,34 @@ class Message extends React.PureComponent<Props, any> {
                 )
               }
 
-              // case 'BoostMessage': {
-              //
-              //   const member = (
-              //     <Member id={message.author.id} color={message.member.displayHexColor}>
-              //       {message.member.displayName || message.author.username}
-              //     </Member>
-              //   );
-              //
-              //   // @ts-ignore
-              //   if(message.tier) {
-              //     return (
-              //       <React.Fragment key={message.id}>
-              //         <Secondary.Boost>
-              //           {member} {Locale.translate('frontend.messages.boost')} {Locale.translate('frontend.messages.boost.achieved', {GUILD: 'TODO guildName', TIER: String(message.tier)})}
-              //         </Secondary.Boost>
-              //         <Timestamp time={message.createdAt} />
-              //       </React.Fragment>
-              //     )
-              //   } else {
-              //     return (
-              //       <React.Fragment key={message.id}>
-              //         <Secondary.Boost>
-              //           {member} {Locale.translate('frontend.messages.boost')}
-              //         </Secondary.Boost>
-              //         <Timestamp time={message.createdAt} />
-              //       </React.Fragment>
-              //     )
-              //   }
-              // }
-              //
+              case 'BoostMessage': {
+                const member = (
+                  <Member id={message.user.id} color={message.user.color}>
+                    {message.user.name}
+                  </Member>
+                );
+
+                if(message.tier) {
+                  return (
+                    <React.Fragment key={message.id}>
+                      <Secondary.Boost>
+                        {member} {Locale.translate('frontend.messages.boost')} {Locale.translate('frontend.messages.boost.achieved', {GUILD: 'TODO guildName', TIER: String(message.tier)})}
+                      </Secondary.Boost>
+                      <Timestamp time={message.createdAt} />
+                    </React.Fragment>
+                  )
+                } else {
+                  return (
+                    <React.Fragment key={message.id}>
+                      <Secondary.Boost>
+                        {member} {Locale.translate('frontend.messages.boost')}
+                      </Secondary.Boost>
+                      <Timestamp time={message.createdAt} />
+                    </React.Fragment>
+                  )
+                }
+              }
+
               // case 'FollowMessage': {
               //   const member = (
               //     <Member id={message.author.id} color={message.member.displayHexColor}>

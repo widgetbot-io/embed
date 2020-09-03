@@ -25,10 +25,10 @@ fragment Message on Message {
   ... on TextMessage {
     ...TextMessage
   }
-#  ... on BoostMessage {
-#    tier
-#  }
-#
+  ... on BoostMessage {
+    tier
+  }
+
 #  ... on FollowMessage {
 #    content
 #  }
