@@ -20,7 +20,7 @@ export interface Channels_guild_channels {
   position: number;
   canSend: boolean;
   nsfw: boolean;
-  category: Channels_guild_channels_category;
+  category: Channels_guild_channels_category | null;
 }
 
 export interface Channels_guild {

@@ -17,7 +17,7 @@ export interface ChannelInfo_channel {
   __typename: "TextChannel";
   name: string;
   id: string;
-  category: ChannelInfo_channel_category;
+  category: ChannelInfo_channel_category | null;
 }
 
 export interface ChannelInfo {

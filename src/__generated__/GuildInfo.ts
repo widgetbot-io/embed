@@ -21,7 +21,7 @@ export interface GuildInfo_guild_channels {
   topic: string | null;
   canSend: boolean;
   nsfw: boolean;
-  category: GuildInfo_guild_channels_category;
+  category: GuildInfo_guild_channels_category | null;
 }
 
 export interface GuildInfo_guild {

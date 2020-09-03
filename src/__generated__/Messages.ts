@@ -27,7 +27,7 @@ export interface Messages_channel_messages_PinnedMessage_flags {
 }
 
 export interface Messages_channel_messages_PinnedMessage {
-  __typename: "PinnedMessage";
+  __typename: "PinnedMessage" | "BoostMessage";
   id: string;
   createdAt: any;
   user: Messages_channel_messages_PinnedMessage_user;
