@@ -80,14 +80,14 @@ export interface Message_TextMessage_embeds_fields {
   __typename: "EmbedField";
   value: string;
   name: string;
-  inline: boolean;
+  inline: boolean | null;
 }
 
 export interface Message_TextMessage_embeds_image {
   __typename: "EmbedImage";
-  url: string;
-  width: number;
-  height: number;
+  url: string | null;
+  width: number | null;
+  height: number | null;
 }
 
 export interface Message_TextMessage_embeds_provider {
@@ -104,16 +104,16 @@ export interface Message_TextMessage_embeds_footer {
 
 export interface Message_TextMessage_embeds_thumbnail {
   __typename: "EmbedThumbnail";
-  height: number;
-  width: number;
-  url: string;
+  height: number | null;
+  width: number | null;
+  url: string | null;
 }
 
 export interface Message_TextMessage_embeds_video {
   __typename: "EmbedVideo";
-  height: number;
-  width: number;
-  url: string;
+  height: number | null;
+  width: number | null;
+  url: string | null;
 }
 
 export interface Message_TextMessage_embeds {
@@ -121,11 +121,11 @@ export interface Message_TextMessage_embeds {
   title: string | null;
   description: string | null;
   url: string | null;
-  timestamp: string | null;
-  hexColor: string | null;
+  timestamp: any | null;
+  color: number | null;
   type: string | null;
   author: Message_TextMessage_embeds_author | null;
-  fields: Message_TextMessage_embeds_fields[];
+  fields: Message_TextMessage_embeds_fields[] | null;
   image: Message_TextMessage_embeds_image | null;
   provider: Message_TextMessage_embeds_provider | null;
   footer: Message_TextMessage_embeds_footer | null;
