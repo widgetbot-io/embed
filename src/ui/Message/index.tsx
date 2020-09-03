@@ -177,22 +177,22 @@ class Message extends React.PureComponent<Props, any> {
                 )
               }
 
-              // case 'JoinMessage': {
-              //   const member = (
-              //     <Member id={message.author.id} color={message.member.displayHexColor}>
-              //       {message.member.displayName || message.author.username}
-              //     </Member>
-              //   );
-              //
-              //   return (
-              //     <React.Fragment key={message.id}>
-              //       <Secondary.Join>
-              //         {joinMessageBeginning(message)}{member}{joinMessageEnd(message)}
-              //       </Secondary.Join>
-              //       <Timestamp time={message.createdAt} />
-              //     </React.Fragment>
-              //   )
-              // }
+              case 'JoinMessage': {
+                const member = (
+                  <Member id={message.user.id} color={message.user.color}>
+                    {message.user.name}
+                  </Member>
+                );
+
+                return (
+                  <React.Fragment key={message.id}>
+                    <Secondary.Join>
+                      {joinMessageBeginning(message)}{member}{joinMessageEnd(message)}
+                    </Secondary.Join>
+                    <Timestamp time={message.createdAt} />
+                  </React.Fragment>
+                )
+              }
 
               case 'PinnedMessage': {
                 const member = (
@@ -239,22 +239,22 @@ class Message extends React.PureComponent<Props, any> {
                 }
               }
 
-              // case 'FollowMessage': {
-              //   const member = (
-              //     <Member id={message.author.id} color={message.member.displayHexColor}>
-              //       {message.member.displayName || message.author.username}
-              //     </Member>
-              //   );
-              //
-              //   return (
-              //     <React.Fragment key={message.id}>
-              //       <Secondary.Join>
-              //         {member} {Locale.translate('frontend.messages.follow', {HOOK: message.content})}
-              //       </Secondary.Join>
-              //       <Timestamp time={message.createdAt} />
-              //     </React.Fragment>
-              //   )
-              // }
+              case 'FollowMessage': {
+                const member = (
+                  <Member id={message.user.id} color={message.user.color}>
+                    {message.user.name}
+                  </Member>
+                );
+
+                return (
+                  <React.Fragment key={message.id}>
+                    <Secondary.Join>
+                      {member} {Locale.translate('frontend.messages.follow', {HOOK: message.content})}
+                    </Secondary.Join>
+                    <Timestamp time={message.createdAt} />
+                  </React.Fragment>
+                )
+              }
 
               default:
                 return null
@@ -272,7 +272,7 @@ export default Message
 
 // Join messages: https://github.com/DJScias/Discord-Datamining/commit/c79bf619ca341d97af219fe127efac2b31d0dde5#comments
 
-function joinMessageBeginning(message: NewMessages_message_JoinMessage): string {
+function joinMessageBeginning(message: { createdAt: number }): string {
   const messages: string[] = [
       '',
       '',
@@ -293,7 +293,7 @@ function joinMessageBeginning(message: NewMessages_message_JoinMessage): string 
   return messages[(Number(new Date(message.createdAt))) % messages.length]
 }
 
-function joinMessageEnd(message: NewMessages_message_JoinMessage): string {
+function joinMessageEnd(message: { createdAt: number }): string {
   const messages: string[] = [
       ' joined the party.',
       ' is here.',

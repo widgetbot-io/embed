@@ -1,1 +1,1 @@
-{"__schema":{"types":[{"kind":"INTERFACE","name":"Channel","possibleTypes":[{"name":"TextChannel"}]},{"kind":"INTERFACE","name":"Message","possibleTypes":[{"name":"BoostMessage"},{"name":"PinnedMessage"},{"name":"TextMessage"}]}]}}
+{"__schema":{"types":[{"kind":"INTERFACE","name":"Channel","possibleTypes":[{"name":"TextChannel"}]},{"kind":"INTERFACE","name":"Message","possibleTypes":[{"name":"BoostMessage"},{"name":"FollowMessage"},{"name":"JoinMessage"},{"name":"PinnedMessage"},{"name":"TextMessage"}]}]}}

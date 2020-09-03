@@ -29,7 +29,7 @@ fragment Message on Message {
     tier
   }
 
-#  ... on FollowMessage {
-#    content
-#  }
+  ... on FollowMessage {
+    content
+  }
 }

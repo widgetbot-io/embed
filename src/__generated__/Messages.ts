@@ -27,7 +27,7 @@ export interface Messages_channel_messages_PinnedMessage_flags {
 }
 
 export interface Messages_channel_messages_PinnedMessage {
-  __typename: "PinnedMessage";
+  __typename: "PinnedMessage" | "JoinMessage";
   id: string;
   createdAt: any;
   user: Messages_channel_messages_PinnedMessage_user;
@@ -174,7 +174,35 @@ export interface Messages_channel_messages_BoostMessage {
   tier: number;
 }
 
-export type Messages_channel_messages = Messages_channel_messages_PinnedMessage | Messages_channel_messages_TextMessage | Messages_channel_messages_BoostMessage;
+export interface Messages_channel_messages_FollowMessage_user {
+  __typename: "User";
+  id: string;
+  name: string;
+  discrim: string;
+  avatar: string;
+  color: string;
+  bot: boolean;
+}
+
+export interface Messages_channel_messages_FollowMessage_flags {
+  __typename: "MessageFlags";
+  CROSSPOSTED: boolean | null;
+  IS_CROSSPOST: boolean | null;
+  SUPPRESS_EMBEDS: boolean | null;
+  SOURCE_MESSAGE_DELETED: boolean | null;
+  URGENT: boolean | null;
+}
+
+export interface Messages_channel_messages_FollowMessage {
+  __typename: "FollowMessage";
+  id: string;
+  createdAt: any;
+  user: Messages_channel_messages_FollowMessage_user;
+  flags: Messages_channel_messages_FollowMessage_flags;
+  content: string;
+}
+
+export type Messages_channel_messages = Messages_channel_messages_PinnedMessage | Messages_channel_messages_TextMessage | Messages_channel_messages_BoostMessage | Messages_channel_messages_FollowMessage;
 
 export interface Messages_channel {
   __typename: "TextChannel";
