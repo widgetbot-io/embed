@@ -176,7 +176,7 @@ const EmbedFields = ({ fields }) => {
 }
 
 const Embed = ({
-  hexColor,
+  color,
   author,
   title,
   url,
@@ -192,10 +192,10 @@ const Embed = ({
 }) =>
   embed.type === 'gifv' ? (
     <Gifv autoPlay loop muted
-      src={video.proxyURL || video.url}
-      width={+video.width}
-      height={+video.height}
-    ></Gifv>
+    src={video.proxyURL || video.url}
+    width={+video.width}
+    height={+video.height}
+    />
   ) : embed.type === 'image' ? (
     <Image
       src={thumbnail.proxyURL}
@@ -204,10 +204,10 @@ const Embed = ({
     />
   ) : embed.type === 'video' && !thumbnail ? (
     <Video controls
-      src={video.proxyURL || video.url}
-      width={+video.width}
-      height={+video.height}
-    ></Video>
+    src={video.proxyURL || video.url}
+    width={+video.width}
+    height={+video.height}
+    />
   ) : (
     <ThemeProvider
       theme={theme => ({
@@ -217,7 +217,7 @@ const Embed = ({
     >
       <Root>
         {/* @ts-expect-error */}
-        <Wrapper color={hexColor}>
+        <Wrapper color={color}>
           <Content>
             <div>
               <EmbedProvider {...provider}/>

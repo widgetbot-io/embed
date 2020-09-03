@@ -3,7 +3,7 @@ fragment Embed on Embed {
   description
   url
   timestamp
-  hexColor
+  color
   type
   author {
     url
