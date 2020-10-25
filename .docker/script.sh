@@ -1,3 +1,5 @@
+#!/bin/sh
+
 if [ -z "$CUSTOM_SERVER_ENDPOINT" ]
 then
     echo "No custom server specified, using stonks.widgetbot.io"

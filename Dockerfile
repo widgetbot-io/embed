@@ -4,4 +4,4 @@ COPY .docker/nginx.conf /etc/nginx/conf.d/default.conf
 COPY .docker/script.sh .
 COPY build/ /usr/share/nginx/html
 
-RUN chown +x ./script.sh && ./script.sh
+RUN chmod +x ./script.sh && ./script.sh
