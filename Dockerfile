@@ -1,7 +1,7 @@
 FROM nginx:alpine
 
 COPY .docker/nginx.conf /etc/nginx/conf.d/default.conf
-COPY .docker/script.sh .
+COPY .docker/entrypoint.sh /
 COPY build/ /usr/share/nginx/html
 
-RUN chmod +x ./script.sh && ./script.sh
+ENTRYPOINT ["/entrypoint.sh"]
