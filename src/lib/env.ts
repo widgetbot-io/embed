@@ -1,1 +1,1 @@
-export const url: string = 'stonks.widgetbot.io';
+export const url: string = process.env.CUSTOM_SERVER_ENDPOINT;
