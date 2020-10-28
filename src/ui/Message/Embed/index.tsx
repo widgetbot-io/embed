@@ -196,7 +196,7 @@ const Embed = ({
       width={+video.width}
       height={+video.height}
     ></Gifv>
-  ) : embed.type === 'image' ? (
+  ) : embed.type === 'image' && thumbnail ? (
     <Image
       src={thumbnail.proxyURL}
       width={+thumbnail.width}
