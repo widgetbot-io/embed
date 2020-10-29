@@ -2,7 +2,7 @@ FROM nginx:alpine
 
 COPY .docker/nginx.conf /etc/nginx/conf.d/default.conf
 COPY .docker/entrypoint.sh /
-COPY .docker/replaceEnVars.sh /
+COPY .docker/replaceEnvVars.sh /
 COPY build/ /usr/share/nginx/html
 
 ENTRYPOINT ["/entrypoint.sh"]
