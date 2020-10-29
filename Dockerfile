@@ -6,7 +6,6 @@ COPY .docker/replaceEnvVars.sh /
 COPY build/ /usr/share/nginx/html
 
 RUN chmod +x /replaceEnvVars.sh
-RUN /replaceEnvVars.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
 
