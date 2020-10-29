@@ -1,8 +1,7 @@
 #!/bin/bash
 set -e
-echo "Script replacing dynamically environment variables in all files"
-echo " usage replaceEnvVars.sh BUILD_PATH"
-echo " default BUILD_PATH = ."
+echo "Replacing environment variables in all files"
+
 echo
 
 BUILD_PATH="."
