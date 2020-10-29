@@ -5,6 +5,8 @@ COPY .docker/entrypoint.sh /
 COPY .docker/replaceEnvVars.sh /
 COPY build/ /usr/share/nginx/html
 
+RUN chmod +x /replaceEnvVars.sh
+
 ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 80
