@@ -36,5 +36,4 @@ if [ "$1" = "nginx" -o "$1" = "nginx-debug" ]; then
 fi
 # --END NGINX ENTRYPOINT--
 ls
-./replaceEnvVars.sh build
 exec "$@"
