@@ -1,7 +1,18 @@
 FROM nginx:alpine
 
+WORKDIR /
+
 COPY .docker/nginx.conf /etc/nginx/conf.d/default.conf
-COPY .docker/script.sh .
+COPY .docker/entrypoint.sh .
+COPY .docker/replaceEnvVars.sh .
 COPY build/ /usr/share/nginx/html
 
-RUN chmod +x ./script.sh && ./script.sh
+RUN chmod +x replaceEnvVars.sh
+
+ENTRYPOINT ["/bin/ash", "entrypoint.sh"]
+
+EXPOSE 80
+
+STOPSIGNAL SIGTERM
+
+CMD ["nginx", "-g", "daemon off;"]
