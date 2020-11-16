@@ -22,13 +22,14 @@ export const Root = styled('form')`
 export const Typing = styled('div')``
 
 interface FieldProps {
-  rows: number
+  rows: number,
+  canSend: boolean
 }
 export const Field = styled('div')<FieldProps>`
   display: flex;
   border-radius: 5px;
   background-color: ${({ theme }) => theme.colors._primary.fade(0.95).string()};
-  height: ${({ rows }) => (rows > 7 ? 7 : rows) * 20 + 22}px;
+  height: ${({ rows, canSend }) => canSend ? (rows > 7 ? 7 : rows) * 20 + 22 + 'px' : 'auto'};
 
   ${({ theme, rows }) =>
     theme.url.preset === 'crate' &&
