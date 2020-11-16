@@ -11,7 +11,7 @@ interface APIRequestOptions {
 }
 
 const axiosClient = Axios.create({
-    baseURL: process.env.VUE_APP_BACKEND_URL || url.includes('127.0.0.1') ? `http://${url}` : `https://${url}`,
+    baseURL: url.includes('127.0.0.1') ? `http://${url}` : `https://${url}`,
 });
 
 export async function APIRequest(endpoint: string, options: APIRequestOptions = {}): Promise<AxiosResponse> {
