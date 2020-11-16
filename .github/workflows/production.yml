@@ -29,11 +29,11 @@ jobs:
       - name: Build
         run: yarn && yarn build
       - name: Docker login
-        run: echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com --username yomanz --password-stdin
+        run: echo ${{ secrets.PAT }} | docker login ghcr.io --username yomanz --password-stdin
       - name: Docker build
-        run: docker build -t docker.pkg.github.com/widgetbot-io/embed/embed:${GITHUB_REF#refs/tags/} .
+        run: docker build -t ghcr.io/widgetbot-io/embed:${GITHUB_REF#refs/tags/} .
       - name: Docker push tag latest
-        run: docker push docker.pkg.github.com/widgetbot-io/embed/embed:${GITHUB_REF#refs/tags/}
+        run: docker push ghcr.io/widgetbot-io/embed:${GITHUB_REF#refs/tags/}
   kubernetes-deploy:
     name: Kubernetes deploy
     needs: docker
@@ -53,7 +53,7 @@ jobs:
           mkdir ~/.kube
           echo "${{ secrets.KUBE_CLUSTER_CONFIG }}" > ~/.kube/config
       - name: Kubernetes update image
-        run: kubectl set image deployment/embed embed=docker.pkg.github.com/widgetbot-io/embed/embed:${GITHUB_REF#refs/tags/}
+        run: kubectl set image deployment/embed embed=ghcr.io/widgetbot-io/embed:${GITHUB_REF#refs/tags/}
       - name: Kubernetes verify
         run: kubectl rollout status deployment/embed
       - name: Kubernetes rollback
