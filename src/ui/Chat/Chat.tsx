@@ -10,7 +10,7 @@ import { formatError } from "@views/Messages/utils";
 import { Loading } from "@ui/Overlays";
 import { addNotification } from "notify";
 import { Locale } from '@lib/Locale'
-
+import {authStore} from "@store";
 
 export interface ChatProps {}
 
@@ -46,7 +46,7 @@ export const Chat: FunctionComponent<ChatProps> = (props) => {
 
   return (
     <Root className="chat">
-      <Field rows={rows} className="field">
+      <Field rows={rows} canSend={authStore.user && data.channel.canSend} className="field">
         <Input
           channel={data.channel}
           onChange={(value: string) => {

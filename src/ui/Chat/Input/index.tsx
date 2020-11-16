@@ -150,12 +150,6 @@ class MagicTextarea extends React.Component<Props> {
       </Root>
     ) : (
       <NoPerms
-        // style={{
-        //   opacity: 0.4,
-        //   marginTop: "10px",
-        //   marginBottom: 0,
-        //   marginLeft: "10px"
-        // }}
         onClick={onClick.bind({ props: { AuthStore: authStore }})}
       >
         { !user ? Locale.translate('frontend.input.login') : Locale.translate('frontend.input.noperms') }
