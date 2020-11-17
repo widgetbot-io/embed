@@ -1,5 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -7,19 +8,13 @@
 // ====================================================
 
 export interface SendMessage_sendMessage {
-  __typename: "TextMessage";
-  /**
-   * Message ID
-   */
+  __typename: "TextMessagePayload";
   id: string;
-  /**
-   * Message content
-   */
-  content: string | null;
+  content: string;
 }
 
 export interface SendMessage {
-  sendMessage: SendMessage_sendMessage | null;
+  sendMessage: SendMessage_sendMessage;
 }
 
 export interface SendMessageVariables {

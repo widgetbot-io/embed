@@ -8,7 +8,7 @@ export const mention = {
   parse: ([mention, id]) => ({ mention, id }),
   react: ({ mention, id }, recurseOutput, state) => (
       <Mention key={state.key} id={id}>
-      {({ displayName }) => `${displayName}`}
+      {({ name }) => `${name}`}
     </Mention>
   )
 }

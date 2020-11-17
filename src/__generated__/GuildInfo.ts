@@ -1,65 +1,41 @@
 /* tslint:disable */
 /* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
 // GraphQL query operation: GuildInfo
 // ====================================================
 
-export interface GuildInfo_guild_channels_StoreChannel {
-  __typename: "StoreChannel" | "VoiceChannel";
-  name: string;
-  id: string;
-  position: number | null;
-}
-
-export interface GuildInfo_guild_channels_TextChannel_category {
+export interface GuildInfo_guild_channels_category {
   __typename: "Category";
   name: string;
   position: number;
 }
 
-export interface GuildInfo_guild_channels_TextChannel {
+export interface GuildInfo_guild_channels {
   __typename: "TextChannel";
   name: string;
   id: string;
-  position: number | null;
-  topic: string | null;
-  canSend: boolean | null;
-  nsfw: boolean | null;
-  category: GuildInfo_guild_channels_TextChannel_category | null;
-}
-
-export interface GuildInfo_guild_channels_NewsChannel_category {
-  __typename: "Category";
-  name: string;
   position: number;
-}
-
-export interface GuildInfo_guild_channels_NewsChannel {
-  __typename: "NewsChannel";
-  name: string;
-  id: string;
-  position: number | null;
   topic: string | null;
-  canSend: boolean | null;
-  nsfw: boolean | null;
-  category: GuildInfo_guild_channels_NewsChannel_category | null;
+  canSend: boolean;
+  nsfw: boolean;
+  category: GuildInfo_guild_channels_category | null;
 }
-
-export type GuildInfo_guild_channels = GuildInfo_guild_channels_StoreChannel | GuildInfo_guild_channels_TextChannel | GuildInfo_guild_channels_NewsChannel;
 
 export interface GuildInfo_guild {
   __typename: "Guild";
+  id: string;
   name: string;
-  iconURL: string;
-  invite: string | null;
+  icon: string;
+  invite: string;
   memberCount: number;
-  bannerURL: string | null;
-  splashURL: string | null;
+  banner: string | null;
+  splash: string | null;
   partnered: string;
   verified: string;
-  premiumTier: string;
+  tier: string;
   channels: GuildInfo_guild_channels[];
 }
 

@@ -1,10 +1,8 @@
 import { cx } from 'emotion'
 import Tooltip from 'rc-tooltip'
 import * as React from 'react'
-import { Query } from 'react-apollo'
 import Emoji from '@ui/shared/Emoji'
 
-import { ChannelInfo, ChannelInfoVariables, ChannelInfo_channel_TextChannel_category } from '@generated'
 import ChannelLink from './link'
 import CHANNEL_INFO from './ChannelInfo.graphql'
 

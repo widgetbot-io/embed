@@ -1,4 +1,4 @@
-import { Messages_channel_TextChannel_messages, Messages_channel_TextChannel_messages_JoinMessage } from '@generated'
+import { Messages_channel_messages, NewMessages_message_JoinMessage } from '@generated'
 import Markdown, {LinkMarkdown} from '@ui/shared/markdown/render'
 import { ThemeProvider } from 'emotion-theming'
 import Moment from 'moment'
@@ -30,9 +30,10 @@ import Reaction from './Reaction'
 import Embed from './Embed'
 import AttachmentSpoiler from '@ui/shared/markdown/render/elements/AttachmentSpoiler'
 import { Locale } from '@lib/Locale'
+import {Util} from '@lib/Util';
 
 interface Props {
-  messages: Messages_channel_TextChannel_messages[],
+  messages: Messages_channel_messages[],
   style?
 }
 
@@ -51,11 +52,13 @@ class Message extends React.PureComponent<Props, any> {
   render() {
     const { messages } = this.props;
     const [firstMessage] = messages;
+
+    const avatarUrl = !firstMessage.user.avatar.startsWith('http') ? Util.craftAvatarUrl(firstMessage.user.id, firstMessage.user.avatar) : firstMessage.user.avatar;
     return (
       <Group style={this.props.style} className="group">
         {firstMessage.__typename === 'TextMessage' ? (
           <Avatar
-            url={gifCheck(firstMessage.author.displayAvatarURL) || firstMessage.author.defaultAvatarURL || DEFAULT_AVATAR}
+            url={gifCheck(avatarUrl) || DEFAULT_AVATAR}
             className="avatar"
           />
         ) : null}
@@ -63,8 +66,7 @@ class Message extends React.PureComponent<Props, any> {
         <Messages className="messages">
           {firstMessage.__typename === 'TextMessage' ? (
             <Author
-              author={firstMessage.author}
-              member={firstMessage.member}
+              user={firstMessage.user}
               time={firstMessage.createdAt}
               crosspost={firstMessage.flags.IS_CROSSPOST}
             />
@@ -77,7 +79,7 @@ class Message extends React.PureComponent<Props, any> {
                   <ThemeProvider key={message.id} theme={this.theme(message)}>
                     <Root className="message" id={message.id}>
                       <Content className="content">
-                        {message.author.discriminator === '0000'
+                        {message.user.discrim === '0000'
                           ? <LinkMarkdown>{message.content}</LinkMarkdown>
                           : <Markdown>{message.content}</Markdown>}
                         {message.editedAt && (
@@ -102,13 +104,13 @@ class Message extends React.PureComponent<Props, any> {
                                     src={attachment.url}
                                     height={+attachment.height}
                                     width={+attachment.width}
-                                  ></Video>;
+                                  />;
                                 } else {
                                     return attachment.spoiler ? (
                                     <AttachmentSpoiler
                                       key={attachment.url}
                                       src={attachment.url}
-                                      height={+attachment.height} 
+                                      height={+attachment.height}
                                       width={+attachment.width}
                                     />) : (
                                     <Image
@@ -135,7 +137,7 @@ class Message extends React.PureComponent<Props, any> {
                                   </Audio>
                               } else {
                                 return <Attachment key={attachment.url}>
-                                    <AttachmentIcon 
+                                    <AttachmentIcon
                                       src={ /\.pdf$/.test(attachment.name) ? 'https://discordapp.com/assets/f167b4196f02faf2dc2e7eb266a24275.svg' // acrobat
                                           : /\.ae/.test(attachment.name) ? 'https://canary.discordapp.com/assets/982bd8aedd89b0607f492d1175b3b3a5.svg' // ae
                                           : /\.sketch$/.test(attachment.name) ? 'https://canary.discordapp.com/assets/f812168e543235a62b9f6deb2b094948.svg' // sketch
@@ -158,7 +160,7 @@ class Message extends React.PureComponent<Props, any> {
                               }
                             }
                           }) : null}
-                      {message.embeds.map((e, i) => (
+                      {message.embeds && message.embeds.map((e, i) => (
                           // @ts-ignore
                           <Embed key={i} {...e} />
                       ))}
@@ -177,8 +179,8 @@ class Message extends React.PureComponent<Props, any> {
 
               case 'JoinMessage': {
                 const member = (
-                  <Member id={message.author.id} color={message.member.displayHexColor}>
-                    {message.member.displayName || message.author.username}
+                  <Member id={message.user.id} color={message.user.color}>
+                    {message.user.name}
                   </Member>
                 );
 
@@ -194,8 +196,8 @@ class Message extends React.PureComponent<Props, any> {
 
               case 'PinnedMessage': {
                 const member = (
-                  <Member id={message.author.id} color={message.member.displayHexColor}>
-                    {message.member.displayName || message.author.username}
+                  <Member id={message.user.id} color={message.user.color}>
+                    {message.user.name}
                   </Member>
                 );
 
@@ -210,14 +212,12 @@ class Message extends React.PureComponent<Props, any> {
               }
 
               case 'BoostMessage': {
-
                 const member = (
-                  <Member id={message.author.id} color={message.member.displayHexColor}>
-                    {message.member.displayName || message.author.username}
+                  <Member id={message.user.id} color={message.user.color}>
+                    {message.user.name}
                   </Member>
                 );
 
-                // @ts-ignore
                 if(message.tier) {
                   return (
                     <React.Fragment key={message.id}>
@@ -241,8 +241,8 @@ class Message extends React.PureComponent<Props, any> {
 
               case 'FollowMessage': {
                 const member = (
-                  <Member id={message.author.id} color={message.member.displayHexColor}>
-                    {message.member.displayName || message.author.username}
+                  <Member id={message.user.id} color={message.user.color}>
+                    {message.user.name}
                   </Member>
                 );
 
@@ -272,7 +272,7 @@ export default Message
 
 // Join messages: https://github.com/DJScias/Discord-Datamining/commit/c79bf619ca341d97af219fe127efac2b31d0dde5#comments
 
-function joinMessageBeginning(message: Messages_channel_TextChannel_messages_JoinMessage): string {
+function joinMessageBeginning(message: { createdAt: number }): string {
   const messages: string[] = [
       '',
       '',
@@ -293,7 +293,7 @@ function joinMessageBeginning(message: Messages_channel_TextChannel_messages_Joi
   return messages[(Number(new Date(message.createdAt))) % messages.length]
 }
 
-function joinMessageEnd(message: Messages_channel_TextChannel_messages_JoinMessage): string {
+function joinMessageEnd(message: { createdAt: number }): string {
   const messages: string[] = [
       ' joined the party.',
       ' is here.',

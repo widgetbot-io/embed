@@ -1,95 +1,63 @@
 /* tslint:disable */
 /* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
 // GraphQL fragment: Message
 // ====================================================
 
-export interface Message_JoinMessage_author {
+export interface Message_PinnedMessage_user {
   __typename: "User";
   id: string;
-  username: string;
+  name: string;
+  discrim: string;
+  avatar: string;
+  color: string;
   bot: boolean;
-  discriminator: string;
-  defaultAvatarURL: string;
-  displayAvatarURL: string | null;
 }
 
-export interface Message_JoinMessage_member {
-  __typename: "IMember";
-  displayName: string | null;
-  displayHexColor: string | null;
-}
-
-export interface Message_JoinMessage_flags {
+export interface Message_PinnedMessage_flags {
   __typename: "MessageFlags";
-  CROSSPOSTED: boolean;
-  IS_CROSSPOST: boolean;
-  SUPPRESS_EMBEDS: boolean;
-  SOURCE_MESSAGE_DELETED: boolean;
-  URGENT: boolean;
+  CROSSPOSTED: boolean | null;
+  IS_CROSSPOST: boolean | null;
+  SUPPRESS_EMBEDS: boolean | null;
+  SOURCE_MESSAGE_DELETED: boolean | null;
+  URGENT: boolean | null;
 }
 
-export interface Message_JoinMessage {
-  __typename: "JoinMessage" | "PinnedMessage";
-  /**
-   * Message ID
-   */
+export interface Message_PinnedMessage {
+  __typename: "PinnedMessage" | "JoinMessage";
   id: string;
-  /**
-   * Message timestamp
-   */
   createdAt: any;
-  /**
-   * General discord user who authored the message
-   */
-  author: Message_JoinMessage_author;
-  /**
-   * Author as member of guild.
-   */
-  member: Message_JoinMessage_member | null;
-  /**
-   * Message flags
-   */
-  flags: Message_JoinMessage_flags;
+  user: Message_PinnedMessage_user;
+  flags: Message_PinnedMessage_flags;
 }
 
-export interface Message_TextMessage_author {
+export interface Message_TextMessage_user {
   __typename: "User";
   id: string;
-  username: string;
+  name: string;
+  discrim: string;
+  avatar: string;
+  color: string;
   bot: boolean;
-  discriminator: string;
-  defaultAvatarURL: string;
-  displayAvatarURL: string | null;
-}
-
-export interface Message_TextMessage_member {
-  __typename: "IMember";
-  displayName: string | null;
-  displayHexColor: string | null;
 }
 
 export interface Message_TextMessage_flags {
   __typename: "MessageFlags";
-  CROSSPOSTED: boolean;
-  IS_CROSSPOST: boolean;
-  SUPPRESS_EMBEDS: boolean;
-  SOURCE_MESSAGE_DELETED: boolean;
-  URGENT: boolean;
-}
-
-export interface Message_TextMessage_reactions_emoji {
-  __typename: "ReactionEmoji";
-  name: string;
-  url: string | null;
+  CROSSPOSTED: boolean | null;
+  IS_CROSSPOST: boolean | null;
+  SUPPRESS_EMBEDS: boolean | null;
+  SOURCE_MESSAGE_DELETED: boolean | null;
+  URGENT: boolean | null;
 }
 
 export interface Message_TextMessage_reactions {
   __typename: "Reaction";
   count: number;
-  emoji: Message_TextMessage_reactions_emoji;
+  name: string;
+  url: string | null;
 }
 
 export interface Message_TextMessage_attachments {
@@ -104,23 +72,22 @@ export interface Message_TextMessage_attachments {
 
 export interface Message_TextMessage_embeds_author {
   __typename: "EmbedAuthor";
-  proxyIconURL: string | null;
-  name: string | null;
   url: string | null;
+  name: string | null;
 }
 
 export interface Message_TextMessage_embeds_fields {
   __typename: "EmbedField";
   value: string;
   name: string;
-  inline: boolean;
+  inline: boolean | null;
 }
 
 export interface Message_TextMessage_embeds_image {
   __typename: "EmbedImage";
-  proxyURL: string;
-  width: number;
-  height: number;
+  url: string | null;
+  width: number | null;
+  height: number | null;
 }
 
 export interface Message_TextMessage_embeds_provider {
@@ -131,22 +98,22 @@ export interface Message_TextMessage_embeds_provider {
 
 export interface Message_TextMessage_embeds_footer {
   __typename: "EmbedFooter";
-  proxyIconURL: string | null;
+  url: string | null;
   text: string;
 }
 
 export interface Message_TextMessage_embeds_thumbnail {
   __typename: "EmbedThumbnail";
-  height: number;
-  width: number;
-  proxyURL: string;
+  height: number | null;
+  width: number | null;
+  url: string | null;
 }
 
 export interface Message_TextMessage_embeds_video {
   __typename: "EmbedVideo";
-  height: number;
-  width: number;
-  url: string;
+  height: number | null;
+  width: number | null;
+  url: string | null;
 }
 
 export interface Message_TextMessage_embeds {
@@ -154,11 +121,11 @@ export interface Message_TextMessage_embeds {
   title: string | null;
   description: string | null;
   url: string | null;
-  timestamp: number | null;
-  hexColor: string | null;
+  timestamp: any | null;
+  color: number | null;
   type: string | null;
   author: Message_TextMessage_embeds_author | null;
-  fields: Message_TextMessage_embeds_fields[];
+  fields: Message_TextMessage_embeds_fields[] | null;
   image: Message_TextMessage_embeds_image | null;
   provider: Message_TextMessage_embeds_provider | null;
   footer: Message_TextMessage_embeds_footer | null;
@@ -168,146 +135,71 @@ export interface Message_TextMessage_embeds {
 
 export interface Message_TextMessage {
   __typename: "TextMessage";
-  /**
-   * Message ID
-   */
   id: string;
-  /**
-   * Message timestamp
-   */
   createdAt: any;
-  /**
-   * General discord user who authored the message
-   */
-  author: Message_TextMessage_author;
-  /**
-   * Author as member of guild.
-   */
-  member: Message_TextMessage_member | null;
-  /**
-   * Message flags
-   */
+  user: Message_TextMessage_user;
   flags: Message_TextMessage_flags;
-  /**
-   * Message content
-   */
-  content: string | null;
-  /**
-   * Time the message was edited
-   */
+  content: string;
   editedAt: any | null;
-  /**
-   * Message reactions
-   */
   reactions: Message_TextMessage_reactions[];
-  /**
-   * Message attachments
-   */
   attachments: Message_TextMessage_attachments[];
-  /**
-   * Message embeds
-   */
   embeds: Message_TextMessage_embeds[] | null;
 }
 
-export interface Message_BoostMessage_author {
+export interface Message_BoostMessage_user {
   __typename: "User";
   id: string;
-  username: string;
+  name: string;
+  discrim: string;
+  avatar: string;
+  color: string;
   bot: boolean;
-  discriminator: string;
-  defaultAvatarURL: string;
-  displayAvatarURL: string | null;
-}
-
-export interface Message_BoostMessage_member {
-  __typename: "IMember";
-  displayName: string | null;
-  displayHexColor: string | null;
 }
 
 export interface Message_BoostMessage_flags {
   __typename: "MessageFlags";
-  CROSSPOSTED: boolean;
-  IS_CROSSPOST: boolean;
-  SUPPRESS_EMBEDS: boolean;
-  SOURCE_MESSAGE_DELETED: boolean;
-  URGENT: boolean;
+  CROSSPOSTED: boolean | null;
+  IS_CROSSPOST: boolean | null;
+  SUPPRESS_EMBEDS: boolean | null;
+  SOURCE_MESSAGE_DELETED: boolean | null;
+  URGENT: boolean | null;
 }
 
 export interface Message_BoostMessage {
   __typename: "BoostMessage";
-  /**
-   * Message ID
-   */
   id: string;
-  /**
-   * Message timestamp
-   */
   createdAt: any;
-  /**
-   * General discord user who authored the message
-   */
-  author: Message_BoostMessage_author;
-  /**
-   * Author as member of guild.
-   */
-  member: Message_BoostMessage_member | null;
-  /**
-   * Message flags
-   */
+  user: Message_BoostMessage_user;
   flags: Message_BoostMessage_flags;
   tier: number;
 }
 
-export interface Message_FollowMessage_author {
+export interface Message_FollowMessage_user {
   __typename: "User";
   id: string;
-  username: string;
+  name: string;
+  discrim: string;
+  avatar: string;
+  color: string;
   bot: boolean;
-  discriminator: string;
-  defaultAvatarURL: string;
-  displayAvatarURL: string | null;
-}
-
-export interface Message_FollowMessage_member {
-  __typename: "IMember";
-  displayName: string | null;
-  displayHexColor: string | null;
 }
 
 export interface Message_FollowMessage_flags {
   __typename: "MessageFlags";
-  CROSSPOSTED: boolean;
-  IS_CROSSPOST: boolean;
-  SUPPRESS_EMBEDS: boolean;
-  SOURCE_MESSAGE_DELETED: boolean;
-  URGENT: boolean;
+  CROSSPOSTED: boolean | null;
+  IS_CROSSPOST: boolean | null;
+  SUPPRESS_EMBEDS: boolean | null;
+  SOURCE_MESSAGE_DELETED: boolean | null;
+  URGENT: boolean | null;
 }
 
 export interface Message_FollowMessage {
   __typename: "FollowMessage";
-  /**
-   * Message ID
-   */
   id: string;
-  /**
-   * Message timestamp
-   */
   createdAt: any;
-  /**
-   * General discord user who authored the message
-   */
-  author: Message_FollowMessage_author;
-  /**
-   * Author as member of guild.
-   */
-  member: Message_FollowMessage_member | null;
-  /**
-   * Message flags
-   */
+  user: Message_FollowMessage_user;
   flags: Message_FollowMessage_flags;
-  content: string | null;
+  content: string;
 }
 
-export type Message = Message_JoinMessage | Message_TextMessage | Message_BoostMessage | Message_FollowMessage;
+export type Message = Message_PinnedMessage | Message_TextMessage | Message_BoostMessage | Message_FollowMessage;

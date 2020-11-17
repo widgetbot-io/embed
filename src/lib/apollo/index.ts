@@ -1,5 +1,4 @@
 import { ApolloClient } from 'apollo-client'
-import gql from 'graphql-tag'
 import { setContext } from 'apollo-link-context';
 
 import cache from './cache'
@@ -13,7 +12,7 @@ const authLink = setContext((_, { headers }) => {
     return {
       headers: {
         ...headers,
-        authorization: token ? `Bearer ${token}` : "",
+        authorization: token ? token : "",
       }
     }
   }

@@ -5,7 +5,7 @@ query Messages(
   $around: String
   $before: String
   $after: String
-  $limit: Float
+  $limit: Int
 ) {
   channel(id: $channel) {
     id
@@ -14,10 +14,10 @@ query Messages(
         ...Message
       }
     }
-    ... on NewsChannel {
-      messages(limit: $limit, after: $after, before: $before, around: $around) {
-        ...Message
-      }
-    }
+#    ... on NewsChannel {
+#      messages(limit: $limit, after: $after, before: $before, around: $around) {
+#        ...Message
+#      }
+#    }
   }
 }

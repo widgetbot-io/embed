@@ -1,21 +1,17 @@
 /* tslint:disable */
 /* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
 // GraphQL fragment: TextMessage
 // ====================================================
 
-export interface TextMessage_reactions_emoji {
-  __typename: "ReactionEmoji";
-  name: string;
-  url: string | null;
-}
-
 export interface TextMessage_reactions {
   __typename: "Reaction";
   count: number;
-  emoji: TextMessage_reactions_emoji;
+  name: string;
+  url: string | null;
 }
 
 export interface TextMessage_attachments {
@@ -30,23 +26,22 @@ export interface TextMessage_attachments {
 
 export interface TextMessage_embeds_author {
   __typename: "EmbedAuthor";
-  proxyIconURL: string | null;
-  name: string | null;
   url: string | null;
+  name: string | null;
 }
 
 export interface TextMessage_embeds_fields {
   __typename: "EmbedField";
   value: string;
   name: string;
-  inline: boolean;
+  inline: boolean | null;
 }
 
 export interface TextMessage_embeds_image {
   __typename: "EmbedImage";
-  proxyURL: string;
-  width: number;
-  height: number;
+  url: string | null;
+  width: number | null;
+  height: number | null;
 }
 
 export interface TextMessage_embeds_provider {
@@ -57,22 +52,22 @@ export interface TextMessage_embeds_provider {
 
 export interface TextMessage_embeds_footer {
   __typename: "EmbedFooter";
-  proxyIconURL: string | null;
+  url: string | null;
   text: string;
 }
 
 export interface TextMessage_embeds_thumbnail {
   __typename: "EmbedThumbnail";
-  height: number;
-  width: number;
-  proxyURL: string;
+  height: number | null;
+  width: number | null;
+  url: string | null;
 }
 
 export interface TextMessage_embeds_video {
   __typename: "EmbedVideo";
-  height: number;
-  width: number;
-  url: string;
+  height: number | null;
+  width: number | null;
+  url: string | null;
 }
 
 export interface TextMessage_embeds {
@@ -80,11 +75,11 @@ export interface TextMessage_embeds {
   title: string | null;
   description: string | null;
   url: string | null;
-  timestamp: number | null;
-  hexColor: string | null;
+  timestamp: any | null;
+  color: number | null;
   type: string | null;
   author: TextMessage_embeds_author | null;
-  fields: TextMessage_embeds_fields[];
+  fields: TextMessage_embeds_fields[] | null;
   image: TextMessage_embeds_image | null;
   provider: TextMessage_embeds_provider | null;
   footer: TextMessage_embeds_footer | null;
@@ -94,24 +89,9 @@ export interface TextMessage_embeds {
 
 export interface TextMessage {
   __typename: "TextMessage";
-  /**
-   * Message content
-   */
-  content: string | null;
-  /**
-   * Time the message was edited
-   */
+  content: string;
   editedAt: any | null;
-  /**
-   * Message reactions
-   */
   reactions: TextMessage_reactions[];
-  /**
-   * Message attachments
-   */
   attachments: TextMessage_attachments[];
-  /**
-   * Message embeds
-   */
   embeds: TextMessage_embeds[] | null;
 }

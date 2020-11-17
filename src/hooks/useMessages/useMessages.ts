@@ -1,5 +1,5 @@
 import produce from "immer";
-import { MESSAGES, DELETED_MESSAGES, NEW_MESSAGES, UPDATED_MESSAGES } from ".";
+import { MESSAGES } from ".";
 import { useQuery, useSubscription } from "react-apollo-hooks";
 
 /**
@@ -44,47 +44,47 @@ export const useMessages = (channel: string) => {
     })
   }
 
-  useSubscription(NEW_MESSAGES, {
-    variables: { channel },
-    onSubscriptionData({ subscriptionData }) {
-      query.updateQuery(prev =>
-        produce(prev, ({ channel }) => {
-          channel.messages.push(subscriptionData.data.message);
-        })
-      )}
-  });
-
-  useSubscription(UPDATED_MESSAGES, {
-    variables: { channel },
-    onSubscriptionData({ subscriptionData }) {
-      query.updateQuery(prev =>
-        produce(prev, ({ channel: { messages } }) => {
-          const message = subscriptionData.data.messageUpdate;
-          const index = messages.findIndex(m => m.id === message.id);
-
-          if (index > -1) {
-            messages[index] = message;
-          }
-        })
-      );
-    }
-  });
-
-  useSubscription(DELETED_MESSAGES, {
-    variables: { channel },
-    onSubscriptionData({ subscriptionData }) {
-      query.updateQuery(prev =>
-        produce(prev, ({ channel }) => {
-          let deletedMessages = subscriptionData.data.messageDelete;
-
-          if (!deletedMessages[0]) deletedMessages = [deletedMessages];
-          channel.messages = channel.messages.filter(
-            message => !deletedMessages.find(m => m.id === message.id)
-          );
-        })
-      );
-    }
-  });
+  // useSubscription(NEW_MESSAGES, {
+  //   variables: { channel },
+  //   onSubscriptionData({ subscriptionData }) {
+  //     query.updateQuery(prev =>
+  //       produce(prev, ({ channel }) => {
+  //         channel.messages.push(subscriptionData.data.message);
+  //       })
+  //     )}
+  // });
+  //
+  // useSubscription(UPDATED_MESSAGES, {
+  //   variables: { channel },
+  //   onSubscriptionData({ subscriptionData }) {
+  //     query.updateQuery(prev =>
+  //       produce(prev, ({ channel: { messages } }) => {
+  //         const message = subscriptionData.data.messageUpdate;
+  //         const index = messages.findIndex(m => m.id === message.id);
+  //
+  //         if (index > -1) {
+  //           messages[index] = message;
+  //         }
+  //       })
+  //     );
+  //   }
+  // });
+  //
+  // useSubscription(DELETED_MESSAGES, {
+  //   variables: { channel },
+  //   onSubscriptionData({ subscriptionData }) {
+  //     query.updateQuery(prev =>
+  //       produce(prev, ({ channel }) => {
+  //         let deletedMessages = subscriptionData.data.messageDelete;
+  //
+  //         if (!deletedMessages[0]) deletedMessages = [deletedMessages];
+  //         channel.messages = channel.messages.filter(
+  //           message => !deletedMessages.find(m => m.id === message.id)
+  //         );
+  //       })
+  //     );
+  //   }
+  // });
 
   return <any>{
     ready,

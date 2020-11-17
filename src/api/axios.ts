@@ -24,7 +24,7 @@ export async function APIRequest(endpoint: string, options: APIRequestOptions = 
         ...(options.baseURL ? { baseURL: options.baseURL } : {}),
         url: endpoint,
         headers: {
-            ...(!options.authDisabled ? { Authorization: `Bearer ${window.localStorage.getItem('token')}` }: {}),
+            ...(!options.authDisabled ? { Authorization: window.localStorage.getItem('token') }: {}),
             ...(options.headers || {})
         },
         data: options.payload || {}

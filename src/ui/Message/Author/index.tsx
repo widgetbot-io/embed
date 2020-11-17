@@ -1,4 +1,4 @@
-import { Author as $Author, Member as $Member } from '@generated'
+import { Message_TextMessage_user } from '@generated'
 import Moment from 'moment'
 import * as React from 'react'
 
@@ -7,8 +7,7 @@ import { Name, Root, Time } from './elements'
 import { Locale } from '@lib/Locale';
 
 interface Props {
-  author: $Author,
-  member: $Member,
+  user: Message_TextMessage_user,
   time: number,
   crosspost: boolean
 }
@@ -33,10 +32,6 @@ const developers = {
   "302604426781261824": {
     href: null,
     title: "Developer"
-  },
-  "207629082257653760": {
-    href: "https://file.properties",
-    title: "Staff"
   }
 };
 
@@ -46,13 +41,13 @@ export const Timestamp = ({ time }: { time: number }) => (
 
 class Author extends React.PureComponent<Props> {
   tags() {
-    const { author, crosspost } = this.props;
+    const { user, crosspost } = this.props;
 
     return (
       <React.Fragment>
-        {author.bot && (crosspost ? <Tag className="bot">{Locale.translate('frontend.tag.server')}</Tag> : <Tag className="bot">{Locale.translate('frontend.tag.bot')}</Tag>)}
-              {author.id === 'aaaa' && <Tag className="guest">Guest</Tag>}
-              {Author.verified({ id: author.id })/* ||
+        {user.bot && (crosspost ? <Tag className="bot">{Locale.translate('frontend.tag.server')}</Tag> : <Tag className="bot">{Locale.translate('frontend.tag.bot')}</Tag>)}
+              {user.id === 'aaaa' && <Tag className="guest">Guest</Tag>}
+              {Author.verified({ id: user.id })/* ||
                 (author.id === '190916650143318016' && (
                   <Sysadmin className="patreon" title="Patreon" />
                 ))*/}
@@ -61,16 +56,16 @@ class Author extends React.PureComponent<Props> {
   }
 
   render() {
-    const { author, time, member } = this.props;
+    const { user, time } = this.props;
 
     const hexColor =
-      (member ? member.displayHexColor : null) ||
+      (user ? user.color : null) ||
       '#fff';
 
     return (
       <Root className="author">
         <Name color={hexColor} className="name">
-          {member.displayName || author.username}
+          {user.name}
         </Name>
         {this.tags()}
         <Timestamp time={time} />
