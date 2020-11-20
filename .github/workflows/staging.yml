@@ -24,14 +24,14 @@ jobs:
       - name: Build
         run: yarn && yarn build
       - name: Docker login
-        run: echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com --username yomanz --password-stdin
+        run: echo ${{ secrets.PAT }} | docker login ghcr.io --username yomanz --password-stdin
       - name: Docker build
-        run: docker build -t docker.pkg.github.com/widgetbot-io/embed/embed:${{github.sha}} .
+        run: docker build -t ghcr.io/widgetbot-io/embed:${{github.sha}} .
       - name: Docker push tag latest
-        run: docker push docker.pkg.github.com/widgetbot-io/embed/embed:${{github.sha}}
+        run: docker push ghcr.io/widgetbot-io/embed:${{github.sha}}
       - name: Notify of Registry URL
         uses: unsplash/comment-on-pr@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          msg: "The latest commit built at: docker.pkg.github.com/widgetbot-io/embed/staging:${{github.sha}}"
+          msg: "The latest commit built at: ghcr.io/widgetbot-io/embed:${{github.sha}}"
