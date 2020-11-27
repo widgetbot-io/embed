@@ -63,11 +63,11 @@ export namespace Secondary {
   `
 
   export const Join = styled(Message)`
-    background-image: url("https://discordapp.com/assets/b8029fe196b8f1382e90bbe81dab50dc.svg");
+    background-image: url("https://discord.com/assets/b8029fe196b8f1382e90bbe81dab50dc.svg");
   `
 
   export const Pinned = styled(Message)`
-    background-image: url("https://discordapp.com/assets/5da4cdab01d4d89c593c48c62ae0d937.svg");
+    background-image: url("https://discord.com/assets/5da4cdab01d4d89c593c48c62ae0d937.svg");
   `
 
   export const Boost = styled(Message)`
