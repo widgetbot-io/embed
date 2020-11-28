@@ -1,4 +1,4 @@
-export const url = getEnvVar('{CUSTOM_SERVER_ENDPOINT}')
+export const url = 'stonks.widgetbot.io' //getEnvVar('{CUSTOM_SERVER_ENDPOINT}')
 
 /** 
  * When in develop mode, read env vars normally, when in production output a special string that will be replaced by script
