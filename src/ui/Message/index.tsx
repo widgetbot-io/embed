@@ -1,4 +1,4 @@
-import { Messages_channel_messages, NewMessages_message_JoinMessage } from '@generated'
+import { Messages_channel_messages } from '@generated'
 import Markdown, {LinkMarkdown} from '@ui/shared/markdown/render'
 import { ThemeProvider } from 'emotion-theming'
 import Moment from 'moment'

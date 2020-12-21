@@ -5,7 +5,7 @@ export const url = getEnvVar('{CUSTOM_SERVER_ENDPOINT}')
 **/
 function getEnvVar(envVarStr: string): string {
     const overrides = {
-        CUSTOM_SERVER_ENDPOINT: "stonks.widgetbot.io"
+        CUSTOM_SERVER_ENDPOINT: "127.0.0.1:8443"
     }
 
     // is true when running: npm run build

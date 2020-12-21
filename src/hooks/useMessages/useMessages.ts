@@ -1,5 +1,5 @@
 import produce from "immer";
-import { MESSAGES } from ".";
+import { MESSAGES, NEW_MESSAGES } from ".";
 import { useQuery, useSubscription } from "react-apollo-hooks";
 
 /**
@@ -44,15 +44,15 @@ export const useMessages = (channel: string) => {
     })
   }
 
-  // useSubscription(NEW_MESSAGES, {
-  //   variables: { channel },
-  //   onSubscriptionData({ subscriptionData }) {
-  //     query.updateQuery(prev =>
-  //       produce(prev, ({ channel }) => {
-  //         channel.messages.push(subscriptionData.data.message);
-  //       })
-  //     )}
-  // });
+  useSubscription(NEW_MESSAGES, {
+    variables: { channel },
+    onSubscriptionData({ subscriptionData }) {
+      query.updateQuery(prev =>
+        produce(prev, ({ channel }) => {
+          channel.messages.push(subscriptionData.data.message);
+        })
+      )}
+  });
   //
   // useSubscription(UPDATED_MESSAGES, {
   //   variables: { channel },

@@ -1,7 +1,7 @@
 #import "./Fragments/Message.graphql"
 
 subscription UpdatedMessages($channel: String!) {
-  messageUpdate(filter: { channel: $channel }) {
+  messageUpdate(channel: $channel) {
     ...Message
   }
 }
