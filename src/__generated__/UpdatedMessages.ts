@@ -55,8 +55,7 @@ export interface UpdatedMessages_messageUpdate_TextMessage_flags {
 export interface UpdatedMessages_messageUpdate_TextMessage_reactions {
   __typename: "Reaction";
   count: number;
-  name: string;
-  url: string | null;
+  emojiName: string | null;
 }
 
 export interface UpdatedMessages_messageUpdate_TextMessage_attachments {
@@ -64,9 +63,8 @@ export interface UpdatedMessages_messageUpdate_TextMessage_attachments {
   url: string;
   height: number | null;
   width: number | null;
-  name: string;
-  size: string;
-  spoiler: boolean;
+  fileName: string;
+  size: number;
 }
 
 export interface UpdatedMessages_messageUpdate_TextMessage_embeds_author {
@@ -140,7 +138,7 @@ export interface UpdatedMessages_messageUpdate_TextMessage {
   flags: UpdatedMessages_messageUpdate_TextMessage_flags;
   content: string;
   editedAt: any | null;
-  reactions: UpdatedMessages_messageUpdate_TextMessage_reactions[];
+  reactions: UpdatedMessages_messageUpdate_TextMessage_reactions[] | null;
   attachments: UpdatedMessages_messageUpdate_TextMessage_attachments[];
   embeds: UpdatedMessages_messageUpdate_TextMessage_embeds[] | null;
 }

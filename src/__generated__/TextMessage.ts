@@ -9,8 +9,7 @@
 export interface TextMessage_reactions {
   __typename: "Reaction";
   count: number;
-  name: string;
-  url: string | null;
+  emojiName: string | null;
 }
 
 export interface TextMessage_attachments {
@@ -18,9 +17,8 @@ export interface TextMessage_attachments {
   url: string;
   height: number | null;
   width: number | null;
-  name: string;
-  size: string;
-  spoiler: boolean;
+  fileName: string;
+  size: number;
 }
 
 export interface TextMessage_embeds_author {
@@ -90,7 +88,7 @@ export interface TextMessage {
   __typename: "TextMessage";
   content: string;
   editedAt: any | null;
-  reactions: TextMessage_reactions[];
+  reactions: TextMessage_reactions[] | null;
   attachments: TextMessage_attachments[];
   embeds: TextMessage_embeds[] | null;
 }

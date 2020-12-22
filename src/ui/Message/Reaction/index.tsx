@@ -8,12 +8,13 @@ type Props = Message_TextMessage_reactions
 
 class Reaction extends React.Component<Props> {
   render() {
-    const { url, name, count } = this.props
+    const { emojiName, count } = this.props // TODO: Create the url item
+    const url: string | undefined = undefined
 
     return (
       <Tooltip
         placement="top"
-        overlay={`:${name}:`}
+        overlay={`:${emojiName}:`}
         mouseEnterDelay={0.5}
       >
         <span>
@@ -21,7 +22,7 @@ class Reaction extends React.Component<Props> {
             {url ? (
               <Emoji src={url} />
             ) : (
-              <Emoji className="reaction-emoji">{name}</Emoji>
+              <Emoji className="reaction-emoji">{emojiName}</Emoji>
             )}
             <Count className="reaction-count">{count}</Count>
           </Root>

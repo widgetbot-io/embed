@@ -1,6 +1,8 @@
 mutation SendMessage($channel: String!, $content: String!) {
   sendMessage(channel: $channel, content: $content) {
     id
-    content
+    ... on TextMessage {
+      content
+    }
   }
 }

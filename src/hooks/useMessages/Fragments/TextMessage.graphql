@@ -5,16 +5,14 @@ fragment TextMessage on TextMessage {
   editedAt
   reactions {
     count
-    name
-    url
+    emojiName
   }
   attachments {
     url
     height
     width
-    name
+    fileName
     size
-    spoiler
   }
   embeds {
     ...Embed

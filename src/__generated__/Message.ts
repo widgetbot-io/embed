@@ -55,8 +55,7 @@ export interface Message_TextMessage_flags {
 export interface Message_TextMessage_reactions {
   __typename: "Reaction";
   count: number;
-  name: string;
-  url: string | null;
+  emojiName: string | null;
 }
 
 export interface Message_TextMessage_attachments {
@@ -64,9 +63,8 @@ export interface Message_TextMessage_attachments {
   url: string;
   height: number | null;
   width: number | null;
-  name: string;
-  size: string;
-  spoiler: boolean;
+  fileName: string;
+  size: number;
 }
 
 export interface Message_TextMessage_embeds_author {
@@ -140,7 +138,7 @@ export interface Message_TextMessage {
   flags: Message_TextMessage_flags;
   content: string;
   editedAt: any | null;
-  reactions: Message_TextMessage_reactions[];
+  reactions: Message_TextMessage_reactions[] | null;
   attachments: Message_TextMessage_attachments[];
   embeds: Message_TextMessage_embeds[] | null;
 }
