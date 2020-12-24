@@ -2,6 +2,8 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
+import { MessageType } from "./globalTypes";
+
 // ====================================================
 // GraphQL subscription operation: NewMessages
 // ====================================================
@@ -20,6 +22,8 @@ export interface NewMessages_message_reactions {
   __typename: "Reaction";
   count: number;
   emojiName: string | null;
+  emojiId: string | null;
+  me: boolean;
 }
 
 export interface NewMessages_message_attachments {
@@ -29,6 +33,27 @@ export interface NewMessages_message_attachments {
   width: number | null;
   fileName: string;
   size: number;
+}
+
+export interface NewMessages_message_stickers {
+  __typename: "Sticker";
+  id: string;
+  name: string;
+  icon: string;
+}
+
+export interface NewMessages_message_messageReference {
+  __typename: "MessageReference";
+  guildId: string | null;
+  channelId: string;
+  messageId: string | null;
+}
+
+export interface NewMessages_message_application {
+  __typename: "Application";
+  id: string;
+  name: string;
+  icon: string;
 }
 
 export interface NewMessages_message_embeds_author {
@@ -97,10 +122,16 @@ export interface NewMessages_message_embeds {
 export interface NewMessages_message {
   __typename: "Message";
   content: string;
+  type: MessageType;
+  flags: number | null;
+  createdAt: any;
   editedAt: any | null;
   author: NewMessages_message_author;
   reactions: NewMessages_message_reactions[] | null;
   attachments: NewMessages_message_attachments[];
+  stickers: NewMessages_message_stickers[] | null;
+  messageReference: NewMessages_message_messageReference | null;
+  application: NewMessages_message_application | null;
   embeds: NewMessages_message_embeds[];
 }
 

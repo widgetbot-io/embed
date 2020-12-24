@@ -2,6 +2,8 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
+import { MessageType } from "./globalTypes";
+
 // ====================================================
 // GraphQL query operation: Messages
 // ====================================================
@@ -20,6 +22,8 @@ export interface Messages_channel_messages_reactions {
   __typename: "Reaction";
   count: number;
   emojiName: string | null;
+  emojiId: string | null;
+  me: boolean;
 }
 
 export interface Messages_channel_messages_attachments {
@@ -29,6 +33,27 @@ export interface Messages_channel_messages_attachments {
   width: number | null;
   fileName: string;
   size: number;
+}
+
+export interface Messages_channel_messages_stickers {
+  __typename: "Sticker";
+  id: string;
+  name: string;
+  icon: string;
+}
+
+export interface Messages_channel_messages_messageReference {
+  __typename: "MessageReference";
+  guildId: string | null;
+  channelId: string;
+  messageId: string | null;
+}
+
+export interface Messages_channel_messages_application {
+  __typename: "Application";
+  id: string;
+  name: string;
+  icon: string;
 }
 
 export interface Messages_channel_messages_embeds_author {
@@ -97,10 +122,16 @@ export interface Messages_channel_messages_embeds {
 export interface Messages_channel_messages {
   __typename: "Message";
   content: string;
+  type: MessageType;
+  flags: number | null;
+  createdAt: any;
   editedAt: any | null;
   author: Messages_channel_messages_author;
   reactions: Messages_channel_messages_reactions[] | null;
   attachments: Messages_channel_messages_attachments[];
+  stickers: Messages_channel_messages_stickers[] | null;
+  messageReference: Messages_channel_messages_messageReference | null;
+  application: Messages_channel_messages_application | null;
   embeds: Messages_channel_messages_embeds[];
 }
 

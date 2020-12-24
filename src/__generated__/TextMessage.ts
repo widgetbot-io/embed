@@ -2,6 +2,8 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
+import { MessageType } from "./globalTypes";
+
 // ====================================================
 // GraphQL fragment: TextMessage
 // ====================================================
@@ -20,6 +22,8 @@ export interface TextMessage_reactions {
   __typename: "Reaction";
   count: number;
   emojiName: string | null;
+  emojiId: string | null;
+  me: boolean;
 }
 
 export interface TextMessage_attachments {
@@ -29,6 +33,27 @@ export interface TextMessage_attachments {
   width: number | null;
   fileName: string;
   size: number;
+}
+
+export interface TextMessage_stickers {
+  __typename: "Sticker";
+  id: string;
+  name: string;
+  icon: string;
+}
+
+export interface TextMessage_messageReference {
+  __typename: "MessageReference";
+  guildId: string | null;
+  channelId: string;
+  messageId: string | null;
+}
+
+export interface TextMessage_application {
+  __typename: "Application";
+  id: string;
+  name: string;
+  icon: string;
 }
 
 export interface TextMessage_embeds_author {
@@ -97,9 +122,15 @@ export interface TextMessage_embeds {
 export interface TextMessage {
   __typename: "Message";
   content: string;
+  type: MessageType;
+  flags: number | null;
+  createdAt: any;
   editedAt: any | null;
   author: TextMessage_author;
   reactions: TextMessage_reactions[] | null;
   attachments: TextMessage_attachments[];
+  stickers: TextMessage_stickers[] | null;
+  messageReference: TextMessage_messageReference | null;
+  application: TextMessage_application | null;
   embeds: TextMessage_embeds[];
 }
