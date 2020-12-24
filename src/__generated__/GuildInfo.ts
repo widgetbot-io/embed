@@ -30,6 +30,7 @@ export interface GuildInfo_guild {
   icon: string;
   invite: string;
   memberCount: number;
+  rulesChannelId: string | null;
   banner: string | null;
   splash: string | null;
   partnered: string;

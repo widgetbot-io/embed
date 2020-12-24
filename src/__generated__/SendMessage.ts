@@ -6,18 +6,11 @@
 // GraphQL mutation operation: SendMessage
 // ====================================================
 
-export interface SendMessage_sendMessage_PinnedMessage {
-  __typename: "PinnedMessage" | "BoostMessage" | "JoinMessage" | "FollowMessage";
-  id: string;
-}
-
-export interface SendMessage_sendMessage_TextMessage {
-  __typename: "TextMessage";
+export interface SendMessage_sendMessage {
+  __typename: "Message";
   id: string;
   content: string;
 }
-
-export type SendMessage_sendMessage = SendMessage_sendMessage_PinnedMessage | SendMessage_sendMessage_TextMessage;
 
 export interface SendMessage {
   sendMessage: SendMessage_sendMessage;

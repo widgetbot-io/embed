@@ -6,6 +6,16 @@
 // GraphQL fragment: TextMessage
 // ====================================================
 
+export interface TextMessage_author {
+  __typename: "User";
+  avatar: string;
+  bot: boolean;
+  color: string;
+  discrim: string;
+  id: string;
+  name: string;
+}
+
 export interface TextMessage_reactions {
   __typename: "Reaction";
   count: number;
@@ -85,10 +95,11 @@ export interface TextMessage_embeds {
 }
 
 export interface TextMessage {
-  __typename: "TextMessage";
+  __typename: "Message";
   content: string;
   editedAt: any | null;
+  author: TextMessage_author;
   reactions: TextMessage_reactions[] | null;
   attachments: TextMessage_attachments[];
-  embeds: TextMessage_embeds[] | null;
+  embeds: TextMessage_embeds[];
 }

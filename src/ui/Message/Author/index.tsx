@@ -1,4 +1,4 @@
-import { Message_TextMessage_user } from '@generated'
+import {NewMessages_message_author} from '@generated'
 import Moment from 'moment'
 import * as React from 'react'
 
@@ -7,7 +7,7 @@ import { Name, Root, Time } from './elements'
 import { Locale } from '@lib/Locale';
 
 interface Props {
-  user: Message_TextMessage_user,
+  author: NewMessages_message_author,
   time: number,
   crosspost: boolean
 }
@@ -41,13 +41,13 @@ export const Timestamp = ({ time }: { time: number }) => (
 
 class Author extends React.PureComponent<Props> {
   tags() {
-    const { user, crosspost } = this.props;
+    const { author, crosspost } = this.props;
 
     return (
       <React.Fragment>
-        {user.bot && (crosspost ? <Tag className="bot">{Locale.translate('frontend.tag.server')}</Tag> : <Tag className="bot">{Locale.translate('frontend.tag.bot')}</Tag>)}
-              {user.id === 'aaaa' && <Tag className="guest">Guest</Tag>}
-              {Author.verified({ id: user.id })/* ||
+        {author.bot && (crosspost ? <Tag className="bot">{Locale.translate('frontend.tag.server')}</Tag> : <Tag className="bot">{Locale.translate('frontend.tag.bot')}</Tag>)}
+              {author.id === 'aaaa' && <Tag className="guest">Guest</Tag>}
+              {Author.verified({ id: author.id })/* ||
                 (author.id === '190916650143318016' && (
                   <Sysadmin className="patreon" title="Patreon" />
                 ))*/}
@@ -56,16 +56,18 @@ class Author extends React.PureComponent<Props> {
   }
 
   render() {
-    const { user, time } = this.props;
+    const { author, time } = this.props;
 
-    const hexColor =
-      (user ? user.color : null) ||
-      '#fff';
+    // const hexColor =
+    //   (author ? author.color : null) ||
+    //   '#fff';
+
+    const hexColor = '#fff';
 
     return (
       <Root className="author">
         <Name color={hexColor} className="name">
-          {user.name}
+          {author.name}
         </Name>
         {this.tags()}
         <Timestamp time={time} />

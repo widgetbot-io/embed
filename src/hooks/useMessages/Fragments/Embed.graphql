@@ -1,40 +1,40 @@
 fragment Embed on Embed {
-  title
-  description
-  url
-  timestamp
-  color
-  type
-  author {
+    title
+    description
     url
-    name
-  }
-  fields {
-    value
-    name
-    inline
-  }
-  image {
-    url
-    width
-    height
-  }
-  provider {
-    name
-    url
-  }
-  footer {
-    url
-    text
-  }
-  thumbnail {
-    height
-    width
-    url
-  }
-  video {
-    height
-    width
-    url
-  }
+    timestamp
+    color
+    type
+    author {
+        url
+        name
+    }
+    fields {
+        value
+        name
+        inline
+    }
+    image {
+        url
+        width
+        height
+    }
+    provider {
+        name
+        url
+    }
+    footer {
+        url
+        text
+    }
+    thumbnail {
+        height
+        width
+        url
+    }
+    video {
+        height
+        width
+        url
+    }
 }

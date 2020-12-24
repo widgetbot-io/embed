@@ -53,24 +53,21 @@ class Message extends React.PureComponent<Props, any> {
     const { messages } = this.props;
     const [firstMessage] = messages;
 
-    const avatarUrl = !firstMessage.user.avatar.startsWith('http') ? Util.craftAvatarUrl(firstMessage.user.id, firstMessage.user.avatar) : firstMessage.user.avatar;
+    const avatarUrl = !firstMessage.author.avatar.startsWith('http') ? Util.craftAvatarUrl(firstMessage.author.id, firstMessage.author.avatar) : firstMessage.author.avatar;
     return (
       <Group style={this.props.style} className="group">
-        {firstMessage.__typename === 'TextMessage' ? (
           <Avatar
             url={gifCheck(avatarUrl) || DEFAULT_AVATAR}
             className="avatar"
           />
-        ) : null}
+        )
 
         <Messages className="messages">
-          {firstMessage.__typename === 'TextMessage' ? (
             <Author
-              user={firstMessage.user}
+              author={firstMessage.author}
               time={firstMessage.createdAt}
               crosspost={firstMessage.flags.IS_CROSSPOST}
             />
-          ) : null}
 
           {messages.map((message, i) => {
             switch (message.__typename) {

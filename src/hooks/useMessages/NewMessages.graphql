@@ -1,7 +1,5 @@
-#import "./Fragments/Message.graphql"
-
-subscription NewMessages($channel: String!) {
-  message(channel: $channel) {
-    ...Message
+subscription NewMessages($channel: String!, $guild: String!) {
+  message(channel: $channel, guild: $guild) {
+    ...TextMessage
   }
 }
