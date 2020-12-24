@@ -2,6 +2,9 @@
 
 fragment TextMessage on Message {
     content
+    type
+    flags
+    createdAt
     editedAt
 
     author {
@@ -24,6 +27,31 @@ fragment TextMessage on Message {
         width
         fileName
         size
+    }
+
+    stickers {
+        id
+        name
+        icon
+    }
+
+    reactions {
+        count
+        emojiId
+        emojiName
+        me
+    }
+
+    messageReference {
+        guildId
+        channelId
+        messageId
+    }
+
+    application {
+        id
+        name
+        icon
     }
 
     embeds {
