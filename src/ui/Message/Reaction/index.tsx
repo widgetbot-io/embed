@@ -1,10 +1,10 @@
-import { Message_TextMessage_reactions } from '@generated'
+import { Message_reactions } from '@generated'
 import Tooltip from 'rc-tooltip'
 import * as React from 'react'
 
 import { Count, Emoji, Root } from './elements'
 
-type Props = Message_TextMessage_reactions
+type Props = Message_reactions
 
 class Reaction extends React.Component<Props> {
   render() {

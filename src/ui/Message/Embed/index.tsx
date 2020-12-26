@@ -12,7 +12,7 @@ import {Footer, FooterIcon, FooterText} from './elements/footer'
 import {Image} from './elements/media'
 import {Thumbnail} from './elements/thumbnail'
 import {Video} from '@ui/Message/elements'
-import {Embed_author, Embed_footer, Embed_image, Embed_thumbnail, TextMessage_embeds} from "@generated";
+import {Embed_author, Embed_footer, Embed_image, Embed_thumbnail, Message_embeds} from "@generated";
 
 // TODO: Refactor / cleanup
 
@@ -190,7 +190,7 @@ const Embed = ({
    provider,
    video,
    ...embed
-}: TextMessage_embeds) =>
+}: Message_embeds) =>
     embed.type === 'gifv' ? (
         <Gifv autoPlay loop muted
               src={video.url}

@@ -1,6 +1,7 @@
 #import "./Embed.graphql"
 
-fragment TextMessage on Message {
+fragment Message on Message {
+    id
     content
     type
     flags

@@ -2,7 +2,7 @@ import { useMutation } from 'react-apollo-hooks'
 import SEND_MESSAGE from './SendMessage.graphql'
 import { MESSAGES } from '../useMessages'
 import { useRouter } from '@hooks'
-import {TextMessage} from '@generated';
+import {Message} from '@generated';
 
 export const useSendMessage = () => {
   const { channel } = useRouter()
@@ -14,7 +14,7 @@ export const useSendMessage = () => {
       optimisticResponse: {
         __typename: 'Mutation',
         sendMessage: {
-          __typename: 'TextMessage',
+          __typename: 'Message',
           id: Math.random(),
           createdAt: +new Date(),
           editedAt: null,

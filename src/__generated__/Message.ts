@@ -1,14 +1,15 @@
 /* tslint:disable */
 /* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 import { MessageType } from "./globalTypes";
 
 // ====================================================
-// GraphQL fragment: TextMessage
+// GraphQL fragment: Message
 // ====================================================
 
-export interface TextMessage_author {
+export interface Message_author {
   __typename: "User";
   avatar: string;
   bot: boolean;
@@ -18,7 +19,7 @@ export interface TextMessage_author {
   name: string;
 }
 
-export interface TextMessage_reactions {
+export interface Message_reactions {
   __typename: "Reaction";
   count: number;
   emojiName: string | null;
@@ -26,7 +27,7 @@ export interface TextMessage_reactions {
   me: boolean;
 }
 
-export interface TextMessage_attachments {
+export interface Message_attachments {
   __typename: "Attachment";
   url: string;
   height: number | null;
@@ -35,74 +36,74 @@ export interface TextMessage_attachments {
   size: number;
 }
 
-export interface TextMessage_stickers {
+export interface Message_stickers {
   __typename: "Sticker";
   id: string;
   name: string;
   icon: string;
 }
 
-export interface TextMessage_messageReference {
+export interface Message_messageReference {
   __typename: "MessageReference";
   guildId: string | null;
   channelId: string;
   messageId: string | null;
 }
 
-export interface TextMessage_application {
+export interface Message_application {
   __typename: "Application";
   id: string;
   name: string;
   icon: string;
 }
 
-export interface TextMessage_embeds_author {
+export interface Message_embeds_author {
   __typename: "EmbedAuthor";
   url: string | null;
   name: string | null;
 }
 
-export interface TextMessage_embeds_fields {
+export interface Message_embeds_fields {
   __typename: "EmbedField";
   value: string;
   name: string;
   inline: boolean | null;
 }
 
-export interface TextMessage_embeds_image {
+export interface Message_embeds_image {
   __typename: "EmbedImage";
   url: string | null;
   width: number | null;
   height: number | null;
 }
 
-export interface TextMessage_embeds_provider {
+export interface Message_embeds_provider {
   __typename: "EmbedProvider";
   name: string | null;
   url: string | null;
 }
 
-export interface TextMessage_embeds_footer {
+export interface Message_embeds_footer {
   __typename: "EmbedFooter";
   url: string | null;
   text: string;
 }
 
-export interface TextMessage_embeds_thumbnail {
+export interface Message_embeds_thumbnail {
   __typename: "EmbedThumbnail";
   height: number | null;
   width: number | null;
   url: string | null;
 }
 
-export interface TextMessage_embeds_video {
+export interface Message_embeds_video {
   __typename: "EmbedVideo";
   height: number | null;
   width: number | null;
   url: string | null;
 }
 
-export interface TextMessage_embeds {
+export interface Message_embeds {
   __typename: "Embed";
   title: string | null;
   description: string | null;
@@ -110,27 +111,28 @@ export interface TextMessage_embeds {
   timestamp: any | null;
   color: number | null;
   type: string | null;
-  author: TextMessage_embeds_author | null;
-  fields: TextMessage_embeds_fields[] | null;
-  image: TextMessage_embeds_image | null;
-  provider: TextMessage_embeds_provider | null;
-  footer: TextMessage_embeds_footer | null;
-  thumbnail: TextMessage_embeds_thumbnail | null;
-  video: TextMessage_embeds_video | null;
+  author: Message_embeds_author | null;
+  fields: Message_embeds_fields[] | null;
+  image: Message_embeds_image | null;
+  provider: Message_embeds_provider | null;
+  footer: Message_embeds_footer | null;
+  thumbnail: Message_embeds_thumbnail | null;
+  video: Message_embeds_video | null;
 }
 
-export interface TextMessage {
+export interface Message {
   __typename: "Message";
+  id: string;
   content: string;
   type: MessageType;
   flags: number | null;
   createdAt: any;
   editedAt: any | null;
-  author: TextMessage_author;
-  reactions: TextMessage_reactions[] | null;
-  attachments: TextMessage_attachments[];
-  stickers: TextMessage_stickers[] | null;
-  messageReference: TextMessage_messageReference | null;
-  application: TextMessage_application | null;
-  embeds: TextMessage_embeds[];
+  author: Message_author;
+  reactions: Message_reactions[] | null;
+  attachments: Message_attachments[];
+  stickers: Message_stickers[] | null;
+  messageReference: Message_messageReference | null;
+  application: Message_application | null;
+  embeds: Message_embeds[];
 }

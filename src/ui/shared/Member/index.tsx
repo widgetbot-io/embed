@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom'
 import * as React from 'react'
 import { Query } from 'react-apollo'
 
-import {MemberInfo, Message_TextMessage_user} from '@generated'
+import {MemberInfo, Message_author} from '@generated'
 import MemberLink from './link'
 import MEMBER_INFO from './MemberInfo.graphql'
 
@@ -11,7 +11,7 @@ import MEMBER_INFO from './MemberInfo.graphql'
 interface Props {
   id: string
   className?: string
-  children: (member: Message_TextMessage_user) => any
+  children: (member: Message_author) => any
 }
 
 const Member = ({ id: member, children, className }: Props) => (

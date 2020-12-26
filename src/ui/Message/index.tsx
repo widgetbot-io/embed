@@ -31,6 +31,8 @@ import Embed from './Embed'
 import AttachmentSpoiler from '@ui/shared/markdown/render/elements/AttachmentSpoiler'
 import { Locale } from '@lib/Locale'
 import {Util} from '@lib/Util';
+import { MessageType } from '@generated/globalTypes'
+import { generalStore } from '@store'
 
 interface Props {
   messages: Messages_channel_messages[],
@@ -66,17 +68,17 @@ class Message extends React.PureComponent<Props, any> {
             <Author
               author={firstMessage.author}
               time={firstMessage.createdAt}
-              crosspost={firstMessage.flags.IS_CROSSPOST}
+              crosspost={!!(firstMessage.flags & 1 << 1)}
             />
 
           {messages.map((message, i) => {
-            switch (message.__typename) {
-              case 'TextMessage': {
+            switch (message.type) {
+              case MessageType.Default: {
                 return (
                   <ThemeProvider key={message.id} theme={this.theme(message)}>
                     <Root className="message" id={message.id}>
                       <Content className="content">
-                        {message.user.discrim === '0000'
+                        {message.author.discrim === '0000'
                           ? <LinkMarkdown>{message.content}</LinkMarkdown>
                           : <Markdown>{message.content}</Markdown>}
                         {message.editedAt && (
@@ -174,10 +176,10 @@ class Message extends React.PureComponent<Props, any> {
                 )
               }
 
-              case 'JoinMessage': {
+              case MessageType.GuildMemberJoin: {
                 const member = (
-                  <Member id={message.user.id} color={message.user.color}>
-                    {message.user.name}
+                  <Member id={message.author.id} color={message.author.color}>
+                    {message.author.name}
                   </Member>
                 );
 
@@ -191,10 +193,10 @@ class Message extends React.PureComponent<Props, any> {
                 )
               }
 
-              case 'PinnedMessage': {
+              case MessageType.ChannelPinnedMessage: {
                 const member = (
-                  <Member id={message.user.id} color={message.user.color}>
-                    {message.user.name}
+                  <Member id={message.author.id} color={message.author.color}>
+                    {message.author.name}
                   </Member>
                 );
 
@@ -208,18 +210,21 @@ class Message extends React.PureComponent<Props, any> {
                 )
               }
 
-              case 'BoostMessage': {
+              case MessageType.UserPremiumGuildSubscription:
+              case MessageType.UserPremiumGuildTier1:
+              case MessageType.UserPremiumGuildTier2:
+              case MessageType.UserPremiumGuildTier3: {
                 const member = (
-                  <Member id={message.user.id} color={message.user.color}>
-                    {message.user.name}
+                  <Member id={message.author.id} color={message.author.color}>
+                    {message.author.name}
                   </Member>
                 );
 
-                if(message.tier) {
+                if(message.type !== 'UserPremiumGuildSubscription') {
                   return (
                     <React.Fragment key={message.id}>
                       <Secondary.Boost>
-                        {member} {Locale.translate('frontend.messages.boost')} {Locale.translate('frontend.messages.boost.achieved', {GUILD: 'TODO guildName', TIER: String(message.tier)})}
+                        {member} {Locale.translate('frontend.messages.boost')} {Locale.translate('frontend.messages.boost.achieved', {GUILD: generalStore.guild.name, TIER: message.type.replace('UserPremiumGuildTier', '')})}
                       </Secondary.Boost>
                       <Timestamp time={message.createdAt} />
                     </React.Fragment>
@@ -236,10 +241,10 @@ class Message extends React.PureComponent<Props, any> {
                 }
               }
 
-              case 'FollowMessage': {
+              case MessageType.ChannelFollowAdd: {
                 const member = (
-                  <Member id={message.user.id} color={message.user.color}>
-                    {message.user.name}
+                  <Member id={message.author.id} color={message.author.color}>
+                    {message.author.name}
                   </Member>
                 );
 

@@ -1,5 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 import { MessageType } from "./globalTypes";
@@ -121,6 +122,7 @@ export interface NewMessages_message_embeds {
 
 export interface NewMessages_message {
   __typename: "Message";
+  id: string;
   content: string;
   type: MessageType;
   flags: number | null;
