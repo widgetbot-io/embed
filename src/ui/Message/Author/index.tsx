@@ -36,7 +36,7 @@ const developers = {
 };
 
 export const Timestamp = ({ time }: { time: number }) => (
-  <Time className="time">{Moment(time).calendar()}</Time>
+  <Time className="time">{Moment(time*1000).calendar()}</Time>
 );
 
 class Author extends React.PureComponent<Props> {

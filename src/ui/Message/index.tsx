@@ -62,7 +62,6 @@ class Message extends React.PureComponent<Props, any> {
             url={gifCheck(avatarUrl) || DEFAULT_AVATAR}
             className="avatar"
           />
-        )
 
         <Messages className="messages">
             <Author
