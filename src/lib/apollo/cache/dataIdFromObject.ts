@@ -8,7 +8,7 @@ const dataIdFromObject: IdGetter = (object: {
     case 'Reaction':
       return null // Reactions are unique across messages
     case 'User':
-      if (object.bot && object.discriminator === '0000') {
+      if (object.bot && (object.discrim || object.discriminator) === '0000') {
         return `User:${object.id}:${object.username}`;
       }
     default:
