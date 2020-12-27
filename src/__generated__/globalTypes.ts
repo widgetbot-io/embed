@@ -8,6 +8,7 @@
 //==============================================================
 
 export enum MessageType {
+  ApplicationCommand = "ApplicationCommand",
   Call = "Call",
   ChannelFollowAdd = "ChannelFollowAdd",
   ChannelIconChange = "ChannelIconChange",
@@ -19,6 +20,7 @@ export enum MessageType {
   GuildMemberJoin = "GuildMemberJoin",
   RecipientAdd = "RecipientAdd",
   RecipientRemove = "RecipientRemove",
+  Reply = "Reply",
   UserPremiumGuildSubscription = "UserPremiumGuildSubscription",
   UserPremiumGuildTier1 = "UserPremiumGuildTier1",
   UserPremiumGuildTier2 = "UserPremiumGuildTier2",

@@ -23,7 +23,12 @@ import {
   AttachmentSize,
   Audio,
   AudioMetadata,
-  AudioPlayer
+  AudioPlayer,
+  Command,
+  ApplicationIcon,
+  ApplicationName,
+  CommandArgs,
+  CommandArgsSpine,
 } from './elements'
 import { Image } from './Embed/elements/media'
 import Reaction from './Reaction'
@@ -33,6 +38,7 @@ import { Locale } from '@lib/Locale'
 import {Util} from '@lib/Util';
 import { MessageType } from '@generated/globalTypes'
 import { generalStore } from '@store'
+import webpCheck from '@ui/shared/webpCheck'
 
 interface Props {
   messages: Messages_channel_messages[],
@@ -84,7 +90,7 @@ class Message extends React.PureComponent<Props, any> {
                         {message.editedAt && (
                           <Tooltip
                             placement="top"
-                            overlay={Moment(message.editedAt).calendar()}
+                            overlay={Moment(message.editedAt*1000).calendar()}
                             mouseLeaveDelay={0}
                           >
                             <Edited className="edited">
@@ -258,8 +264,40 @@ class Message extends React.PureComponent<Props, any> {
                 )
               }
 
+              case MessageType.ApplicationCommand: {
+                const member =
+                  <Member id={message.author.id} color={message.author.color}>
+                    {message.author.name}
+                  </Member>
+
+                const command = 
+                  <Command>
+                    {message.content.split(':')[0].substring(1)}
+                  </Command>
+                
+                const application = 
+                  <span>
+                    <ApplicationIcon src={webpCheck(`https://cdn.discordapp.com/app-icons/${message.application.id}/${message.application.icon}.webp?size=64`)}></ApplicationIcon> <ApplicationName>{message.application.name}</ApplicationName>
+                  </span>
+
+                return (
+                  <React.Fragment key={message.id}>
+                    <Secondary.Command>
+                      {member} used {command} with {application}
+                    </Secondary.Command>
+                    <Timestamp time={message.createdAt} />
+                    {!message.content.endsWith('> ') && 
+                      <React.Fragment>
+                        <CommandArgsSpine/>
+                        <CommandArgs>{message.content.split(':')[0].substring(1)} {message.content.split('> ')[1]}</CommandArgs>
+                      </React.Fragment>
+                    }
+                  </React.Fragment>
+                )
+              }
+
               default:
-                return null
+                return `Unknown Message Type: ${message.type}`
             }
           })}
         </Messages>

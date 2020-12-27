@@ -26,7 +26,7 @@ interface AvatarProps {
 }
 export const Avatar = styled('div')<AvatarProps>`
   flex-shrink: 0;
-  cursor: pointer;
+  /*cursor: pointer;*/
   background-image: url('${props => webpCheck(props.url)}');
   border-radius: 50%;
   background-size: cover;
@@ -55,7 +55,8 @@ export const Edited = styled('span')`
 
 export namespace Secondary {
   const Message = styled('span')`
-    padding-left: 26px;
+    margin-left: 12px;
+    padding-left: 48px;
     background-repeat: no-repeat;
     background-position: left center;
     background-size: 18px;
@@ -73,7 +74,51 @@ export namespace Secondary {
   export const Boost = styled(Message)`
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' name='PremiumGuildSubscriberBadge' class='icon-360yEu' aria-hidden='false' width='24' height='24' viewBox='0 0 8 12'%3E%3Cpath d='M4 0L0 4V8L4 12L8 8V4L4 0ZM7 7.59L4 10.59L1 7.59V4.41L4 1.41L7 4.41V7.59Z' fill='%23ff73fa'%3E%3C/path%3E%3Cpath d='M2 4.83V7.17L4 9.17L6 7.17V4.83L4 2.83L2 4.83Z' fill='%23ff73fa'%3E%3C/path%3E%3C/svg%3E");
   `
+
+  export const Command = styled(Message)`
+    color: white;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' aria-hidden='false' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%238e9297' fill-rule='evenodd' clip-rule='evenodd' d='M5 3C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3H5ZM16.8995 8.41419L15.4853 6.99998L7 15.4853L8.41421 16.8995L16.8995 8.41419Z'%3E%3C/path%3E%3C/svg%3E");
+  `
 }
+
+export const Command = styled.span`
+  color: #7289da;
+  font-weight: 500;
+`
+
+export const ApplicationIcon = styled.img`
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  vertical-align: text-top;
+`
+
+export const ApplicationName = styled.span`
+  font-weight: 500;
+`
+
+export const CommandArgs = styled.div`
+  margin-left: 60px;
+  background-color: rgba(0, 0, 0, 9%);
+  color: rgba(255, 255, 255, 70%);
+  padding: .5rem;
+  border-radius: .25rem;
+  margin-top: .25rem;
+  display: table;
+`
+
+export const CommandArgsSpine = styled.div`
+  position: absolute;
+  width: 33px;
+  height: 1.5rem;
+  bottom: 15px;
+  left: 40px;
+  border-left: 2px solid #4f545c;
+  border-bottom: 2px solid #4f545c;
+  border-right: 0 solid #4f545c;
+  border-top: 0 solid #4f545c;
+  border-bottom-left-radius: 6px;
+`
 
 // Username
 interface NameProps {
@@ -82,11 +127,12 @@ interface NameProps {
 
 export const Member = styled(MemberLink)<NameProps>`
   color: ${({ color }) => (color !== '#000000' ? color : null)};
-  cursor: pointer;
+  font-weight: 500;
+  /*cursor: pointer;
 
   &:hover {
     text-decoration: underline;
-  }
+  }*/
 `
 
 export const Root = styled('div')`
