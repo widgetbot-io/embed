@@ -1,6 +1,5 @@
 /* tslint:disable */
 /* eslint-disable */
-// @generated
 // This file was automatically generated and should not be edited.
 
 import { MessageType } from "./globalTypes";
@@ -16,6 +15,7 @@ export interface NewMessages_message_author {
   color: string;
   discrim: string;
   id: string;
+  flags: number | null;
   name: string;
 }
 
