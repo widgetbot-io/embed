@@ -68,6 +68,7 @@ class Message extends React.PureComponent<Props, any> {
               author={firstMessage.author}
               time={firstMessage.createdAt}
               crosspost={!!(firstMessage.flags & 1 << 1)}
+              referenceGuild={firstMessage.messageReference && firstMessage.messageReference.guildId}
             />
 
           {messages.map((message, i) => {

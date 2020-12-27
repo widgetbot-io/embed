@@ -3,13 +3,15 @@ import Moment from 'moment'
 import * as React from 'react'
 
 import { Sysadmin, Tag, Verified } from "./Badges";
-import { Name, Root, Time } from './elements'
+import { Name, Root, Time, VerifiedBot } from './elements'
 import { Locale } from '@lib/Locale';
+import Tooltip from 'rc-tooltip';
 
 interface Props {
   author: NewMessages_message_author,
   time: number,
-  crosspost: boolean
+  crosspost: boolean,
+  referenceGuild: string
 }
 
 const developers = {
@@ -39,18 +41,25 @@ export const Timestamp = ({ time }: { time: number }) => (
   <Time className="time">{Moment(time*1000).calendar()}</Time>
 );
 
+const verified = 
+  <Tooltip placement="top" overlay="Verified Bot">
+    <VerifiedBot aria-label="Verified Bot" aria-hidden="false" width="16" height="16" viewBox="0 0 16 15.2"><path d="M7.4,11.17,4,8.62,5,7.26l2,1.53L10.64,4l1.36,1Z" fill="currentColor"></path></VerifiedBot>
+  </Tooltip>
+
 class Author extends React.PureComponent<Props> {
   tags() {
-    const { author, crosspost } = this.props;
+    const { author, crosspost, referenceGuild } = this.props;
 
     return (
       <React.Fragment>
-        {author.bot && (crosspost ? <Tag className="bot">{Locale.translate('frontend.tag.server')}</Tag> : <Tag className="bot">{Locale.translate('frontend.tag.bot')}</Tag>)}
-              {author.id === 'aaaa' && <Tag className="guest">Guest</Tag>}
-              {Author.verified({ id: author.id })/* ||
-                (author.id === '190916650143318016' && (
-                  <Sysadmin className="patreon" title="Patreon" />
-                ))*/}
+        {author.bot &&
+          ( author.id === '669627189624307712' ? <Tag className="system">{verified} System</Tag>
+          : referenceGuild === '667560445975986187' ? <Tag className="system">System</Tag>
+          : crosspost ? <Tag className="bot">{Locale.translate('frontend.tag.server')}</Tag>
+          : <Tag className="bot">{Locale.translate('frontend.tag.bot')}</Tag>
+          )}
+        {author.id === 'aaaa' && <Tag className="guest">Guest</Tag>}
+        {Author.verified({ id: author.id })}
       </React.Fragment>
     )
   }

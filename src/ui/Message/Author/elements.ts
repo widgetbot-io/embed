@@ -15,15 +15,15 @@ interface NameProps {
 
 export const Name = styled('strong')<NameProps>`
   color: ${({ color }) => (color !== '#000000' ? color : null)};
-  cursor: pointer;
+  /*cursor: pointer;*/
   font-size: 16px;
   flex-shrink: 0;
   font-weight: 500;
   letter-spacing: 0;
 
-  &:hover {
+  /*&:hover {
     text-decoration: underline;
-  }
+  }*/
 
   @media (max-width: 340px), (max-height: 370px) {
     font-size: 14px;
@@ -53,4 +53,11 @@ export const Time = styled('span')`
   @media (max-width: 220px) {
     display: none;
   }
+`
+
+export const VerifiedBot = styled('svg')`
+  vertical-align: top;
+  width: 15px;
+  height: 15px;
+  margin-left: -.25rem;
 `

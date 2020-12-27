@@ -1,7 +1,6 @@
 import styled, { css } from '@lib/emotion'
 
 const base = css`
-  user-select: none;
   color: #fff;
   line-height: 16px;
   font-size: 10px;
@@ -38,6 +37,7 @@ export const Tag = styled('span')`
 
 const TagIcon = css`
   ${base};
+  user-select: none;
   display: inline-block;
   background-position: center;
   background-repeat: no-repeat;
