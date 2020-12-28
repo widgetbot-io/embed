@@ -8,7 +8,7 @@ export const Root = styled('div')`
   color: ${({ theme }) => theme.colors._primary.fade(0.3).string()};
 `
 interface Props {
-  color: number
+  barColor: number
 }
 export const Wrapper = styled('div')<Props>`
   padding: 8px 10px;
@@ -21,9 +21,9 @@ export const Wrapper = styled('div')<Props>`
   overflow: hidden;
   border-left: 4px solid;
   border-radius: 4px;
-  border-color: ${({ color }) =>
-    color
-      ? color
+  border-color: ${({ barColor }) =>
+    barColor
+      ? '#'+barColor.toString(16).padStart(6, '0')
       : `rgba(0, 0, 0, .4)`};
 `
 

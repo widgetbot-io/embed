@@ -166,7 +166,6 @@ class Message extends React.PureComponent<Props, any> {
                             }
                           }) : null}
                       {message.embeds && message.embeds.map((e, i) => (
-                          // @ts-ignore
                           <Embed key={i} {...e} />
                       ))}
 
