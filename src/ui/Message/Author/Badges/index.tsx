@@ -22,7 +22,7 @@ export const Tag = styled('span')`
   background: ${({ theme }) => theme.colors.accent};
   border-radius: 3px;
   flex-shrink: 0;
-  padding: .072rem .275rem;
+  padding: .05rem .275rem .072rem;
   margin-left: 6px;
   margin-top: 4px;
   margin-bottom: 4px;

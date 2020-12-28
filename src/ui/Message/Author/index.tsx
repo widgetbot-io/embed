@@ -53,9 +53,10 @@ class Author extends React.PureComponent<Props> {
     return (
       <React.Fragment>
         {author.bot &&
-          ( author.id === '669627189624307712' ? <Tag className="system">{verified} System</Tag>
+          ( author.flags & 1 << 12 ? <Tag className="verified system">{verified} System</Tag>
           : referenceGuild === '667560445975986187' ? <Tag className="system">System</Tag>
-          : crosspost ? <Tag className="bot">{Locale.translate('frontend.tag.server')}</Tag>
+          : crosspost ? <Tag className="server">{Locale.translate('frontend.tag.server')}</Tag>
+          : author.flags & 1 << 16 ? <Tag className="verified bot">{verified} {Locale.translate('frontend.tag.bot')}</Tag>
           : <Tag className="bot">{Locale.translate('frontend.tag.bot')}</Tag>
           )}
         {author.id === 'aaaa' && <Tag className="guest">Guest</Tag>}
