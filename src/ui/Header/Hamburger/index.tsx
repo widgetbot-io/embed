@@ -3,7 +3,7 @@ import * as React from 'react'
 import { Burger, Ham } from './elements'
 
 interface Props {
-  onClick?: Function
+  onClick?: React.MouseEventHandler;
   open?: boolean
 }
 

@@ -13,7 +13,13 @@ const Header = observer(({ children }) => (
       <ServerInfo />
     </SingleChannel>
     <Inner>
-      <Hamburger onClick={store.sidebar.toggle} open={store.sidebar.isOpen} />
+      <Hamburger
+        onClick={e => {
+          e.stopPropagation();
+          store.sidebar.toggle();
+        }}
+        open={store.sidebar.isOpen}
+      />
       {children}
     </Inner>
   </Root>
