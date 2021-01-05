@@ -261,3 +261,7 @@ export const AudioPlayer = styled.audio`
   outline: 0;
   border-radius: 3px;
 `
+
+export const StickerTooltipIcon = styled.svg`
+  vertical-align: bottom
+`
