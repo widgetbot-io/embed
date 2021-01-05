@@ -58,7 +58,7 @@ export class AuthStore {
   }
 
   @action async fetchDiscordUser() {
-    const { data } = await APIRequest(Endpoints.auth.fetchLatestProfile());
+    const { data } = await APIRequest(Endpoints.auth.fetchLatestProfile);
 
     window.localStorage.setItem('user', JSON.stringify(data));
     this.user = data;
@@ -89,14 +89,14 @@ export class AuthStore {
   }
 
   @action discordLogin() {
-    return new Promise((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
       this.inProgress = true;
       this.errors = undefined;
 
       const x: number = screen.width / 2 - 840 / 2;
       const y: number = screen.height / 2 - 700 / 2;
 
-      const newWindow = window.open(`${url.includes('127.0.0.1') ? `http://${url}` : `https://${url}`}/api/auth/discord`, 'Login to WidgetBot with Discord!', `menubar=no,width=840,height=700,location=no,resizable=no,scrollbars=yes,status=no,left=${x},top=${y}`);
+      const newWindow = window.open(`${url.includes('127.0.0.1') ? `http://${url}` : `https://${url}`}${Endpoints.auth.discord.split(' ')[1]}`, 'Login to WidgetBot with Discord!', `menubar=no,width=840,height=700,location=no,resizable=no,scrollbars=yes,status=no,left=${x},top=${y}`);
 
       const timer = setInterval(() => {
         if ((newWindow as Window).closed) {
@@ -142,54 +142,32 @@ export class AuthStore {
   }
 
   @action guestLogin(username: string) {
-    return new Promise((resolve, reject) => {
+    return new Promise<void>(async (resolve, reject) => {
       this.inProgress = true;
       this.errors = undefined;
 
-      const x: number = screen.width / 2 - 500 / 2;
-      const y: number = screen.height / 2 - 720 / 2;
+      const { data } = await APIRequest(Endpoints.auth.guest, {payload: {username}})
 
-      const newWindow = window.open(`${url.includes('127.0.0.1') ? `http://${url}` : `https://${url}`}/api/auth/guest/${encodeURIComponent(username)}`, 'Login to WidgetBot as a Guest!', `menubar=no,width=500,height=720,location=no,resizable=no,scrollbars=yes,status=no,left=${x},top=${y}`);
+      console.log(data)
 
-      const timer = setInterval(() => {
-        if ((newWindow as Window).closed) {
-          cleanup();
-          this.inProgress = false;
-          reject(() => {});
-        }
-      }, 500);
-
-      const receiveMessage = ({ data, source }: MessageEvent) => {
-        source = source as Window;
-
-        switch (data.type) {
-          case 'AUTH_SUCCESS': {
-            source.close();
-            if (!data.token) {
-              this.inProgress = false;
-              return reject(() => {});
-            }
-
-            localStorage.setItem('token', data.token);
-
-            this.token = data.token;
+      switch (data.type) {
+        case 'AUTH_SUCCESS': {
+          if (!data.token) {
             this.inProgress = false;
-            return resolve();
+            return reject(() => {});
           }
-          case 'AUTH_FAIL': {
-            source.close();
-            cleanup();
-            console.log(data.error);
-            return reject(() => {})
-            // return reject(loginError("You pressed cancel on the authentication window"));
-          }
-        }
-      };
-      window.addEventListener('message', receiveMessage);
 
-      const cleanup = () =>  {
-        clearInterval(timer);
-        window.removeEventListener('message', receiveMessage);
+          localStorage.setItem('token', data.token);
+
+          this.token = data.token;
+          this.inProgress = false;
+          console.log('success!')
+          return resolve();
+        }
+        case 'AUTH_FAIL': {
+          console.log(data.error);
+          return reject(() => {})
+        }
       }
     })
   }
