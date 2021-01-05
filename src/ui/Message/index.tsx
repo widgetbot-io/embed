@@ -165,8 +165,14 @@ class Message extends React.PureComponent<Props, any> {
                               }
                             }
                           }) : null}
+
                       {message.embeds && message.embeds.map((e, i) => (
                           <Embed key={i} {...e} />
+                      ))}
+
+                      {message.stickers && message.stickers.map((s, i) => (
+                          s.formatType === 'LOTTIE' ? `Lottie Sticker: ${s.name}`
+                          : <img key={i} height={160} width={160} alt={s.name+' Sticker'} src={`https://cdn.discordapp.com/stickers/${s.id}/${s.icon}.png`} draggable={false} />
                       ))}
 
                       {message.reactions && (

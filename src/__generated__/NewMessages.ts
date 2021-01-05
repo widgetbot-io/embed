@@ -1,8 +1,9 @@
 /* tslint:disable */
 /* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
-import { MessageType } from "./globalTypes";
+import { MessageType, FormatType } from "./globalTypes";
 
 // ====================================================
 // GraphQL subscription operation: NewMessages
@@ -41,6 +42,7 @@ export interface NewMessages_message_stickers {
   id: string;
   name: string;
   icon: string;
+  formatType: FormatType;
 }
 
 export interface NewMessages_message_messageReference {

@@ -35,6 +35,7 @@ fragment Message on Message {
         id
         name
         icon
+        formatType
     }
 
     reactions {
