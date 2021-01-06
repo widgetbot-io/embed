@@ -24,7 +24,7 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
   const { messages, error, ready, stale, fetchMore } = useMessages(
     channel
   );
-  const groupedMessages = groupMessages(messages.reverse());
+  const groupedMessages = groupMessages(messages);
   const scroller = useObservable({
     isLoadingMore: false,
     readyToLoadMore: false,
