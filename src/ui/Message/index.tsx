@@ -195,23 +195,6 @@ class Message extends React.PureComponent<Props, any> {
                 )
               }
 
-              case MessageType.GuildMemberJoin: {
-                const member = (
-                  <Member id={message.author.id} color={message.author.color}>
-                    {message.author.name}
-                  </Member>
-                );
-
-                return (
-                  <React.Fragment key={message.id}>
-                    <Secondary.Join>
-                      {joinMessageBeginning(message)}{member}{joinMessageEnd(message)}
-                    </Secondary.Join>
-                    <Timestamp time={message.createdAt} />
-                  </React.Fragment>
-                )
-              }
-
               case MessageType.ChannelPinnedMessage: {
                 const member = (
                   <Member id={message.author.id} color={message.author.color}>
@@ -224,6 +207,23 @@ class Message extends React.PureComponent<Props, any> {
                     <Secondary.Pinned>
                       {member} {Locale.translate('frontend.messages.pinned')}
                     </Secondary.Pinned>
+                    <Timestamp time={message.createdAt} />
+                  </React.Fragment>
+                )
+              }
+
+              case MessageType.GuildMemberJoin: {
+                const member = (
+                  <Member id={message.author.id} color={message.author.color}>
+                    {message.author.name}
+                  </Member>
+                );
+
+                return (
+                  <React.Fragment key={message.id}>
+                    <Secondary.Join>
+                      {joinMessageBeginning(message)}{member}{joinMessageEnd(message)}
+                    </Secondary.Join>
                     <Timestamp time={message.createdAt} />
                   </React.Fragment>
                 )
@@ -272,6 +272,50 @@ class Message extends React.PureComponent<Props, any> {
                     <Secondary.Join>
                       {member} {Locale.translate('frontend.messages.follow', {HOOK: message.content})}
                     </Secondary.Join>
+                    <Timestamp time={message.createdAt} />
+                  </React.Fragment>
+                )
+              }
+
+              case MessageType.GuildDiscoveryDisqualified: {
+                return (
+                  <React.Fragment key={message.id}>
+                    <Secondary.X>
+                      This server has been removed from Server Discovery because it no longer passes all the requirements. Check Server Settings for more details.
+                    </Secondary.X>
+                    <Timestamp time={message.createdAt} />
+                  </React.Fragment>
+                )
+              }
+
+              case MessageType.GuildDiscoveryRequalified: {
+                return (
+                  <React.Fragment key={message.id}>
+                    <Secondary.Check>
+                      This server is eligible for Server Discovery again and has been automatically relisted!
+                    </Secondary.Check>
+                    <Timestamp time={message.createdAt} />
+                  </React.Fragment>
+                )
+              }
+
+              case MessageType.GuildDiscoveryGracePeriodInitialWarning: {
+                return (
+                  <React.Fragment key={message.id}>
+                    <Secondary.Warning>
+                      This server has failed Discovery activity requirements for 1 week. If this server fails for 4 weeks in a row, it will be automatically removed from Discovery.
+                    </Secondary.Warning>
+                    <Timestamp time={message.createdAt} />
+                  </React.Fragment>
+                )
+              }
+
+              case MessageType.GuildDiscoveryGracePeriodFinalWarning: {
+                return (
+                  <React.Fragment key={message.id}>
+                    <Secondary.Warning>
+                      This server has failed Discovery activity requirements for 3 weeks in a row. If this server fails for 1 more week, it will be removed from Discovery.
+                    </Secondary.Warning>
                     <Timestamp time={message.createdAt} />
                   </React.Fragment>
                 )

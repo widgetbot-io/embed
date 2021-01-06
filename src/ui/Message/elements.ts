@@ -63,16 +63,28 @@ export namespace Secondary {
     color: ${({ theme }) => theme.colors._primary.fade(0.6).string()};
   `
 
-  export const Join = styled(Message)`
-    background-image: url("https://discord.com/assets/b8029fe196b8f1382e90bbe81dab50dc.svg");
-  `
-
   export const Pinned = styled(Message)`
     background-image: url("https://discord.com/assets/5da4cdab01d4d89c593c48c62ae0d937.svg");
   `
 
+  export const Join = styled(Message)`
+    background-image: url("https://discord.com/assets/b8029fe196b8f1382e90bbe81dab50dc.svg");
+  `
+
   export const Boost = styled(Message)`
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' name='PremiumGuildSubscriberBadge' class='icon-360yEu' aria-hidden='false' width='24' height='24' viewBox='0 0 8 12'%3E%3Cpath d='M4 0L0 4V8L4 12L8 8V4L4 0ZM7 7.59L4 10.59L1 7.59V4.41L4 1.41L7 4.41V7.59Z' fill='%23ff73fa'%3E%3C/path%3E%3Cpath d='M2 4.83V7.17L4 9.17L6 7.17V4.83L4 2.83L2 4.83Z' fill='%23ff73fa'%3E%3C/path%3E%3C/svg%3E");
+  `
+
+  export const X = styled(Message)`
+    background-image: url("https://discord.com/assets/46db4c8d56c169f418cc5c0f0d4ddf70.svg");
+  `
+
+  export const Check = styled(Message)`
+    background-image: url("https://discord.com/assets/286a546022f1e3cbe45b41090f8d6e97.svg");
+  `
+
+  export const Warning = styled(Message)`
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' aria-hidden='false' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath d='M10 0C4.486 0 0 4.486 0 10C0 15.515 4.486 20 10 20C15.514 20 20 15.515 20 10C20 4.486 15.514 0 10 0ZM9 4H11V11H9V4ZM10 15.25C9.31 15.25 8.75 14.691 8.75 14C8.75 13.31 9.31 12.75 10 12.75C10.69 12.75 11.25 13.31 11.25 14C11.25 14.691 10.69 15.25 10 15.25Z' fill-rule='evenodd' clip-rule='evenodd' fill='%23faa61a'%3E%3C/path%3E%3C/svg%3E");
   `
 
   export const Command = styled(Message)`
