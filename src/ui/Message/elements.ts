@@ -8,7 +8,7 @@ export const Group = styled('div')`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 20px 35px 0 20px;
+  padding: 17px 35px 0 20px;
   user-select: text;
   word-wrap: break-word;
 
@@ -21,8 +21,83 @@ export const Group = styled('div')`
   }
 `
 
+export const ReplySpine = styled.div`
+  position: absolute;
+  width: 33px;
+  height: 12px;
+  top: 25px;
+  left: 40px;
+  border-left: 2px solid #4f545c;
+  border-top: 2px solid #4f545c;
+  border-top-left-radius: 6px;
+`
+
+export const RepliedMessage = styled.div`
+  font-size: 14px;
+  margin-bottom: 4px;
+`
+
+export const RepliedAvatar = styled.img`
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  user-select: none;
+  vertical-align: sub;
+`
+
+export const RepliedUser = styled.span<NameProps>`
+  color: ${({ color }) => (color !== '#000000' ? color : null)};
+  font-weight: 500;
+  opacity: .64;
+  margin: 0 .25rem;
+`
+
+export const RepliedText = styled.div`
+  color: rgba(255, 255, 255, .66);
+  display: inline-block;
+
+  * {
+    color: inherit
+  }
+
+  a {
+    color: #00b0f4;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  strong {
+    font-weight: 700;
+    color: inherit;
+  }
+`
+
+export const UnknownReplyIconWrapper = styled.div`
+  background-color: #202225;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  align-items: center;
+  justify-content: center;
+  display: inline-flex;
+  margin-right: .25rem;
+`
+
+export const ReplySystemText = styled.span`
+  color: rgba(255, 255, 255, .66);
+  font-style: italic;
+`
+
+export const ReplyImageIcon = styled.svg`
+  vertical-align: text-bottom;
+  margin-left: 6px;
+`
+
 interface AvatarProps {
   url: string
+  reply: boolean
 }
 export const Avatar = styled('div')<AvatarProps>`
   flex-shrink: 0;
@@ -33,6 +108,7 @@ export const Avatar = styled('div')<AvatarProps>`
   height: 40px;
   width: 40px;
   margin-right: 20px;
+  ${props => props.reply && 'margin-top: 24px;'}
 
   @media (max-width: 400px), (max-height: 370px) {
     height: 35px;
@@ -127,8 +203,6 @@ export const CommandArgsSpine = styled.div`
   left: 40px;
   border-left: 2px solid #4f545c;
   border-bottom: 2px solid #4f545c;
-  border-right: 0 solid #4f545c;
-  border-top: 0 solid #4f545c;
   border-bottom-left-radius: 6px;
 `
 

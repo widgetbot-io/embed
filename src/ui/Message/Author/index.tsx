@@ -46,25 +46,19 @@ const verified =
     <VerifiedBot aria-label="Verified Bot" aria-hidden="false" width="16" height="16" viewBox="0 0 16 15.2"><path d="M7.4,11.17,4,8.62,5,7.26l2,1.53L10.64,4l1.36,1Z" fill="currentColor"></path></VerifiedBot>
   </Tooltip>
 
+export const tags = ({author, crosspost, referenceGuild}: Omit<Props, 'time'>) => 
+  <React.Fragment>
+    {author.bot &&
+      ( author.flags & 1 << 12 ? <Tag className="verified system">{verified} System</Tag>
+      : referenceGuild === '667560445975986187' ? <Tag className="system">System</Tag>
+      : crosspost ? <Tag className="server">{Locale.translate('frontend.tag.server')}</Tag>
+      : author.flags & 1 << 16 ? <Tag className="verified bot">{verified} {Locale.translate('frontend.tag.bot')}</Tag>
+      : <Tag className="bot">{Locale.translate('frontend.tag.bot')}</Tag>
+      )}
+    {author.id === 'aaaa' && <Tag className="guest">Guest</Tag>}
+  </React.Fragment>
+
 class Author extends React.PureComponent<Props> {
-  tags() {
-    const { author, crosspost, referenceGuild } = this.props;
-
-    return (
-      <React.Fragment>
-        {author.bot &&
-          ( author.flags & 1 << 12 ? <Tag className="verified system">{verified} System</Tag>
-          : referenceGuild === '667560445975986187' ? <Tag className="system">System</Tag>
-          : crosspost ? <Tag className="server">{Locale.translate('frontend.tag.server')}</Tag>
-          : author.flags & 1 << 16 ? <Tag className="verified bot">{verified} {Locale.translate('frontend.tag.bot')}</Tag>
-          : <Tag className="bot">{Locale.translate('frontend.tag.bot')}</Tag>
-          )}
-        {author.id === 'aaaa' && <Tag className="guest">Guest</Tag>}
-        {Author.verified({ id: author.id })}
-      </React.Fragment>
-    )
-  }
-
   render() {
     const { author, time } = this.props;
 
@@ -79,7 +73,8 @@ class Author extends React.PureComponent<Props> {
         <Name color={hexColor} className="name">
           {author.name}
         </Name>
-        {this.tags()}
+        {tags(this.props)}
+        {Author.verified({ id: author.id })}
         <Timestamp time={time} />
       </Root>
     )

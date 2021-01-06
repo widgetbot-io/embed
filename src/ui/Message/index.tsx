@@ -5,7 +5,7 @@ import Moment from 'moment'
 import Tooltip from 'rc-tooltip'
 import * as React from 'react'
 
-import Author, { Timestamp } from './Author'
+import Author, { tags, Timestamp } from './Author'
 import {
   Avatar,
   Content,
@@ -29,7 +29,15 @@ import {
   ApplicationName,
   CommandArgs,
   CommandArgsSpine,
-  StickerTooltipIcon
+  RepliedMessage,
+  ReplySpine,
+  RepliedAvatar,
+  RepliedUser,
+  RepliedText,
+  ReplyImageIcon,
+  UnknownReplyIconWrapper,
+  ReplySystemText,
+  StickerTooltipIcon,
 } from './elements'
 import { Image } from './Embed/elements/media'
 import Reaction from './Reaction'
@@ -43,6 +51,7 @@ import webpCheck from '@ui/shared/webpCheck'
 
 interface Props {
   messages: Messages_channel_messages[],
+  allMessages: Messages_channel_messages[],
   style?
 }
 
@@ -59,28 +68,66 @@ class Message extends React.PureComponent<Props, any> {
   });
 
   render() {
-    const { messages } = this.props;
+    const { messages, allMessages } = this.props;
     const [firstMessage] = messages;
 
     const avatarUrl = !firstMessage.author.avatar.startsWith('http') ? Util.craftAvatarUrl(firstMessage.author.id, firstMessage.author.avatar) : firstMessage.author.avatar;
+    
+    let repliedMessage: Messages_channel_messages
+
+    if (firstMessage.type === MessageType.Reply) {
+      repliedMessage = allMessages.find(m => m.id === firstMessage.messageReference.messageId)
+    }
+
     return (
       <Group style={this.props.style} className="group">
+
+        {[MessageType.Default, MessageType.Reply].includes(firstMessage.type) && 
           <Avatar
             url={gifCheck(avatarUrl) || DEFAULT_AVATAR}
             className="avatar"
+            reply={firstMessage.type === MessageType.Reply}
           />
+        }
 
         <Messages className="messages">
+          {firstMessage.type === MessageType.Reply &&
+            <React.Fragment>
+              <ReplySpine/>
+              {repliedMessage ? 
+                <RepliedMessage>
+                  <RepliedAvatar src={Util.craftAvatarUrl(repliedMessage.author.id, repliedMessage.author.avatar)} />
+                  {tags({author: repliedMessage.author, crosspost: !!(repliedMessage.flags & 1 << 1), referenceGuild: repliedMessage.messageReference && repliedMessage.messageReference.guildId})}
+                  <RepliedUser color="#fff">{repliedMessage.author.name}</RepliedUser>
+                  {repliedMessage.content
+                    ? <RepliedText><Markdown>{repliedMessage.content}</Markdown></RepliedText>
+                    : <ReplySystemText>Attachment</ReplySystemText>}
+                  {(repliedMessage.attachments.length > 0 || repliedMessage.embeds.length > 0 || repliedMessage.stickers) &&
+                    <ReplyImageIcon aria-hidden="false" width="20" height="20" viewBox="0 0 64 64"><path fill="rgba(255,255,255,.66)" d="M56 50.6667V13.3333C56 10.4 53.6 8 50.6667 8H13.3333C10.4 8 8 10.4 8 13.3333V50.6667C8 53.6 10.4 56 13.3333 56H50.6667C53.6 56 56 53.6 56 50.6667ZM22.6667 36L29.3333 44.0267L38.6667 32L50.6667 48H13.3333L22.6667 36Z"></path></ReplyImageIcon>}
+                </RepliedMessage>
+                :
+                <RepliedMessage>
+                  <UnknownReplyIconWrapper>
+                    <svg width="12" height="8" viewBox="0 0 12 8"><path d="M0.809739 3.59646L5.12565 0.468433C5.17446 0.431163 5.23323 0.408043 5.2951 0.401763C5.35698 0.395482 5.41943 0.406298 5.4752 0.432954C5.53096 0.45961 5.57776 0.50101 5.61013 0.552343C5.64251 0.603676 5.65914 0.662833 5.6581 0.722939V2.3707C10.3624 2.3707 11.2539 5.52482 11.3991 7.21174C11.4028 7.27916 11.3848 7.34603 11.3474 7.40312C11.3101 7.46021 11.2554 7.50471 11.1908 7.53049C11.1262 7.55626 11.0549 7.56204 10.9868 7.54703C10.9187 7.53201 10.857 7.49695 10.8104 7.44666C8.72224 5.08977 5.6581 5.63359 5.6581 5.63359V7.28135C5.65831 7.34051 5.64141 7.39856 5.60931 7.44894C5.5772 7.49932 5.53117 7.54004 5.4764 7.5665C5.42163 7.59296 5.3603 7.60411 5.29932 7.59869C5.23834 7.59328 5.18014 7.57151 5.13128 7.53585L0.809739 4.40892C0.744492 4.3616 0.691538 4.30026 0.655067 4.22975C0.618596 4.15925 0.599609 4.08151 0.599609 4.00269C0.599609 3.92386 0.618596 3.84612 0.655067 3.77562C0.691538 3.70511 0.744492 3.64377 0.809739 3.59646Z" fill="#b9bbbe"></path></svg>
+                  </UnknownReplyIconWrapper>
+                  <ReplySystemText>Original message was deleted or is unknown.</ReplySystemText>
+                </RepliedMessage>
+              }
+            </React.Fragment>}
+
+          {[MessageType.Default, MessageType.Reply].includes(firstMessage.type) && 
             <Author
               author={firstMessage.author}
               time={firstMessage.createdAt}
               crosspost={!!(firstMessage.flags & 1 << 1)}
               referenceGuild={firstMessage.messageReference && firstMessage.messageReference.guildId}
             />
+          }
 
           {messages.map((message, i) => {
             switch (message.type) {
-              case MessageType.Default: {
+              case MessageType.Default:
+              case MessageType.Reply: {
                 return (
                   <ThemeProvider key={message.id} theme={this.theme(message)}>
                     <Root className="message" id={message.id}>
@@ -174,7 +221,7 @@ class Message extends React.PureComponent<Props, any> {
                       {message.stickers && message.stickers.map((s, i) => 
                         <Tooltip
                           placement="top"
-                          overlay={<React.Fragment><StickerTooltipIcon width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.20038 2.39762V5.24178C9.20038 6.10455 9.89673 6.80072 10.7597 6.80072H13.6046C13.9558 6.80072 14.1343 6.37826 13.8844 6.12835L9.87292 2.11796C9.62295 1.86806 9.20038 2.04061 9.20038 2.39762ZM10.7461 8.01794C9.22044 8.01794 7.98197 6.77947 7.98197 5.25382V2.03499H3.19561C2.53749 2.03499 1.99902 2.57346 1.99902 3.23158V12.8043C1.99902 13.4624 2.53749 14.0009 3.19561 14.0009H12.7683C13.4265 14.0009 13.9649 13.4624 13.9649 12.8043V8.01794H10.7461ZM9.80015 9C9.80015 9.99411 8.99427 10.8 8.00015 10.8C7.00604 10.8 6.20015 9.99411 6.20015 9H5.00015C5.00015 10.6569 6.3433 12 8.00015 12C9.65701 12 11.0002 10.6569 11.0002 9H9.80015Z" fill="#dcddde"/></StickerTooltipIcon> {s.name}</React.Fragment>}
+                          overlay={<React.Fragment><StickerTooltipIcon width="16" height="16" viewBox="0 0 16 16"><path fillRule="evenodd" clipRule="evenodd" d="M9.20038 2.39762V5.24178C9.20038 6.10455 9.89673 6.80072 10.7597 6.80072H13.6046C13.9558 6.80072 14.1343 6.37826 13.8844 6.12835L9.87292 2.11796C9.62295 1.86806 9.20038 2.04061 9.20038 2.39762ZM10.7461 8.01794C9.22044 8.01794 7.98197 6.77947 7.98197 5.25382V2.03499H3.19561C2.53749 2.03499 1.99902 2.57346 1.99902 3.23158V12.8043C1.99902 13.4624 2.53749 14.0009 3.19561 14.0009H12.7683C13.4265 14.0009 13.9649 13.4624 13.9649 12.8043V8.01794H10.7461ZM9.80015 9C9.80015 9.99411 8.99427 10.8 8.00015 10.8C7.00604 10.8 6.20015 9.99411 6.20015 9H5.00015C5.00015 10.6569 6.3433 12 8.00015 12C9.65701 12 11.0002 10.6569 11.0002 9H9.80015Z" fill="#dcddde"/></StickerTooltipIcon> {s.name}</React.Fragment>}
                           mouseEnterDelay={.25}
                           mouseLeaveDelay={0}
                         >
