@@ -32,7 +32,7 @@ export const Content = styled('div')`
   display: flex;
   overflow: hidden;
   ${({ theme }) =>
-    /^article|image$/.test(theme.embed.type)
+    /^Article|Image$/.test(theme.embed.type)
       ? css`
           flex-direction: column;
         `

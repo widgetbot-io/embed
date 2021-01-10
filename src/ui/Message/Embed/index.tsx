@@ -126,8 +126,8 @@ const EmbedThumbnail = ({url, height, width, type}: { height: number | null, wid
                 src={url}
                 height={height}
                 width={width}
-                maxWidth={/^article|image$/.test(type) ? 400 : 80}
-                maxHeight={/^article|image$/.test(type) ? 300 : 80}
+                maxWidth={/^Article|Image$/.test(type) ? 400 : 80}
+                maxHeight={/^Article|Image$/.test(type) ? 300 : 80}
             />
         ) : null
 
@@ -191,19 +191,19 @@ const Embed = ({
    video,
    ...embed
 }: Message_embeds) =>
-    embed.type === 'gifv' ? (
+    embed.type === 'GifV' ? (
         <Gifv autoPlay loop muted
               src={video.url}
               width={+video.width}
               height={+video.height}
         />
-    ) : embed.type === 'image' ? (
+    ) : embed.type === 'Image' ? (
         <Image
             src={thumbnail.url}
             width={+thumbnail.width}
             height={+thumbnail.height}
         />
-    ) : embed.type === 'video' && !thumbnail ? (
+    ) : embed.type === 'Video' && !thumbnail ? (
         <Video controls
                src={video.url}
                width={+video.width}
@@ -223,7 +223,7 @@ const Embed = ({
                             <EmbedProvider {...provider}/>
                             <EmbedAuthor {...author} />
                             <EmbedTitle title={title} url={url}/>
-                            {embed.type === 'video' ?
+                            {embed.type === 'Video' ?
                                 <EmbedVideo {...video} /> :
                                 <EmbedDescription content={description}/>}
                             <EmbedFields fields={fields}/>
