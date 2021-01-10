@@ -1,0 +1,30 @@
+{
+  "name": "WidgetBot.io Chat",
+  "description": "Discord on your website",
+  "repository": "https://github.com/ezywebca/embed",
+  "keywords": ["chat", "discord", "embed", "public", "website"],
+  "env": {
+    "ADMIN_IDS": {
+      "description":
+        "IDs of Discord users who should be able to control your Bot with commands, separated by a comma.",
+      "value": ""
+    },
+    "JWT_SIGNATURE_KEY": {
+      "description":
+        "A long random string which will be used for encryption. Don't share with anyone and don't change once it's been set!",
+      "generator": "secret"
+    },
+    "DISCORD_TOKEN": {
+      "description":
+        "Token of your Discord Bot (created via https://discordapp.com/developers/applications/)"
+    },
+    "LOG_CHANNEL_ID": {
+      "description":
+        "ID of the channel where status update messages should be sent to."
+    },
+    "LOG_SERVER_ID": {
+      "description":
+        "ID of the server where status update messages should be sent to."
+    }
+  }
+}
