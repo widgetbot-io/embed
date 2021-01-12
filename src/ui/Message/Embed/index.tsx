@@ -72,7 +72,7 @@ const EmbedVideo = ({url, height, width}) =>
         <VideoIframe src={url} height={height} width={width}/>
     ) : null
 
-const EmbedAuthor = ({name, url}: Embed_author) => {
+const EmbedAuthor = ({name, url, icon}: Embed_author) => {
     if (!name) {
         return null
     }
@@ -89,7 +89,7 @@ const EmbedAuthor = ({name, url}: Embed_author) => {
         }
     }
 
-    const authorIcon = url ? <AuthorIcon src={url}/> : null
+    const authorIcon = icon ? <AuthorIcon src={icon}/> : null
 
     return (
         <Author>

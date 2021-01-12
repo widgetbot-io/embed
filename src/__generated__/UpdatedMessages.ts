@@ -63,6 +63,7 @@ export interface UpdatedMessages_messageUpdate_embeds_author {
   __typename: "EmbedAuthor";
   url: string | null;
   name: string | null;
+  icon: string | null;
 }
 
 export interface UpdatedMessages_messageUpdate_embeds_fields {

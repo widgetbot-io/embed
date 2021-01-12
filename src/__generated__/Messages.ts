@@ -63,6 +63,7 @@ export interface Messages_channel_messages_embeds_author {
   __typename: "EmbedAuthor";
   url: string | null;
   name: string | null;
+  icon: string | null;
 }
 
 export interface Messages_channel_messages_embeds_fields {
