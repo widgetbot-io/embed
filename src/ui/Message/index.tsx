@@ -4,6 +4,7 @@ import { ThemeProvider } from 'emotion-theming'
 import Moment from 'moment'
 import Tooltip from 'rc-tooltip'
 import * as React from 'react'
+import Lottie from 'lottie-react-web'
 
 import Author, { tags, Timestamp } from './Author'
 import {
@@ -38,6 +39,7 @@ import {
   UnknownReplyIconWrapper,
   ReplySystemText,
   StickerTooltipIcon,
+  LottieStickerWrapper
 } from './elements'
 import { Image } from './Embed/elements/media'
 import Reaction from './Reaction'
@@ -98,7 +100,7 @@ class Message extends React.PureComponent<Props, any> {
                 <RepliedMessage>
                   <RepliedAvatar src={Util.craftAvatarUrl(repliedMessage.author.id, repliedMessage.author.avatar)} />
                   {tags({author: repliedMessage.author, crosspost: !!(repliedMessage.flags & 1 << 1), referenceGuild: repliedMessage.messageReference && repliedMessage.messageReference.guildId})}
-                  <RepliedUser color="#fff">{repliedMessage.author.name}</RepliedUser>
+                  <RepliedUser nameColor={repliedMessage.author.color}>{repliedMessage.author.name}</RepliedUser>
                   {repliedMessage.content
                     ? <RepliedText><Markdown>{repliedMessage.content}</Markdown></RepliedText>
                     : repliedMessage.stickers
@@ -231,7 +233,16 @@ class Message extends React.PureComponent<Props, any> {
                           mouseEnterDelay={.25}
                           mouseLeaveDelay={0}
                         >
-                          {s.formatType === 'LOTTIE' ? <span>Lottie Sticker: {s.name}</span>
+                          {s.formatType === 'LOTTIE' ?
+                            <LottieStickerWrapper>
+                              <Lottie
+                                height={160}
+                                width={160}
+                                options={{
+                                  animationData: JSON.parse(s.lottieData)
+                                }}
+                              />
+                            </LottieStickerWrapper>
                           : <img height={160} width={160} alt={s.name+' Sticker'} src={`https://cdn.discordapp.com/stickers/${s.id}/${s.icon}.png`} draggable={false} />}
                         </Tooltip>
                       )}

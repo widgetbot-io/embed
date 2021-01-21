@@ -13,7 +13,7 @@ export interface NewMessages_message_author {
   __typename: "User";
   avatar: string;
   bot: boolean;
-  color: string;
+  color: number;
   discrim: string;
   id: string;
   flags: number | null;
@@ -43,6 +43,7 @@ export interface NewMessages_message_stickers {
   name: string;
   icon: string;
   formatType: FormatType;
+  lottieData: string | null;
 }
 
 export interface NewMessages_message_messageReference {
@@ -134,7 +135,7 @@ export interface NewMessages_message {
   author: NewMessages_message_author;
   reactions: NewMessages_message_reactions[] | null;
   attachments: NewMessages_message_attachments[];
-  stickers: NewMessages_message_stickers[] | null;
+  stickers: NewMessages_message_stickers[];
   messageReference: NewMessages_message_messageReference | null;
   application: NewMessages_message_application | null;
   embeds: NewMessages_message_embeds[];

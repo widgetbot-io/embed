@@ -45,8 +45,11 @@ export const RepliedAvatar = styled.img`
   vertical-align: sub;
 `
 
-export const RepliedUser = styled.span<NameProps>`
-  color: ${({ color }) => (color !== '#000000' ? color : null)};
+interface RepliedUserProps {
+  nameColor: number
+}
+export const RepliedUser = styled.span<RepliedUserProps>`
+  color: ${({ nameColor }) => (nameColor ? nameColor.toString(16).padStart(6, '0') : null)};
   font-weight: 500;
   opacity: .64;
   margin: 0 .25rem;
@@ -208,11 +211,11 @@ export const CommandArgsSpine = styled.div`
 
 // Username
 interface NameProps {
-  color: string
+  color: number
 }
 
 export const Member = styled(MemberLink)<NameProps>`
-  color: ${({ color }) => (color !== '#000000' ? color : null)};
+  color: ${({ color }) => (color ? '#'+color.toString(16).padStart(6, '0') : null)};
   font-weight: 500;
   /*cursor: pointer;
 
@@ -350,4 +353,8 @@ export const AudioPlayer = styled.audio`
 
 export const StickerTooltipIcon = styled.svg`
   vertical-align: bottom
+`
+
+export const LottieStickerWrapper = styled.span`
+  display: inline-block
 `

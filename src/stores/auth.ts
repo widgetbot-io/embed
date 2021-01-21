@@ -148,8 +148,6 @@ export class AuthStore {
 
       const { data } = await APIRequest(Endpoints.auth.guest, {payload: {username}})
 
-      console.log(data)
-
       switch (data.type) {
         case 'AUTH_SUCCESS': {
           if (!data.token) {
@@ -161,7 +159,6 @@ export class AuthStore {
 
           this.token = data.token;
           this.inProgress = false;
-          console.log('success!')
           return resolve();
         }
         case 'AUTH_FAIL': {

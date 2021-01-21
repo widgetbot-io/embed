@@ -62,11 +62,7 @@ class Author extends React.PureComponent<Props> {
   render() {
     const { author, time } = this.props;
 
-    // const hexColor =
-    //   (author ? author.color : null) ||
-    //   '#fff';
-
-    const hexColor = '#fff';
+    const hexColor = '#'+ (author.color.toString(16).padStart(6, '0') || 'fff')
 
     return (
       <Root className="author">

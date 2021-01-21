@@ -13,7 +13,7 @@ export interface UpdatedMessages_messageUpdate_author {
   __typename: "User";
   avatar: string;
   bot: boolean;
-  color: string;
+  color: number;
   discrim: string;
   id: string;
   flags: number | null;
@@ -43,6 +43,7 @@ export interface UpdatedMessages_messageUpdate_stickers {
   name: string;
   icon: string;
   formatType: FormatType;
+  lottieData: string | null;
 }
 
 export interface UpdatedMessages_messageUpdate_messageReference {
@@ -134,7 +135,7 @@ export interface UpdatedMessages_messageUpdate {
   author: UpdatedMessages_messageUpdate_author;
   reactions: UpdatedMessages_messageUpdate_reactions[] | null;
   attachments: UpdatedMessages_messageUpdate_attachments[];
-  stickers: UpdatedMessages_messageUpdate_stickers[] | null;
+  stickers: UpdatedMessages_messageUpdate_stickers[];
   messageReference: UpdatedMessages_messageUpdate_messageReference | null;
   application: UpdatedMessages_messageUpdate_application | null;
   embeds: UpdatedMessages_messageUpdate_embeds[];

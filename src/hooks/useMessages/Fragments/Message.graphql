@@ -36,6 +36,7 @@ fragment Message on Message {
         name
         icon
         formatType
+        lottieData
     }
 
     reactions {
