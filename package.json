@@ -61,6 +61,7 @@
     "immer": "^2.0.0",
     "localforage": "^1.7.3",
     "lodash": "^4.17.15",
+    "lottie-react-web": "^2.2.2",
     "match-sorter": "^2.3.0",
     "memoizee": "^0.4.14",
     "mobx": "^5.13.0",
