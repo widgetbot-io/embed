@@ -16,6 +16,8 @@ replace() {
     find $BUILD_PATH/ -name '*.html' | xargs sed -i "s|{$1}|$2|g"
 }
 
+echo "Replacing ${CUSTOM_SERVER_ENDPOINT}"
+
 # replace all the environments
 replace CUSTOM_SERVER_ENDPOINT ${CUSTOM_SERVER_ENDPOINT}
 echo "Done"
