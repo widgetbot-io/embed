@@ -57,11 +57,20 @@ interface Props {
   style?
 }
 
-const DEFAULT_AVATAR = 'https://cdn.discordapp.com/embed/avatars/0.png';
+const defaultAvatar = (discriminator: string) => `https://cdn.discordapp.com/embed/avatars/${Number(discriminator) % 5}.png`
 
 const gifCheck = (url: string) => {
   return url.includes('/a_') ? url.replace('webp', 'gif') : url
 }
+
+const getAvatar = (message: Messages_channel_messages) =>
+  message.author.avatar
+  ? webpCheck(gifCheck(
+      !message.author.avatar.startsWith('http')
+      ? Util.craftAvatarUrl(message.author.id, message.author.avatar)
+      : message.author.avatar
+    ))
+  : defaultAvatar(message.author.discrim)
 
 class Message extends React.PureComponent<Props, any> {
   theme = message => theme => ({
@@ -72,8 +81,6 @@ class Message extends React.PureComponent<Props, any> {
   render() {
     const { messages, allMessages } = this.props;
     const [firstMessage] = messages;
-
-    const avatarUrl = !firstMessage.author.avatar.startsWith('http') ? Util.craftAvatarUrl(firstMessage.author.id, firstMessage.author.avatar) : firstMessage.author.avatar;
     
     let repliedMessage: Messages_channel_messages
 
@@ -86,7 +93,7 @@ class Message extends React.PureComponent<Props, any> {
 
         {[MessageType.Default, MessageType.Reply].includes(firstMessage.type) && 
           <Avatar
-            url={gifCheck(avatarUrl) || DEFAULT_AVATAR}
+            url={getAvatar(firstMessage)}
             className="avatar"
             reply={firstMessage.type === MessageType.Reply}
           />
@@ -98,8 +105,8 @@ class Message extends React.PureComponent<Props, any> {
               <ReplySpine/>
               {repliedMessage ? 
                 <RepliedMessage>
-                  <RepliedAvatar src={Util.craftAvatarUrl(repliedMessage.author.id, repliedMessage.author.avatar)} />
-                  {tags({author: repliedMessage.author, crosspost: !!(repliedMessage.flags & 1 << 1), referenceGuild: repliedMessage.messageReference && repliedMessage.messageReference.guildId})}
+                  <RepliedAvatar src={getAvatar(repliedMessage)} />
+                  <span style={{verticalAlign: 'sub'}}>{tags({author: repliedMessage.author, crosspost: !!(repliedMessage.flags & 1 << 1), referenceGuild: repliedMessage.messageReference && repliedMessage.messageReference.guildId})}</span>
                   <RepliedUser nameColor={repliedMessage.author.color}>{repliedMessage.author.name}</RepliedUser>
                   {repliedMessage.content
                     ? <RepliedText><Markdown>{repliedMessage.content}</Markdown></RepliedText>
