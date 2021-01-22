@@ -9,5 +9,8 @@ USER 0
 
 RUN chmod +x replaceEnvVars.sh
 RUN chmod +x /start.sh
+RUN chown -R 1001:1001 /usr/share/nginx/html
+
+USER 1001
 
 CMD [ "/start.sh" ]
