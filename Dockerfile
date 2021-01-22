@@ -8,5 +8,6 @@ COPY build/ /usr/share/nginx/html
 USER 0
 
 RUN chmod +x replaceEnvVars.sh
+RUN chmod +x /start.sh
 
 CMD [ "/start.sh" ]
