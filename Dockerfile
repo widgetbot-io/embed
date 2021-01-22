@@ -9,4 +9,4 @@ USER 0
 
 RUN chmod +x replaceEnvVars.sh
 
-CMD [ "start.sh" ]
+CMD [ "./start.sh" ]
