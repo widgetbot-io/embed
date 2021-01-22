@@ -14,8 +14,8 @@ replace() {
     find $BUILD_PATH/ -name '*.html' | xargs sed -i "s|{$1}|$2|g"
 }
 
-echo ${find $BUILD_PATH/ -name '*.js'}
-echo ${find $BUILD_PATH/ -name '*.html'}
+echo $(find $BUILD_PATH/ -name '*.js')
+echo $(find $BUILD_PATH/ -name '*.html')
 
 echo "Replacing ${CUSTOM_SERVER_ENDPOINT}"
 
