@@ -1,11 +1,9 @@
-#!/bin/bash
-set -e
+#!/bin/sh
 echo "Replacing environment variables in all files"
 
-echo
-
 BUILD_PATH="."
-if [ -n "$1" ]; then
+if [ -n "$1" ]
+then
     BUILD_PATH=$1
 fi
 
