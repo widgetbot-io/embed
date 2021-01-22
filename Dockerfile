@@ -1,7 +1,7 @@
 FROM bitnami/nginx
 
 COPY .docker/nginx.conf /opt/bitnami/nginx/conf/nginx.conf
-COPY .docker/entrypoint.sh .
+COPY .docker/start.sh .
 COPY .docker/replaceEnvVars.sh .
 COPY build/ /usr/share/nginx/html
 
