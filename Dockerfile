@@ -9,6 +9,4 @@ USER 0
 
 RUN chmod +x replaceEnvVars.sh
 
-USER 1001
-
 CMD [ "sh", "replaceEnvVars.sh", "/usr/share/nginx/html", "&&", "/opt/bitnami/scripts/nginx/run.sh" ]
