@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 echo "Replacing environment variables in all files"
 
 BUILD_PATH="."
