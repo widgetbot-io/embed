@@ -1,5 +1,5 @@
 import './res/globalStyles.css'
-import './res/globalStyles.ts'
+import './res/globalStyles.tsx'
 
 import styled, { injectGlobal, Theme } from '@lib/emotion'
 

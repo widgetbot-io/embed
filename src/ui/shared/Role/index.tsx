@@ -1,4 +1,5 @@
-import {cx} from 'emotion'
+/** @jsx jsx */
+import { jsx } from '@lib/emotion'
 import {Route} from 'react-router-dom'
 import * as React from 'react'
 import {Query} from 'react-apollo'
@@ -19,7 +20,7 @@ const Role = ({ id: role, children, className }: Props) => (
         params: { server }
       }
     }) => (
-        <RoleLink id={role} className={cx('role-link', className)}>
+        <RoleLink id={role} css={['role-link', className]}>
           {children({
             __typename: 'Member',
             displayName: role,

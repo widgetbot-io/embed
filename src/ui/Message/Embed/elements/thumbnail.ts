@@ -3,7 +3,8 @@ import ExpandableImage from '@ui/shared/ExpandableImage'
 import styled, { css } from '../ThemeContext'
 
 interface Props {
-  rich?: boolean
+  rich?: boolean,
+  type: string
 }
 export const Thumbnail = styled(ExpandableImage)<Props>`
   border-radius: 3px;
@@ -11,12 +12,12 @@ export const Thumbnail = styled(ExpandableImage)<Props>`
   flex-shrink: 0;
   cursor: pointer;
 
-  ${({ rich, theme }) =>
+  ${({ rich, type }) =>
     rich
       ? css`
           margin: 5px 0;
         `
-      : /^article|image$/.test(theme.embed.type)
+      : /^article|image$/.test(type)
         ? css`
             margin-top: 8px;
           `

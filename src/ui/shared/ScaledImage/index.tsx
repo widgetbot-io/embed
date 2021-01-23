@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { css } from '@lib/emotion'
+import { css, SerializedStyles } from '@lib/emotion'
 
 import { Root } from './elements'
 
@@ -38,7 +38,7 @@ export class Scale {
   public height: number
   public scale: number
 
-  public css: string
+  public css: SerializedStyles
 
   private Image: { width: number; height: number }
   private Max: { width: number; height: number }

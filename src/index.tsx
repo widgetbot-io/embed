@@ -14,6 +14,7 @@ import App from './app'
 import { history } from '@lib/history'
 
 import register, { unregister } from './registerServiceWorker'
+import { cache, CacheProvider } from '@lib/emotion';
 
 if (!window.location.hostname.includes(`127.0.0.1`) && !window.location.hostname.includes(`localhost`))
     Sentry.init({dsn: 'https://dc53893051504a7f9f94b1c207364f5f@o328116.ingest.sentry.io/1840509'});
@@ -23,7 +24,9 @@ ReactDOM.render(
     <ApolloProvider client={client}>
       <ApolloHooksProvider client={client}>
         <Router history={history}>
-          <App />
+          <CacheProvider value={cache}>
+            <App />
+          </CacheProvider>
         </Router>
       </ApolloHooksProvider>
     </ApolloProvider>,

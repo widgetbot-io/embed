@@ -61,7 +61,8 @@ export const Chat: FunctionComponent<ChatProps> = (props) => {
 
             await sendMessage(content)
           }}
-          innerRef={ref => (inputRef.current = ref)}
+          // @ts-expect-error
+          ref={ref => (inputRef.current = ref)}
           innerProps={{
             placeholder: channelName ? Locale.translate('frontend.input.message', {CHANNEL: channelName}) : null
           }}

@@ -1,4 +1,3 @@
-import { cx } from 'emotion'
 import { Route } from 'react-router-dom'
 import * as React from 'react'
 import { Query } from 'react-apollo'

@@ -1,6 +1,6 @@
 import {Twemoji} from '@ui/shared/Emoji/emoji'
 import {parseAllowLinks, parseEmbedTitle} from '@ui/shared/markdown/render'
-import {ThemeProvider} from 'emotion-theming'
+import {ThemeProvider} from '@lib/emotion'
 import * as Moment from 'moment'
 import * as React from 'react'
 
@@ -128,10 +128,11 @@ const EmbedThumbnail = ({url, height, width, type}: { height: number | null, wid
                 width={width}
                 maxWidth={/^article|image$/.test(type) ? 400 : 80}
                 maxHeight={/^article|image$/.test(type) ? 300 : 80}
+                type={type}
             />
         ) : null
 
-const EmbedImage = ({url, height, width}: Embed_image) =>
+const EmbedImage = ({url, height, width, type}: Embed_image & {type: string}) =>
     url ? (
         <span>
       <Thumbnail
@@ -141,6 +142,7 @@ const EmbedImage = ({url, height, width}: Embed_image) =>
           width={width}
           maxWidth={400}
           maxHeight={300}
+          type={type}
       />
     </span>
     ) : null
@@ -218,7 +220,7 @@ const Embed = ({
         >
             <Root>
                 <Wrapper barColor={color}>
-                    <Content>
+                    <Content type={embed.type}>
                         <div>
                             <EmbedProvider {...provider}/>
                             <EmbedAuthor {...author} />
@@ -230,7 +232,7 @@ const Embed = ({
                         </div>
                         <EmbedThumbnail type={embed.type} {...thumbnail} />
                     </Content>
-                    <EmbedImage {...image} />
+                    <EmbedImage type={embed.type} {...image} />
                     <EmbedFooter timestamp={timestamp} {...footer} />
                 </Wrapper>
             </Root>

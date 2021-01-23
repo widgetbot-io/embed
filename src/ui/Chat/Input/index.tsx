@@ -56,7 +56,7 @@ class MagicTextarea extends React.Component<Props> {
       <Root>
         <Textarea
           {...this.props.innerProps}
-          innerRef={ref => {
+          ref={ref => {
             const { innerRef } = this.props;
 
             this.textarea = ref;

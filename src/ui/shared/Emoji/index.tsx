@@ -1,5 +1,6 @@
+/** @jsx jsx */
 import autobind from 'autobind-decorator'
-import { cx } from 'emotion'
+import { jsx } from '@lib/emotion'
 import memoize from 'memoizee'
 import * as React from 'react'
 import emoji from 'react-easy-emoji'
@@ -29,14 +30,14 @@ class Emoji extends React.PureComponent<Props> {
     let { className, resolveNames, src } = this.props
 
     // Return a custom emoji
-    if (src) return <Emote src={src} className={cx('emoji', className)} />
+    if (src) return <Emote src={src} css={['emoji', className]} />
 
     // Validate props
     if (typeof text !== 'string') {
       if (typeof text === 'undefined' || text === null) return null
 
       return React.cloneElement(text, {
-        className: cx('emoji', Base, className)
+        css: ['emoji', Base, className]
       })
     }
 
@@ -48,10 +49,10 @@ class Emoji extends React.PureComponent<Props> {
 
       const emote = (
         <Emote
-          innerRef={this.handleErrors}
+          ref={this.handleErrors}
           src={`https://twemoji.maxcdn.com/2/svg/${code + '.svg'}`}
           alt={string}
-          className={cx('emoji', className)}
+          css={['emoji', className]}
           key={key}
         />
       )
@@ -130,7 +131,7 @@ class Emoji extends React.PureComponent<Props> {
           piece =>
             piece instanceof Object
               ? React.cloneElement(piece, {
-                  className: cx(onlyEmojiClassName, piece.props.className)
+                  css: [onlyEmojiClassName, piece.props.className]
                 })
               : piece
         )

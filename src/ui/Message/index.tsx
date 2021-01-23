@@ -1,6 +1,6 @@
 import { Messages_channel_messages } from '@generated'
 import Markdown, {LinkMarkdown} from '@ui/shared/markdown/render'
-import { ThemeProvider } from 'emotion-theming'
+import { ThemeProvider } from '@lib/emotion'
 import Moment from 'moment'
 import Tooltip from 'rc-tooltip'
 import * as React from 'react'

@@ -1,4 +1,4 @@
-import styled from 'react-emotion'
+import styled from '@emotion/styled'
 import * as Modal from '@ui/Modal'
 import { Twemoji } from '@ui/shared/Emoji/emoji'
 

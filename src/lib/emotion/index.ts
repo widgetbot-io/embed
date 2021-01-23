@@ -1,26 +1,29 @@
 import Color from 'color'
-import styled, { ThemedReactEmotionInterface } from 'react-emotion'
+import styled from '@emotion/styled'
 
 import { ParsedUrl } from '../../types/url'
 import { Settings_guild_settings_theme } from '@generated'
 
-export * from 'react-emotion'
+export { injectGlobal, cache } from '@emotion/css'
+export * from '@emotion/react'
 
-export interface Theme extends Settings_guild_settings_theme {
-  readonly: boolean,
-  guestMode: boolean,
-  singleChannel?: string,
-  colors: {
-    __typename: 'ThemeColorSettings'
-    _primary: Color
-    _accent: Color
-    _background: Color
+declare module '@emotion/react' {
+  export interface Theme extends Settings_guild_settings_theme {
+    readonly: boolean,
+    guestMode: boolean,
+    singleChannel?: string,
+    colors: {
+      __typename: 'ThemeColorSettings'
+      _primary: Color
+      _accent: Color
+      _background: Color
 
-    primary: string
-    accent: string
-    background: string
+      primary: string
+      accent: string
+      background: string
+    }
+    url: ParsedUrl
   }
-  url: ParsedUrl
 }
 
-export default styled as ThemedReactEmotionInterface<Theme>
+export default styled

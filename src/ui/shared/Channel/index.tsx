@@ -1,6 +1,6 @@
-import { cx } from 'emotion'
+/** @jsx jsx */
+import { jsx } from '@lib/emotion'
 import Tooltip from 'rc-tooltip'
-import * as React from 'react'
 import Emoji from '@ui/shared/Emoji'
 
 import ChannelLink from './link'
@@ -26,7 +26,7 @@ const Channel = ({ id: channel, children, className }: Props) => (
         trigger={[]}
     >
           <span>
-            <ChannelLink id={channel} className={cx('channel-link', className)}>
+            <ChannelLink id={channel} css={['channel-link', className]}>
               {children({
                   name: channel,
                   id: channel,

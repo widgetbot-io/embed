@@ -7,10 +7,10 @@ export const Root = styled('div')`
   display: flex;
   color: ${({ theme }) => theme.colors._primary.fade(0.3).string()};
 `
-interface Props {
+interface WrapperProps {
   barColor: number
 }
-export const Wrapper = styled('div')<Props>`
+export const Wrapper = styled('div')<WrapperProps>`
   padding: 8px 10px;
   border-radius: 0 3px 3px 0;
   position: relative;
@@ -27,12 +27,15 @@ export const Wrapper = styled('div')<Props>`
       : `rgba(0, 0, 0, .4)`};
 `
 
-export const Content = styled('div')`
+interface ContentProps {
+  type: string
+}
+export const Content = styled('div')<ContentProps>`
   width: 100%;
   display: flex;
   overflow: hidden;
-  ${({ theme }) =>
-    /^article|image$/.test(theme.embed.type)
+  ${({ type }) =>
+    /^article|image$/.test(type)
       ? css`
           flex-direction: column;
         `
