@@ -30,7 +30,7 @@ export class Item extends React.Component<ItemProps> {
     return (
       <Root
         {...rest}
-        innerRef={captureRef}
+        ref={captureRef}
         $ref={captureRef}
         selected={selected}
       >

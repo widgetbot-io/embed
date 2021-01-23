@@ -20,6 +20,14 @@
         "globals": ["Error", "Array"],
         "approximate": true
       }
+    ],
+    [
+      "emotion",
+      {
+        "autoLabel": true,
+        "labelFormat": "[local]",
+        "sourceMap": true
+      }
     ]
   ],
   "env": {

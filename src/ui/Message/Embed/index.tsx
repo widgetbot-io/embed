@@ -13,6 +13,7 @@ import {Image} from './elements/media'
 import {Thumbnail} from './elements/thumbnail'
 import {Video} from '@ui/Message/elements'
 import {Embed_author, Embed_footer, Embed_image, Embed_thumbnail, Message_embeds} from "@generated";
+import { Theme } from '@lib/emotion'
 
 // TODO: Refactor / cleanup
 
@@ -211,7 +212,7 @@ const Embed = ({
         />
     ) : (
         <ThemeProvider
-            theme={theme => ({
+            theme={(theme: Theme) => ({
                 ...theme,
                 embed
             })}

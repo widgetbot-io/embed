@@ -10,6 +10,9 @@ import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks'
 import * as ReactDOM from 'react-dom'
 import { Router } from 'react-router-dom'
 
+import { cache } from 'emotion'
+import { CacheProvider } from '@emotion/core'
+
 import App from './app'
 import { history } from '@lib/history'
 
@@ -23,7 +26,9 @@ ReactDOM.render(
     <ApolloProvider client={client}>
       <ApolloHooksProvider client={client}>
         <Router history={history}>
-          <App />
+          <CacheProvider value={cache}>
+            <App />
+          </CacheProvider>
         </Router>
       </ApolloHooksProvider>
     </ApolloProvider>,

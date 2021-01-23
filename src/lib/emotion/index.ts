@@ -1,10 +1,10 @@
 import Color from 'color'
-import styled, { ThemedReactEmotionInterface } from 'react-emotion'
+import styled, { CreateStyled } from '@emotion/styled'
 
 import { ParsedUrl } from '../../types/url'
 import { Settings_guild_settings_theme } from '@generated'
 
-export * from 'react-emotion'
+export * from '@emotion/core'
 
 export interface Theme extends Settings_guild_settings_theme {
   readonly: boolean,
@@ -23,4 +23,4 @@ export interface Theme extends Settings_guild_settings_theme {
   url: ParsedUrl
 }
 
-export default styled as ThemedReactEmotionInterface<Theme>
+export default styled as CreateStyled<Theme>

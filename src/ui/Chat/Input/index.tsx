@@ -56,11 +56,11 @@ class MagicTextarea extends React.Component<Props> {
       <Root>
         <Textarea
           {...this.props.innerProps}
-          innerRef={ref => {
+          ref={ref_ => {
             const { innerRef } = this.props;
 
-            this.textarea = ref;
-            innerRef && innerRef(ref);
+            this.textarea = ref_;
+            innerRef && innerRef(ref_);
           }}
           onChange={event => this.onChange(event.target.value)}
           onClick={this.resetState}

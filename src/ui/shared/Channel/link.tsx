@@ -19,7 +19,7 @@ class ChannelLink extends React.PureComponent<Props> {
           <NavLink
             to={`/${match.params.server}/${id}`}
             data-channel={id}
-            innerRef={$ref}
+            ref={$ref}
             onClick={toggle}
             children={children}
             className={className}
