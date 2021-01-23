@@ -12,7 +12,7 @@ export const useMessages = (channel: string) => {
   });
 
   const ready =
-    (query.data && query.data.channel && query.data.channel.id === channel) ||
+    (query.data?.channel?.id === channel) ||
     false;
 
   const messages = ready ? query.data.channel.messages : [];

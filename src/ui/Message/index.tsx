@@ -91,7 +91,7 @@ class Message extends React.PureComponent<Props, any> {
     return (
       <Group style={this.props.style} className="group">
 
-        {[MessageType.Default, MessageType.Reply].includes(firstMessage.type) && 
+        {[MessageType.Default, MessageType.Reply].includes(firstMessage.type) &&
           <Avatar
             url={getAvatar(firstMessage)}
             className="avatar"
@@ -106,7 +106,7 @@ class Message extends React.PureComponent<Props, any> {
               {repliedMessage ? 
                 <RepliedMessage>
                   <RepliedAvatar src={getAvatar(repliedMessage)} />
-                  <span style={{verticalAlign: 'sub'}}>{tags({author: repliedMessage.author, crosspost: !!(repliedMessage.flags & 1 << 1), referenceGuild: repliedMessage.messageReference && repliedMessage.messageReference.guildId})}</span>
+                  <span style={{verticalAlign: 'sub'}}>{tags({author: repliedMessage.author, crosspost: !!(repliedMessage.flags & 1 << 1), referenceGuild: repliedMessage.messageReference?.guildId})}</span>
                   <RepliedUser nameColor={repliedMessage.author.color}>{repliedMessage.author.name}</RepliedUser>
                   {repliedMessage.content
                     ? <RepliedText><Markdown>{repliedMessage.content}</Markdown></RepliedText>
@@ -129,12 +129,12 @@ class Message extends React.PureComponent<Props, any> {
               }
             </React.Fragment>}
 
-          {[MessageType.Default, MessageType.Reply].includes(firstMessage.type) && 
+          {[MessageType.Default, MessageType.Reply].includes(firstMessage.type) &&
             <Author
               author={firstMessage.author}
               time={firstMessage.createdAt}
               crosspost={!!(firstMessage.flags & 1 << 1)}
-              referenceGuild={firstMessage.messageReference && firstMessage.messageReference.guildId}
+              referenceGuild={firstMessage.messageReference?.guildId}
             />
           }
 
@@ -228,11 +228,11 @@ class Message extends React.PureComponent<Props, any> {
                             }
                           }) : null}
 
-                      {message.embeds && message.embeds.map((e, i) => (
+                      {message.embeds?.map((e, i) => (
                           <Embed key={i} {...e} />
                       ))}
 
-                      {message.stickers && message.stickers.map(s => 
+                      {message.stickers?.map(s => 
                         <Tooltip
                           key={s.id}
                           placement="top"

@@ -20,9 +20,9 @@ const categorise = (
     const category: ChannelInfo_channel_category = channel.category ? channel.category : { name: null, position: -1, __typename: 'Category'};
 
     const newCategory = {
-      name: category && category.name,
+      name: category?.name,
       channels: [channel],
-      position: category && category.position
+      position: category?.position
     };
 
     // The channel belongs in a named category

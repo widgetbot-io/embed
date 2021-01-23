@@ -28,27 +28,27 @@ export const Header = observer(({ channel, guild }: HeaderProps) => {
         cData = {}
     }
 
-    const invite = generalStore.guild && generalStore.guild.invite;
+    const invite = generalStore.guild?.invite;
 
     return (
         <Root>
             <Stretch>
                 { cData.nsfw && cData.__typename === 'NewsChannel' ?
-                    <NSFWNewsName><Emoji>{cData && cData.name}</Emoji></NSFWNewsName>
+                    <NSFWNewsName><Emoji>{cData?.name}</Emoji></NSFWNewsName>
                 : cData.__typename === 'NewsChannel' ?
-                    <NewsName><Emoji>{cData && cData.name}</Emoji></NewsName>
-                : generalStore.guild && cData.id === generalStore.guild.rulesChannelId ?
-                    <RulesName><Emoji>{cData && cData.name}</Emoji></RulesName>
+                    <NewsName><Emoji>{cData?.name}</Emoji></NewsName>
+                : cData.id === generalStore.guild?.rulesChannelId ?
+                    <RulesName><Emoji>{cData?.name}</Emoji></RulesName>
                 : cData.nsfw ?
-                    <NSFWName><Emoji>{cData && cData.name}</Emoji></NSFWName>
+                    <NSFWName><Emoji>{cData?.name}</Emoji></NSFWName>
                 :
-                    <Name><Emoji>{cData && cData.name}</Emoji></Name>}
+                    <Name><Emoji>{cData?.name}</Emoji></Name>}
                 {window.innerWidth < 520 ? null : (
                         <Topic
-                            onClick={() => store.modal.openTopic(cData && cData.topic, cData.name)}
+                            onClick={() => store.modal.openTopic(cData?.topic, cData.name)}
                             className="topic"
                         >
-                            {cData && cData.topic}
+                            {cData?.topic}
                         </Topic>
                     )}
             </Stretch>
