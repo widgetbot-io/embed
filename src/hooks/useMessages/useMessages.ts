@@ -5,7 +5,7 @@ import { useQuery, useSubscription } from "react-apollo-hooks";
 /**
  * Fetches the messages for a channel
  */
-export const useMessages = (channel: string) => {
+export const useMessages = (channel: string, guild: string) => {
   const query = useQuery(MESSAGES, {
     variables: { channel },
     fetchPolicy: 'network-only'
@@ -45,7 +45,7 @@ export const useMessages = (channel: string) => {
   }
 
   useSubscription(NEW_MESSAGES, {
-    variables: { channel },
+    variables: { channel, guild },
     onSubscriptionData({ subscriptionData }) {
       query.updateQuery(prev =>
         produce(prev, ({ channel }) => {
@@ -55,7 +55,7 @@ export const useMessages = (channel: string) => {
   });
   //
   // useSubscription(UPDATED_MESSAGES, {
-  //   variables: { channel },
+  //   variables: { channel, guild },
   //   onSubscriptionData({ subscriptionData }) {
   //     query.updateQuery(prev =>
   //       produce(prev, ({ channel: { messages } }) => {
@@ -71,7 +71,7 @@ export const useMessages = (channel: string) => {
   // });
   //
   // useSubscription(DELETED_MESSAGES, {
-  //   variables: { channel },
+  //   variables: { channel, guild },
   //   onSubscriptionData({ subscriptionData }) {
   //     query.updateQuery(prev =>
   //       produce(prev, ({ channel }) => {
