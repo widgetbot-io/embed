@@ -10,7 +10,7 @@ import { Settings_guild_settings_theme } from '@generated'
 import * as Constants from '@constants'
 import { useQuery } from 'react-apollo-hooks'
 import {useCacheLoaded, useRouter} from '@hooks'
-import {generalStore} from '@store';
+import {generalStore, authStore} from '@store';
 
 const getQueryParam = (query: string) => {
 	const matched = window.location.search.match(new RegExp(`[?&]${query}=([^&#]*)`))
@@ -44,6 +44,12 @@ export const ThemeProvider = ({ children }) => {
   // if (data.guild?.theme) _.merge(theme, data.guild.theme);
   generalStore.toggleGuest(data.guild?.settings.guestMode);
   generalStore.toggleRead(data.guild?.settings.readonly);
+  
+  if (getQueryParam('username'))
+    authStore.guestLogin(getQueryParam('username')).then(async () => {
+      await authStore.setGuestUser(getQueryParam('username'));
+      generalStore.needsUpdate = true;
+    })
 
   const themeContext: ThemeContext = {
     ...theme,
