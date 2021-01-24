@@ -49,7 +49,7 @@ interface RepliedUserProps {
   nameColor: number
 }
 export const RepliedUser = styled.span<RepliedUserProps>`
-  color: ${({ nameColor }) => (nameColor ? nameColor.toString(16).padStart(6, '0') : null)};
+  color: ${({ nameColor }) => (nameColor ? '#'+nameColor.toString(16).padStart(6, '0') : null)};
   font-weight: 500;
   opacity: .64;
   margin: 0 .25rem;
