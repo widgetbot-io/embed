@@ -151,7 +151,7 @@ const EmbedFooter = ({timestamp, text, url}: { timestamp: number, url: string | 
     }
 
     // pass null, since undefined will make moment(...) return the current date/time
-    let time = Moment(timestamp !== undefined ? timestamp * 1000 : null)
+    let time = Moment(timestamp ? timestamp * 1000 : null)
 
     const footerText = [text, time.isValid() ? time.calendar() : null]
         .filter(Boolean)
