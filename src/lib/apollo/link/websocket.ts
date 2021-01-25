@@ -1,4 +1,4 @@
-import { WebSocketLink } from 'apollo-link-ws'
+import { WebSocketLink } from '@apollo/client/link/ws'
 import { url } from "@lib/env";
 
 const wsLink = new WebSocketLink({

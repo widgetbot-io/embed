@@ -6,7 +6,7 @@ import { Name, NewsName, NSFWName, NSFWNewsName, Emoji, Topic, Join, Stretch, Si
 import { Root } from './elements'
 import { Locale } from "@lib/Locale"
 import { store } from '@models'
-import { useQuery } from 'react-apollo-hooks'
+import { useQuery } from '@apollo/client'
 import GET_INFO from "@ui/Sidebar/Header/GuildInfo.graphql";
 import {authStore, AuthStore} from "@store/auth";
 import {Auth} from "@ui/Sidebar/Panel/elements";

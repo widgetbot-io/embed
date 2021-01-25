@@ -4,8 +4,7 @@ import client from '@lib/apollo'
 import * as React from 'react'
 import { Provider } from 'mobx-react';
 import * as Sentry from '@sentry/browser';
-import { ApolloProvider } from 'react-apollo'
-import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks'
+import { ApolloProvider } from '@apollo/client'
 
 import * as ReactDOM from 'react-dom'
 import { Router } from 'react-router-dom'
@@ -21,11 +20,9 @@ if (!window.location.hostname.includes(`127.0.0.1`) && !window.location.hostname
 // Render App
 ReactDOM.render(
     <ApolloProvider client={client}>
-      <ApolloHooksProvider client={client}>
-        <Router history={history}>
-          <App />
-        </Router>
-      </ApolloHooksProvider>
+      <Router history={history}>
+        <App />
+      </Router>
     </ApolloProvider>,
   document.getElementById('root')
 );

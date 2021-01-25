@@ -1,4 +1,4 @@
-import { useMutation } from 'react-apollo-hooks'
+import { useMutation } from '@apollo/client'
 import SEND_MESSAGE from './SendMessage.graphql'
 import { MESSAGES } from '../useMessages'
 import { useRouter } from '@hooks'
@@ -6,7 +6,7 @@ import {Message} from '@generated';
 
 export const useSendMessage = () => {
   const { channel } = useRouter()
-  const sendMessage = useMutation<any>(SEND_MESSAGE);
+  const [sendMessage] = useMutation<any>(SEND_MESSAGE);
 
   return async (content: string) =>
     await sendMessage({

@@ -1,5 +1,5 @@
-import { ApolloClient } from 'apollo-client'
-import { setContext } from 'apollo-link-context';
+import { ApolloClient } from '@apollo/client'
+import { setContext } from '@apollo/client/link/context';
 
 import cache from './cache'
 import link from './link'

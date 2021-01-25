@@ -1,6 +1,6 @@
 import Tooltip from 'rc-tooltip'
 import * as React from 'react'
-import {Query} from 'react-apollo'
+import {Query} from '@apollo/client/react/components'
 import {Route} from 'react-router-dom'
 
 import {GuildInfo, GuildInfoVariables} from '@generated'

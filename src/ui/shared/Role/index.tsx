@@ -1,7 +1,7 @@
 import {cx} from 'emotion'
 import {Route} from 'react-router-dom'
 import * as React from 'react'
-import {Query} from 'react-apollo'
+import {Query} from '@apollo/client/react/components'
 
 import RoleLink from './link'
 import ROLE_INFO from './RoleInfo.graphql'

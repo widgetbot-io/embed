@@ -1,6 +1,6 @@
 import produce from "immer";
 import { MESSAGES, NEW_MESSAGES } from ".";
-import { useQuery, useSubscription } from "react-apollo-hooks";
+import { useQuery, useSubscription } from "@apollo/client";
 
 /**
  * Fetches the messages for a channel

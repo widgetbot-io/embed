@@ -1,4 +1,4 @@
-import { defaultDataIdFromObject, IdGetter } from 'apollo-cache-inmemory'
+import { defaultDataIdFromObject, IdGetter } from '@apollo/client/cache'
 
 const dataIdFromObject: IdGetter = (object: {
   __typename: string

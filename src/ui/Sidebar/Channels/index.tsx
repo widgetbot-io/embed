@@ -1,6 +1,6 @@
 import React from "react";
 import {Route} from "react-router-dom";
-import {Query} from "react-apollo";
+import {Query} from "@apollo/client/react/components";
 import {Channels, ChannelsVariables} from "@generated";
 import {inject, observer} from "mobx-react";
 
@@ -12,7 +12,7 @@ import categorise from "./categorise";
 import CHANNELS from "./Channels.graphql";
 import {AuthStore} from "@store/auth";
 import {useRouter} from "@hooks";
-import {useSubscription} from "react-apollo-hooks";
+import {useSubscription} from "@apollo/client";
 import {generalStore} from "@store";
 import {Loading} from "@ui/Overlays";
 

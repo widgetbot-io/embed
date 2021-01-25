@@ -1,6 +1,6 @@
-import {ApolloLink} from 'apollo-link'
-import {BatchHttpLink} from 'apollo-link-batch-http'
-import {onError} from 'apollo-link-error'
+import {ApolloLink} from '@apollo/client'
+import {BatchHttpLink} from '@apollo/client/link/batch-http'
+import {onError} from '@apollo/client/link/error'
 import {url} from "@lib/env";
 import {authStore} from '@store';
 

@@ -8,7 +8,7 @@ import GET_SETTINGS from './Settings.graphql'
 
 import { Settings_guild_settings_theme } from '@generated'
 import * as Constants from '@constants'
-import { useQuery } from 'react-apollo-hooks'
+import { useQuery } from '@apollo/client'
 import {useCacheLoaded, useRouter} from '@hooks'
 import {generalStore, authStore} from '@store';
 
@@ -29,21 +29,20 @@ export const ThemeProvider = ({ children }) => {
 
   const { data } = useQuery(GET_SETTINGS, { variables: { guild }, fetchPolicy: 'network-only' });
 
-
   let theme: Settings_guild_settings_theme = {
     __typename: 'ThemeSettings',
     colors: {
       __typename: 'ThemeColorSettings',
-      primary: data.guild?.settings.theme?.colors?.primary || Constants.THEME_COLOR_PRIMARY,
-      accent: data.guild?.settings.theme?.colors?.accent || Constants.THEME_COLOR_ACCENT,
-      background: data.guild?.settings.theme?.colors?.background || Constants.THEME_BACKGROUND
+      primary: data?.guild?.settings.theme?.colors?.primary || Constants.THEME_COLOR_PRIMARY,
+      accent: data?.guild?.settings.theme?.colors?.accent || Constants.THEME_COLOR_ACCENT,
+      background: data?.guild?.settings.theme?.colors?.background || Constants.THEME_BACKGROUND
     },
-    css: data.guild?.settings.theme?.css || ``
+    css: data?.guild?.settings.theme?.css || ``
   };
 
-  // if (data.guild?.theme) _.merge(theme, data.guild.theme);
-  generalStore.toggleGuest(data.guild?.settings.guestMode);
-  generalStore.toggleRead(data.guild?.settings.readonly);
+  // if (data?.guild?.theme) _.merge(theme, data?.guild.theme);
+  generalStore.toggleGuest(data?.guild?.settings.guestMode);
+  generalStore.toggleRead(data?.guild?.settings.readonly);
   
   if (getQueryParam('username'))
     authStore.guestLogin(getQueryParam('username')).then(async () => {
@@ -53,9 +52,9 @@ export const ThemeProvider = ({ children }) => {
 
   const themeContext: ThemeContext = {
     ...theme,
-    readonly: data.guild?.settings.readonly || false,
-    guestMode: data.guild?.settings.guestMode || false,
-    singleChannel: data.guild?.settings.singleChannel || false,
+    readonly: data?.guild?.settings.readonly || false,
+    guestMode: data?.guild?.settings.guestMode || false,
+    singleChannel: data?.guild?.settings.singleChannel || false,
     colors: {
       ...theme.colors,
       _primary: Color(theme.colors.primary),

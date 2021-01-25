@@ -1,21 +1,27 @@
 import {
-  InMemoryCache,
-  IntrospectionFragmentMatcher
-} from 'apollo-cache-inmemory'
-import { persistCache } from 'apollo-cache-persist'
+  InMemoryCache
+} from '@apollo/client/cache'
+import { persistCache } from 'apollo3-cache-persist'
 import localForage from 'localforage'
 
-import cacheRedirects from './cacheRedirects'
+import typePolicies from './typePolicies'
 import dataIdFromObject from './dataIdFromObject'
 
-const introspectionQueryResultData = require('../codegen/fragmentTypes.json')
-const fragmentMatcher = new IntrospectionFragmentMatcher({
-  introspectionQueryResultData
-})
+import fragmentTypes from '../codegen/fragmentTypes.json'
+
+const possibleTypes = {};
+
+    fragmentTypes.__schema.types.forEach(supertype => {
+      if (supertype.possibleTypes) {
+        possibleTypes[supertype.name] =
+          supertype.possibleTypes.map(subtype => subtype.name);
+      }
+    });
+
 
 const cache = new InMemoryCache({
-  fragmentMatcher,
-  cacheRedirects,
+  possibleTypes,
+  typePolicies,
   dataIdFromObject
 })
 

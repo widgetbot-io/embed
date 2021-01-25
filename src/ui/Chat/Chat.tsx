@@ -1,7 +1,7 @@
 import * as React from 'react'
 import GET_CHANNEL_NAME from './ChannelName.graphql'
 import { useRouter, useSendMessage } from '@hooks'
-import { useQuery } from 'react-apollo-hooks'
+import { useQuery } from '@apollo/client'
 import Input from './Input'
 import { Field, Root } from './elements'
 import { useState, useRef, FunctionComponent } from 'react'
@@ -19,7 +19,7 @@ export const Chat: FunctionComponent<ChatProps> = (props) => {
   const sendMessage = useSendMessage();
   const [rows, setRows] = useState(1);
   const { channel } = useRouter();
-  const { data, error, errors, networkStatus, loading } = useQuery(GET_CHANNEL_NAME, { variables: { channel } });
+  const { data, error, networkStatus, loading } = useQuery(GET_CHANNEL_NAME, { variables: { channel } });
 
   if (loading) return <Loading />;
   if (!data || !data.channel) {
