@@ -1,6 +1,5 @@
 import {ApolloLink} from 'apollo-link'
 import {BatchHttpLink} from 'apollo-link-batch-http'
-import { HttpLink } from 'apollo-link-http'
 import {onError} from 'apollo-link-error'
 import {url} from "@lib/env";
 import {authStore} from '@store';
@@ -16,10 +15,10 @@ const httpLink = ApolloLink.from([
 			);
 		if (networkError) console.error(`[Network error]: ${networkError}`)
 	}),
-	new HttpLink({
+	new BatchHttpLink({
 		uri: url.includes('127.0.0.1') ? `http://${url}/api/graphql` : `https://${url}/api/graphql`,
-		// batchInterval: 20,
-		// batchMax: 1
+		batchInterval: 20,
+		batchMax: 1
 	})
 ].filter(Boolean) as any);
 
