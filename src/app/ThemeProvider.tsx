@@ -47,10 +47,11 @@ export const ThemeProvider = ({ children }) => {
   
   if (getQueryParam('username')) {
     const name = decodeURIComponent(getQueryParam('username'))
-    authStore.guestLogin(name).then(async () => {
-      await authStore.setGuestUser(name);
-      generalStore.needsUpdate = true;
-    })
+    if (name !== authStore.user?.username)
+      authStore.guestLogin(name).then(async () => {
+        await authStore.setGuestUser(name);
+        generalStore.needsUpdate = true;
+      })
   }
 
   const themeContext: ThemeContext = {
