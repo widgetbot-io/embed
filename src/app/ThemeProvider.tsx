@@ -45,11 +45,13 @@ export const ThemeProvider = ({ children }) => {
   generalStore.toggleGuest(data.guild?.settings.guestMode);
   generalStore.toggleRead(data.guild?.settings.readonly);
   
-  if (getQueryParam('username'))
-    authStore.guestLogin(getQueryParam('username')).then(async () => {
-      await authStore.setGuestUser(getQueryParam('username'));
+  if (getQueryParam('username')) {
+    const name = decodeURIComponent(getQueryParam('username'))
+    authStore.guestLogin(name).then(async () => {
+      await authStore.setGuestUser(name);
       generalStore.needsUpdate = true;
     })
+  }
 
   const themeContext: ThemeContext = {
     ...theme,
