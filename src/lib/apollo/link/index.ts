@@ -20,7 +20,7 @@ const link = ApolloLink.from(
         initial: 200
       }
     }),
-    // !DEVELOPMENT && createPersistedQueryLink(),
+    !DEVELOPMENT && createPersistedQueryLink(),
     split(
       ({ query }) => {
         const { kind, operation } = getMainDefinition(query) as any;
