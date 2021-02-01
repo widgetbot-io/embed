@@ -1,6 +1,8 @@
 #import "./Embed.graphql"
 
-fragment Message on Message {
+# same as Message.graphql
+
+fragment UpdatedMessage on UpdatedMessage {
     id
     content
     type

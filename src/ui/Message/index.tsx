@@ -152,7 +152,7 @@ class Message extends React.PureComponent<Props, any> {
                         {message.editedAt && (
                           <Tooltip
                             placement="top"
-                            overlay={Moment(message.editedAt*1000).calendar()}
+                            overlay={Moment(message.editedAt).calendar()}
                             mouseLeaveDelay={0}
                           >
                             <Edited className="edited">
@@ -165,7 +165,7 @@ class Message extends React.PureComponent<Props, any> {
                         {message.attachments
                             ? message.attachments.map((attachment, i) => {
                               if(attachment.height && attachment.width) {
-                                if(/\.(?:mp4|webm|mov)$/.test(attachment.fileName)) {
+                                if(/\.(?:mp4|webm|mov)$/.test(attachment.filename)) {
                                   return <Video controls
                                     key={attachment.url}
                                     src={attachment.url}
@@ -173,7 +173,7 @@ class Message extends React.PureComponent<Props, any> {
                                     width={+attachment.width}
                                   />;
                                 } else {
-                                    return attachment.fileName.startsWith('SPOILER_') ? (
+                                    return attachment.filename.startsWith('SPOILER_') ? (
                                     <AttachmentSpoiler
                                       key={attachment.url}
                                       src={attachment.url}
@@ -188,12 +188,12 @@ class Message extends React.PureComponent<Props, any> {
                                   />)
                               }
                             } else {
-                              if(/\.(?:mp3|ogg|wav|flac)$/.test(attachment.fileName)) {
+                              if(/\.(?:mp3|ogg|wav|flac)$/.test(attachment.filename)) {
                                 return <Audio key={attachment.url}>
                                     <AudioMetadata>
                                       <AttachmentIcon src="https://discord.com/assets/5b0da31dc2b00717c1e35fb1f84f9b9b.svg"/>
                                       <AttachmentInner>
-                                        <div><a href={attachment.url}>{attachment.fileName}</a></div>
+                                        <div><a href={attachment.url}>{attachment.filename}</a></div>
                                         <AttachmentSize>{attachment.size} bytes</AttachmentSize>
                                       </AttachmentInner>
                                       <a href={attachment.url} style={{margin: 'auto'}}>
@@ -205,19 +205,19 @@ class Message extends React.PureComponent<Props, any> {
                               } else {
                                 return <Attachment key={attachment.url}>
                                     <AttachmentIcon
-                                      src={ /\.pdf$/.test(attachment.fileName) ? 'https://discord.com/assets/f167b4196f02faf2dc2e7eb266a24275.svg' // acrobat
-                                          : /\.ae/.test(attachment.fileName) ? 'https://discord.com/assets/982bd8aedd89b0607f492d1175b3b3a5.svg' // ae
-                                          : /\.sketch$/.test(attachment.fileName) ? 'https://discord.com/assets/f812168e543235a62b9f6deb2b094948.svg' // sketch
-                                          : /\.ai$/.test(attachment.fileName) ? 'https://discord.com/assets/03ad68e1f4d47f2671d629cfeac048ef.svg' // ai
-                                          : /\.(?:rar|zip|7z|tar|tar\.gz)$/.test(attachment.fileName) ? 'https://discord.com/assets/73d212e3701483c36a4660b28ac15b62.svg' // archive
+                                      src={ /\.pdf$/.test(attachment.filename) ? 'https://discord.com/assets/f167b4196f02faf2dc2e7eb266a24275.svg' // acrobat
+                                          : /\.ae/.test(attachment.filename) ? 'https://discord.com/assets/982bd8aedd89b0607f492d1175b3b3a5.svg' // ae
+                                          : /\.sketch$/.test(attachment.filename) ? 'https://discord.com/assets/f812168e543235a62b9f6deb2b094948.svg' // sketch
+                                          : /\.ai$/.test(attachment.filename) ? 'https://discord.com/assets/03ad68e1f4d47f2671d629cfeac048ef.svg' // ai
+                                          : /\.(?:rar|zip|7z|tar|tar\.gz)$/.test(attachment.filename) ? 'https://discord.com/assets/73d212e3701483c36a4660b28ac15b62.svg' // archive
                                           : /\.(?:c\+\+|cpp|cc|c|h|hpp|mm|m|json|js|rb|rake|py|asm|fs|pyc|dtd|cgi|bat|rss|java|graphml|idb|lua|o|gml|prl|sls|conf|cmake|make|sln|vbe|cxx|wbf|vbs|r|wml|php|bash|applescript|fcgi|yaml|ex|exs|sh|ml|actionscript)$/.test(attachment.url) ? 'https://discord.com/assets/481aa700fab464f2332ca9b5f4eb6ba4.svg' // code
-                                          : /\.(?:txt|rtf|doc|docx|md|pages|ppt|pptx|pptm|key|log)$/.test(attachment.fileName) ? 'https://discord.com/assets/9f358f466473586417baee7bacfba5ca.svg' // document
-                                          : /\.(?:xls|xlsx|numbers|csv)$/.test(attachment.fileName) ? 'https://discord.com/assets/85f7a4063578f6e0e2c73f60bca0fcce.svg' // spreadsheet
-                                          : /\.(?:html|xhtml|htm|js|xml|xls|xsd|css|styl)$/.test(attachment.fileName) ? 'https://discord.com/assets/a11e895b46cde503a094dd31641060a6.svg' // webcode
+                                          : /\.(?:txt|rtf|doc|docx|md|pages|ppt|pptx|pptm|key|log)$/.test(attachment.filename) ? 'https://discord.com/assets/9f358f466473586417baee7bacfba5ca.svg' // document
+                                          : /\.(?:xls|xlsx|numbers|csv)$/.test(attachment.filename) ? 'https://discord.com/assets/85f7a4063578f6e0e2c73f60bca0fcce.svg' // spreadsheet
+                                          : /\.(?:html|xhtml|htm|js|xml|xls|xsd|css|styl)$/.test(attachment.filename) ? 'https://discord.com/assets/a11e895b46cde503a094dd31641060a6.svg' // webcode
                                           : 'https://discord.com/assets/985ea67d2edab4424c62009886f12e44.svg' // unknown
                                           }/>
                                     <AttachmentInner>
-                                      <div><a href={attachment.url}>{attachment.fileName}</a></div>
+                                      <div><a href={attachment.url}>{attachment.filename}</a></div>
                                       <AttachmentSize>{attachment.size} bytes</AttachmentSize>
                                     </AttachmentInner>
                                     <a href={attachment.url} style={{margin: 'auto'}}>

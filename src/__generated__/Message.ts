@@ -33,7 +33,7 @@ export interface Message_attachments {
   url: string;
   height: number | null;
   width: number | null;
-  fileName: string;
+  filename: string;
   size: number;
 }
 
