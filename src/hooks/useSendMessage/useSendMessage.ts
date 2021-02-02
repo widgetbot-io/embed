@@ -3,6 +3,7 @@ import SEND_MESSAGE from './SendMessage.graphql'
 import { MESSAGES } from '../useMessages'
 import { useRouter } from '@hooks'
 import {Message} from '@generated';
+import { addNotification } from "notify";
 
 export const useSendMessage = () => {
   const { channel } = useRouter()
@@ -32,5 +33,10 @@ export const useSendMessage = () => {
           embeds: []
         }
       }
-    })
+    }).catch(error => addNotification({
+      level: 'error',
+      title: 'Error sending message',
+      message: error.toString(),
+      autoDismiss: 0
+    }))
 }
