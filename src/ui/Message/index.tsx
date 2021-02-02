@@ -109,7 +109,20 @@ class Message extends React.PureComponent<Props, any> {
                   <span style={{verticalAlign: 'sub'}}>{tags({author: repliedMessage.author, crosspost: !!(repliedMessage.flags & 1 << 1), referenceGuild: repliedMessage.messageReference?.guildId})}</span>
                   <RepliedUser nameColor={repliedMessage.author.color}>{repliedMessage.author.name}</RepliedUser>
                   {repliedMessage.content
-                    ? <RepliedText><Markdown>{repliedMessage.content}</Markdown></RepliedText>
+                    ? <RepliedText>
+                        <Markdown>{repliedMessage.content}</Markdown>
+                        {repliedMessage.editedAt && (
+                          <Tooltip
+                            placement="top"
+                            overlay={Moment(repliedMessage.editedAt).calendar()}
+                            mouseLeaveDelay={0}
+                          >
+                            <Edited className="edited">
+                              {Locale.translate('frontend.edited')}
+                            </Edited>
+                          </Tooltip>
+                        )}
+                      </RepliedText>
                     : repliedMessage.stickers.length > 0
                     ? <React.Fragment>
                         <ReplySystemText>{repliedMessage.stickers[0].name} sticker</ReplySystemText>
