@@ -53,7 +53,7 @@ export const useMessages = (channel: string, guild: string) => {
         })
       )}
   });
-  
+
   useSubscription(UPDATED_MESSAGES, {
     variables: { channel, guild },
     onSubscriptionData({ subscriptionData }) {
@@ -61,7 +61,7 @@ export const useMessages = (channel: string, guild: string) => {
         produce(prev, ({ channel: { messages } }) => {
           const message = subscriptionData.data.messageUpdate;
           const index = messages.findIndex(m => m.id === message.id);
-  
+
           if (index > -1) {
             messages[index] = message;
           }
