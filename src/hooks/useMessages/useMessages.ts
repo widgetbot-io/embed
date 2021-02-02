@@ -62,6 +62,9 @@ export const useMessages = (channel: string, guild: string) => {
           const message = subscriptionData.data.messageUpdate;
           const index = messages.findIndex(m => m.id === message.id);
 
+          // make embed not break
+          message.__typename = 'Message'
+
           if (index > -1) {
             messages[index] = message;
           }
