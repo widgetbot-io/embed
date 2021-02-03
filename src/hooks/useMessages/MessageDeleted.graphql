@@ -1,0 +1,5 @@
+subscription MessageDeleted($channel: String!, $guild: String!) {
+  messageDelete(channel: $channel, guild: $guild) {
+    id
+  }
+}

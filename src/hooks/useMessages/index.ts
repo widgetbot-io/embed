@@ -1,8 +1,9 @@
 import MESSAGES from './Messages.graphql'
-import NEW_MESSAGES from './NewMessages.graphql'
-import UPDATED_MESSAGES from './UpdatedMessages.graphql'
-// import DELETED_MESSAGES from './DeletedMessages.graphql.disabled'
+import NEW_MESSAGE from './NewMessage.graphql'
+import MESSAGE_UPDATED from './MessageUpdated.graphql'
+import MESSAGE_DELETED from './MessageDeleted.graphql'
+import MESSAGES_BULK_DELETED from './MessagesBulkDeleted.graphql'
 
-export { MESSAGES, NEW_MESSAGES, UPDATED_MESSAGES } // DELETED_MESSAGES
+export { MESSAGES, NEW_MESSAGE, MESSAGE_UPDATED, MESSAGE_DELETED, MESSAGES_BULK_DELETED }
 
 export * from './useMessages'

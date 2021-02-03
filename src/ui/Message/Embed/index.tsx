@@ -145,13 +145,13 @@ const EmbedImage = ({url, height, width}: Embed_image) =>
     </span>
     ) : null
 
-const EmbedFooter = ({timestamp, text, url}: { timestamp: number, url: string | null, text: string }) => {
+const EmbedFooter = ({timestamp, text, url}: { timestamp: string, url: string | null, text: string }) => {
     if (!text && !timestamp) {
         return null
     }
 
     // pass null, since undefined will make moment(...) return the current date/time
-    let time = Moment(timestamp ? timestamp * 1000 : null)
+    let time = Moment(timestamp ? +timestamp * 1000 : null)
 
     const footerText = [text, time.isValid() ? time.calendar() : null]
         .filter(Boolean)

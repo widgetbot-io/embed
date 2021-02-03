@@ -1,6 +1,6 @@
 #import "./Fragments/UpdatedMessage.graphql"
 
-subscription UpdatedMessages($channel: String!, $guild: String!) {
+subscription MessageUpdated($channel: String!, $guild: String!) {
   messageUpdate(channel: $channel, guild: $guild) {
     ...UpdatedMessage
   }

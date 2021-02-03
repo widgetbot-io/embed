@@ -4,21 +4,19 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: ChannelName
+// GraphQL subscription operation: MessageDeleted
 // ====================================================
 
-export interface ChannelName_channel {
-  __typename: "TextChannel";
-  name: string;
+export interface MessageDeleted_messageDelete {
+  __typename: "DeletedMessage";
   id: string;
-  nsfw: boolean;
-  canSend: boolean;
 }
 
-export interface ChannelName {
-  channel: ChannelName_channel;
+export interface MessageDeleted {
+  messageDelete: MessageDeleted_messageDelete | null;
 }
 
-export interface ChannelNameVariables {
+export interface MessageDeletedVariables {
   channel: string;
+  guild: string;
 }

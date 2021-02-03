@@ -1,5 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 import { MessageType, FormatType } from "./globalTypes";
@@ -111,7 +112,7 @@ export interface Messages_channel_messages_embeds {
   title: string | null;
   description: string | null;
   url: string | null;
-  timestamp: any | null;
+  timestamp: string | null;
   color: number | null;
   type: string | null;
   author: Messages_channel_messages_embeds_author | null;

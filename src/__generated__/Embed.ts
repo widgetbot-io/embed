@@ -1,5 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -58,7 +59,7 @@ export interface Embed {
   title: string | null;
   description: string | null;
   url: string | null;
-  timestamp: any | null;
+  timestamp: string | null;
   color: number | null;
   type: string | null;
   author: Embed_author | null;
