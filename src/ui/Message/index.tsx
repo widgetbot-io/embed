@@ -158,7 +158,7 @@ class Message extends React.PureComponent<Props, any> {
                 return (
                   <ThemeProvider key={message.id} theme={this.theme(message)}>
                     <Root className="message" id={message.id}>
-                      <Content className="content">
+                      <Content sending={!!(message.flags & 1 << 4)} className="content">
                         {message.author.discrim === '0000'
                           ? <LinkMarkdown>{message.content}</LinkMarkdown>
                           : <Markdown>{message.content}</Markdown>}

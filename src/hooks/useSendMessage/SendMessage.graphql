@@ -1,6 +1,7 @@
+#import "../useMessages/Fragments/Message.graphql"
+
 mutation SendMessage($channel: String!, $content: String!) {
   sendMessage(channel: $channel, content: $content) {
-    id
-    content
+    ...Message
   }
 }

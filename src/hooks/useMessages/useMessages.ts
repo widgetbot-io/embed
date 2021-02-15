@@ -50,7 +50,8 @@ export const useMessages = (channel: string, guild: string) => {
     onSubscriptionData({ subscriptionData }) {
       query.updateQuery(prev =>
         produce(prev, ({ channel: { messages } }: { channel: Messages_channel }) => {
-          messages.push(subscriptionData.data.message);
+          const message = subscriptionData.data.message as Messages_channel_messages
+          if (!messages.find(m => m.id === message.id)) messages.push(message);
         })
       )}
   });

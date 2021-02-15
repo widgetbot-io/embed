@@ -11,15 +11,14 @@ import {Locale} from "@lib/Locale";
 import {generalStore} from "@store/general";
 
 interface DiscordUser {
-  createdAt: string,
-  discriminator: string,
-  email: null,
-  locale: string,
-  mfa_enabled: boolean,
-  slug: string,
-  snowflake: string,
-  updatedAt: string,
+  avatar: string
+  banned: boolean
+  bannedFrom: string[]
+  discriminator: null
+  ipAddresses: string[]
+  provider: any
   username: string
+  _id: string
 }
 
 interface GuestUser {
