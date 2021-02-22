@@ -1,3 +1,4 @@
+import { Message_author } from '@generated';
 import { defaultDataIdFromObject, IdGetter } from 'apollo-cache-inmemory'
 
 const dataIdFromObject: IdGetter = (object: {
@@ -8,8 +9,9 @@ const dataIdFromObject: IdGetter = (object: {
     case 'Reaction':
       return null // Reactions are unique across messages
     case 'User':
-      if (object.bot && object.discriminator === '0000') {
-        return `User:${object.id}:${object.username}`;
+      const user = object as Message_author
+      if (user.bot && user.discrim === '0000') {
+        return `User:${user.id}:${user.name}`;
       }
     default:
       return defaultDataIdFromObject(object)

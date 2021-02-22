@@ -47,7 +47,7 @@ class MagicTextarea extends React.Component<Props> {
   onChange(value) {
     const { onChange } = this.props;
 
-    onChange && onChange(value);
+    onChange?.(value);
   }
 
   render() {
@@ -60,7 +60,7 @@ class MagicTextarea extends React.Component<Props> {
             const { innerRef } = this.props;
 
             this.textarea = ref;
-            innerRef && innerRef(ref);
+            innerRef?.(ref);
           }}
           onChange={event => this.onChange(event.target.value)}
           onClick={this.resetState}
@@ -81,7 +81,7 @@ class MagicTextarea extends React.Component<Props> {
                 return;
               case "Enter":
                 if (this.state.showSuggestions) {
-                  this.suggestions && this.suggestions.selectSuggestion();
+                  this.suggestions?.selectSuggestion();
                   event.preventDefault();
                   return;
                 }
@@ -90,8 +90,8 @@ class MagicTextarea extends React.Component<Props> {
                   const { onSubmit, onChange } = this.props;
 
                   // Submit
-                  onSubmit && onSubmit(this.textarea.value);
-                  onChange && onChange("");
+                  onSubmit?.(this.textarea.value);
+                  onChange?.("");
                   event.preventDefault();
                 }
 

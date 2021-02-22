@@ -48,8 +48,8 @@ export class Locale extends React.PureComponent<Props, { cache: { [key: string]:
         const { state: { cur, cache } }: any = Locale.staticContext;
         let lang: any = cache[cur], content: string;
         if (!lang) {
-            if (cache["en"] && cache["en"][key]) {
-                lang = cache["en"];
+            if (cache.en?.[key]) {
+                lang = cache.en;
             } else {
                 return key;
             }

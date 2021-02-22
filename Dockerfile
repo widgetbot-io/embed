@@ -1,18 +1,16 @@
-FROM nginx:alpine
+FROM bitnami/nginx
 
-WORKDIR /
-
-COPY .docker/nginx.conf /etc/nginx/conf.d/default.conf
-COPY .docker/entrypoint.sh .
+COPY .docker/nginx.conf /opt/bitnami/nginx/conf/server_blocks/my_server_block.conf
+COPY .docker/start.sh /
 COPY .docker/replaceEnvVars.sh .
 COPY build/ /usr/share/nginx/html
 
+USER 0
+
 RUN chmod +x replaceEnvVars.sh
+RUN chmod +x /start.sh
+RUN chown -R 1001:1001 /usr/share/nginx/html
 
-ENTRYPOINT ["/bin/ash", "entrypoint.sh"]
+USER 1001
 
-EXPOSE 80
-
-STOPSIGNAL SIGTERM
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD [ "/start.sh" ]

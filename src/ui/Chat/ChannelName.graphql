@@ -7,9 +7,9 @@ query ChannelName($channel: String!) {
       nsfw
       canSend
     }
-    ... on NewsChannel {
-      nsfw
-      canSend
-    }
+#    ... on NewsChannel {
+#      nsfw
+#      canSend
+#    }
   }
 }

@@ -21,9 +21,7 @@ type MessagesProps = {
 };
 
 export const Messages = observer(({ guild, channel }: MessagesProps) => {
-  const { messages, error, ready, stale, fetchMore } = useMessages(
-    channel
-  );
+  const { messages, error, ready, stale, fetchMore } = useMessages(channel, guild);
   const groupedMessages = groupMessages(messages);
   const scroller = useObservable({
     isLoadingMore: false,
@@ -141,6 +139,7 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
                                   <Message
                                       style={style}
                                       messages={groupedMessages[index]}
+                                      allMessages={messages}
                                   />
                                 </CellMeasurer>
                             ) : null

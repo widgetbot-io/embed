@@ -1,6 +1,8 @@
 #import "./Embed.graphql"
 
-fragment Message on Message {
+# Message.graphql without author.color
+
+fragment SubscriptionMessage on Message {
     id
     content
     type
@@ -11,7 +13,6 @@ fragment Message on Message {
     author {
         avatar
         bot
-        color
         discrim
         id
         flags

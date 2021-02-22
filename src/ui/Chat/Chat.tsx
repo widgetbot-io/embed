@@ -42,7 +42,7 @@ export const Chat: FunctionComponent<ChatProps> = (props) => {
   if (error) return <ErrorAhoy message={formatError(error)} />;
 
 
-  const channelName = data.channel && data.channel.name;
+  const channelName = data.channel?.name;
 
   return (
     <Root className="chat">

@@ -1,14 +1,15 @@
-import { Messages_channel_TextChannel_messages } from '@generated'
+import { Messages_channel_messages } from '@generated';
+import { MessageType } from '@generated/globalTypes';
 
 /**
  * Compares whether a message should go in a group
  */
 const compareGroupability = (
-  a: Messages_channel_TextChannel_messages,
-  b: Messages_channel_TextChannel_messages
+  a: Messages_channel_messages,
+  b: Messages_channel_messages
 ) => {
-  const nonGroupable = a.__typename !== 'TextMessage' || b.__typename !== 'TextMessage';
-  const differentAuthor = a.author.id !== b.author.id || a.author.username !== b.author.username;
+  const nonGroupable = ![MessageType.Default, MessageType.Reply].includes(a.type) || b.type !== MessageType.Default;
+  const differentAuthor = (!(b.flags & 1 << 4) && a.author.id !== b.author.id) || a.author.name !== b.author.name;
   const staleGroup = (Number(new Date(b.createdAt)) - Number(new Date(a.createdAt))) > 5 * 60 * 1000;
 
   return nonGroupable || differentAuthor || staleGroup
@@ -23,13 +24,13 @@ const compareGroupability = (
  * @param messages The messages to group
  */
 export const groupMessages = <
-  Group extends Messages_channel_TextChannel_messages[]
+  Group extends Messages_channel_messages[]
 >(
   messages: Group
 ): Group[] => {
   const result = new Array<Group>()
   let group = null
-  let previous: Messages_channel_TextChannel_messages
+  let previous: Messages_channel_messages
 
   for (const message of messages) {
     if (group === null || compareGroupability(previous, message)) {

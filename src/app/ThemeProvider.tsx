@@ -6,15 +6,15 @@ import * as _ from 'lodash'
 import { GlobalStyles } from './elements'
 import GET_SETTINGS from './Settings.graphql'
 
-import { Theme_guild_theme } from '@generated'
+import { Settings_guild_settings_theme } from '@generated'
 import * as Constants from '@constants'
 import { useQuery } from 'react-apollo-hooks'
 import {useCacheLoaded, useRouter} from '@hooks'
-import {generalStore} from '@store';
+import {generalStore, authStore} from '@store';
 
 const getQueryParam = (query: string) => {
 	const matched = window.location.search.match(new RegExp(`[?&]${query}=([^&#]*)`))
-	return matched && matched[1];
+	return matched?.[1];
 };
 
 export const ThemeProvider = ({ children }) => {
@@ -30,26 +30,35 @@ export const ThemeProvider = ({ children }) => {
   const { data } = useQuery(GET_SETTINGS, { variables: { guild }, fetchPolicy: 'network-only' });
 
 
-  let theme: Theme_guild_theme = {
-    __typename: 'Theme',
+  let theme: Settings_guild_settings_theme = {
+    __typename: 'ThemeSettings',
     colors: {
-      __typename: 'ThemeColors',
-      primary: data.guild && data.guild.settings.theme && data.guild.settings.theme.colors && data.guild.settings.theme.colors.primary || Constants.THEME_COLOR_PRIMARY,
-      accent: data.guild && data.guild.settings.theme && data.guild.settings.theme.colors && data.guild.settings.theme.colors.accent || Constants.THEME_COLOR_ACCENT,
-      background: data.guild && data.guild.settings.theme && data.guild.settings.theme.colors && data.guild.settings.theme.colors.background || Constants.THEME_BACKGROUND
+      __typename: 'ThemeColorSettings',
+      primary: data.guild?.settings.theme?.colors?.primary || Constants.THEME_COLOR_PRIMARY,
+      accent: data.guild?.settings.theme?.colors?.accent || Constants.THEME_COLOR_ACCENT,
+      background: data.guild?.settings.theme?.colors?.background || Constants.THEME_BACKGROUND
     },
-    css: data.guild && data.guild.settings.theme && data.guild.settings.theme.css || ``
+    css: data.guild?.settings.theme?.css || ``
   };
 
-  // if (data.guild && data.guild.theme) _.merge(theme, data.guild.theme);
-  generalStore.toggleGuest(data.guild && data.guild.settings.guestMode);
-  generalStore.toggleRead(data.guild && data.guild.settings.readonly);
+  // if (data.guild?.theme) _.merge(theme, data.guild.theme);
+  generalStore.toggleGuest(data.guild?.settings.guestMode);
+  generalStore.toggleRead(data.guild?.settings.readonly);
+  
+  if (getQueryParam('username')) {
+    const name = decodeURIComponent(getQueryParam('username'))
+    if (name !== authStore.user?.username)
+      authStore.guestLogin(name).then(async () => {
+        await authStore.setGuestUser(name);
+        generalStore.needsUpdate = true;
+      })
+  }
 
   const themeContext: ThemeContext = {
     ...theme,
-    readonly: data.guild && data.guild.settings.readonly || false,
-    guestMode: data.guild && data.guild.settings.guestMode || false,
-    singleChannel: data.guild && data.guild.settings.singleChannel || false,
+    readonly: data.guild?.settings.readonly || false,
+    guestMode: data.guild?.settings.guestMode || false,
+    singleChannel: data.guild?.settings.singleChannel || false,
     colors: {
       ...theme.colors,
       _primary: Color(theme.colors.primary),

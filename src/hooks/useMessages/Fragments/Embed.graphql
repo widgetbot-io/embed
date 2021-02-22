@@ -1,41 +1,41 @@
 fragment Embed on Embed {
-  title
-  description
-  url
-  timestamp
-  hexColor
-  type
-  author {
-    proxyIconURL
-    name
+    title
+    description
     url
-  }
-  fields {
-    value
-    name
-    inline
-  }
-  image {
-    proxyURL
-    width
-    height
-  }
-  provider {
-    name
-    url
-  }
-  footer {
-    proxyIconURL
-    text
-  }
-  thumbnail {
-    height
-    width
-    proxyURL
-  }
-  video {
-    height
-    width
-    url
-  }
+    timestamp
+    color
+    type
+    author {
+        url
+        name
+        icon
+    }
+    fields {
+        value
+        name
+        inline
+    }
+    image {
+        url
+        width
+        height
+    }
+    provider {
+        name
+        url
+    }
+    footer {
+        url
+        text
+    }
+    thumbnail {
+        height
+        width
+        url
+    }
+    video {
+        height
+        width
+        url
+    }
 }

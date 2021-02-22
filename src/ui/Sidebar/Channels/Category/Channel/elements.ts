@@ -1,4 +1,4 @@
-import {ChannelLink, Hash, News, Store, NSFW, NSFWNews} from '@ui/shared/Channel'
+import {ChannelLink, Hash, News, Store, NSFW, NSFWNews, Rules} from '@ui/shared/Channel'
 import styled, { css, keyframes } from '@lib/emotion'
 import { Twemoji } from '@ui/shared/Emoji/emoji'
 import Item from '@ui/SelectItem'
@@ -52,8 +52,7 @@ export const Root = styled(Link)<Props>`
       }
     `}
 `
-
-export const Hashtag = styled(Hash)`
+const icon = (hash: typeof Hash) => styled(hash)`
   flex-shrink: 0;
   opacity: 0.6;
   height: 100%;
@@ -61,37 +60,17 @@ export const Hashtag = styled(Hash)`
   margin-right: 7px;
 `;
 
-export const NSFWTag = styled(NSFW)`
-  flex-shrink: 0;
-  opacity: 0.6;
-  height: 100%;
-  width: 16px;
-  margin-right: 7px;
-`;
+export const Hashtag = icon(Hash)
 
-export const Newstag = styled(News)`
-  flex-shrink: 0;
-  opacity: 0.6;
-  height: 100%;
-  width: 16px;
-  margin-right: 7px;
-`;
+export const NSFWTag = icon(NSFW)
 
-export const NSFWNewstag = styled(NSFWNews)`
-  flex-shrink: 0;
-  opacity: 0.6;
-  height: 100%;
-  width: 16px;
-  margin-right: 7px;
-`;
+export const Newstag = icon(News)
 
-export const Storetag = styled(Store)`
-  flex-shrink: 0;
-  opacity: 0.6;
-  height: 100%;
-  width: 16px;
-  margin-right: 7px;
-`;
+export const NSFWNewstag = icon(NSFWNews)
+
+export const Storetag = icon(Store)
+
+export const Rulestag = icon(Rules)
 
 export const Name = styled('div')`
   color: inherit;
@@ -100,6 +79,7 @@ export const Name = styled('div')`
   text-overflow: ellipsis;
   width: 100%;
   overflow: hidden;
+  white-space: nowrap;
 `
 
 export const Emoji = styled(Twemoji)`

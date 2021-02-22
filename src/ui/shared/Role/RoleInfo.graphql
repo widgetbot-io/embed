@@ -1,9 +1,10 @@
-query RoleInfo($server: String!, $role: String!) {
+query RoleInfo($server: String!) { # , $role: String!
   guild(id: $server) {
-    role(id: $role) {
-      id
-      name
-      hexColor
-    }
+    id
+#    role(id: $role) {
+#      id
+#      name
+#      hexColor
+#    }
   }
 }

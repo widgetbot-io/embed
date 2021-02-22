@@ -18,7 +18,7 @@ export class GeneralStore {
   constructor() {
     autorun(() => {
       if (this.needsUpdate) {
-        this.fetchGuild && this.fetchGuild();
+        this.fetchGuild?.();
         this.needsUpdate = false;
       }
     })

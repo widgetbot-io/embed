@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Tooltip from 'rc-tooltip'
 import CHANNEL from './Channel.graphql'
-import { Name, NewsName, NSFWName, NSFWNewsName, Emoji, Topic, Join, Stretch, SingleChannel, SingleChannelAuthWrapper } from '@ui/Header'
+import { Name, NewsName, NSFWName, NSFWNewsName, Emoji, Topic, Join, Stretch, SingleChannelAuthWrapper, RulesName } from '@ui/Header'
 
 import { Root } from './elements'
 import { Locale } from "@lib/Locale"
@@ -28,25 +28,27 @@ export const Header = observer(({ channel, guild }: HeaderProps) => {
         cData = {}
     }
 
-    const invite = generalStore.guild && generalStore.guild.invite;
+    const invite = generalStore.guild?.invite;
 
     return (
         <Root>
             <Stretch>
                 { cData.nsfw && cData.__typename === 'NewsChannel' ?
-                    <NSFWNewsName><Emoji>{cData && cData.name}</Emoji></NSFWNewsName>
+                    <NSFWNewsName><Emoji>{cData?.name}</Emoji></NSFWNewsName>
                 : cData.__typename === 'NewsChannel' ?
-                    <NewsName><Emoji>{cData && cData.name}</Emoji></NewsName>
+                    <NewsName><Emoji>{cData?.name}</Emoji></NewsName>
+                : cData.id === generalStore.guild?.rulesChannelId ?
+                    <RulesName><Emoji>{cData?.name}</Emoji></RulesName>
                 : cData.nsfw ?
-                    <NSFWName><Emoji>{cData && cData.name}</Emoji></NSFWName>
+                    <NSFWName><Emoji>{cData?.name}</Emoji></NSFWName>
                 :
-                    <Name><Emoji>{cData && cData.name}</Emoji></Name>}
+                    <Name><Emoji>{cData?.name}</Emoji></Name>}
                 {window.innerWidth < 520 ? null : (
                         <Topic
-                            onClick={() => store.modal.openTopic(cData && cData.topic, cData.name)}
+                            onClick={() => store.modal.openTopic(cData?.topic, cData.name)}
                             className="topic"
                         >
-                            {cData && cData.topic}
+                            {cData?.topic}
                         </Topic>
                     )}
             </Stretch>

@@ -1,10 +1,13 @@
 import { WebSocketLink } from 'apollo-link-ws'
-import { url } from "@lib/env";
+import {WS_URL} from "@lib/env";
 
 const wsLink = new WebSocketLink({
-  uri: `${url.includes('127.0.0.1') ? 'ws' : 'wss'}://${url}/ws/graphql`,
+  uri: WS_URL,
   options: {
-    reconnect: true
+    reconnect: true,
+    connectionParams: {
+      authToken: window.localStorage.getItem('token') || ''
+    }
   }
 });
 

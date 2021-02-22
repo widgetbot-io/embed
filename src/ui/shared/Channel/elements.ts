@@ -33,3 +33,10 @@ export const Store = styled('div')`
   background-size: 20px 20px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' name='StoreTag' class='icon-1_QxNX' aria-hidden='false' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='${({theme})=>encodeURIComponent(theme.colors._primary.fade(0.6).string())}' d='M21.707 13.293l-11-11C10.519 2.105 10.266 2 10 2H3c-.553 0-1 .447-1 1v7c0 .266.105.519.293.707l11 11c.195.195.451.293.707.293s.512-.098.707-.293l7-7c.391-.391.391-1.023 0-1.414zM7 9c-1.106 0-2-.896-2-2 0-1.106.894-2 2-2 1.104 0 2 .894 2 2 0 1.104-.896 2-2 2z'%3E%3C/path%3E%3C/svg%3E");
 `;
+
+export const Rules = styled('div')`
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 40 40' fill='none' class='icon-1DeIlz'%3E%3Cpath fill='${({theme})=>encodeURIComponent(theme.colors._primary.fade(0.6).string())}' fill-rule='evenodd' clip-rule='evenodd' d='M33 34.5833V7.49998H35V36.6666H9C6.791 36.6666 5 34.801 5 32.5V7.49998C5 5.19894 6.791 3.33331 9 3.33331H31V30.4166H9C7.8955 30.4166 7 31.3485 7 32.5C7 33.6515 7.8955 34.5833 9 34.5833H33ZM23.9718 9.99998L15.8889 17.9915L12.7086 14.8441L10 17.5058L15.8885 23.3333L26.6667 12.6669L23.9718 9.99998Z'%3E%3C/path%3E%3C/svg%3E");
+`;

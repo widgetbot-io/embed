@@ -1,5 +1,0 @@
-subscription DeletedMessages($channel: String!) {
-  messageDelete(filter: { channel: $channel }) {
-    id
-  }
-}

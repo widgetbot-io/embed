@@ -1,16 +1,17 @@
-import { Author as $Author, Member as $Member } from '@generated'
+import {NewMessages_message_author} from '@generated'
 import Moment from 'moment'
 import * as React from 'react'
 
 import { Sysadmin, Tag, Verified } from "./Badges";
-import { Name, Root, Time } from './elements'
+import { Name, Root, Time, VerifiedBot } from './elements'
 import { Locale } from '@lib/Locale';
+import Tooltip from 'rc-tooltip';
 
 interface Props {
-  author: $Author,
-  member: $Member,
+  author: NewMessages_message_author,
   time: number,
-  crosspost: boolean
+  crosspost: boolean,
+  referenceGuild: string
 }
 
 const developers = {
@@ -33,10 +34,6 @@ const developers = {
   "302604426781261824": {
     href: null,
     title: "Developer"
-  },
-  "207629082257653760": {
-    href: "https://file.properties",
-    title: "Staff"
   }
 };
 
@@ -44,35 +41,36 @@ export const Timestamp = ({ time }: { time: number }) => (
   <Time className="time">{Moment(time).calendar()}</Time>
 );
 
+const verified = 
+  <Tooltip placement="top" overlay="Verified Bot">
+    <VerifiedBot aria-label="Verified Bot" aria-hidden="false" width="16" height="16" viewBox="0 0 16 15.2"><path d="M7.4,11.17,4,8.62,5,7.26l2,1.53L10.64,4l1.36,1Z" fill="currentColor"></path></VerifiedBot>
+  </Tooltip>
+
+export const tags = ({author, crosspost, referenceGuild}: Omit<Props, 'time'>) => 
+  <React.Fragment>
+    {author.bot &&
+      ( author.flags & 1 << 12 ? <Tag className="verified system">{verified} System</Tag>
+      : referenceGuild === '667560445975986187' ? <Tag className="system">System</Tag>
+      : crosspost ? <Tag className="server">{Locale.translate('frontend.tag.server')}</Tag>
+      : author.flags & 1 << 16 ? <Tag className="verified bot">{verified} {Locale.translate('frontend.tag.bot')}</Tag>
+      : <Tag className="bot">{Locale.translate('frontend.tag.bot')}</Tag>
+      )}
+    {author.id === 'aaaa' && <Tag className="guest">Guest</Tag>}
+  </React.Fragment>
+
 class Author extends React.PureComponent<Props> {
-  tags() {
-    const { author, crosspost } = this.props;
-
-    return (
-      <React.Fragment>
-        {author.bot && (crosspost ? <Tag className="bot">{Locale.translate('frontend.tag.server')}</Tag> : <Tag className="bot">{Locale.translate('frontend.tag.bot')}</Tag>)}
-              {author.id === 'aaaa' && <Tag className="guest">Guest</Tag>}
-              {Author.verified({ id: author.id })/* ||
-                (author.id === '190916650143318016' && (
-                  <Sysadmin className="patreon" title="Patreon" />
-                ))*/}
-      </React.Fragment>
-    )
-  }
-
   render() {
-    const { author, time, member } = this.props;
+    const { author, time } = this.props;
 
-    const hexColor =
-      (member ? member.displayHexColor : null) ||
-      '#fff';
+    const hexColor = '#'+ (author.color.toString(16).padStart(6, '0') || 'fff')
 
     return (
       <Root className="author">
         <Name color={hexColor} className="name">
-          {member.displayName || author.username}
+          {author.name}
         </Name>
-        {this.tags()}
+        {tags(this.props)}
+        {Author.verified({ id: author.id })}
         <Timestamp time={time} />
       </Root>
     )

@@ -1,23 +1,22 @@
 /* tslint:disable */
 /* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL subscription operation: DeletedMessages
+// GraphQL subscription operation: MessageDeleted
 // ====================================================
 
-export interface DeletedMessages_messageDelete {
+export interface MessageDeleted_messageDelete {
   __typename: "DeletedMessage";
-  /**
-   * Message ID
-   */
   id: string;
 }
 
-export interface DeletedMessages {
-  messageDelete: DeletedMessages_messageDelete;
+export interface MessageDeleted {
+  messageDelete: MessageDeleted_messageDelete | null;
 }
 
-export interface DeletedMessagesVariables {
+export interface MessageDeletedVariables {
   channel: string;
+  guild: string;
 }
