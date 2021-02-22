@@ -1,7 +1,7 @@
 import { action, computed, observable } from "mobx";
 import axios from 'axios';
 import { APIRequest, Endpoints } from "../api";
-import { url } from "@lib/env";
+import {API_URL, url} from "@lib/env";
 import { ICategory } from "@ui/Sidebar/Channels/categorise";
 import { useRouter } from "@hooks";
 import CHANNELS from "@ui/Sidebar/Channels/Channels.graphql";
@@ -95,7 +95,7 @@ export class AuthStore {
       const x: number = screen.width / 2 - 840 / 2;
       const y: number = screen.height / 2 - 700 / 2;
 
-      const newWindow = window.open(`${url.includes('127.0.0.1') ? `http://${url}` : `https://${url}`}${Endpoints.auth.discord.split(' ')[1]}`, 'Login to WidgetBot with Discord!', `menubar=no,width=840,height=700,location=no,resizable=no,scrollbars=yes,status=no,left=${x},top=${y}`);
+      const newWindow = window.open(`${API_URL}${Endpoints.auth.discord.split(' ')[1]}`, 'Login to WidgetBot with Discord!', `menubar=no,width=840,height=700,location=no,resizable=no,scrollbars=yes,status=no,left=${x},top=${y}`);
 
       const timer = setInterval(() => {
         if ((newWindow as Window).closed) {

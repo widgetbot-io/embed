@@ -1,6 +1,6 @@
 // Code created by viction#0001 https://viction.dev/ - owner of really cool bot https://kratos.gg/
 import Axios, { AxiosResponse, Method } from 'axios';
-import { url } from "@lib/env";
+import {API_URL, url} from "@lib/env";
 
 interface APIRequestOptions {
     headers?: {[key: string]: any};
@@ -11,7 +11,7 @@ interface APIRequestOptions {
 }
 
 const axiosClient = Axios.create({
-    baseURL: url.includes('127.0.0.1') ? `http://${url}` : `https://${url}`,
+    baseURL: API_URL,
 });
 
 export async function APIRequest(endpoint: string, options: APIRequestOptions = {}): Promise<AxiosResponse> {
