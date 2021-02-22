@@ -2,7 +2,6 @@ import {Twemoji} from '@ui/shared/Emoji/emoji'
 import {parseAllowLinks, parseEmbedTitle} from '@ui/shared/markdown/render'
 import {ThemeProvider} from 'emotion-theming'
 import * as Moment from 'moment'
-import * as React from 'react'
 
 import {Content, Root, Title, Wrapper, Provider, VideoIframe, Gifv} from './elements'
 import {Author, AuthorIcon, AuthorName} from './elements/author'

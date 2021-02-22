@@ -6,21 +6,20 @@
 import { MessageType, FormatType } from "./globalTypes";
 
 // ====================================================
-// GraphQL mutation operation: SendMessage
+// GraphQL fragment: SubscriptionMessage
 // ====================================================
 
-export interface SendMessage_sendMessage_author {
+export interface SubscriptionMessage_author {
   __typename: "User";
   avatar: string;
   bot: boolean;
-  color: number;
   discrim: string;
   id: string;
   flags: number | null;
   name: string;
 }
 
-export interface SendMessage_sendMessage_reactions {
+export interface SubscriptionMessage_reactions {
   __typename: "Reaction";
   count: number;
   emojiName: string | null;
@@ -28,7 +27,7 @@ export interface SendMessage_sendMessage_reactions {
   me: boolean;
 }
 
-export interface SendMessage_sendMessage_attachments {
+export interface SubscriptionMessage_attachments {
   __typename: "Attachment";
   url: string;
   height: number | null;
@@ -37,7 +36,7 @@ export interface SendMessage_sendMessage_attachments {
   size: number;
 }
 
-export interface SendMessage_sendMessage_stickers {
+export interface SubscriptionMessage_stickers {
   __typename: "Sticker";
   id: string;
   name: string;
@@ -46,68 +45,68 @@ export interface SendMessage_sendMessage_stickers {
   lottieData: string | null;
 }
 
-export interface SendMessage_sendMessage_messageReference {
+export interface SubscriptionMessage_messageReference {
   __typename: "MessageReference";
   guildId: string | null;
   channelId: string;
   messageId: string | null;
 }
 
-export interface SendMessage_sendMessage_application {
+export interface SubscriptionMessage_application {
   __typename: "Application";
   id: string;
   name: string;
   icon: string;
 }
 
-export interface SendMessage_sendMessage_embeds_author {
+export interface SubscriptionMessage_embeds_author {
   __typename: "EmbedAuthor";
   url: string | null;
   name: string | null;
   icon: string | null;
 }
 
-export interface SendMessage_sendMessage_embeds_fields {
+export interface SubscriptionMessage_embeds_fields {
   __typename: "EmbedField";
   value: string;
   name: string;
   inline: boolean | null;
 }
 
-export interface SendMessage_sendMessage_embeds_image {
+export interface SubscriptionMessage_embeds_image {
   __typename: "EmbedImage";
   url: string | null;
   width: number | null;
   height: number | null;
 }
 
-export interface SendMessage_sendMessage_embeds_provider {
+export interface SubscriptionMessage_embeds_provider {
   __typename: "EmbedProvider";
   name: string | null;
   url: string | null;
 }
 
-export interface SendMessage_sendMessage_embeds_footer {
+export interface SubscriptionMessage_embeds_footer {
   __typename: "EmbedFooter";
   url: string | null;
   text: string;
 }
 
-export interface SendMessage_sendMessage_embeds_thumbnail {
+export interface SubscriptionMessage_embeds_thumbnail {
   __typename: "EmbedThumbnail";
   height: number | null;
   width: number | null;
   url: string | null;
 }
 
-export interface SendMessage_sendMessage_embeds_video {
+export interface SubscriptionMessage_embeds_video {
   __typename: "EmbedVideo";
   height: number | null;
   width: number | null;
   url: string | null;
 }
 
-export interface SendMessage_sendMessage_embeds {
+export interface SubscriptionMessage_embeds {
   __typename: "Embed";
   title: string | null;
   description: string | null;
@@ -115,16 +114,16 @@ export interface SendMessage_sendMessage_embeds {
   timestamp: string | null;
   color: number | null;
   type: string | null;
-  author: SendMessage_sendMessage_embeds_author | null;
-  fields: SendMessage_sendMessage_embeds_fields[] | null;
-  image: SendMessage_sendMessage_embeds_image | null;
-  provider: SendMessage_sendMessage_embeds_provider | null;
-  footer: SendMessage_sendMessage_embeds_footer | null;
-  thumbnail: SendMessage_sendMessage_embeds_thumbnail | null;
-  video: SendMessage_sendMessage_embeds_video | null;
+  author: SubscriptionMessage_embeds_author | null;
+  fields: SubscriptionMessage_embeds_fields[] | null;
+  image: SubscriptionMessage_embeds_image | null;
+  provider: SubscriptionMessage_embeds_provider | null;
+  footer: SubscriptionMessage_embeds_footer | null;
+  thumbnail: SubscriptionMessage_embeds_thumbnail | null;
+  video: SubscriptionMessage_embeds_video | null;
 }
 
-export interface SendMessage_sendMessage {
+export interface SubscriptionMessage {
   __typename: "Message";
   id: string;
   content: string;
@@ -132,20 +131,11 @@ export interface SendMessage_sendMessage {
   flags: number | null;
   createdAt: any;
   editedAt: any | null;
-  author: SendMessage_sendMessage_author;
-  reactions: SendMessage_sendMessage_reactions[] | null;
-  attachments: SendMessage_sendMessage_attachments[];
-  stickers: SendMessage_sendMessage_stickers[];
-  messageReference: SendMessage_sendMessage_messageReference | null;
-  application: SendMessage_sendMessage_application | null;
-  embeds: SendMessage_sendMessage_embeds[];
-}
-
-export interface SendMessage {
-  sendMessage: SendMessage_sendMessage;
-}
-
-export interface SendMessageVariables {
-  channel: string;
-  content: string;
+  author: SubscriptionMessage_author;
+  reactions: SubscriptionMessage_reactions[] | null;
+  attachments: SubscriptionMessage_attachments[];
+  stickers: SubscriptionMessage_stickers[];
+  messageReference: SubscriptionMessage_messageReference | null;
+  application: SubscriptionMessage_application | null;
+  embeds: SubscriptionMessage_embeds[];
 }

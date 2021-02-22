@@ -1,6 +1,5 @@
 import memoize from 'memoizee'
 import * as R from 'ramda'
-import * as React from 'react'
 import baseRules from '@ui/shared/markdown/render/ast'
 import { Code, Highlighter, Link, QuoteContainer, QuoteBar, Quote } from '@ui/shared/markdown/render/elements'
 import {

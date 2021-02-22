@@ -1,4 +1,5 @@
-import React, {createContext, Dispatch, useContext, useReducer} from "react";
+import { createContext, Dispatch, useContext, useReducer } from "react";
+import * as React from "react";
 import {authStore, AuthStore} from "../stores/auth";
 import {inject} from "mobx-react";
 
