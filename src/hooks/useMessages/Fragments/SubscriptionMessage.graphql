@@ -1,8 +1,8 @@
 #import "./Embed.graphql"
 
-# same as SubscriptionMessage.graphql
+# Message.graphql without author.color
 
-fragment UpdatedMessage on UpdatedMessage {
+fragment SubscriptionMessage on Message {
     id
     content
     type

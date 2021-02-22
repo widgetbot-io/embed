@@ -4,7 +4,10 @@ import {WS_URL} from "@lib/env";
 const wsLink = new WebSocketLink({
   uri: WS_URL,
   options: {
-    reconnect: true
+    reconnect: true,
+    connectionParams: {
+      authToken: window.localStorage.getItem('token') || ''
+    }
   }
 });
 
