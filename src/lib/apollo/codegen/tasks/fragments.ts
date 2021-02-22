@@ -1,7 +1,7 @@
 import * as path from 'path'
 import * as fs from 'fs'
 import fetch from 'node-fetch'
-import { GRAPHQL_URL} from "@lib/env";
+import { GRAPHQL_URL} from "../../../env";
 
 fetch(GRAPHQL_URL, {
   method: 'POST',

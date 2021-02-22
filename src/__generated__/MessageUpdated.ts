@@ -1,6 +1,5 @@
 /* tslint:disable */
 /* eslint-disable */
-// @generated
 // This file was automatically generated and should not be edited.
 
 import { MessageType, FormatType } from "./globalTypes";
@@ -13,7 +12,6 @@ export interface MessageUpdated_messageUpdate_author {
   __typename: "User";
   avatar: string;
   bot: boolean;
-  color: number;
   discrim: string;
   id: string;
   flags: number | null;
