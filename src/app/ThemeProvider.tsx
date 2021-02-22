@@ -1,6 +1,7 @@
 import { Theme as ThemeContext } from '@lib/emotion'
 import Color from 'color'
 import { ThemeProvider as Provider } from 'emotion-theming'
+import * as React from 'react'
 import * as _ from 'lodash'
 import { GlobalStyles } from './elements'
 import GET_SETTINGS from './Settings.graphql'

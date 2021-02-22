@@ -1,3 +1,4 @@
+import * as React from 'react'
 import Tooltip from 'rc-tooltip'
 import CHANNEL from './Channel.graphql'
 import { Name, NewsName, NSFWName, NSFWNewsName, Emoji, Topic, Join, Stretch, SingleChannelAuthWrapper, RulesName } from '@ui/Header'

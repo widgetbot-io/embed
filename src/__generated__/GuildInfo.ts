@@ -1,6 +1,5 @@
 /* tslint:disable */
 /* eslint-disable */
-// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -28,7 +27,7 @@ export interface GuildInfo_guild {
   __typename: "Guild";
   id: string;
   name: string;
-  icon: string;
+  icon: string | null;
   invite: string;
   memberCount: number;
   rulesChannelId: string | null;

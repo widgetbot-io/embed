@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { MdChat, MdError, MdVisibilityOff } from 'react-icons/md'
 
 import { Wrap } from './elements'

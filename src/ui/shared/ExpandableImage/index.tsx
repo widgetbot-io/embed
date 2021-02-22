@@ -1,5 +1,6 @@
 import optimize from '@ui/shared/ExpandableImage/optimize'
 import { Scale } from '@ui/shared/ScaledImage'
+import * as React from 'react'
 import { useState, useEffect } from 'react'
 
 import { Image, Loader, Root } from './elements'

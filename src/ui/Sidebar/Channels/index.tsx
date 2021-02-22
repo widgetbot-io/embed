@@ -1,3 +1,4 @@
+import React from "react";
 import {Route} from "react-router-dom";
 import {Query} from "react-apollo";
 import {Channels, ChannelsVariables} from "@generated";

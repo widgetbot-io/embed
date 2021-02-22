@@ -1,4 +1,4 @@
-import { PureComponent } from "react";
+import React, { PureComponent } from "react";
 import { Image, SpoilerImage } from "@ui/Message/Embed/elements/media";
 
 interface Props {

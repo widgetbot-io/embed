@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { Wrapper as Root } from './elements'
 import { observer } from 'mobx-react'
 import { store } from '@models'

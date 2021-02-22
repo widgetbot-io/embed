@@ -11,7 +11,7 @@
     "experimentalDecorators": true,
     "outDir": "build/dist",
     "allowSyntheticDefaultImports": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "rootDir": "src",
     "baseUrl": ".",
     "paths": {

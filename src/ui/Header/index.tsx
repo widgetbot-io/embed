@@ -1,3 +1,5 @@
+import * as React from 'react'
+
 import { Root, SingleChannel, Inner } from './elements'
 import Hamburger from './Hamburger'
 import { store } from '@models'
