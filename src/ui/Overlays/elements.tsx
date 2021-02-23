@@ -1,4 +1,3 @@
-import * as React from 'react'
 import Emoji from '@ui/shared/Emoji'
 import styled, { css } from '@lib/emotion'
 

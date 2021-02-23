@@ -1,6 +1,5 @@
 import { cx } from 'emotion'
 import Tooltip from 'rc-tooltip'
-import * as React from 'react'
 import Emoji from '@ui/shared/Emoji'
 
 import ChannelLink from './link'

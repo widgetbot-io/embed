@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import { Root, OpenImage } from './elements'
 import { Trans } from '@lingui/react'
 import { Box, Close } from '@ui/Modal'

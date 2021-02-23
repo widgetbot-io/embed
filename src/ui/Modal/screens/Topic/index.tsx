@@ -1,4 +1,3 @@
-import * as React from 'react'
 import Markdown from '@ui/shared/markdown/render'
 
 import { Root, Top, Title, Close, Body, Emoji } from './elements'

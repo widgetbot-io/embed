@@ -1,7 +1,6 @@
 import 'babel-polyfill'
 
 import client from '@lib/apollo'
-import * as React from 'react'
 import { Provider } from 'mobx-react';
 import * as Sentry from '@sentry/browser';
 import { ApolloProvider } from 'react-apollo'

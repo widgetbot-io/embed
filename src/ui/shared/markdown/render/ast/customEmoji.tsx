@@ -1,6 +1,5 @@
 import Emoji from '@ui/shared/Emoji'
 import Tooltip from 'rc-tooltip'
-import * as React from 'react'
 import SimpleMarkdown from 'simple-markdown'
 
 export const customEmoji = {

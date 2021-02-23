@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import { Chat } from '@ui/Overlays'
 import Header, { Name, Topic } from '@ui/Header'
 import Wrapper from '@ui/Wrapper'
