@@ -6,7 +6,7 @@ import * as _ from 'lodash'
 import { GlobalStyles } from './elements'
 import GET_SETTINGS from './Settings.graphql'
 
-import { Settings_guild_settings_theme } from '@generated'
+import { Settings, Settings_guild_settings_theme } from '@generated'
 import * as Constants from '@constants'
 import { useQuery } from 'react-apollo-hooks'
 import {useCacheLoaded, useRouter} from '@hooks'
@@ -27,8 +27,7 @@ export const ThemeProvider = ({ children }) => {
     guild = use.guild;
   }
 
-  const { data } = useQuery(GET_SETTINGS, { variables: { guild }, fetchPolicy: 'network-only' });
-
+  const { data } = useQuery(GET_SETTINGS, { variables: { guild }, fetchPolicy: 'network-only' }) as {data: Settings}
 
   let theme: Settings_guild_settings_theme = {
     __typename: 'ThemeSettings',
@@ -58,7 +57,7 @@ export const ThemeProvider = ({ children }) => {
     ...theme,
     readonly: data.guild?.settings.readonly || false,
     guestMode: data.guild?.settings.guestMode || false,
-    singleChannel: data.guild?.settings.singleChannel || false,
+    singleChannel: data.guild?.settings.singleChannel || '',
     colors: {
       ...theme.colors,
       _primary: Color(theme.colors.primary),
