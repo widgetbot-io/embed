@@ -61,10 +61,12 @@ export class Header extends React.Component {
 
 							let icon = data.guild.icon && Util.craftServerUrl(data.guild.id, data.guild.icon);
 
-							if (icon.includes('a_')) {
-								icon = icon.replace('webp', 'gif?size=64')
-							} else {
-								icon = webpCheck(icon) + '?size=64'
+							if (icon) {
+								if (icon.includes('a_')) {
+									icon = icon.replace('webp', 'gif?size=64')
+								} else {
+									icon = webpCheck(icon) + '?size=64'
+								}
 							}
 
 							if (data.guild.banner) {
@@ -73,20 +75,16 @@ export class Header extends React.Component {
 
 								if (window.innerWidth < 520) return (
 									<BannerRoot className="header" backgroundImage={banner}>
-										{icon.includes('null') ?
-											<Acronym>{data.guild.name.replace(/'s /g, ' ').replace(/\w+/g, e => e[0]).replace(/\s/g, '')}</Acronym> :
-											<Icon src={icon} className="icon"/>
-										}
+										{icon ? <Icon src={icon} className="icon"/>
+										: <Acronym>{data.guild.name.replace(/'s /g, ' ').replace(/\w+/g, e => e[0]).replace(/\s/g, '')}</Acronym>}
 										<BannerName className="name">{data.guild.name}</BannerName>
 										<Close onClick={store.sidebar.toggle}/>
 									</BannerRoot>
 								)
 								return (
 									<BannerRoot className="header" backgroundImage={banner}>
-										{icon.includes('null') ?
-											<Acronym>{data.guild.name.replace(/'s /g, ' ').replace(/\w+/g, e => e[0]).replace(/\s/g, '')}</Acronym> :
-											<Icon src={icon} className="icon"/>
-										}
+										{icon ? <Icon src={icon} className="icon"/>
+										: <Acronym>{data.guild.name.replace(/'s /g, ' ').replace(/\w+/g, e => e[0]).replace(/\s/g, '')}</Acronym>}
 										<BannerName className="name">{data.guild.name}</BannerName>
 										<Tooltip
 											placement="bottom"
@@ -104,20 +102,16 @@ export class Header extends React.Component {
 
 							if (window.innerWidth < 520) return (
 								<Root className="header">
-									{icon.includes('null') ?
-										<Acronym>{data.guild.name.replace(/'s /g, ' ').replace(/\w+/g, e => e[0]).replace(/\s/g, '')}</Acronym> :
-										<Icon src={icon} className="icon"/>
-									}
+									{icon ? <Icon src={icon} className="icon"/>
+									: <Acronym>{data.guild.name.replace(/'s /g, ' ').replace(/\w+/g, e => e[0]).replace(/\s/g, '')}</Acronym>}
 									<Name className="name">{data.guild.name}</Name>
 									<Close onClick={store.sidebar.toggle}/>
 								</Root>
 							)
 							return (
 								<Root className="header">
-									{icon.includes('null') ?
-										<Acronym>{data.guild.name.replace(/'s /g, ' ').replace(/\w+/g, e => e[0]).replace(/\s/g, '')}</Acronym> :
-										<Icon src={icon} className="icon"/>
-									}
+									{icon ? <Icon src={icon} className="icon"/>
+									: <Acronym>{data.guild.name.replace(/'s /g, ' ').replace(/\w+/g, e => e[0]).replace(/\s/g, '')}</Acronym>}
 									<Name className="name">{data.guild.name}</Name>
 									<Tooltip
 										placement="bottom"
