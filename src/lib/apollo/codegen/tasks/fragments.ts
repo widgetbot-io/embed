@@ -1,11 +1,9 @@
 import * as path from 'path'
 import * as fs from 'fs'
 import fetch from 'node-fetch'
-import {url} from "../../../../lib/env";
+import { GRAPHQL_URL} from "../../../env";
 
-const API_HOST = url.includes('127.0.0.1') ? `http://${url}` : `https://${url}`;
-
-fetch(`${API_HOST}/api/graphql`, {
+fetch(GRAPHQL_URL, {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({

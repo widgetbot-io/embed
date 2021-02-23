@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import { Error } from '..'
 import Header, { Name, Topic } from './header'
 import Wrapper from './wrapper'

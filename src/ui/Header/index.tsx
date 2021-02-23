@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import { Root, SingleChannel, Inner } from './elements'
 import Hamburger from './Hamburger'
 import { store } from '@models'
@@ -13,7 +11,13 @@ const Header = observer(({ children }) => (
       <ServerInfo />
     </SingleChannel>
     <Inner>
-      <Hamburger onClick={store.sidebar.toggle} open={store.sidebar.isOpen} />
+      <Hamburger
+        onClick={e => {
+          e.stopPropagation();
+          store.sidebar.toggle();
+        }}
+        open={store.sidebar.isOpen}
+      />
       {children}
     </Inner>
   </Root>

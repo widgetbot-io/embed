@@ -1,4 +1,3 @@
-import * as React from 'react'
 import Channels from './Channels'
 import {Root, Close} from './elements'
 import { Header } from './Header'

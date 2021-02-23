@@ -33,7 +33,7 @@ export interface Messages_channel_messages_attachments {
   url: string;
   height: number | null;
   width: number | null;
-  fileName: string;
+  filename: string;
   size: number;
 }
 
@@ -112,7 +112,7 @@ export interface Messages_channel_messages_embeds {
   title: string | null;
   description: string | null;
   url: string | null;
-  timestamp: any | null;
+  timestamp: string | null;
   color: number | null;
   type: string | null;
   author: Messages_channel_messages_embeds_author | null;

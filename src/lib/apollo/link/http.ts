@@ -1,7 +1,7 @@
 import {ApolloLink} from '@apollo/client'
 import {BatchHttpLink} from '@apollo/client/link/batch-http'
 import {onError} from '@apollo/client/link/error'
-import {url} from "@lib/env";
+import {GRAPHQL_URL, url} from "@lib/env";
 import {authStore} from '@store';
 
 const httpLink = ApolloLink.from([
@@ -16,7 +16,7 @@ const httpLink = ApolloLink.from([
 		if (networkError) console.error(`[Network error]: ${networkError}`)
 	}),
 	new BatchHttpLink({
-		uri: url.includes('127.0.0.1') ? `http://${url}/api/graphql` : `https://${url}/api/graphql`,
+		uri: GRAPHQL_URL,
 		batchInterval: 20,
 		batchMax: 1
 	})

@@ -213,7 +213,6 @@ export const CommandArgsSpine = styled.div`
 interface NameProps {
   color: number
 }
-
 export const Member = styled(MemberLink)<NameProps>`
   color: ${({ color }) => (color ? '#'+color.toString(16).padStart(6, '0') : null)};
   font-weight: 500;
@@ -255,8 +254,12 @@ export const Root = styled('div')`
 
 export const Reactions = styled('div')``
 
-export const Content = styled('div')`
+interface ContentProps {
+  sending?: boolean
+}
+export const Content = styled('div')<ContentProps>`
   margin-bottom: 7px;
+  ${props => props.sending && 'opacity: .5'}
 `
 
 export namespace Sys {

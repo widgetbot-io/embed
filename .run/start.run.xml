@@ -6,7 +6,9 @@
       <script value="start" />
     </scripts>
     <node-interpreter value="project" />
-    <envs />
+    <envs>
+      <env name="CUSTOM_SERVER_ENDPOINT" value="127.0.0.1:8443" />
+    </envs>
     <method v="2" />
   </configuration>
 </component>

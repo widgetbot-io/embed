@@ -33,7 +33,7 @@ export interface Message_attachments {
   url: string;
   height: number | null;
   width: number | null;
-  fileName: string;
+  filename: string;
   size: number;
 }
 
@@ -112,7 +112,7 @@ export interface Message_embeds {
   title: string | null;
   description: string | null;
   url: string | null;
-  timestamp: any | null;
+  timestamp: string | null;
   color: number | null;
   type: string | null;
   author: Message_embeds_author | null;

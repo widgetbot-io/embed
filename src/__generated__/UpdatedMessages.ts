@@ -33,7 +33,7 @@ export interface UpdatedMessages_messageUpdate_attachments {
   url: string;
   height: number | null;
   width: number | null;
-  fileName: string;
+  filename: string;
   size: number;
 }
 
@@ -125,20 +125,20 @@ export interface UpdatedMessages_messageUpdate_embeds {
 }
 
 export interface UpdatedMessages_messageUpdate {
-  __typename: "Message";
+  __typename: "UpdatedMessage";
   id: string;
-  content: string;
-  type: MessageType;
+  content: string | null;
+  type: MessageType | null;
   flags: number | null;
-  createdAt: any;
+  createdAt: any | null;
   editedAt: any | null;
-  author: UpdatedMessages_messageUpdate_author;
+  author: UpdatedMessages_messageUpdate_author | null;
   reactions: UpdatedMessages_messageUpdate_reactions[] | null;
-  attachments: UpdatedMessages_messageUpdate_attachments[];
-  stickers: UpdatedMessages_messageUpdate_stickers[];
+  attachments: UpdatedMessages_messageUpdate_attachments[] | null;
+  stickers: UpdatedMessages_messageUpdate_stickers[] | null;
   messageReference: UpdatedMessages_messageUpdate_messageReference | null;
   application: UpdatedMessages_messageUpdate_application | null;
-  embeds: UpdatedMessages_messageUpdate_embeds[];
+  embeds: UpdatedMessages_messageUpdate_embeds[] | null;
 }
 
 export interface UpdatedMessages {

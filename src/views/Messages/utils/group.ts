@@ -9,8 +9,8 @@ const compareGroupability = (
   b: Messages_channel_messages
 ) => {
   const nonGroupable = ![MessageType.Default, MessageType.Reply].includes(a.type) || b.type !== MessageType.Default;
-  const differentAuthor = a.author.id !== b.author.id || a.author.name !== b.author.name;
-  const staleGroup = (Number(new Date(b.createdAt)) - Number(new Date(a.createdAt))) > 5 * 60;
+  const differentAuthor = (!(b.flags & 1 << 4) && a.author.id !== b.author.id) || a.author.name !== b.author.name;
+  const staleGroup = (Number(new Date(b.createdAt)) - Number(new Date(a.createdAt))) > 5 * 60 * 1000;
 
   return nonGroupable || differentAuthor || staleGroup
 };

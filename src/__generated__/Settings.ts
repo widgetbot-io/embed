@@ -30,6 +30,7 @@ export interface Settings_guild_settings {
 
 export interface Settings_guild {
   __typename: "Guild";
+  id: string;
   settings: Settings_guild_settings;
 }
 
