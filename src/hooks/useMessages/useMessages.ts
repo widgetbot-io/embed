@@ -51,6 +51,7 @@ export const useMessages = (channel: string, guild: string) => {
       query.updateQuery(prev =>
         produce(prev, ({ channel: { messages } }: { channel: Messages_channel }) => {
           const message = subscriptionData.data.message as Messages_channel_messages
+          message.author.color = messages.find(m => m.author.id === message.author.id)?.author.color || 0xffffff
           if (!messages.find(m => m.id === message.id)) messages.push(message);
         })
       )}
@@ -66,7 +67,8 @@ export const useMessages = (channel: string, guild: string) => {
 
           if (index > -1) {
             const updatedProps = Object.fromEntries(Object.entries(message).filter(([_, v]) => v !== null))
-            delete updatedProps.__typename 
+            updatedProps.author.color = messages.find(m => m.author.id === message.author.id)?.author.color || 0xffffff
+            delete updatedProps.__typename
 
             Object.assign(messages[index], updatedProps)
           }
