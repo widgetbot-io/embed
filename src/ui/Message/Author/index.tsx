@@ -1,4 +1,4 @@
-import {NewMessages_message_author} from '@generated'
+import {Messages_channel_messages_author} from '@generated'
 import Moment from 'moment'
 import * as React from 'react'
 
@@ -8,10 +8,11 @@ import { Locale } from '@lib/Locale';
 import Tooltip from 'rc-tooltip';
 
 interface Props {
-  author: NewMessages_message_author,
-  time: number,
-  crosspost: boolean,
+  author: Messages_channel_messages_author
+  time: number
+  crosspost: boolean
   referenceGuild: string
+  guest: boolean
 }
 
 const developers = {
@@ -46,10 +47,11 @@ const verified =
     <VerifiedBot aria-label="Verified Bot" aria-hidden="false" width="16" height="16" viewBox="0 0 16 15.2"><path d="M7.4,11.17,4,8.62,5,7.26l2,1.53L10.64,4l1.36,1Z" fill="currentColor"></path></VerifiedBot>
   </Tooltip>
 
-export const tags = ({author, crosspost, referenceGuild}: Omit<Props, 'time'>) => 
+export const tags = ({author, crosspost, referenceGuild, guest}: Omit<Props, 'time'>) => 
   <React.Fragment>
     {author.bot &&
-      ( author.flags & 1 << 12 ? <Tag className="verified system">{verified} System</Tag>
+      ( guest ? <Tag className="guest">Guest</Tag>
+      : author.flags & 1 << 12 ? <Tag className="verified system">{verified} System</Tag>
       : referenceGuild === '667560445975986187' ? <Tag className="system">System</Tag>
       : crosspost ? <Tag className="server">{Locale.translate('frontend.tag.server')}</Tag>
       : author.flags & 1 << 16 ? <Tag className="verified bot">{verified} {Locale.translate('frontend.tag.bot')}</Tag>

@@ -132,6 +132,7 @@ export interface Message {
   flags: number | null;
   createdAt: any;
   editedAt: any | null;
+  isGuest: boolean;
   author: Message_author;
   reactions: Message_reactions[] | null;
   attachments: Message_attachments[];

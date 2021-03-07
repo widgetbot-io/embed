@@ -25,6 +25,7 @@ export const useSendMessage = () => {
           flags: 1 << 4, // reusing flag for optimistic messages
           createdAt: +new Date(),
           editedAt: null,
+          isGuest: true,
           author: {
             __typename: 'User',
             avatar: 'avatar' in authStore.user && authStore.user.avatar,

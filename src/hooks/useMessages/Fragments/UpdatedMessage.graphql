@@ -1,6 +1,6 @@
 #import "./Embed.graphql"
 
-# same as SubscriptionMessage.graphql
+# SubscriptionMessage.graphql without isGuest
 
 fragment UpdatedMessage on UpdatedMessage {
     id

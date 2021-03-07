@@ -1,7 +1,7 @@
 import produce from "immer";
 import { MESSAGES, NEW_MESSAGE, MESSAGE_UPDATED, MESSAGE_DELETED, MESSAGES_BULK_DELETED } from ".";
-import { useQuery, useSubscription } from "react-apollo-hooks";
-import { Messages_channel, Messages_channel_messages } from "@generated";
+import { OnSubscriptionDataOptions, useQuery, useSubscription } from "react-apollo-hooks";
+import { MessageDeleted, MessagesBulkDeleted, Messages_channel, Messages_channel_messages, MessageUpdated, NewMessage, UpdatedMessage } from "@generated";
 
 /**
  * Fetches the messages for a channel
@@ -45,7 +45,7 @@ export const useMessages = (channel: string, guild: string) => {
     })
   }
 
-  useSubscription(NEW_MESSAGE, {
+  useSubscription<NewMessage>(NEW_MESSAGE, {
     variables: { channel, guild },
     onSubscriptionData({ subscriptionData }) {
       query.updateQuery(prev =>
@@ -57,16 +57,16 @@ export const useMessages = (channel: string, guild: string) => {
       )}
   });
 
-  useSubscription(MESSAGE_UPDATED, {
+  useSubscription<MessageUpdated>(MESSAGE_UPDATED, {
     variables: { channel, guild },
     onSubscriptionData({ subscriptionData }) {
       query.updateQuery(prev =>
         produce(prev, ({ channel: { messages } }: { channel: Messages_channel }) => {
-          const message = subscriptionData.data.messageUpdate as Messages_channel_messages
+          const message = subscriptionData.data.messageUpdate
           const index = messages.findIndex(m => m.id === message.id);
 
           if (index > -1) {
-            const updatedProps = Object.fromEntries(Object.entries(message).filter(([_, v]) => v !== null))
+            const updatedProps = Object.fromEntries(Object.entries(message).filter(([_, v]) => v !== null)) as Partial<Messages_channel_messages>
             updatedProps.author.color = messages.find(m => m.author.id === message.author.id)?.author.color || 0xffffff
             delete updatedProps.__typename
 
@@ -77,12 +77,12 @@ export const useMessages = (channel: string, guild: string) => {
     }
   });
   
-  useSubscription(MESSAGE_DELETED, {
+  useSubscription<MessageDeleted>(MESSAGE_DELETED, {
     variables: { channel, guild },
     onSubscriptionData({ subscriptionData }) {
       query.updateQuery(prev =>
         produce(prev, ({ channel: { messages } }: { channel: Messages_channel }) => {
-          const { id } = subscriptionData.data.messageDelete as { id: string }
+          const { id } = subscriptionData.data.messageDelete
           const index = messages.findIndex(m => m.id === id)
 
           if (index > -1) messages.splice(index, 1)
@@ -91,12 +91,12 @@ export const useMessages = (channel: string, guild: string) => {
     }
   });
 
-  useSubscription(MESSAGES_BULK_DELETED, {
+  useSubscription<MessagesBulkDeleted>(MESSAGES_BULK_DELETED, {
     variables: { channel, guild },
     onSubscriptionData({ subscriptionData }) {
       query.updateQuery(prev =>
         produce(prev, ({ channel }: { channel: Messages_channel }) => {
-          const { ids } = subscriptionData.data.messageDeleteBulk as { ids: string[] }
+          const { ids } = subscriptionData.data.messageDeleteBulk
   
           channel.messages = channel.messages.filter(
             message => !ids.includes(message.id)

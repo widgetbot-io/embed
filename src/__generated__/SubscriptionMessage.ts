@@ -131,6 +131,7 @@ export interface SubscriptionMessage {
   flags: number | null;
   createdAt: any;
   editedAt: any | null;
+  isGuest: boolean;
   author: SubscriptionMessage_author;
   reactions: SubscriptionMessage_reactions[] | null;
   attachments: SubscriptionMessage_attachments[];

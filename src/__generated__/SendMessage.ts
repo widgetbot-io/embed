@@ -132,6 +132,7 @@ export interface SendMessage_sendMessage {
   flags: number | null;
   createdAt: any;
   editedAt: any | null;
+  isGuest: boolean;
   author: SendMessage_sendMessage_author;
   reactions: SendMessage_sendMessage_reactions[] | null;
   attachments: SendMessage_sendMessage_attachments[];

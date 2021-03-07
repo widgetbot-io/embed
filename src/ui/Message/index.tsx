@@ -106,7 +106,7 @@ class Message extends React.PureComponent<Props, any> {
               {repliedMessage ? 
                 <RepliedMessage>
                   <RepliedAvatar src={getAvatar(repliedMessage)} />
-                  <span style={{verticalAlign: 'sub'}}>{tags({author: repliedMessage.author, crosspost: !!(repliedMessage.flags & 1 << 1), referenceGuild: repliedMessage.messageReference?.guildId})}</span>
+                  <span style={{verticalAlign: 'sub'}}>{tags({author: repliedMessage.author, crosspost: !!(repliedMessage.flags & 1 << 1), referenceGuild: repliedMessage.messageReference?.guildId, guest: repliedMessage.isGuest})}</span>
                   <RepliedUser nameColor={repliedMessage.author.color}>{repliedMessage.author.name}</RepliedUser>
                   {repliedMessage.content
                     ? <RepliedText>
@@ -148,6 +148,7 @@ class Message extends React.PureComponent<Props, any> {
               time={firstMessage.createdAt}
               crosspost={!!(firstMessage.flags & 1 << 1)}
               referenceGuild={firstMessage.messageReference?.guildId}
+              guest={firstMessage.isGuest}
             />
           }
 
