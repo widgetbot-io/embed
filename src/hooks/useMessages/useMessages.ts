@@ -1,6 +1,6 @@
 import produce from "immer";
 import { MESSAGES, NEW_MESSAGE, MESSAGE_UPDATED, MESSAGE_DELETED, MESSAGES_BULK_DELETED } from ".";
-import { OnSubscriptionDataOptions, useQuery, useSubscription } from "react-apollo-hooks";
+import { useQuery, useSubscription } from "react-apollo-hooks";
 import { MessageDeleted, MessagesBulkDeleted, Messages_channel, Messages_channel_messages, MessageUpdated, NewMessage, UpdatedMessage } from "@generated";
 
 /**

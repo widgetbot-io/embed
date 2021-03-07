@@ -10,7 +10,7 @@ import { authStore } from '@store';
 
 export const useSendMessage = () => {
   const { channel } = useRouter()
-  const sendMessage = useMutation<any>(SEND_MESSAGE);
+  const sendMessage = useMutation<SendMessage>(SEND_MESSAGE);
 
   return async (content: string) =>
     await sendMessage({
@@ -44,7 +44,9 @@ export const useSendMessage = () => {
           embeds: []
         }
       } as SendMessage, update: (store, { data: { sendMessage: newMessage } }) => {
-        const data = store.readQuery({ query: MESSAGES, variables: {channel} }) as Messages
+        const data = store.readQuery<Messages>({ query: MESSAGES, variables: {channel} })
+
+        newMessage.isGuest = true
 
         if (!data.channel.messages.find(m => m.id === newMessage.id))
           data.channel.messages.push(newMessage)

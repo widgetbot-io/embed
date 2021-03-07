@@ -26,7 +26,7 @@ export const ThemeProvider = ({ children }) => {
     guild = use.guild;
   }
 
-  const { data } = useQuery(GET_SETTINGS, { variables: { guild }, fetchPolicy: 'network-only' }) as {data: Settings}
+  const { data } = useQuery<Settings>(GET_SETTINGS, { variables: { guild }, fetchPolicy: 'network-only' })
 
   let theme: Settings_guild_settings_theme = {
     __typename: 'ThemeSettings',

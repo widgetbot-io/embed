@@ -10,6 +10,7 @@ import { Loading } from "@ui/Overlays";
 import { addNotification } from "notify";
 import { Locale } from '@lib/Locale'
 import {authStore} from "@store";
+import { ChannelName } from '@generated'
 
 export interface ChatProps {}
 
@@ -18,7 +19,7 @@ export const Chat: FunctionComponent<ChatProps> = (props) => {
   const sendMessage = useSendMessage();
   const [rows, setRows] = useState(1);
   const { channel } = useRouter();
-  const { data, error, errors, networkStatus, loading } = useQuery(GET_CHANNEL_NAME, { variables: { channel } });
+  const { data, error, errors, networkStatus, loading } = useQuery<ChannelName>(GET_CHANNEL_NAME, { variables: { channel } });
 
   if (loading) return <Loading />;
   if (!data || !data.channel) {
