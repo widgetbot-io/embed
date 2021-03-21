@@ -60,7 +60,8 @@ export namespace GlobalStyles {
         word-break: break-word;
       }
     `
-    injectGlobal`${theme.css}`;
+    CSS.setAttribute('custom-css', theme.css)
+    document.body.appendChild(CSS)
   }
 
   function update(theme: Theme) {
@@ -78,6 +79,5 @@ export namespace GlobalStyles {
         color: ${theme.colors.primary};
       }
     `
-    injectGlobal`${theme.css}`;
   }
 }
