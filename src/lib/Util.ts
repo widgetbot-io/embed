@@ -12,6 +12,10 @@ export class Util {
 		return `https://cdn.discordapp.com/icons/${snowflake}/${icon}.webp`
 	}
 
+	static craftBannerUrl(snowflake: string, banner: string) {
+		return `https://cdn.discordapp.com/banners/${snowflake}/${banner}.webp`
+	}
+
 	// https://github.com/discordjs/discord.js/blob/master/src/util/Snowflake.js#L35
 	static generateSnowflake(timestamp = Date.now()) {
 		if (typeof timestamp !== 'number' || isNaN(timestamp)) {

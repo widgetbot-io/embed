@@ -71,7 +71,7 @@ export class Header extends React.Component {
 
 							if (data.guild.banner) {
 
-								let banner = webpCheck(data.guild.banner);
+								let banner = webpCheck(Util.craftBannerUrl(data.guild.id, data.guild.banner));
 
 								if (window.innerWidth < 520) return (
 									<BannerRoot className="header" backgroundImage={banner}>
