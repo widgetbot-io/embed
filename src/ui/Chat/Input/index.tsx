@@ -10,8 +10,8 @@ import extractQuery from "./utils/extractQuery";
 import injectValue from "./utils/injectValue";
 import { ChatProps } from "../Chat";
 import { inject, observer } from "mobx-react";
-import {authStore} from "@store";
-import { onClick } from "@views/Messages/Header";
+import { generalStore, authStore } from "@store";
+import { login } from "@views/Messages/Header";
 import { Locale } from "@lib/Locale";
 
 interface Props extends ChatProps {
@@ -150,7 +150,7 @@ class MagicTextarea extends React.Component<Props> {
       </Root>
     ) : (
       <NoPerms
-        onClick={onClick.bind({ props: { AuthStore: authStore }})}
+        onClick={!authStore.user && (generalStore.guestEnabled ? generalStore.toggleMenu(true) : login.bind({ props: { AuthStore: authStore }}))}
       >
         { !user ? Locale.translate('frontend.input.login') : Locale.translate('frontend.input.noperms') }
       </NoPerms>
