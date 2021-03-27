@@ -13,7 +13,7 @@ export class Util {
 	}
 
 	static craftBannerUrl(snowflake: string, banner: string) {
-		return `https://cdn.discordapp.com/banners/${snowflake}/${banner}.webp`
+		return `https://cdn.discordapp.com/banners/${snowflake}/${banner}.webp?size=512`
 	}
 
 	// https://github.com/discordjs/discord.js/blob/master/src/util/Snowflake.js#L35
