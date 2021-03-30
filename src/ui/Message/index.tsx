@@ -72,6 +72,14 @@ const getAvatar = (message: Messages_channel_messages) =>
     ))
   : defaultAvatar(message.author.discrim)
 
+const shouldShowAuthor = (message: Messages_channel_messages) =>
+  [MessageType.Default, MessageType.Reply].includes(message.type) ||
+  message.type === MessageType.ApplicationCommand && !message.application
+
+const shouldShowContext = (message: Messages_channel_messages) =>
+  message.type === MessageType.Reply ||
+  message.type === MessageType.ApplicationCommand && !message.application
+
 class Message extends React.PureComponent<Props, any> {
   theme = message => theme => ({
     ...theme,
@@ -91,16 +99,16 @@ class Message extends React.PureComponent<Props, any> {
     return (
       <Group style={this.props.style} className="group">
 
-        {[MessageType.Default, MessageType.Reply].includes(firstMessage.type) &&
+        {shouldShowAuthor(firstMessage) &&
           <Avatar
             url={getAvatar(firstMessage)}
             className="avatar"
-            reply={firstMessage.type === MessageType.Reply}
+            reply={shouldShowContext(firstMessage)}
           />
         }
 
         <Messages className="messages">
-          {firstMessage.type === MessageType.Reply &&
+          {shouldShowContext(firstMessage) &&
             <React.Fragment>
               <ReplySpine/>
               {repliedMessage ? 
@@ -132,6 +140,10 @@ class Message extends React.PureComponent<Props, any> {
                   {(repliedMessage.attachments.length > 0 || repliedMessage.embeds.length > 0) &&
                     <ReplyImageIcon aria-hidden="false" width="20" height="20" viewBox="0 0 64 64"><path fill="rgba(255,255,255,.66)" d="M56 50.6667V13.3333C56 10.4 53.6 8 50.6667 8H13.3333C10.4 8 8 10.4 8 13.3333V50.6667C8 53.6 10.4 56 13.3333 56H50.6667C53.6 56 56 53.6 56 50.6667ZM22.6667 36L29.3333 44.0267L38.6667 32L50.6667 48H13.3333L22.6667 36Z"></path></ReplyImageIcon>}
                 </RepliedMessage>
+                : firstMessage.type === MessageType.ApplicationCommand ? 
+                  <RepliedMessage>
+                    <ReplySystemText>Slash command used</ReplySystemText>
+                  </RepliedMessage>
                 :
                 <RepliedMessage>
                   <UnknownReplyIconWrapper>
@@ -142,7 +154,7 @@ class Message extends React.PureComponent<Props, any> {
               }
             </React.Fragment>}
 
-          {[MessageType.Default, MessageType.Reply].includes(firstMessage.type) &&
+          {shouldShowAuthor(firstMessage) &&
             <Author
               author={firstMessage.author}
               time={firstMessage.createdAt}
@@ -154,8 +166,44 @@ class Message extends React.PureComponent<Props, any> {
 
           {messages.map((message, i) => {
             switch (message.type) {
+              // type 20 is at the top so it can fallback to normal rendering for the new ui, this is for the legacy ui
+              case MessageType.ApplicationCommand: {
+                if (message.application) {
+                  const member =
+                    <Member id={message.author.id} color={message.author.color}>
+                      {message.author.name}
+                    </Member>
+
+                  const command = 
+                    <Command>
+                      {message.content.split(':')[0].substring(1)}
+                    </Command>
+                  
+                  const application = 
+                    <span>
+                      <ApplicationIcon src={webpCheck(`https://cdn.discordapp.com/app-icons/${message.application.id}/${message.application.icon}.webp?size=64`)}></ApplicationIcon> <ApplicationName>{message.application.name}</ApplicationName>
+                    </span>
+
+                  return (
+                    <React.Fragment key={message.id}>
+                      <Secondary.Command>
+                        {member} used {command} with {application}
+                      </Secondary.Command>
+                      <Timestamp time={message.createdAt} />
+                      {!message.content.endsWith('> ') && 
+                        <React.Fragment>
+                          <CommandArgsSpine/>
+                          <CommandArgs>{message.content.split(':')[0].substring(1)} {message.content.split('> ')[1]}</CommandArgs>
+                        </React.Fragment>
+                      }
+                    </React.Fragment>
+                  )
+                }
+              }
+
               case MessageType.Default:
-              case MessageType.Reply: {
+              case MessageType.Reply: 
+              case MessageType.ApplicationCommand: {
                 return (
                   <ThemeProvider key={message.id} theme={this.theme(message)}>
                     <Root className="message" id={message.id}>
@@ -402,38 +450,6 @@ class Message extends React.PureComponent<Props, any> {
                       This server has failed Discovery activity requirements for 3 weeks in a row. If this server fails for 1 more week, it will be removed from Discovery.
                     </Secondary.Warning>
                     <Timestamp time={message.createdAt} />
-                  </React.Fragment>
-                )
-              }
-
-              case MessageType.ApplicationCommand: {
-                const member =
-                  <Member id={message.author.id} color={message.author.color}>
-                    {message.author.name}
-                  </Member>
-
-                const command = 
-                  <Command>
-                    {message.content.split(':')[0].substring(1)}
-                  </Command>
-                
-                const application = 
-                  <span>
-                    <ApplicationIcon src={webpCheck(`https://cdn.discordapp.com/app-icons/${message.application.id}/${message.application.icon}.webp?size=64`)}></ApplicationIcon> <ApplicationName>{message.application.name}</ApplicationName>
-                  </span>
-
-                return (
-                  <React.Fragment key={message.id}>
-                    <Secondary.Command>
-                      {member} used {command} with {application}
-                    </Secondary.Command>
-                    <Timestamp time={message.createdAt} />
-                    {!message.content.endsWith('> ') && 
-                      <React.Fragment>
-                        <CommandArgsSpine/>
-                        <CommandArgs>{message.content.split(':')[0].substring(1)} {message.content.split('> ')[1]}</CommandArgs>
-                      </React.Fragment>
-                    }
                   </React.Fragment>
                 )
               }
