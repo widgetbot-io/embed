@@ -118,7 +118,7 @@ class Message extends React.PureComponent<Props, any> {
                   <RepliedUser nameColor={repliedMessage.author.color}>{repliedMessage.author.name}</RepliedUser>
                   {repliedMessage.content
                     ? <RepliedText>
-                        <Markdown>{repliedMessage.content}</Markdown>
+                        <Markdown mentions={repliedMessage.mentions}>{repliedMessage.content}</Markdown>
                         {repliedMessage.editedAt && (
                           <Tooltip
                             placement="top"
@@ -212,8 +212,8 @@ class Message extends React.PureComponent<Props, any> {
                     <Root className="message" id={message.id}>
                       <Content sending={!!(message.flags & 1 << 4)} className="content">
                         {message.author.discrim === '0000'
-                          ? <LinkMarkdown>{message.content}</LinkMarkdown>
-                          : <Markdown>{message.content}</Markdown>}
+                          ? <LinkMarkdown mentions={message.mentions}>{message.content}</LinkMarkdown>
+                          : <Markdown mentions={message.mentions}>{message.content}</Markdown>}
                         {message.editedAt && (
                           <Tooltip
                             placement="top"

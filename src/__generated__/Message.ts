@@ -124,6 +124,13 @@ export interface Message_embeds {
   video: Message_embeds_video | null;
 }
 
+export interface Message_mentions {
+  __typename: "Mention";
+  id: string;
+  type: string;
+  name: string;
+}
+
 export interface Message {
   __typename: "Message";
   id: string;
@@ -140,4 +147,5 @@ export interface Message {
   messageReference: Message_messageReference | null;
   application: Message_application | null;
   embeds: Message_embeds[];
+  mentions: Message_mentions[];
 }

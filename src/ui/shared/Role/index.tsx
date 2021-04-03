@@ -4,26 +4,28 @@ import {Query} from 'react-apollo'
 
 import RoleLink from './link'
 import ROLE_INFO from './RoleInfo.graphql'
+import { Message_mentions } from '@generated'
 
 interface Props {
   id: string
   className?: string
   children: (member: any) => any
+  data?: Message_mentions
 }
 
-const Role = ({ id: role, children, className }: Props) => (
+const Role = ({ id, children, className, data }: Props) => (
   <Route path="/:server">
     {({
       match: {
         params: { server }
       }
     }) => (
-        <RoleLink id={role} className={cx('role-link', className)}>
+        <RoleLink id={id} className={cx('role-link', className)}>
           {children({
             __typename: 'Member',
-            displayName: role,
+            displayName: data?.name || 'deleted-role',
             color: "0x0000ff",
-            id: role
+            id: id
           })}
         </RoleLink>
     )}

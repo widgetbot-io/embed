@@ -62,4 +62,10 @@ fragment Message on Message {
     embeds {
         ...Embed
     }
+
+    mentions {
+        id
+        type
+        name
+    }
 }

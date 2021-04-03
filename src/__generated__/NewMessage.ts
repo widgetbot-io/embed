@@ -123,6 +123,13 @@ export interface NewMessage_message_embeds {
   video: NewMessage_message_embeds_video | null;
 }
 
+export interface NewMessage_message_mentions {
+  __typename: "Mention";
+  id: string;
+  type: string;
+  name: string;
+}
+
 export interface NewMessage_message {
   __typename: "Message";
   id: string;
@@ -139,6 +146,7 @@ export interface NewMessage_message {
   messageReference: NewMessage_message_messageReference | null;
   application: NewMessage_message_application | null;
   embeds: NewMessage_message_embeds[];
+  mentions: NewMessage_message_mentions[];
 }
 
 export interface NewMessage {

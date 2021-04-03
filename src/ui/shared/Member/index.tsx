@@ -2,33 +2,32 @@ import { cx } from 'emotion'
 import { Route } from 'react-router-dom'
 import { Query } from 'react-apollo'
 
-import {MemberInfo, Message_author} from '@generated'
+import {MemberInfo, Message_author, Message_mentions} from '@generated'
 import MemberLink from './link'
 import MEMBER_INFO from './MemberInfo.graphql'
 
-// TODO: FIx
 interface Props {
   id: string
   className?: string
-  children: (member: Message_author) => any
+  children: (member: Partial<Message_author>) => any
+  data?: Message_mentions
 }
 
-const Member = ({ id: member, children, className }: Props) => (
+const Member = ({ id, children, className, data }: Props) => (
   <Route path="/:server">
     {({
       match: {
         params: { server }
       }
-    }) => ( // TODO: FEATURE/S: When Member Type is Added
-        <div></div>
-        // <MemberLink id={member} className={cx('member-link', className)}>
-        //   {children({
-        //     __typename: 'User',
-        //     name: member,
-        //     color: "0x0000ff",
-        //     id: member
-        //   })}
-        // </MemberLink>
+    }) => (
+        <MemberLink id={id} className={cx('member-link', className)}>
+          {children({
+            __typename: 'User',
+            name: data?.name || id,
+            color: 0x0000ff,
+            id
+          })}
+        </MemberLink>
     )}
   </Route>
 )

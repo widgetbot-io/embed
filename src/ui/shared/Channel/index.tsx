@@ -4,6 +4,8 @@ import Emoji from '@ui/shared/Emoji'
 
 import ChannelLink from './link'
 import CHANNEL_INFO from './ChannelInfo.graphql'
+import { Message_mentions } from '@generated'
+import { generalStore } from '@store'
 
 interface Props {
   id: string
@@ -15,20 +17,23 @@ interface Props {
       category: string
     }
   ) => any
+  data?: Message_mentions
 }
 
-const Channel = ({ id: channel, children, className }: Props) => (
+const categoryName = (channelID: string) => generalStore.channels.find(ctg => ctg.channels.some(c => c.id === channelID))?.name
+
+const Channel = ({ id, children, className, data }: Props) => (
     <Tooltip
         placement="top"
-        overlay={<Emoji>{''}</Emoji>}
+        overlay={<Emoji>{categoryName(id)}</Emoji>}
         mouseLeaveDelay={0}
-        trigger={[]}
+        trigger={categoryName(id) ? ['hover'] : []}
     >
           <span>
-            <ChannelLink id={channel} className={cx('channel-link', className)}>
+            <ChannelLink id={id} className={cx('channel-link', className)}>
               {children({
-                  name: channel,
-                  id: channel,
+                  name: data?.name || generalStore.channels.flatMap(ctg => ctg.channels).find(c => c.id === id)?.name || 'deleted-channel',
+                  id: id,
                   category: 'category && category.name'
               })}
             </ChannelLink>

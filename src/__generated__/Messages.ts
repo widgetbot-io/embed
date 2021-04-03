@@ -124,6 +124,13 @@ export interface Messages_channel_messages_embeds {
   video: Messages_channel_messages_embeds_video | null;
 }
 
+export interface Messages_channel_messages_mentions {
+  __typename: "Mention";
+  id: string;
+  type: string;
+  name: string;
+}
+
 export interface Messages_channel_messages {
   __typename: "Message";
   id: string;
@@ -140,6 +147,7 @@ export interface Messages_channel_messages {
   messageReference: Messages_channel_messages_messageReference | null;
   application: Messages_channel_messages_application | null;
   embeds: Messages_channel_messages_embeds[];
+  mentions: Messages_channel_messages_mentions[];
 }
 
 export interface Messages_channel {

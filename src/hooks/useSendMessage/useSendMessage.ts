@@ -41,7 +41,8 @@ export const useSendMessage = () => {
           stickers: [],
           messageReference: null,
           application: null,
-          embeds: []
+          embeds: [],
+          mentions: []
         }
       } as SendMessage, update: (store, { data: { sendMessage: newMessage } }) => {
         const data = store.readQuery<Messages>({ query: MESSAGES, variables: {channel} })

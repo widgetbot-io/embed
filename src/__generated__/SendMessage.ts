@@ -124,6 +124,13 @@ export interface SendMessage_sendMessage_embeds {
   video: SendMessage_sendMessage_embeds_video | null;
 }
 
+export interface SendMessage_sendMessage_mentions {
+  __typename: "Mention";
+  id: string;
+  type: string;
+  name: string;
+}
+
 export interface SendMessage_sendMessage {
   __typename: "Message";
   id: string;
@@ -140,6 +147,7 @@ export interface SendMessage_sendMessage {
   messageReference: SendMessage_sendMessage_messageReference | null;
   application: SendMessage_sendMessage_application | null;
   embeds: SendMessage_sendMessage_embeds[];
+  mentions: SendMessage_sendMessage_mentions[];
 }
 
 export interface SendMessage {

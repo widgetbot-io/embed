@@ -123,6 +123,13 @@ export interface SubscriptionMessage_embeds {
   video: SubscriptionMessage_embeds_video | null;
 }
 
+export interface SubscriptionMessage_mentions {
+  __typename: "Mention";
+  id: string;
+  type: string;
+  name: string;
+}
+
 export interface SubscriptionMessage {
   __typename: "Message";
   id: string;
@@ -139,4 +146,5 @@ export interface SubscriptionMessage {
   messageReference: SubscriptionMessage_messageReference | null;
   application: SubscriptionMessage_application | null;
   embeds: SubscriptionMessage_embeds[];
+  mentions: SubscriptionMessage_mentions[];
 }

@@ -123,6 +123,13 @@ export interface MessageUpdated_messageUpdate_embeds {
   video: MessageUpdated_messageUpdate_embeds_video | null;
 }
 
+export interface MessageUpdated_messageUpdate_mentions {
+  __typename: "Mention";
+  id: string;
+  type: string;
+  name: string;
+}
+
 export interface MessageUpdated_messageUpdate {
   __typename: "UpdatedMessage";
   id: string;
@@ -138,6 +145,7 @@ export interface MessageUpdated_messageUpdate {
   messageReference: MessageUpdated_messageUpdate_messageReference | null;
   application: MessageUpdated_messageUpdate_application | null;
   embeds: MessageUpdated_messageUpdate_embeds[] | null;
+  mentions: MessageUpdated_messageUpdate_mentions[] | null;
 }
 
 export interface MessageUpdated {
