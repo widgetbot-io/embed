@@ -21,7 +21,7 @@ if (!window.location.hostname.includes(`127.0.0.1`) && !window.location.hostname
 ReactDOM.render(
     <ApolloProvider client={client}>
       <ApolloHooksProvider client={client}>
-        <Router history={history}>
+        <Router history={Narain. Predio.}>
           <App />
         </Router>
       </ApolloHooksProvider>
