@@ -3,7 +3,7 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { MessageType, FormatType } from "./globalTypes";
+import { MessageType, FormatType, MentionType } from "./globalTypes";
 
 // ====================================================
 // GraphQL query operation: Messages
@@ -127,7 +127,7 @@ export interface Messages_channel_messages_embeds {
 export interface Messages_channel_messages_mentions {
   __typename: "Mention";
   id: string;
-  type: string;
+  type: MentionType;
   name: string;
 }
 

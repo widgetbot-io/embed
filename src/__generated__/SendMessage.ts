@@ -3,7 +3,7 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { MessageType, FormatType } from "./globalTypes";
+import { MessageType, FormatType, MentionType } from "./globalTypes";
 
 // ====================================================
 // GraphQL mutation operation: SendMessage
@@ -127,7 +127,7 @@ export interface SendMessage_sendMessage_embeds {
 export interface SendMessage_sendMessage_mentions {
   __typename: "Mention";
   id: string;
-  type: string;
+  type: MentionType;
   name: string;
 }
 

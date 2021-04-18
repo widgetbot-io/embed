@@ -1,4 +1,5 @@
 import { Message_mentions } from '@generated'
+import { MentionType } from '@generated/globalTypes'
 import { Channel, Mention, Role } from '@ui/shared/markdown/render/elements'
 import SimpleMarkdown from 'simple-markdown'
 
@@ -7,7 +8,7 @@ export const mention = {
   match: source => /^<@!?([0-9]+?)>/.exec(source),
   parse: ([str, id], recurseParse, {mentions}) => ({ id, mentions }),
   react: ({ id, mentions }: {id: string, mentions: Message_mentions[]}, recurseOutput, state) =>
-    <Mention key={state.key} id={id} data={mentions?.find(m => m.type === 'member' && m.id === id)}>
+    <Mention key={state.key} id={id} data={mentions?.find(m => m.type === MentionType.Member && m.id === id)}>
       {({ name }) => `@${name}`}
     </Mention>
 }
@@ -17,7 +18,7 @@ export const channel = {
   match: source => /^<#?([0-9]+?)>/.exec(source),
   parse: ([str, id], recurseParse, {mentions}) => ({ id, mentions }),
   react: ({ id, mentions }: {id: string, mentions: Message_mentions[]}, recurseOutput, state) =>
-    <Channel key={state.key} id={id} data={mentions?.find(m => m.type === 'channel' && m.id === id)}>
+    <Channel key={state.key} id={id} data={mentions?.find(m => m.type === MentionType.Channel && m.id === id)}>
       {({ name }) => `#${name}`}
     </Channel>
 }
@@ -27,7 +28,7 @@ export const role = {
   match: source => /^<@&?([0-9]+?)>/.exec(source),
   parse: ([str, id], recurseParse, {mentions}) => ({ id, mentions }),
   react: ({ id, mentions }: {id: string, mentions: Message_mentions[]}, recurseOutput, state) =>
-    <Role key={state.key} id={id} data={mentions?.find(m => m.type === 'role' && m.id === id)}>
+    <Role key={state.key} id={id} data={mentions?.find(m => m.type === MentionType.Role && m.id === id)}>
       {({ displayName }) => `@${displayName}`}
     </Role>
 }

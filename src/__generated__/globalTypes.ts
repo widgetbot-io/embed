@@ -14,6 +14,12 @@ export enum FormatType {
   Unknown = "Unknown",
 }
 
+export enum MentionType {
+  Channel = "Channel",
+  Member = "Member",
+  Role = "Role",
+}
+
 export enum MessageType {
   ApplicationCommand = "ApplicationCommand",
   Call = "Call",
