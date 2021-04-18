@@ -5,6 +5,7 @@ import {Query} from 'react-apollo'
 import RoleLink from './link'
 import ROLE_INFO from './RoleInfo.graphql'
 import { Message_mentions } from '@generated'
+import { generalStore } from '@store'
 
 interface Props {
   id: string

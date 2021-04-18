@@ -20,24 +20,24 @@ interface Props {
   data?: Message_mentions
 }
 
-const categoryName = (channelID: string) => generalStore.channels.find(ctg => ctg.channels.some(c => c.id === channelID))?.name
+const getChannel = (id: string) => (generalStore.guild?.channels || generalStore.channels.flatMap(ctg => ctg.channels))?.find(c => c.id === id)
 
 const Channel = ({ id, children, className, data }: Props) => (
     <Tooltip
         placement="top"
-        overlay={<Emoji>{categoryName(id)}</Emoji>}
+        overlay={<Emoji>{getChannel(id)?.category?.name}</Emoji>}
         mouseLeaveDelay={0}
-        trigger={categoryName(id) ? ['hover'] : []}
+        trigger={getChannel(id)?.category ? ['hover'] : []}
     >
-          <span>
-            <ChannelLink id={id} className={cx('channel-link', className)}>
-              {children({
-                  name: data?.name || generalStore.channels.flatMap(ctg => ctg.channels).find(c => c.id === id)?.name || 'deleted-channel',
-                  id: id,
-                  category: 'category && category.name'
-              })}
-            </ChannelLink>
-          </span>
+      <span>
+        <ChannelLink id={id} className={cx('channel-link', className)}>
+          {children({
+              name: data?.name || getChannel(id)?.name || 'deleted-channel',
+              id: id,
+              category: 'category && category.name'
+          })}
+        </ChannelLink>
+      </span>
     </Tooltip>
 );
 
