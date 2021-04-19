@@ -93,6 +93,10 @@ export const ReplySystemText = styled.span`
   font-style: italic;
 `
 
+export const InteractionText = styled.span`
+  color: rgba(255, 255, 255, .66);
+`
+
 export const ReplyImageIcon = styled.svg`
   vertical-align: text-bottom;
   margin-left: 6px;

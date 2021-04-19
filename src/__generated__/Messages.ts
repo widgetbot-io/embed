@@ -131,6 +131,20 @@ export interface Messages_channel_messages_mentions {
   name: string;
 }
 
+export interface Messages_channel_messages_interaction_user {
+  __typename: "Author";
+  id: string;
+  username: string;
+  discriminator: string;
+  avatar: string | null;
+}
+
+export interface Messages_channel_messages_interaction {
+  __typename: "MessageInteraction";
+  name: string;
+  user: Messages_channel_messages_interaction_user;
+}
+
 export interface Messages_channel_messages {
   __typename: "Message";
   id: string;
@@ -148,6 +162,7 @@ export interface Messages_channel_messages {
   application: Messages_channel_messages_application | null;
   embeds: Messages_channel_messages_embeds[];
   mentions: Messages_channel_messages_mentions[];
+  interaction: Messages_channel_messages_interaction | null;
 }
 
 export interface Messages_channel {

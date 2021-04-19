@@ -130,6 +130,20 @@ export interface SubscriptionMessage_mentions {
   name: string;
 }
 
+export interface SubscriptionMessage_interaction_user {
+  __typename: "Author";
+  id: string;
+  username: string;
+  discriminator: string;
+  avatar: string | null;
+}
+
+export interface SubscriptionMessage_interaction {
+  __typename: "MessageInteraction";
+  name: string;
+  user: SubscriptionMessage_interaction_user;
+}
+
 export interface SubscriptionMessage {
   __typename: "Message";
   id: string;
@@ -147,4 +161,5 @@ export interface SubscriptionMessage {
   application: SubscriptionMessage_application | null;
   embeds: SubscriptionMessage_embeds[];
   mentions: SubscriptionMessage_mentions[];
+  interaction: SubscriptionMessage_interaction | null;
 }

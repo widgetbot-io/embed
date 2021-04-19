@@ -68,4 +68,14 @@ fragment Message on Message {
         type
         name
     }
+
+    interaction {
+        name
+        user {
+            id
+            username
+            discriminator
+            avatar
+        }
+    }
 }

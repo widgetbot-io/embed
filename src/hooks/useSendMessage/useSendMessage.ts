@@ -42,7 +42,8 @@ export const useSendMessage = () => {
           messageReference: null,
           application: null,
           embeds: [],
-          mentions: []
+          mentions: [],
+          interaction: null
         }
       } as SendMessage, update: (store, { data: { sendMessage: newMessage } }) => {
         const data = store.readQuery<Messages>({ query: MESSAGES, variables: {channel} })

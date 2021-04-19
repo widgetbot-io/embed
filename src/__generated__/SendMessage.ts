@@ -131,6 +131,20 @@ export interface SendMessage_sendMessage_mentions {
   name: string;
 }
 
+export interface SendMessage_sendMessage_interaction_user {
+  __typename: "Author";
+  id: string;
+  username: string;
+  discriminator: string;
+  avatar: string | null;
+}
+
+export interface SendMessage_sendMessage_interaction {
+  __typename: "MessageInteraction";
+  name: string;
+  user: SendMessage_sendMessage_interaction_user;
+}
+
 export interface SendMessage_sendMessage {
   __typename: "Message";
   id: string;
@@ -148,6 +162,7 @@ export interface SendMessage_sendMessage {
   application: SendMessage_sendMessage_application | null;
   embeds: SendMessage_sendMessage_embeds[];
   mentions: SendMessage_sendMessage_mentions[];
+  interaction: SendMessage_sendMessage_interaction | null;
 }
 
 export interface SendMessage {

@@ -131,6 +131,20 @@ export interface Message_mentions {
   name: string;
 }
 
+export interface Message_interaction_user {
+  __typename: "Author";
+  id: string;
+  username: string;
+  discriminator: string;
+  avatar: string | null;
+}
+
+export interface Message_interaction {
+  __typename: "MessageInteraction";
+  name: string;
+  user: Message_interaction_user;
+}
+
 export interface Message {
   __typename: "Message";
   id: string;
@@ -148,4 +162,5 @@ export interface Message {
   application: Message_application | null;
   embeds: Message_embeds[];
   mentions: Message_mentions[];
+  interaction: Message_interaction | null;
 }

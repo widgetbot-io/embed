@@ -130,6 +130,20 @@ export interface NewMessage_message_mentions {
   name: string;
 }
 
+export interface NewMessage_message_interaction_user {
+  __typename: "Author";
+  id: string;
+  username: string;
+  discriminator: string;
+  avatar: string | null;
+}
+
+export interface NewMessage_message_interaction {
+  __typename: "MessageInteraction";
+  name: string;
+  user: NewMessage_message_interaction_user;
+}
+
 export interface NewMessage_message {
   __typename: "Message";
   id: string;
@@ -147,6 +161,7 @@ export interface NewMessage_message {
   application: NewMessage_message_application | null;
   embeds: NewMessage_message_embeds[];
   mentions: NewMessage_message_mentions[];
+  interaction: NewMessage_message_interaction | null;
 }
 
 export interface NewMessage {

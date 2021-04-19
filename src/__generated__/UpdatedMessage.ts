@@ -130,6 +130,20 @@ export interface UpdatedMessage_mentions {
   name: string;
 }
 
+export interface UpdatedMessage_interaction_user {
+  __typename: "Author";
+  id: string;
+  username: string;
+  discriminator: string;
+  avatar: string | null;
+}
+
+export interface UpdatedMessage_interaction {
+  __typename: "MessageInteraction";
+  name: string;
+  user: UpdatedMessage_interaction_user;
+}
+
 export interface UpdatedMessage {
   __typename: "UpdatedMessage";
   id: string;
@@ -146,4 +160,5 @@ export interface UpdatedMessage {
   application: UpdatedMessage_application | null;
   embeds: UpdatedMessage_embeds[] | null;
   mentions: UpdatedMessage_mentions[] | null;
+  interaction: UpdatedMessage_interaction | null;
 }
