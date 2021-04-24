@@ -24,8 +24,7 @@ const Role = ({ id, children, className, data }: Props) => (
         <RoleLink id={id} className={cx('role-link', className)}>
           {children({
             __typename: 'Member',
-            displayName: data?.name || 'deleted-role',
-            color: "0x0000ff",
+            displayName: data?.name || generalStore.guild?.roles.find(r => r.id === id)?.name || 'deleted-role',
             id: id
           })}
         </RoleLink>

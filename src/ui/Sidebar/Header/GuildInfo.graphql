@@ -38,10 +38,10 @@ query GuildInfo($guild: String!) {
             #      }
         }
 
-        # roles {
-        #     id
-        #     name
-        #     color
-        # }
+        roles {
+            id
+            name
+            color
+        }
     }
 }

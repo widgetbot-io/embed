@@ -24,6 +24,13 @@ export interface GuildInfo_guild_channels {
   category: GuildInfo_guild_channels_category | null;
 }
 
+export interface GuildInfo_guild_roles {
+  __typename: "Role";
+  id: string;
+  name: string;
+  color: number;
+}
+
 export interface GuildInfo_guild {
   __typename: "Guild";
   id: string;
@@ -38,6 +45,7 @@ export interface GuildInfo_guild {
   verified: string;
   tier: string;
   channels: GuildInfo_guild_channels[];
+  roles: GuildInfo_guild_roles[];
 }
 
 export interface GuildInfo {
