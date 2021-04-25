@@ -15,6 +15,7 @@ interface Props {
   resolveNames?: boolean
   onlyEmojiClassName?: string
   src?: string
+  reaction?: boolean
 }
 
 class Emoji extends React.PureComponent<Props> {
@@ -26,7 +27,7 @@ class Emoji extends React.PureComponent<Props> {
 
   render() {
     let text = this.getText()
-    let { className, resolveNames, src } = this.props
+    let { className, resolveNames, src, reaction } = this.props
 
     // Return a custom emoji
     if (src) return <Emote src={src} className={cx('emoji', className)} />
@@ -56,7 +57,7 @@ class Emoji extends React.PureComponent<Props> {
         />
       )
 
-      return emoji ? (
+      return emoji && !reaction ? (
         <Tooltip
           key={key}
           placement="top"

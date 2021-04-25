@@ -4,7 +4,6 @@ import { Twemoji } from '@ui/shared/Emoji/emoji'
 export const Root = styled('div')`
   display: inline-block;
   background-color: ${({ theme }) => theme.colors._primary.fade(0.96).string()};
-  cursor: pointer;
   border-radius: 3px;
   margin-right: 2px;
   padding: 0 7px;
