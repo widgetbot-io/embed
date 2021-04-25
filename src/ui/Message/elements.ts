@@ -266,6 +266,19 @@ export const Content = styled('div')<ContentProps>`
   ${props => props.sending && 'opacity: .5'}
 `
 
+export const InteractionLoading = styled.div`
+  font-size: 14px;
+`
+
+export const InteractionFailed = styled.div`
+  color: #f04747;
+  display: flex;
+
+  svg {
+    margin-right: 8px
+  }
+`
+
 export namespace Sys {
   export const Container = styled('div')`
     height: 1px;

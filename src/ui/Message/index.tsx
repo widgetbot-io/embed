@@ -40,7 +40,9 @@ import {
   ReplySystemText,
   StickerTooltipIcon,
   LottieStickerWrapper,
-  InteractionText
+  InteractionText,
+  InteractionLoading,
+  InteractionFailed
 } from './elements'
 import { Image } from './Embed/elements/media'
 import Reaction from './Reaction'
@@ -217,6 +219,18 @@ class Message extends React.PureComponent<Props, any> {
                         {message.author.discrim === '0000' || message.interaction
                           ? <LinkMarkdown mentions={message.mentions}>{message.content}</LinkMarkdown>
                           : <Markdown mentions={message.mentions}>{message.content}</Markdown>}
+                        {// interaction response loading
+                          message.flags & 1 << 7 ?
+                            <InteractionLoading>{
+                              Date.now() - message.createdAt < 900000 // 15 mins - interaction token timeout
+                                ? `${message.author.name} is thinking...`
+                                : <InteractionFailed>
+                                  <svg aria-hidden="false" width="16" height="16" viewBox="0 0 20 20"><path d="M10 0C4.486 0 0 4.486 0 10C0 15.515 4.486 20 10 20C15.514 20 20 15.515 20 10C20 4.486 15.514 0 10 0ZM9 4H11V11H9V4ZM10 15.25C9.31 15.25 8.75 14.691 8.75 14C8.75 13.31 9.31 12.75 10 12.75C10.69 12.75 11.25 13.31 11.25 14C11.25 14.691 10.69 15.25 10 15.25Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"></path></svg>
+                                  <span>This interaction failed</span>
+                                </InteractionFailed>
+                            }</InteractionLoading>
+                          : null
+                        }
                         {message.editedAt && (
                           <Tooltip
                             placement="top"
@@ -230,71 +244,70 @@ class Message extends React.PureComponent<Props, any> {
                         )}
                       </Content>
 
-                        {message.attachments
-                            ? message.attachments.map((attachment, i) => {
-                              if(attachment.height && attachment.width) {
-                                if(/\.(?:mp4|webm|mov)$/.test(attachment.filename)) {
-                                  return <Video controls
-                                    key={attachment.url}
-                                    src={attachment.url}
-                                    height={+attachment.height}
-                                    width={+attachment.width}
-                                  />;
-                                } else {
-                                    return attachment.filename.startsWith('SPOILER_') ? (
-                                    <AttachmentSpoiler
-                                      key={attachment.url}
-                                      src={attachment.url}
-                                      height={+attachment.height}
-                                      width={+attachment.width}
-                                    />) : (
-                                    <Image
-                                      key={attachment.url}
-                                      src={attachment.url}
-                                      height={+attachment.height}
-                                      width={+attachment.width}
-                                  />)
-                              }
+                      {message.attachments?.map((attachment, i) => {
+                          if(attachment.height && attachment.width) {
+                            if(/\.(?:mp4|webm|mov)$/.test(attachment.filename)) {
+                              return <Video controls
+                                key={attachment.url}
+                                src={attachment.url}
+                                height={+attachment.height}
+                                width={+attachment.width}
+                              />;
                             } else {
-                              if(/\.(?:mp3|ogg|wav|flac)$/.test(attachment.filename)) {
-                                return <Audio key={attachment.url}>
-                                    <AudioMetadata>
-                                      <AttachmentIcon src="https://discord.com/assets/5b0da31dc2b00717c1e35fb1f84f9b9b.svg"/>
-                                      <AttachmentInner>
-                                        <div><a href={attachment.url}>{attachment.filename}</a></div>
-                                        <AttachmentSize>{attachment.size} bytes</AttachmentSize>
-                                      </AttachmentInner>
-                                      <a href={attachment.url} style={{margin: 'auto'}}>
-                                        <svg aria-hidden="false" width="24" height="24" viewBox="0 0 24 24"><g fill="none" fillRule="evenodd"><path d="M0 0h24v24H0z"></path><path fill="#4f545c" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></g></svg>
-                                      </a>
-                                    </AudioMetadata>
-                                    <AudioPlayer controls src={attachment.url}></AudioPlayer>
-                                  </Audio>
-                              } else {
-                                return <Attachment key={attachment.url}>
-                                    <AttachmentIcon
-                                      src={ /\.pdf$/.test(attachment.filename) ? 'https://discord.com/assets/f167b4196f02faf2dc2e7eb266a24275.svg' // acrobat
-                                          : /\.ae/.test(attachment.filename) ? 'https://discord.com/assets/982bd8aedd89b0607f492d1175b3b3a5.svg' // ae
-                                          : /\.sketch$/.test(attachment.filename) ? 'https://discord.com/assets/f812168e543235a62b9f6deb2b094948.svg' // sketch
-                                          : /\.ai$/.test(attachment.filename) ? 'https://discord.com/assets/03ad68e1f4d47f2671d629cfeac048ef.svg' // ai
-                                          : /\.(?:rar|zip|7z|tar|tar\.gz)$/.test(attachment.filename) ? 'https://discord.com/assets/73d212e3701483c36a4660b28ac15b62.svg' // archive
-                                          : /\.(?:c\+\+|cpp|cc|c|h|hpp|mm|m|json|js|rb|rake|py|asm|fs|pyc|dtd|cgi|bat|rss|java|graphml|idb|lua|o|gml|prl|sls|conf|cmake|make|sln|vbe|cxx|wbf|vbs|r|wml|php|bash|applescript|fcgi|yaml|ex|exs|sh|ml|actionscript)$/.test(attachment.url) ? 'https://discord.com/assets/481aa700fab464f2332ca9b5f4eb6ba4.svg' // code
-                                          : /\.(?:txt|rtf|doc|docx|md|pages|ppt|pptx|pptm|key|log)$/.test(attachment.filename) ? 'https://discord.com/assets/9f358f466473586417baee7bacfba5ca.svg' // document
-                                          : /\.(?:xls|xlsx|numbers|csv)$/.test(attachment.filename) ? 'https://discord.com/assets/85f7a4063578f6e0e2c73f60bca0fcce.svg' // spreadsheet
-                                          : /\.(?:html|xhtml|htm|js|xml|xls|xsd|css|styl)$/.test(attachment.filename) ? 'https://discord.com/assets/a11e895b46cde503a094dd31641060a6.svg' // webcode
-                                          : 'https://discord.com/assets/985ea67d2edab4424c62009886f12e44.svg' // unknown
-                                          }/>
-                                    <AttachmentInner>
-                                      <div><a href={attachment.url}>{attachment.filename}</a></div>
-                                      <AttachmentSize>{attachment.size} bytes</AttachmentSize>
-                                    </AttachmentInner>
-                                    <a href={attachment.url} style={{margin: 'auto'}}>
-                                      <svg aria-hidden="false" width="24" height="24" viewBox="0 0 24 24"><g fill="none" fillRule="evenodd"><path d="M0 0h24v24H0z"></path><path fill="#4f545c" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></g></svg>
-                                    </a>
-                                  </Attachment>
-                              }
-                            }
-                          }) : null}
+                                return attachment.filename.startsWith('SPOILER_') ? (
+                                <AttachmentSpoiler
+                                  key={attachment.url}
+                                  src={attachment.url}
+                                  height={+attachment.height}
+                                  width={+attachment.width}
+                                />) : (
+                                <Image
+                                  key={attachment.url}
+                                  src={attachment.url}
+                                  height={+attachment.height}
+                                  width={+attachment.width}
+                              />)
+                          }
+                        } else {
+                          if(/\.(?:mp3|ogg|wav|flac)$/.test(attachment.filename)) {
+                            return <Audio key={attachment.url}>
+                                <AudioMetadata>
+                                  <AttachmentIcon src="https://discord.com/assets/5b0da31dc2b00717c1e35fb1f84f9b9b.svg"/>
+                                  <AttachmentInner>
+                                    <div><a href={attachment.url}>{attachment.filename}</a></div>
+                                    <AttachmentSize>{attachment.size} bytes</AttachmentSize>
+                                  </AttachmentInner>
+                                  <a href={attachment.url} style={{margin: 'auto'}}>
+                                    <svg aria-hidden="false" width="24" height="24" viewBox="0 0 24 24"><g fill="none" fillRule="evenodd"><path d="M0 0h24v24H0z"></path><path fill="#4f545c" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></g></svg>
+                                  </a>
+                                </AudioMetadata>
+                                <AudioPlayer controls src={attachment.url}></AudioPlayer>
+                              </Audio>
+                          } else {
+                            return <Attachment key={attachment.url}>
+                                <AttachmentIcon
+                                  src={ /\.pdf$/.test(attachment.filename) ? 'https://discord.com/assets/f167b4196f02faf2dc2e7eb266a24275.svg' // acrobat
+                                      : /\.ae/.test(attachment.filename) ? 'https://discord.com/assets/982bd8aedd89b0607f492d1175b3b3a5.svg' // ae
+                                      : /\.sketch$/.test(attachment.filename) ? 'https://discord.com/assets/f812168e543235a62b9f6deb2b094948.svg' // sketch
+                                      : /\.ai$/.test(attachment.filename) ? 'https://discord.com/assets/03ad68e1f4d47f2671d629cfeac048ef.svg' // ai
+                                      : /\.(?:rar|zip|7z|tar|tar\.gz)$/.test(attachment.filename) ? 'https://discord.com/assets/73d212e3701483c36a4660b28ac15b62.svg' // archive
+                                      : /\.(?:c\+\+|cpp|cc|c|h|hpp|mm|m|json|js|rb|rake|py|asm|fs|pyc|dtd|cgi|bat|rss|java|graphml|idb|lua|o|gml|prl|sls|conf|cmake|make|sln|vbe|cxx|wbf|vbs|r|wml|php|bash|applescript|fcgi|yaml|ex|exs|sh|ml|actionscript)$/.test(attachment.url) ? 'https://discord.com/assets/481aa700fab464f2332ca9b5f4eb6ba4.svg' // code
+                                      : /\.(?:txt|rtf|doc|docx|md|pages|ppt|pptx|pptm|key|log)$/.test(attachment.filename) ? 'https://discord.com/assets/9f358f466473586417baee7bacfba5ca.svg' // document
+                                      : /\.(?:xls|xlsx|numbers|csv)$/.test(attachment.filename) ? 'https://discord.com/assets/85f7a4063578f6e0e2c73f60bca0fcce.svg' // spreadsheet
+                                      : /\.(?:html|xhtml|htm|js|xml|xls|xsd|css|styl)$/.test(attachment.filename) ? 'https://discord.com/assets/a11e895b46cde503a094dd31641060a6.svg' // webcode
+                                      : 'https://discord.com/assets/985ea67d2edab4424c62009886f12e44.svg' // unknown
+                                      }/>
+                                <AttachmentInner>
+                                  <div><a href={attachment.url}>{attachment.filename}</a></div>
+                                  <AttachmentSize>{attachment.size} bytes</AttachmentSize>
+                                </AttachmentInner>
+                                <a href={attachment.url} style={{margin: 'auto'}}>
+                                  <svg aria-hidden="false" width="24" height="24" viewBox="0 0 24 24"><g fill="none" fillRule="evenodd"><path d="M0 0h24v24H0z"></path><path fill="#4f545c" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></g></svg>
+                                </a>
+                              </Attachment>
+                          }
+                        }
+                      })}
 
                       {message.embeds?.map((e, i) => (
                           <Embed key={i} {...e} />
