@@ -30,7 +30,7 @@ type User = DiscordUser | GuestUser;
 const loginError = (msg: string) => addNotification({
   level: 'warning',
   title: Locale.translate('frontend.notif.login.unsuccessful'),
-  message: msg,
+  message: msg.replace('GraphQL Error: ', ''),
   autoDismiss: 0,
 });
 export class AuthStore {

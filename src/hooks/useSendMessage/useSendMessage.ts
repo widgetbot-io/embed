@@ -63,7 +63,7 @@ export const useSendMessage = () => {
     }).catch(error => addNotification({
       level: 'error',
       title: 'Error sending message',
-      message: error.toString(),
+      message: error.toString().replace('GraphQL Error: ', ''),
       autoDismiss: 0
     }))
 }

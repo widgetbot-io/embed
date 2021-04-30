@@ -48,11 +48,11 @@ export const Messages = observer(({ guild, channel }: MessagesProps) => {
   if (error) addNotification({
     level: 'warning',
     title: Locale.translate('frontend.notif.loaderror.messages'),
-    message: formatError(error),
+    message: formatError(error).replace('GraphQL Error: ', ''),
     autoDismiss: 0,
 
   });
-  if (error) return <ErrorAhoy message={formatError(error)} />;
+  if (error) return <ErrorAhoy message={formatError(error).replace('GraphQL Error: ', '')} />;
   if (!ready) return <Loading />;
 
   if (!groupedMessages.length)
