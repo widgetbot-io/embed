@@ -43,6 +43,7 @@ export namespace GlobalStyles {
         height: ${theme.url.height ? `${theme.url.height}px` : `100%`};
         background-color: ${theme.colors.background};
         overflow: hidden;
+        --font-display: Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
       }
 
       #root {

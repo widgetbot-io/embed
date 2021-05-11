@@ -32,7 +32,7 @@ export const Name = styled('strong')<NameProps>`
 
 // Timestamp
 export const Time = styled('span')`
-  color: ${({ theme }) => theme.colors._primary.fade(0.8).string()};
+  color: ${({ theme }) => theme.colors._primary.fade(0.7).string()};
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 0;

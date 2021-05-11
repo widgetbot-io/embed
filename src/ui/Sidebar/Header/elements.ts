@@ -49,6 +49,7 @@ export const Acronym = styled.span`
 `
 
 export const Name = styled('h1')`
+  font-family: var(--font-display);
   font-size: 15px;
   font-weight: 600;
   margin: 0 15px;

@@ -71,7 +71,7 @@ class Authenticate extends React.Component<{}, State> {
                   maxLength={80}
                   required
               />
-              <Create variant="large">{Locale.translate('frontend.auth.create')}</Create>
+              <Create variant="large">Continue</Create>
               <SSO>
               {Locale.translate('frontend.auth.discordacc')}
                 <Discord onClick={this.discordSignOn.bind(this)}>

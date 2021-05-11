@@ -27,6 +27,7 @@ export const Root = styled(Content)<Props>`
 `
 
 export const Title = styled('h1')`
+  font-family: var(--font-display);
   font-size: 26px;
   line-height: 32px;
   font-weight: 300;
@@ -78,7 +79,7 @@ export const Input = styled('input')`
 
   &:focus,
   &:active {
-    border-color: ${({ theme }) => theme.colors.accent};
+    border-color: #00b0f4;
   }
 `
 

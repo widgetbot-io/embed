@@ -42,6 +42,7 @@ export const Stretch = styled('div')`
 `
 
 const name = (hash: typeof Hash) => styled(hash)`
+  font-family: var(--font-display);
   font-size: 18px;
   font-weight: 600;
   height: 25px;

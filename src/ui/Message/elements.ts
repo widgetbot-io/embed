@@ -151,7 +151,7 @@ export namespace Secondary {
   `
 
   export const Join = styled(Message)`
-    background-image: url("https://discord.com/assets/b8029fe196b8f1382e90bbe81dab50dc.svg");
+    background-image: url("https://discord.com/assets/e06a573355c490f7ce6e3125ac01db81.svg");
   `
 
   export const Boost = styled(Message)`
@@ -177,7 +177,7 @@ export namespace Secondary {
 }
 
 export const Command = styled.span`
-  color: #7289da;
+  color: ${({ theme }) => theme.colors.accent};
   font-weight: 500;
 `
 
@@ -327,12 +327,13 @@ export const Video = styled('video')`
 `
 
 export const Attachment = styled.div`
-  border: 1px solid rgba(0,0,0,.05);
-  background-color: rgba(0,0,0,.04);
+  border: 1px solid rgba(0,0,0,.7);
+  background-color: rgba(0,0,0,.1);
   max-width: 520px;
   width: 100%;
   padding: 10px;
   display: flex;
+  border-radius: 3px
 `
 
 export const AttachmentIcon = styled.img`

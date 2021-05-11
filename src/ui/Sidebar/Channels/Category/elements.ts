@@ -24,6 +24,7 @@ export const Name = styled('div')`
 export const Text = styled('span')`
   pointer-events: none;
   margin: 0;
+  font-family: var(--font-display);
   font-size: 12px;
   font-weight: 500;
   line-height: 20px;
