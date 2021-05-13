@@ -177,8 +177,9 @@ export namespace Secondary {
 }
 
 export const Command = styled.span`
-  color: ${({ theme }) => theme.colors.accent};
+  color: #00b0f4;
   font-weight: 500;
+  opacity: .64;
 `
 
 export const ApplicationIcon = styled.img`
