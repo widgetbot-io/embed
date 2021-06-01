@@ -331,7 +331,7 @@ class Message extends React.PureComponent<Props, any> {
                                 }}
                               />
                             </LottieStickerWrapper>
-                          : <img height={160} width={160} alt={s.name+' Sticker'} src={`https://cdn.discordapp.com/stickers/${s.id}/${s.icon}.png`} draggable={false} />}
+                          : <img height={160} width={160} alt={s.name+' Sticker'} src={`https://cdn.discordapp.com/stickers/${s.id}.png`} draggable={false} />}
                         </Tooltip>
                       )}
 
