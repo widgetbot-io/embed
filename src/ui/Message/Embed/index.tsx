@@ -119,7 +119,7 @@ const EmbedField = ({name, value, inline}) => {
 }
 
 const EmbedThumbnail = ({url, height, width, type}: { height: number | null, width: number | null, url: string | null, type: string }) =>
-    type === 'video' ? null :
+    type === 'Video' ? null :
         url ? (
             <Thumbnail
                 src={url}

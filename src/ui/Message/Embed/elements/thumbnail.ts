@@ -4,6 +4,7 @@ import styled, { css } from '../ThemeContext'
 
 interface Props {
   rich?: boolean
+  width: number
 }
 export const Thumbnail = styled(ExpandableImage)<Props>`
   border-radius: 3px;
@@ -11,7 +12,7 @@ export const Thumbnail = styled(ExpandableImage)<Props>`
   flex-shrink: 0;
   cursor: pointer;
 
-  ${({ rich, theme }) =>
+  ${({ rich, theme, width }) =>
     rich
       ? css`
           margin: 5px 0;
@@ -22,5 +23,6 @@ export const Thumbnail = styled(ExpandableImage)<Props>`
           `
         : css`
             margin-left: 20px;
+            width: ${Math.min(width, 80)}px;
           `};
 `
