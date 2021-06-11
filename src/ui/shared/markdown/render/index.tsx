@@ -9,7 +9,7 @@ import {
 } from '@ui/shared/markdown/render/util'
 import SimpleMarkdown from 'simple-markdown'
 import TextSpoiler from "@ui/shared/markdown/render/elements/TextSpoiler";
-import { Message_mentions } from '@generated'
+import { Message_author, Message_mentions } from '@generated'
 
 function parserFor(rules, returnAst?) {
   const parser = SimpleMarkdown.parserFor(rules)
@@ -125,8 +125,8 @@ export const parseEmbedTitle = parserFor(
   )
 )
 
-function Markdown({ children: content, mentions }: { children: string, mentions?: Message_mentions[] }) {
-  return content ? parse(content, undefined, {mentions}) : null
+function Markdown({ children: content, mentions, users }: { children: string, mentions?: Message_mentions[], users?: Map<string, Message_author> }) {
+  return content ? parse(content, undefined, {mentions, users}) : null
 }
 
 namespace Markdown {
@@ -137,8 +137,8 @@ namespace Markdown {
   )
 }
 
-export function LinkMarkdown({ children: content, mentions }: { children: string, mentions?: Message_mentions[] }) {
-  return content ? parseAllowLinks(content, undefined, {mentions}) : null
+export function LinkMarkdown({ children: content, mentions, users }: { children: string, mentions?: Message_mentions[], users?: Map<string, Message_author> }) {
+  return content ? parseAllowLinks(content, undefined, {mentions, users}) : null
 }
 
 export namespace LinkMarkdown {

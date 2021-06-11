@@ -11,7 +11,7 @@ import {Footer, FooterIcon, FooterText} from './elements/footer'
 import {Image} from './elements/media'
 import {Thumbnail} from './elements/thumbnail'
 import {Video} from '@ui/Message/elements'
-import {Embed_author, Embed_footer, Embed_image, Embed_thumbnail, Message_embeds} from "@generated";
+import {Embed_author, Embed_footer, Embed_image, Embed_thumbnail, Message_author, Message_embeds} from "@generated";
 
 // TODO: Refactor / cleanup
 
@@ -61,9 +61,9 @@ const EmbedProvider = ({name, url}) =>
         )
     ) : null
 
-const EmbedDescription = ({content}) =>
+const EmbedDescription = ({content, users}) =>
     content ? (
-        <Description>{parseEmojis(parseAllowLinks(content))}</Description>
+        <Description>{parseEmojis(parseAllowLinks(content, undefined, {users}))}</Description>
     ) : null
 
 const EmbedVideo = ({url, height, width}) =>
@@ -98,7 +98,7 @@ const EmbedAuthor = ({name, url, icon}: Embed_author) => {
     )
 }
 
-const EmbedField = ({name, value, inline}) => {
+const EmbedField = ({name, value, inline, users}) => {
     if (!name && !value) {
         return null
     }
@@ -107,7 +107,7 @@ const EmbedField = ({name, value, inline}) => {
         <FieldName>{parseEmojis(parseEmbedTitle(name))}</FieldName>
     ) : null
     const fieldValue = value ? (
-        <FieldValue>{parseEmojis(parseAllowLinks(value))}</FieldValue>
+        <FieldValue>{parseEmojis(parseAllowLinks(value, undefined, {users}))}</FieldValue>
     ) : null
 
     return (
@@ -167,12 +167,12 @@ const EmbedFooter = ({timestamp, text, url}: { timestamp: string, url: string | 
     )
 }
 
-const EmbedFields = ({fields}) => {
+const EmbedFields = ({fields, users}) => {
     if (!fields) {
         return null
     }
 
-    return <Fields>{fields.map((f, i) => <EmbedField key={i} {...f} />)}</Fields>
+    return <Fields>{fields.map((f, i) => <EmbedField key={i} {...f} users={users} />)}</Fields>
 }
 
 const Embed = ({
@@ -188,8 +188,9 @@ const Embed = ({
    footer,
    provider,
    video,
+   users,
    ...embed
-}: Message_embeds) =>
+}: Message_embeds & {users: Map<string, Message_author>}) =>
     embed.type === 'GifV' ? (
         <Gifv autoPlay loop muted
               src={video.url}
@@ -224,8 +225,8 @@ const Embed = ({
                             <EmbedTitle title={title} url={url}/>
                             {embed.type === 'Video' ?
                                 <EmbedVideo {...video} /> :
-                                <EmbedDescription content={description}/>}
-                            <EmbedFields fields={fields}/>
+                                <EmbedDescription content={description} users={users}/>}
+                            <EmbedFields fields={fields} users={users}/>
                         </div>
                         <EmbedThumbnail type={embed.type} {...thumbnail} />
                     </Content>

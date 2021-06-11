@@ -83,6 +83,8 @@ const shouldShowContext = (message: Messages_channel_messages) =>
   message.type === MessageType.Reply ||
   message.type === MessageType.ApplicationCommand && !!message.interaction
 
+const getUsers = (messages: Messages_channel_messages[]) => new Map(messages.map(m => [m.author.id, m.author]))
+
 class Message extends React.PureComponent<Props, any> {
   theme = message => theme => ({
     ...theme,
@@ -217,8 +219,9 @@ class Message extends React.PureComponent<Props, any> {
                     <Root className="message" id={message.id}>
                       <Content sending={!!(message.flags & 1 << 4)} className="content">
                         {message.author.discrim === '0000' || message.interaction
-                          ? <LinkMarkdown mentions={message.mentions}>{message.content}</LinkMarkdown>
-                          : <Markdown mentions={message.mentions}>{message.content}</Markdown>}
+                            // passes mentions and users to markdown parser for mention rendering
+                          ? <LinkMarkdown mentions={message.mentions} users={getUsers(allMessages)}>{message.content}</LinkMarkdown>
+                          : <Markdown mentions={message.mentions} users={getUsers(allMessages)}>{message.content}</Markdown>}
                         {// interaction response loading
                           message.flags & 1 << 7 ?
                             <InteractionLoading>{
@@ -310,7 +313,8 @@ class Message extends React.PureComponent<Props, any> {
                       })}
 
                       {message.embeds?.map((e, i) => (
-                          <Embed key={i} {...e} />
+                          // pass message authors for rendering user mentions
+                          <Embed key={i} {...e} users={getUsers(allMessages)} />
                       ))}
 
                       {message.stickers?.map(s => 
