@@ -1,9 +1,16 @@
 import Emoji from '@ui/shared/Emoji'
 import styled, { css } from '@lib/emotion'
+import { store } from '@models'
+import { observer } from 'mobx-react'
 
-const Root = styled('div')`
+interface Props {
+  squashed: boolean
+}
+
+const Root = styled('div')<Props>`
   position: absolute;
   width: 100%;
+  transition: width 0.3s ease;
   height: 100%;
   > *:first-child {
     position: absolute;
@@ -16,6 +23,21 @@ const Root = styled('div')`
     width: 40%;
     opacity: 0.08;
   }
+
+  ${({ squashed, theme }) =>
+    // center overlay when sidebar is open
+    squashed && !theme.singleChannel
+      ? css`
+          @media (min-width: 521px) {
+            width: calc(100% - 200px);
+          }
+
+          @media (min-width: 521px) and (max-width: 400px),
+            (min-width: 521px) and (max-height: 340px) {
+            width: calc(100% - 180px);
+          }
+        `
+      : null};
 `
 
 const Container = styled('div')`
@@ -46,8 +68,8 @@ export const Info = styled(Emoji.withComponent('div'))`
 
 export const Wrap = function<T>(wrapper: T): T {
   const Component: any = wrapper
-  return (({ children, ...props }) => (
-    <Root {...props}>
+  return observer(({ children, ...props }) => (
+    <Root {...props} squashed={store.sidebar.isOpen}>
       {children ? (
         <Container>
           <Component />
