@@ -3,12 +3,12 @@ import { Twemoji } from '@ui/shared/Emoji/emoji'
 
 export const Root = styled('div')`
   display: inline-block;
-  background-color: ${({ theme }) => theme.colors._primary.fade(0.96).string()};
-  border-radius: 3px;
-  margin-right: 2px;
-  padding: 0 7px;
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: .5rem;
+  margin-right: .25rem;
+  margin-bottom: .25rem;
+  padding: .125rem .375rem;
   user-select: none;
-  height: 22px;
 `
 
 export const Emoji = styled(Twemoji)`
@@ -23,7 +23,7 @@ export const Emoji = styled(Twemoji)`
 `
 
 export const Count = styled('span')`
-  color: ${({ theme }) => theme.colors._primary.fade(0.7).string()};
+  color: ${({ theme }) => theme.colors._primary.fade(0.33).string()};
   min-width: 9px;
   font-size: 0.875rem;
   font-weight: 500;

@@ -3,6 +3,7 @@ import styled, { css } from '../ThemeContext'
 export const Root = styled('div')`
   position: relative;
   margin-top: 5px;
+  margin-bottom: .25rem;
   max-width: 520px;
   display: flex;
   color: ${({ theme }) => theme.colors._primary.fade(0.3).string()};

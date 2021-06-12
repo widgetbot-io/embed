@@ -263,7 +263,7 @@ interface ContentProps {
   sending?: boolean
 }
 export const Content = styled('div')<ContentProps>`
-  margin-bottom: 7px;
+  margin-bottom: .25rem;
   ${props => props.sending && 'opacity: .5'}
 `
 
