@@ -35,11 +35,11 @@ export const Chat: FunctionComponent<ChatProps> = (props) => {
   if (error) addNotification({
     level: 'warning',
     title: Locale.translate('frontend.notif.loaderror.chat'),
-    message: formatError(error).replace('GraphQL Error: ', ''),
+    message: formatError(error),
     autoDismiss: 0,
 
   });
-  if (error) return <ErrorAhoy message={formatError(error).replace('GraphQL Error: ', '')} />;
+  if (error) return <ErrorAhoy message={formatError(error)} />;
 
 
   const channelName = data.channel?.name;

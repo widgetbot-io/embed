@@ -10,5 +10,5 @@ export const formatError = (error: ApolloError) => {
     }
   }
 
-  return message
+  return message.replace('GraphQL error: ', '')
 }
