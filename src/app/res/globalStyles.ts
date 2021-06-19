@@ -22,7 +22,7 @@ injectGlobal`
   .rc-tooltip-inner {
     padding: 8px 12px;
     color: #dcddde;
-    background-color: #000000;
+    background-color: #18191c;
     border-radius: 5px;
     box-shadow: 0 2px 10px 0 rgba(0,0,0,.2);
     font-size: 14px;
@@ -106,7 +106,7 @@ injectGlobal`
       bottom: 4px;
       margin-left: -5px;
       border-width: 5px 5px 0;
-      border-top-color: #000000;
+      border-top-color: #18191c;
     }
   }
 
@@ -118,7 +118,7 @@ injectGlobal`
       left: 4px;
       margin-top: -5px;
       border-width: 5px 5px 5px 0;
-      border-right-color: #000000;
+      border-right-color: #18191c;
     }
   }
 
@@ -130,7 +130,7 @@ injectGlobal`
       top: 4px;
       margin-left: -5px;
       border-width: 0 5px 5px;
-      border-bottom-color: #000000;
+      border-bottom-color: #18191c;
     }
   }
 
@@ -142,7 +142,7 @@ injectGlobal`
       right: 4px;
       margin-top: -5px;
       border-width: 5px 0 5px 5px;
-      border-left-color: #000000;
+      border-left-color: #18191c;
     }
   }
 
