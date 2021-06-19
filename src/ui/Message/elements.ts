@@ -133,7 +133,8 @@ export const Edited = styled('span')`
   line-height: 0.625rem;
   margin-left: 3px;
   opacity: 0.3;
-  cursor: pointer;
+  cursor: default;
+  user-select: none;
 `
 
 export namespace Secondary {

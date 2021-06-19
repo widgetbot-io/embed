@@ -41,6 +41,7 @@ export const Time = styled('span')`
   overflow: hidden;
   white-space: nowrap;
   text-transform: none;
+  cursor: default;
 
   @media (max-width: 400px), (max-height: 420px) {
     font-size: 11px;

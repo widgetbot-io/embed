@@ -39,7 +39,13 @@ const developers = {
 };
 
 export const Timestamp = ({ time }: { time: number }) => (
-  <Time className="time">{Moment(time).calendar()}</Time>
+  <Tooltip
+    mouseEnterDelay={1}
+    placement="top"
+    overlay={Moment(time).format('LLLL')}
+  >
+    <Time className="time">{Moment(time).calendar()}</Time>
+  </Tooltip>
 );
 
 const verified = 

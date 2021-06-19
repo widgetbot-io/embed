@@ -126,9 +126,9 @@ class Message extends React.PureComponent<Props, any> {
                         <Markdown mentions={repliedMessage.mentions}>{repliedMessage.content}</Markdown>
                         {repliedMessage.editedAt && (
                           <Tooltip
+                            mouseEnterDelay={1}
                             placement="top"
-                            overlay={Moment(repliedMessage.editedAt).calendar()}
-                            mouseLeaveDelay={0}
+                            overlay={Moment(repliedMessage.editedAt).format('LLLL')}
                           >
                             <Edited className="edited">
                               {Locale.translate('frontend.edited')}
@@ -236,9 +236,9 @@ class Message extends React.PureComponent<Props, any> {
                         }
                         {message.editedAt && (
                           <Tooltip
+                            mouseEnterDelay={1}
                             placement="top"
-                            overlay={Moment(message.editedAt).calendar()}
-                            mouseLeaveDelay={0}
+                            overlay={Moment(message.editedAt).format('LLLL')}
                           >
                             <Edited className="edited">
                               {Locale.translate('frontend.edited')}

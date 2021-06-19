@@ -28,7 +28,6 @@ injectGlobal`
     font-size: 14px;
     line-height: 1;
     font-weight: 500;
-    max-width: 190px;
 
     .emoji {
       width: 15px;
