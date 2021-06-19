@@ -23,7 +23,6 @@ const baseRules = {
   blockQuote: {
     ...defaultRules.blockQuote,
     match: inlineRegex(/^( *>[^\n]+(\n[^\n]+)*\n*)/),
-      
   },
   emoticon: {
     order: defaultRules.text.order,
@@ -55,6 +54,13 @@ const baseRules = {
     order: defaultRules.inlineCode.order + 1,
     match: inlineRegex(/^\|\|([\s\S]+?)\|\|/),
     parse: defaultRules.strong.parse
+  },
+
+  timestamp: {
+    order: defaultRules.u.order,
+    // https://github.com/discordjs/discord-api-types/blob/638c347dd8a1c5dc39b3626c76749c5f8a4afc6a/globals.ts#L69
+    match: inlineRegex(/^<t:(?<timestamp>-?\d{1,13})(:(?<style>[tTdDfFR]))?>/),
+    parse: ({groups}) => groups
   }
 }
 

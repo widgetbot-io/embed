@@ -10,12 +10,11 @@ import {
 import SimpleMarkdown from 'simple-markdown'
 import TextSpoiler from "@ui/shared/markdown/render/elements/TextSpoiler";
 import { Message_author, Message_mentions } from '@generated'
+import { Timestamp } from './elements/Timestamp'
 
-function parserFor(rules, returnAst?) {
+function parserFor(rules: SimpleMarkdown.ReactRules, returnAst?) {
   const parser = SimpleMarkdown.parserFor(rules)
-  const renderer = SimpleMarkdown.reactFor(
-    SimpleMarkdown.ruleOutput(rules, 'react')
-  )
+  const renderer = SimpleMarkdown.outputFor(rules, 'react')
   return memoize(
     (input = '', inline = true, state = {}, transform = null) => {
       if (!inline) {
@@ -36,7 +35,7 @@ function parserFor(rules, returnAst?) {
 }
 
 function createRules(rule: { [key: string]: any }) {
-  const { paragraph, url, link, codeBlock, inlineCode, blockQuote, spoiler } = rule
+  const { paragraph, url, link, codeBlock, inlineCode, blockQuote, spoiler, timestamp } = rule
 
   return {
     ...rule,
@@ -104,6 +103,10 @@ function createRules(rule: { [key: string]: any }) {
     spoiler: {
       ...spoiler,
       react: (node, recurseOutput, state) => (<TextSpoiler content={recurse(node, recurseOutput, state)}/>)
+    },
+    timestamp: {
+      ...timestamp,
+      react: data => <Timestamp data={data}></Timestamp>
     }
   }
 }

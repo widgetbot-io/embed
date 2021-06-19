@@ -234,7 +234,7 @@ export const Root = styled('div')`
     /* todo: theme.message.type === 'SENDING'* ? 0.5 : */ 1};
 
   font-size: 1rem;
-  line-height: 1.1em;
+  line-height: 1.375rem;
   margin-top: 4px;
   white-space: pre-wrap;
   word-wrap: break-word;
