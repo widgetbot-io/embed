@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import Scrollbars from 'react-custom-scrollbars'
+import Scrollbars from 'react-custom-scrollbars-2'
 import { List, ListProps } from 'react-virtualized'
 
 const listStyle = {
