@@ -54,7 +54,8 @@ export const useSendMessage = () => {
           data.channel.messages.push(newMessage)
 
         if (!(newMessage.flags & 1 << 4)) {
-          const optimisticIndex = data.channel.messages.findIndex(m => m.content === newMessage.content && m.flags & 1 << 4)
+          // trims spaces so Discord's normalization doesn't break it; ideally we would use nonce instead of content https://github.com/discord/discord-api-docs/discussions/3396
+          const optimisticIndex = data.channel.messages.findIndex(m => m.content.replace(/ /g, '') === newMessage.content.replace(/ /g, '') && m.flags & 1 << 4)
           if (optimisticIndex > -1) data.channel.messages.splice(optimisticIndex, 1)
         }
         
